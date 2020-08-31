@@ -1,0 +1,43 @@
+WIP functions:
+changelog -> currently implemented but non-functioning/needs testing
+user sign up-> currently implemented but non-functioning/needs testing
+update user data-> currently implemented but non-functioning/needs testing
+logout-> implemented and functioning
+filterInput-> implemented and functioning
+checkLogin-> currently implemented but needs testing
+database-connect-> implemented and functioning
+rate limiting -> implemented but untested
+
+Front-end pages:
+- index
+- join form
+- login form
+- sign up form
+
+Back-end/admin pages:
+- dashboard
+- view queue
+- preview cosplayer
+
+Database:
+- created and tables built out. Need to fill with dummy data
+
+Planning:
+$_GET
+1- preview next in line on backend profile
+2- echo current place in queue
+3- refresh queue
+4- Get details from database to auto-fill join queue form
+
+$_POST
+1- join queue
+2- sign in
+3- sign up
+4- update user details in local storage and database
+
+CRUD 1- Update
+Update user details using form
+
+CRUD 2 - Delete
+Remove user from queue
+Remove self from queue
