@@ -1,4 +1,5 @@
 
+  
   $(document).ready(function(){
     $('.sidenav').sidenav();
   });
@@ -163,4 +164,31 @@
     closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
   });
   }
-
+  function loadJSONpartial() {
+    var out = '';
+    var disabled = '';
+    fetch('../MOCK_DATA.json')
+    .then(function(response) {
+        response.json().then(function(data) {
+            console.log(data);
+            data.forEach(row => {
+                if(row.student_NO == 1) {
+                    disabled = '';
+                } else {
+                    disabled = 'disabled';
+                }
+                out += '<tr><td>' + row.id +
+                '</td><td>' + row.name +
+                '</td><td>' + row.cosplay_name +
+                '</td><td>' + row.character +
+                '</td><td>' + row.series +
+                // '</td><td>' + row.genre +
+                '</td><td>' + row.group +
+                '</td><td><img src="' + row.photo +'"></td><td><button ' + disabled + '>Delete</button>' + 
+                '</td><td><button ' + disabled + '>Preview</button>' + 
+                '</td></tr>';
+            });
+            queue.innerHTML = out;
+            //queue.innerHTML = JSON.stringify(data)
+         })
+    });
