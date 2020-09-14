@@ -10,8 +10,8 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
       <!-- Google Font API -->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <link rel="stylesheet" href="style.css">
-      <script src="js.js"></script>
+      <link rel="stylesheet" href="../style.css">
+      <script src="../js.js"></script>
       
    </head>
    <body>
@@ -21,11 +21,11 @@
                <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large" id="hamburger">
                <i class="material-icons">menu</i>
                </a>
-               <img id="logo" src="cosplay_queue_logo-removebg-preview.png">
+               <img id="logo" src="../Images/cosplay_queue_logo-removebg-preview.png">
             </nav>
             <ul id="slide-out" class="sidenav">
                <li>
-                  <img id="logo-menu" src="cosplay queue logo.png">
+                  <img id="logo-menu" src="../Images/cosplay queue logo.png">
                </li>
                <li>
                   <a onclick="join()">
@@ -48,7 +48,7 @@
             <ul class="collapsible">
                <li>
                   <div class="collapsible-header">
-                     <img id="join" src="join_the_queue-removebg-preview.png" alt="join the queue">
+                     <img id="join" src="../Images/join_the_queue-removebg-preview.png" alt="join the queue">
                   </div>
                   <div class="collapsible-body">
                      <div class="page-title">
@@ -132,7 +132,7 @@
                </li>
                <li>
                   <div class="collapsible-header">
-                     <img id="sign-in" src="sign_in-removebg-preview.png" alt="sign in">
+                     <img id="sign-in" src="../Images/sign_in-removebg-preview.png" alt="sign in">
                   </div>
                   <div class="collapsible-body">
                      <div class="form-content">
@@ -162,7 +162,7 @@
                </li>
                <li>
                <div class="collapsible-header">
-               <img id="register" src="register-removebg-preview.png" alt ="register">
+               <img id="register" src="../Images/register-removebg-preview.png" alt ="register">
                </div>
                <div class="collapsible-body">
                <div class="page-title">
@@ -227,7 +227,7 @@
               </ul>
          <div class="divider" ></div>
          <div id="bottom-buttons" class="col m12">
-            <a class="waves-effect waves-light btn col m12" id="signup-btn" href="#">
+            <a class="waves-effect waves-light btn col m12" id="signup-btn" href="viewQueue.html">
             <i class="material-icons left">create</i>Admin Sign In
             </a>
          </div>
@@ -236,7 +236,9 @@
       <div id="modal1" class="modal bottom-sheet">
          <div class="modal-content">
             <h4>You have successfully joined the queue</h4>
-            <p>You are now number 1 in the queue</p>
+            <p>You are now number</p>
+            <table id="queue"></table>
+            <button onClick="refreshJson()">Refresh</button>
          </div>
          <div class="modal-footer">
             <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
