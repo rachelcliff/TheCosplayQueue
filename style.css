@@ -167,8 +167,6 @@ font-size: 50px;
     background-color: aqua;
 }
 
-.form-content{
-}
 
 #login-modal{
     padding: 2em;
@@ -199,4 +197,10 @@ font-size: 50px;
 
 #checkbox {
     text-align: center;
+}
+
+#queue {
+    width: 80%;
+    background-color: aquamarine;
+    padding:2em;
 }
