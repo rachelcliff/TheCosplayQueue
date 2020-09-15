@@ -192,3 +192,35 @@
             //queue.innerHTML = JSON.stringify(data)
          })
     });
+
+    function postWithFetch() {
+      var fd= new FormData();
+      fd.append('dish', dish.value);
+      // each form element going into an fd object
+      fetch('./api/api.php?action=order', 
+      {
+          method:'POST',
+          body: fd,
+          credentials: 'include'
+      })
+      .then(function(response) {
+          if(response.status === 400) {
+              console.log('Record not inserted');
+              return;
+          }
+          if(response.status === 401) {
+              console.log('Wrong Permissions');
+              return;
+          }
+          if(response.status === 501) {
+              console.log('not implemented');
+              return;
+          }
+          if(response.status === 202) {
+              console.log('success');
+              return;
+          }
+      });
+      return false;
+  }
+}
