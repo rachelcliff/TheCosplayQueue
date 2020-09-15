@@ -167,8 +167,21 @@
   function loadJSONpartial() {
     var out = '';
     var disabled = '';
-    fetch('../MOCK_DATA.json')
+    fetch(url,
+      {
+        method: 'GET',
+        credentials: 'include'
+      }
+      )
     .then(function(response) {
+      if(response.status === 401) {
+        populateAlert('Not Authorized, please login', 'error');
+        return;
+    }
+    if(response.status === 204) {
+        populateAlert('No queue items found', 'warning');
+        return;
+    }
         response.json().then(function(data) {
             console.log(data);
             data.forEach(row => {
@@ -188,8 +201,7 @@
                 '</td><td><button ' + disabled + '>Preview</button>' + 
                 '</td></tr>';
             });
-            queue.innerHTML = out;
-            //queue.innerHTML = JSON.stringify(data)
+            document.getElementById('queue').innerHTML = outStr;
          })
     });
 
