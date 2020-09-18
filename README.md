@@ -5,7 +5,11 @@ The queue is part of the admin user panel and as such it isn't displayed on the 
 
 Aside from that all noted errors have been corrected. 
 
-WIP functions:
+API:
+- functions started for pulling data utilising the code from Monday/Tuesday's classes. Will spend more time over the break getting everything up and functioning. 
+- Started the function on the join the queue modal to display the relevant position in the queue using JSON. This function has been put on the backburner until it is determined whether I will be using straight JSON or Websockets to implement the feature. 
+
+WIP functions -> still need to be combined into the single functions folder:
 changelog -> currently implemented but non-functioning/needs testing
 user sign up-> currently implemented but non-functioning/needs testing
 update user data-> currently implemented but non-functioning/needs testing
@@ -16,19 +20,14 @@ database-connect-> implemented and functioning
 rate limiting -> implemented but untested
 
 Front-end pages:
-- index
-- join form
-- login form
-- sign up form
+- index (contains all of bases for the app)
 
 Back-end/admin pages:
-- dashboard
-- view queue
-- preview cosplayer
+- admin page (contains a functional display of the queue using JSON)
 
 Database:
-- created and tables built out. Need to fill with dummy data
-
+- created and tables built out and filled with dummy data and images.
+ 
 Planning:
 $_GET
 1- preview next in line on backend profile
