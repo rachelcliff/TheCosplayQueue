@@ -42,7 +42,9 @@
                   <i class="material-icons">create</i>Sign Up
                   </a>
                </li>
-               <li><a class="dark-toggle" href="#" onclick="localStorage.setItem('mode', (localStorage.getItem('mode') || 'dark') === 'dark' ? 'light' : 'dark'); localStorage.getItem('mode') === 'dark' ? document.querySelector('body').classList.add('dark') : document.querySelector('body').classList.remove('dark')" title="Dark/light"><i class="material-icons left">brightness_4</i> Toggle Dark Mode</a></li>
+               <li><div class="switch">Dark mode:              
+                  <span class="inner-switch">OFF</span>
+              </div></li> 
             </ul>
          </header>
          <div class="test-contatiner">
