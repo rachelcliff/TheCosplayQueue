@@ -2,29 +2,77 @@ body {
     background-color: white;
 }
 
-.switch {
-    align-self: flex-end;
-    margin: 0.9375rem;
-}
-.inner-switch {
-    display: inline-block;
-    cursor: pointer;
-    border: 1px solid #555;
-    border-radius: 1.25rem;
-    width: 3.125rem;
-    text-align: center;
-    font-size: 1rem;
-    padding: 0.1875rem;
-    margin-left: 0.3125rem;
-}
+:root , :root.snow-white {
 
-.dark,
-.dark * {
-    background-color: #222;
-    color: #e6e6e6;
-    border-color: #e6e6e6;
-}
+    --color-html: #F9F9F9 ;
+    --color-body: #fdfdfd ;
+    --color-text: #051105 ;
+    --color-link: #1122D8 ;
+    --color-selected-text: #000 ;
+    --color-selected-bg: #CF7 ;
+    }
+    
+    @media screen and (prefers-color-scheme: dark) {
 
+        html:not(.snow-white) {
+         --color-html: #0e0b0b ;
+         --color-body: #241818 ;
+         --color-text: #d1d1d1 ;
+         --color-link: #4fbcff ;
+         --color-selected-text: #000 ;
+         --color-selected-bg: #CF7 ;
+        }
+       }
+       
+       /* Dark color variables, if "dark" is set as HTML tag's CSS class */ 
+       
+       html.dark { 
+         --color-html: #0e0b0b ;
+         --color-body: #1a1010 ;
+         --color-text: #d1d1d1 ;
+         --color-link: #4fbcff ;
+         --color-selected-text: #000 ;
+         --color-selected-bg: #CF7 ;
+        }
+       
+       /* Deep Purple color variables, if "purple" is set as HTML tag's CSS class */ 
+       
+       html.purple { 
+       
+       --color-html: #0a0614 ;
+       --color-body: #120b24 ;
+       --color-text: #d1d1d1 ;
+       --color-selected-text: #000 ;
+       --color-selected-bg: #CF7 ;
+       --color-link: #4fbcff ;
+       
+       }
+       
+       /* Deep Green color variables, if "green" is set as HTML tag's CSS class */
+       
+       html.green { 
+       
+       --color-html: #04160a ;
+       --color-body: #072813 ;
+       --color-text: #d1d1d1 ;
+       --color-selected-text: #000 ;
+       --color-selected-bg: #CF7 ;
+       --color-link: #4fbcff ;
+       
+       }
+       
+       /* Cobalt Blue color variables, if "blue" is set as HTML tag's CSS class */
+       
+       html.blue { 
+       
+       --color-html: #000d1a ;
+       --color-body: #001830 ;
+       --color-text: #d1d1d1 ;
+       --color-selected-text: #000 ;
+       --color-selected-bg: #CF7 ;
+       --color-link: #4fbcff ;
+       
+       }   
 .container {
 width:100%;
 background-color: white;
