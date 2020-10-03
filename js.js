@@ -236,12 +236,28 @@
   }
 }
 
-$( ".inner-switch" ).on("click", function() {
-  if( $( "body" ).hasClass( "dark" )) {
-    $( "body" ).removeClass( "dark" );
-    $( ".inner-switch" ).text( "OFF" );
+window.addEventListener("load", function() {
+  console.log(localStorage.getItem("darktheme"))
+  if (localStorage.getItem("darktheme") == "true") {
+    checkBG.checked = true;
+    document.body.style.backgroundColor = "black";
+    document.body.style.color= "white";
   } else {
-    $( "body" ).addClass( "dark" );
-    $( ".inner-switch" ).text( "ON" );
+    checkBG.checked = false;
+    document.body.style.backgroundColor="white";
+    document.body.style.color= "black";
+    localStorage.setItem("darktheme", "false");
   }
-});
+})
+
+function switchBG(checkBG) {
+  if (checkBG.checked == true) {
+    document.body.style.backgroundColor = "black";
+    document.body.style.color = "white";
+    localStorage.setItem("darktheme", "true");
+  } else {
+    document.body.style.backgroundColor = "white";
+    document.body.style.color="black";
+    localStorage.setItem("darktheme", "false")
+  }
+}

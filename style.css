@@ -1,79 +1,5 @@
 body {
-    background-color: white;
-}
-
-:root , :root.snow-white {
-
-    --color-html: #F9F9F9 ;
-    --color-body: #fdfdfd ;
-    --color-text: #051105 ;
-    --color-link: #1122D8 ;
-    --color-selected-text: #000 ;
-    --color-selected-bg: #CF7 ;
-    }
-    
-    @media screen and (prefers-color-scheme: dark) {
-
-        html:not(.snow-white) {
-         --color-html: #0e0b0b ;
-         --color-body: #241818 ;
-         --color-text: #d1d1d1 ;
-         --color-link: #4fbcff ;
-         --color-selected-text: #000 ;
-         --color-selected-bg: #CF7 ;
-        }
-       }
-       
-       /* Dark color variables, if "dark" is set as HTML tag's CSS class */ 
-       
-       html.dark { 
-         --color-html: #0e0b0b ;
-         --color-body: #1a1010 ;
-         --color-text: #d1d1d1 ;
-         --color-link: #4fbcff ;
-         --color-selected-text: #000 ;
-         --color-selected-bg: #CF7 ;
-        }
-       
-       /* Deep Purple color variables, if "purple" is set as HTML tag's CSS class */ 
-       
-       html.purple { 
-       
-       --color-html: #0a0614 ;
-       --color-body: #120b24 ;
-       --color-text: #d1d1d1 ;
-       --color-selected-text: #000 ;
-       --color-selected-bg: #CF7 ;
-       --color-link: #4fbcff ;
-       
-       }
-       
-       /* Deep Green color variables, if "green" is set as HTML tag's CSS class */
-       
-       html.green { 
-       
-       --color-html: #04160a ;
-       --color-body: #072813 ;
-       --color-text: #d1d1d1 ;
-       --color-selected-text: #000 ;
-       --color-selected-bg: #CF7 ;
-       --color-link: #4fbcff ;
-       
-       }
-       
-       /* Cobalt Blue color variables, if "blue" is set as HTML tag's CSS class */
-       
-       html.blue { 
-       
-       --color-html: #000d1a ;
-       --color-body: #001830 ;
-       --color-text: #d1d1d1 ;
-       --color-selected-text: #000 ;
-       --color-selected-bg: #CF7 ;
-       --color-link: #4fbcff ;
-       
-       }   
-.container {
+color: black;
 width:100%;
 background-color: white;
 height:auto;
@@ -81,9 +7,18 @@ text-align: center;
 align-content: center;
 }
 
+/*.container {
+width:100%;
+background-color: white;
+height:auto;
+text-align: center;
+align-content: center;
+}*/
+
 .collapsible-header {
     display: block;
     align-content:center;
+    background-color: transparent;
 }
 
 #form {
@@ -184,6 +119,19 @@ nav {
     padding-right: 2em;
 }
 
+.sidenav {
+    background-color: grey;
+    color: white;
+}
+
+input {
+    color: hotpink;
+}
+
+.sidenav li>a {
+    color: white;
+}
+
 #logo {
     height: 6em;
     margin-top:-.5em;
@@ -196,6 +144,10 @@ nav {
 
 nav i.material-icons {
 font-size: 50px;
+}
+
+.sidenav li>a>i, .sidenav li>a>[class^="mdi-"], .sidenav li>a li>a>[class*="mdi-"], .sidenav li>a>i.material-icons {
+    color: white;
 }
 
 .page-title {
