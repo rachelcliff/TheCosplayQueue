@@ -10,14 +10,14 @@ API:
 - Started the function on the join the queue modal to display the relevant position in the queue using JSON. This function has been put on the backburner until it is determined whether I will be using straight JSON or Websockets to implement the feature. 
 
 WIP functions -> still need to be combined into the single functions folder:
-changelog -> currently implemented but non-functioning/needs testing
-user sign up-> currently implemented but non-functioning/needs testing
-update user data-> currently implemented but non-functioning/needs testing
-logout-> implemented and functioning
-filterInput-> implemented and functioning
-checkLogin-> currently implemented but needs testing
-database-connect-> implemented and functioning
-rate limiting -> implemented but untested
+changelog -> WIP
+user sign up-> WIP
+update user data-> WIP
+logout-> Complete
+filterInput-> Complete
+checkLogin-> WIP
+database-connect-> Complete
+rate limiting -> WIP
 
 Front-end pages:
 - index (contains all of bases for the app)
@@ -28,6 +28,9 @@ Back-end/admin pages:
 Database:
 - created and tables built out and filled with dummy data and images.
  
+Images:
+- Redesigned and updated on 6/10/2020.
+
 Planning:
 $_GET
 1- preview next in line on backend profile
