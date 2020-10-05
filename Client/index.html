@@ -46,7 +46,7 @@
                   <p>
                      <label>
                         <input type="checkbox" class="filled-in" id="checkBG" onchange="switchBG(this)">
-                        <span>Dark Mode/Light Mode</span>
+                        <span id="mode-switch">Dark Mode/Light Mode</span>
                      </label>
                   </p>
 
@@ -69,7 +69,7 @@
                            <form class="col s12 m12">
                               <div class="input-field col offset-s1 s10" id="name">
                                  <i class="material-icons prefix">account_circle</i>
-                                 <input class="icon_prefix" type="text" id="namei" placeholder="Full Name">
+                                 <input class="icon_prefix" type="text" id="namei" placeholder="Full Name" required>
                                  <!-- <label for="icon_prefix">Name</label> -->
                               </div>
                               <div class="input-field col offset-s1 s10" id="username">
@@ -125,7 +125,7 @@
                                     <input type="file">
                                  </div>
                                  <div class="file-path-wrapper">
-                                    <input class="file-path validate" type="text" placeholder="Photo of your costume">
+                                    <input class="file-path validate" type="text" placeholder="Photo of your costume" required>
                                     <label for ="file-path-wrapper">(This can be a selfie or an image of your character)</label>
                                  </div>
                               </div>
@@ -151,15 +151,15 @@
                               <form class="col s12 m12">
                                  <div class="input-field col offset-s1 s10" id="name">
                                     <i class="material-icons prefix">account_circle</i>
-                                    <input class="icon_prefix" type="text" id="namel" placeholder="Username">
+                                    <input class="icon_prefix" type="text" id="namel" placeholder="Username" required>
                                  </div>
                                  <div class="input-field col offset-s1 s10" id="password">
                                     <i class="material-icons prefix">lock</i>
-                                    <input class="icon_prefix" type="text" id="passwordl" placeholder="Password">
+                                    <input class="icon_prefix" type="text" id="passwordl" placeholder="Password" required>
                                     <!-- <label for="icon_prefix">Password</label> -->
                                  </div>
                                  <div class="col s12"></div>
-                                 <button class="btn waves-effect waves-light col offset-s1 s4 modal-trigger" type="submit" name="action" id="submit-btn" href="#modal2">Log In
+                                 <button class="btn waves-effect waves-light col offset-s1 s4 modal-trigger" type="submit" name="action" id="submit-btn" href="#">Log In
                                  <i class="material-icons right">send</i>
                                  </button>
                               </form>
@@ -180,12 +180,12 @@
                <form class="col s12 m12">
                <div class="input-field col offset-s1 s10" id="name">
                <i class="material-icons prefix">account_circle</i>
-               <input class="icon_prefix" type="text" id="names" placeholder="Name">
+               <input class="icon_prefix" type="text" id="names" placeholder="Name" required>
                <!-- <label for="icon_prefix">Name</label> -->
                </div>
                <div class="input-field col offset-s1 s10" id="username">
                <i class="material-icons prefix">account_circle</i>
-               <input class="icon_prefix" type="text" is="usernames" placeholder="Cosplay Name/Username">
+               <input class="icon_prefix" type="text" is="usernames" placeholder="Cosplay Name/Username" required>
                <!-- <label for="icon_prefix">Cosplay Name/Username</label> -->
                </div>
                <div class="input-field col offset-s1 s10" id="facebook">
@@ -202,27 +202,27 @@
                </div>
                <div class="input-field col offset-s1 s10" id="phone">
                <i class="material-icons prefix">phone</i>
-               <input class="icon_prefix" type="tel" is="phones" placeholder="Mobile Number">
+               <input class="icon_prefix" type="tel" is="phones" placeholder="Mobile Number" required>
                <!-- <label for="icon_prefix">Mobile Number</label> -->
                </div>
                <div class="input-field col offset-s1 s10" id="email">
                <i class="material-icons prefix">email</i>
-               <input class="icon_prefix" type="text" id="emails" placeholder="Email Address">
+               <input class="icon_prefix" type="text" id="emails" placeholder="Email Address" required>
                <!-- <label for="icon_prefix">Email Address</label> -->
                </div>
                <div class="input-field col offset-s1 s10" id="password">
                <i class="material-icons prefix">lock</i>
-               <input class="icon_prefix" type="text" id="passwords" placeholder="Password">
+               <input class="icon_prefix" type="text" id="passwords" placeholder="Password" required>
                <!-- <label for="icon_prefix">Password</label> -->
                </div>
                <div class="input-field col offset-s1 s10" id="password-re">
                <i class="material-icons prefix">lock</i>
-               <input class="icon_prefix" type="text" id="password2s" placeholder="Re-enter Password">
+               <input class="icon_prefix" type="text" id="password2s" placeholder="Re-enter Password" required>
                <!-- <label for="icon_prefix">Re-enter Password</label> -->
                </div>
                </form>
                <div class="col s12"></div>
-               <button class="btn waves-effect waves-light col offset-s1 s4 modal-trigger" type="submit" name="action" id="submit-btn" href="#modal2">Submit
+               <button class="btn waves-effect waves-light col offset-s1 s4 modal-trigger" type="submit" name="action" id="submit-btn" href="#">Submit
                <i class="material-icons right">send</i>
                </button>
                </div>

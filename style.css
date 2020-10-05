@@ -6,7 +6,9 @@ height:auto;
 text-align: center;
 align-content: center;
 }
-
+#mode-switch {
+    color: white;
+}
 /*.container {
 width:100%;
 background-color: white;
