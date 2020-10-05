@@ -1,0 +1,14 @@
+{
+    "name": "The Cosplay Queue",
+    "short_name": "CosplayQ",
+    "description": "A queue that streamlines the queueing process for photowalls at popculture conventions",
+    "lang": "en",
+    "start_url": "/",
+    "display": "fullscreen",
+    "icons": [
+      {
+        "src": "images/cosplay queue logo.png"
+      }
+    ]
+  }
+  
