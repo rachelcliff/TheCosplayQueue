@@ -10,14 +10,14 @@ API:
 - Started the function on the join the queue modal to display the relevant position in the queue using JSON. This function has been put on the backburner until it is determined whether I will be using straight JSON or Websockets to implement the feature. 
 
 WIP functions -> still need to be combined into the single functions folder:
-changelog -> WIP
-user sign up-> WIP
-update user data-> WIP
-logout-> Complete
-filterInput-> Complete
-checkLogin-> WIP
-database-connect-> Complete
-rate limiting -> WIP
+- changelog -> WIP
+- user sign up-> WIP
+- update user data-> WIP
+- logout-> Complete
+- filterInput-> Complete
+- checkLogin-> WIP
+- database-connect-> Complete
+- rate limiting -> WIP
 
 Front-end pages:
 - index (contains all of bases for the app)
@@ -45,8 +45,8 @@ $_POST
 4- update user details in local storage and database
 
 CRUD 1- Update
-Update user details using form
+- Update user details using form
 
 CRUD 2 - Delete
-Remove user from queue
-Remove self from queue
+- Remove user from queue
+- Remove self from queue
