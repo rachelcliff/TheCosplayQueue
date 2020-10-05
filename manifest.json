@@ -7,7 +7,7 @@
     "display": "fullscreen",
     "icons": [
       {
-        "src": "images/cosplay queue logo.png"
+        "src": "../../images/CQ-icon.png"
       }
     ]
   }
