@@ -261,3 +261,50 @@ function switchBG(checkBG) {
     localStorage.setItem("darktheme", "false")
   }
 }
+
+document.getElementById('join-form').addEventListener('submit', function(e) { processForm})
+
+function processForm(evt) {
+  evt.preventDefault();
+  var validateArray = Array();
+  alertbox.innerHTML= '';
+  for(var loop=0;loop <evt.srcElement.length;loop++) {
+    evt.srcElement[loop].setCustomValidity('');
+    if(evt.srcElement[loop].hasArrributr('required')) {
+      if(evt.srcElement[loop].value.length>0) {
+        if(evt.srcElement[loop].checkValidity()) {
+          evt.srcElement[loop].setCustomValidity('');
+          validateArray.push({type: evt.srcElement[loop].type,
+                              name: evt.srcElement[loop].name,
+                              value: evt.srcElement[loop].value});
+        } else {
+          evt.srcElement[loop].setCustomValidity(evt.srcElement[loop].title),
+          alertbox.innerHTML = evt.srcElement[loop].title;
+          validateArray = Array(); //destroy array
+          break;
+        }
+      } else {
+        validateArray = Array();
+        break;
+      }
+    } else { //field not required validation}
+    validatedArray.push({type: evt.srcElement[loop].type,
+                          name:evt.srcElement[loop].name,
+                          value:evt.srcElement[loop].value})
+
+    }
+    }
+    if (validatedArray.length === 0) {
+      console.log('err'); 
+    } else {
+      console.log(validatedArray);
+    }
+    }
+
+    function populateAlert(msg) {
+      alertbox.innerHTML = msg;
+    }
+
+    function animateElement(elem) {
+      
+    }

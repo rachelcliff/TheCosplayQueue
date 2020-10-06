@@ -64,56 +64,56 @@
                      <div class="page-title">
                         Join the Queue
                      </div>
-                     <form id=form action="#" method="post" class="col s12 m12" novalidate>
+                     <form id=join-form action="#" method="post" class="col s12 m12" novalidate>
                         <div class="row">
                               <div class="input-field col offset-s1 s10" id="name">
                                  <i class="material-icons prefix">account_circle</i>
-                                 <input class="icon_prefix" type="text" id="namei" placeholder="Full Name" required>
+                                 <input class="icon_prefix" type="text" id="namei" placeholder="Full Name" name="name" value="" pattern="[a-z]{2,}" title="name must have 2 or more uppercase letters" oninput="animateElement(this)" required>
                                  <!-- <label for="icon_prefix">Name</label> -->
                               </div>
                               <div class="input-field col offset-s1 s10" id="username">
                                  <i class="material-icons prefix">account_circle</i>
-                                 <input class="icon_prefix" type="text" id="usernamei" placeholder="Username" required>
+                                 <input class="icon_prefix" type="text" id="usernamei" placeholder="Username" name="username" value="" pattern="[a-z]{2,}" title="name must have 2 or more loawercase letters" oninput="animateElement(this)"required>
                                  <!-- <label for="icon_prefix">Cosplay Name/Username</label> -->
                               </div>
                               <div class="input-field col offset-s1 s10" id="facebook">
                                  <i class="material-icons prefix">facebook</i>
-                                 <input class="icon_prefix" type="text" id="facebooki" placeholder="Facebook Page (if applicable)">
+                                 <input class="icon_prefix" type="text" id="facebooki" placeholder="Facebook Page (if applicable)" name="facebook" value="" pattern="[a-z]{2,}" title="name must have 2 or more lowercase letters" oninput="animateElement(this)">
                                  <!-- <label for="icon_prefix">Facebook Page (if applicable)</label>  -->
                               </div>
                               <div class="input-field col offset-s1 s10" id="instagram">
                                  <i class="material-icons prefix">photo_camera</i>
-                                 <input class="icon_prefix" type="text" id="instagrami" placeholder="Instagram Account (if applicable)">
+                                 <input class="icon_prefix" type="text" id="instagrami" placeholder="Instagram Account (if applicable)" name="instagram" value="" pattern="[a-z]{2,}" title="name must have 2 or more lowercase letters" oninput="animateElement(this)">
                                  <!-- <label for="icon_prefix">Instagram Account (if applicable)</label> -->
                               </div>
                               <div class="input-field col offset-s1 s10" id="phone">
                                  <i class="material-icons prefix">phone</i>
-                                 <input class="icon_prefix" type="tel" id="phonei" placeholder="Mobile Number" required>
+                                 <input class="icon_prefix" type="tel" id="phonei" placeholder="Mobile Number" name="phone" value="" pattern="[a-z" title="name must have 12 or more numbers" oninput="animateElement(this)"required>
                                  <!-- <label for="icon_prefix">Mobile Number</label> -->
                               </div>
                               <div class="input-field col offset-s1 s10" id="email">
                                  <i class="material-icons prefix">email</i>
-                                 <input class="icon_prefix" type="text" id="emaili" placeholder="Email Address" required>
+                                 <input class="icon_prefix" type="text" id="emaili" placeholder="Email Address" name="email" value="" pattern="[a-z]{2,}" title="name must have 2 or more lowercase letters" oninput="animateElement(this)"required>
                                  <!-- <label for="icon_prefix">Email Address</label> -->
                               </div>
                               <div class="input-field col offset-s1 s10" id="character">
                                  <i class="material-icons prefix">palette</i>
-                                 <input class="icon_prefix" type="text" id="characterr" placeholder="Character" required>
+                                 <input class="icon_prefix" type="text" id="characterr" placeholder="Character" name="character" value="" pattern="[a-z]{2,}" title="name must have 2 or more lowercase letters" oninput="animateElement(this)" required>
                                  <!-- <label for="icon_prefix">Character</label> -->
                               </div>
                               <div class="input-field col offset-s1 s10" id="series">
                                  <i class="material-icons prefix">book</i>
-                                 <input class="icon_prefix" type="text" id="seriesr" placeholder="Series" required>
+                                 <input class="icon_prefix" type="text" id="seriesr" placeholder="Series" name="series" value="" pattern="[a-z]{2,}" title="name must have 2 or more lowercase letters" oninput="animateElement(this)" required>
                                  <!-- <label for="icon_prefix">Series</label> -->
                               </div>
                               <div class="input-field col offset-s1 s10" id="genre">
                                  <i class="material-icons prefix">brush</i>
-                                 <input class="icon_prefix" type="text" id="genrer" placeholder="Genre" required>
+                                 <input class="icon_prefix" type="text" id="genrer" placeholder="Genre" name="genre" value="" pattern="[a-z]{2,}" title="name must have 2 or more lowercase letters" oninput="animateElement(this)"required>
                                  <!-- <label for="icon_prefix">Genre</label> -->
                               </div>
                               <div class="input-field col offset-s1 s10" id="group">
                                  <i class="material-icons prefix">group</i>
-                                 <input class="icon_prefix" type="text" id="groupr" placeholder="Are you part of a group?" required>
+                                 <input class="icon_prefix" type="text" id="groupr" placeholder="Are you part of a group?" name="group" value="" pattern="[a-z]{2,}" title="name must have 2 or more lowercase letters" oninput="animateElement(this)"required>
                                  <!-- <label for="icon_prefix">Are you part of a group</label> -->
                               </div>
                               <div class="file-field input-field col offset-m1 m10">
@@ -143,7 +143,7 @@
                         <div class="page-title">
                            Login
                         </div>
-                        <form id=form action="#" method="post" class="col s12 m12" novalidate>
+                        <form id=login-form action="#" method="post" class="col s12 m12" novalidate>
                            <div class="row">
                               <form class="col s12 m12">
                                  <div class="input-field col offset-s1 s10" id="name">
@@ -172,7 +172,7 @@
                <div class="page-title">
                Sign Up
                </div>
-               <form id=form action="#" method="post" class="col s12 m12" novalidate>
+               <form id=sign-up-form action="#" method="post" class="col s12 m12" novalidate>
                   <div class="row">
                <div class="input-field col offset-s1 s10" id="name">
                <i class="material-icons prefix">account_circle</i>
