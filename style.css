@@ -153,6 +153,29 @@ font-size: 50px;
     color: white;
 }
 
+#preloader-overlay {
+    content: '';
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    z-index: 20000;
+}
+#preloader {
+    display: none;
+    position: fixed;
+    z-index: 20001;
+    overflow: show;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
 .page-title {
     font-size: 30px;
     color: hotpink;

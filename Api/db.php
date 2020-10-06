@@ -23,22 +23,22 @@ class cosplayQueueModel {
 }
 
 //maximum number of allowed requests
-public function getRateLimit($request, $action)
-{
-    return [$this->rateLimit, 1]; // $rateLimit requests per second
-}
+//public function getRateLimit($request, $action)
+//{
+ //   return [$this->rateLimit, 1]; // $rateLimit requests per second
+//}
 //loads the number of allowed requests and the timestamp
-public function loadAllowance($request, $action)
-{
-    return [$this->allowance, $this->allowance_updated_at];
-}
+//public function loadAllowance($request, $action)
+//{
+  //  return [$this->allowance, $this->allowance_updated_at];
+//}
 //save allowance -> save number of allowed quests and the timestamp
-public function saveAllowance($request, $action, $allowance, $timestamp)
-{
-    $this->allowance = $allowance;
-    $this->allowance_updated_at = $timestamp;
-    $this->save();
-}
+//public function saveAllowance($request, $action, $allowance, $timestamp)
+//{
+  //  $this->allowance = $allowance;
+  //  $this->allowance_updated_at = $timestamp;
+  //  $this->save();
+//}
     // function changelog($IP, $browser, $timestamp, $action) {
     //     global $conn; 
     //     try {

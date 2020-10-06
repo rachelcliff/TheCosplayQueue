@@ -12,7 +12,7 @@
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link rel="stylesheet" href="../style.css">
       <script src="../js.js"></script>
-      
+
       <link rel="manifest" href="manifest.json">
       <meta name="mobile-web-app-capable" content="yes">
       <meta name="apple-mobile-web-app-capable" content="yes">
@@ -61,7 +61,19 @@
                </li>
             </ul>
          </header>
-         
+         <div id='preloader-overlay' class="valign-wrapper">
+         <div class="preloader-wrapper big active">
+            <div class="spinner-layer spinner-blue">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div><div class="gap-patch">
+                <div class="circle"></div>
+              </div><div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
+            </div>
+            </div>
+         </div>
          <div>
             <ul class="collapsible">
                <li>
@@ -239,7 +251,7 @@
             <a class="waves-effect waves-light btn col m12" id="signup-btn" href="viewQueue.html">
             <i class="material-icons left">create</i>Admin Sign In
             </a>
-         </div>
+         </div>      
       </div>
       <!-- Modal-->
       <div id="modal1" class="modal bottom-sheet">
