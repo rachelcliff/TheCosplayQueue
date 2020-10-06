@@ -11,6 +11,34 @@ class cosplayQueueModel {
         echo "connection successful";
     }
 
+    catch(PDOException $e)
+{ 
+    $error_message=$e->getMessage();
+    ?>
+    <h1>Database Connection Error</h1>
+    <p>There was an error connecting to the database</p>
+    <p>Error Message: <?php echo $error_message;?></p>
+    <?php
+    exit();
+}
+
+//maximum number of allowed requests
+public function getRateLimit($request, $action)
+{
+    return [$this->rateLimit, 1]; // $rateLimit requests per second
+}
+//loads the number of allowed requests and the timestamp
+public function loadAllowance($request, $action)
+{
+    return [$this->allowance, $this->allowance_updated_at];
+}
+//save allowance -> save number of allowed quests and the timestamp
+public function saveAllowance($request, $action, $allowance, $timestamp)
+{
+    $this->allowance = $allowance;
+    $this->allowance_updated_at = $timestamp;
+    $this->save();
+}
     // function changelog($IP, $browser, $timestamp, $action) {
     //     global $conn; 
     //     try {
@@ -74,8 +102,35 @@ class cosplayQueueModel {
                 throw $ex;
             }
             $conn = null;
-        }
-        
-        ?>
+        }    
 }
+
+function testInput($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
+function checkLogin($username, $password) {
+    global $conn;
+    try {
+        $stmt=$conn->prepare("SELECT LoginID, Password, accessRights from login where Username="username");
+        $stmt->bindParam(':user', $username);
+        $stmt->execute();
+        $row=$stmt ->fetch();
+        if (password_verify($password, $row['Password'])){
+
+            //assign session variables
+            $_SESSION["username"] = $username;
+            $_SESSION["LoginID"] = $row["LoginID"];
+            $_SESSION["login"] = 'yes';
+        }
+}
+
+catch (PDOException $ex) {
+    throw $ex;
+}
+}
+
 ?>

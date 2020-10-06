@@ -262,7 +262,11 @@ function switchBG(checkBG) {
   }
 }
 
-document.getElementById('join-form').addEventListener('submit', function(e) { processForm})
+document.getElementById('join-form').addEventListener('submit', function(e) {processForm})
+
+document.getElementById('sign-in-form').addEventListener('submit', function(e) {processForm})
+
+document.getElementById('register').addEventListener('submit', function(e) {processForm})
 
 function processForm(evt) {
   evt.preventDefault();
@@ -306,5 +310,5 @@ function processForm(evt) {
     }
 
     function animateElement(elem) {
-      
+
     }
