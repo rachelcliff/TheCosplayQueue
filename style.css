@@ -153,6 +153,12 @@ font-size: 50px;
     color: white;
 }
 
+.modal .modal-footer {
+    background-color: hotpink;
+margin-top: 3em;
+}
+
+
 #preloader-overlay {
     content: '';
     display: none;

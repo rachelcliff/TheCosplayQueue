@@ -147,7 +147,7 @@
                                  </div>
                               </div>
                            <div class="col s12"></div>
-                           <button class="btn waves-effect waves-light col offset-s1 m4 modal-trigger" type="submit" name="action" id="submit-btn" href="#">Submit
+                           <button class="btn waves-effect waves-light col offset-s1 m4 modal-trigger" type="submit" name="action" id="submit-btn" href="#modal1">Submit
                            <i class="material-icons right">send</i>
                            </button>
                         </div>
@@ -176,7 +176,7 @@
                                     <!-- <label for="icon_prefix">Password</label> -->
                                  </div>
                                  <div class="col s12"></div>
-                                 <button class="btn waves-effect waves-light col offset-s1 s4 modal-trigger" type="submit" name="action" id="submit-btn" href="#">Log In
+                                 <button class="btn waves-effect waves-light col offset-s1 s4 modal-trigger" type="submit" name="action" id="submit-btn" href="#modal2">Log In
                                  <i class="material-icons right">send</i>
                                  </button>
                         </form>
@@ -236,7 +236,7 @@
                </div>
                </form>
                <div class="col s12"></div>
-               <button class="btn waves-effect waves-light col offset-s1 s4 modal-trigger" type="submit" name="action" id="submit-btn" href="#">Submit
+               <button class="btn waves-effect waves-light col offset-s1 s4 modal-trigger" type="submit" name="action" id="submit-btn" href="#modal2">Submit
                <i class="material-icons right">send</i>
                </button>
                </div>
@@ -246,6 +246,7 @@
                </div>
                </li>
               </ul>
+
          <div class="divider" ></div>
          <div id="bottom-buttons" class="col m12">
             <a class="waves-effect waves-light btn col m12" id="signup-btn" href="viewQueue.html">
@@ -253,9 +254,11 @@
             </a>
          </div>      
       </div>
-      <!-- Modal-->
+
+      <!-- Modal 1-->
       <div id="modal1" class="modal bottom-sheet">
-         <div class="modal-content">
+         <section id="section1">
+            <div class="modal-content">
             <h4>You have successfully joined the queue</h4>
             <p>You are now number</p>
             <table id="queue"></table>
@@ -264,9 +267,12 @@
          <div class="modal-footer">
             <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
          </div>
+      </section>
       </div>
-      </div>
+
+<!-- Modal 3-->
       <div id="modal3" class="modal bottom-sheet">
+         <section id="section3">
          <div class="modal-content">
             <h4>Update your details</h4>
             <div id=details-form>
@@ -320,16 +326,18 @@
                            </label>
                         </p>
                      </div>
-                  </form>
-               </div>
                </form>
             </div>
             <div class="modal-footer">
                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
             </div>
-         </div>
+      </section>
       </div>
+   
+
+<!--Modal 2 -->
       <div id="modal2" class="modal bottom-sheet">
+         <section id="section2"
          <div class="modal-content" id="login-modal">
             <h4>Welcome "username"</h4>
             <div>
@@ -342,10 +350,10 @@
                <i class="material-icons left">create</i>Edit Your Details
                </a>
             </div>
-         </div>
          <div class="modal-footer">
             <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
          </div>
+      </section>
       </div>
     </div>
    </body>

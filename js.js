@@ -242,10 +242,17 @@ window.addEventListener("load", function() {
     checkBG.checked = true;
     document.body.style.backgroundColor = "black";
     document.body.style.color= "white";
+    document.getElementById("section1").style.backgroundColor="black";
+    document.getElementById("section2").style.backgroundColor="black";
+    document.getElementById("section3").style.backgroundColor="black";
+
   } else {
     checkBG.checked = false;
     document.body.style.backgroundColor="white";
     document.body.style.color= "black";
+    document.getElementById("section1").style.backgroundColor="white";
+    document.getElementById("section2").style.backgroundColor="white";
+    document.getElementById("section3").style.backgroundColor="white";
     localStorage.setItem("darktheme", "false");
   }
 })
@@ -254,10 +261,16 @@ function switchBG(checkBG) {
   if (checkBG.checked == true) {
     document.body.style.backgroundColor = "black";
     document.body.style.color = "white";
+    document.getElementById("section1").style.backgroundColor="black";
+    document.getElementById("section2").style.backgroundColor="black";
+    document.getElementById("section3").style.backgroundColor="black";
     localStorage.setItem("darktheme", "true");
   } else {
     document.body.style.backgroundColor = "white";
     document.body.style.color="black";
+    document.getElementById("section1").style.backgroundColor="white";
+    document.getElementById("section2").style.backgroundColor="white";
+    document.getElementById("section3").style.backgroundColor="white";
     localStorage.setItem("darktheme", "false")
   }
 }
