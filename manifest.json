@@ -1,6 +1,6 @@
 {
     "name": "The Cosplay Queue",
-    "short_name": "CosplayQ",
+    "short_name": "CQ",
     "description": "A queue that streamlines the queueing process for photowalls at popculture conventions",
     "lang": "en",
     "start_url": "/",
