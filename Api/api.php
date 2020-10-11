@@ -3,8 +3,8 @@ header('Access-Control-Allow-Origin: https://localhost');
 header('Access-Control-Allow-Credentials: true');
 header('Content-Type: application/json'); // All echo statemes are json_encode
 
-require('db.php'); $db = new db0bj;
-require('session.php'); $se = new sess0b;
+require('db.php'); $db = new cosplayQueueModel;
+require('session.php'); $se = new cosplayQueueSession;
 
 session_start();
 /*Base Case*/

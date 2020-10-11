@@ -22,6 +22,8 @@ class cosplayQueueModel {
     exit();
 }
 
+function joinQueue($)
+
 //maximum number of allowed requests
 //public function getRateLimit($request, $action)
 //{
