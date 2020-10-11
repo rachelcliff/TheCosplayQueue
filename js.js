@@ -234,36 +234,6 @@
          })
     });
 
-    function postWithFetch() {
-      var fd= new FormData();
-      fd.append('dish', dish.value);
-      // each form element going into an fd object
-      fetch('./api/api.php?action=order', 
-      {
-          method:'POST',
-          body: fd,
-          credentials: 'include'
-      })
-      .then(function(response) {
-          if(response.status === 400) {
-              console.log('Record not inserted');
-              return;
-          }
-          if(response.status === 401) {
-              console.log('Wrong Permissions');
-              return;
-          }
-          if(response.status === 501) {
-              console.log('not implemented');
-              return;
-          }
-          if(response.status === 202) {
-              console.log('success');
-              return;
-          }
-      });
-      return false;
-  }
 }
 
 window.addEventListener("load", function() {
@@ -305,53 +275,53 @@ function switchBG(checkBG) {
   }
 }
 
-document.getElementById('join-form').addEventListener('submit', function(e) {processForm})
+// document.getElementById('submit-btn').addEventListener('submit', processForm(evt))
 
-document.getElementById('sign-in-form').addEventListener('submit', function(e) {processForm})
+// document.getElementById('login-btn').addEventListener('submit', processForm(evt))
 
-document.getElementById('register').addEventListener('submit', function(e) {processForm})
+// document.getElementById('signup-btn').addEventListener('submit', processForm(evt))
 
-function processForm(evt) {
-  evt.preventDefault();
-  var validateArray = Array();
-  alertbox.innerHTML= '';
-  for(var loop=0;loop <evt.srcElement.length;loop++) {
-    evt.srcElement[loop].setCustomValidity('');
-    if(evt.srcElement[loop].hasArrributr('required')) {
-      if(evt.srcElement[loop].value.length>0) {
-        if(evt.srcElement[loop].checkValidity()) {
-          evt.srcElement[loop].setCustomValidity('');
-          validateArray.push({type: evt.srcElement[loop].type,
-                              name: evt.srcElement[loop].name,
-                              value: evt.srcElement[loop].value});
-        } else {
-          evt.srcElement[loop].setCustomValidity(evt.srcElement[loop].title),
-          alertbox.innerHTML = evt.srcElement[loop].title;
-          validateArray = Array(); //destroy array
-          break;
-        }
-      } else {
-        validateArray = Array();
-        break;
-      }
-    } else { //field not required validation}
-    validatedArray.push({type: evt.srcElement[loop].type,
-                          name:evt.srcElement[loop].name,
-                          value:evt.srcElement[loop].value})
+// function processForm(evt) {
+//   evt.preventDefault();
+//   var validateArray = Array();
+//   alertbox.innerHTML= '';
+//   for(var loop=0;loop <evt.srcElement.length;loop++) {
+//     evt.srcElement[loop].setCustomValidity('');
+//     if(evt.srcElement[loop].hasArrributr('required')) {
+//       if(evt.srcElement[loop].value.length>0) {
+//         if(evt.srcElement[loop].checkValidity()) {
+//           evt.srcElement[loop].setCustomValidity('');
+//           validateArray.push({type: evt.srcElement[loop].type,
+//                               name: evt.srcElement[loop].name,
+//                               value: evt.srcElement[loop].value});
+//         } else {
+//           evt.srcElement[loop].setCustomValidity(evt.srcElement[loop].title),
+//           alertbox.innerHTML = evt.srcElement[loop].title;
+//           validateArray = Array(); //destroy array
+//           break;
+//         }
+//       } else {
+//         validateArray = Array();
+//         break;
+//       }
+//     } else { //field not required validation}
+//     validatedArray.push({type: evt.srcElement[loop].type,
+//                           name:evt.srcElement[loop].name,
+//                           value:evt.srcElement[loop].value})
 
-    }
-    }
-    if (validatedArray.length === 0) {
-      console.log('err'); 
-    } else {
-      console.log(validatedArray);
-    }
-    }
+//     }
+//     }
+//     if (validatedArray.length === 0) {
+//       console.log('err'); 
+//     } else {
+//       console.log(validatedArray);
+//     }
+//     }
 
-    function populateAlert(msg) {
-      alertbox.innerHTML = msg;
-    }
+//     function populateAlert(msg) {
+//       alertbox.innerHTML = msg;
+//     }
 
-    function animateElement(elem) {
+//     function animateElement(elem) {
 
-    }
+//     }
