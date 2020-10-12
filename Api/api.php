@@ -14,6 +14,14 @@ if(!isset($_GET['action'])) { //wrong usage
     die;
 }
 
+if($_SERVER["REQUEST_METHOD"] == "GET") {
+    switch ($_GET["action"]) {
+        case "login":
+            http_response_code(202);
+        break;
+        case
+    }
+}
 switch($_GET['action']) {
 case 'enqueue':
     if($_SESSION['session_object']->is_logged_in()) {
