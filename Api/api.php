@@ -25,6 +25,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	switch ($_POST["action"]) {
 		case "join":
 			http_response_code(503);
+			break;
 	}
 }
 switch($_GET['action']) {
