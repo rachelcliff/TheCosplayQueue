@@ -264,6 +264,300 @@ function switchBG(checkBG) {
 	}
 }
 
+function enqueue() {
+	populateAlert('Loading...', 'notice');
+    var fd = new FormData();
+    fd.append('queuetopic', queuetopic.value);
+    fetch('https://api.localhost/api.php?action=enqueue',
+        {
+            method: 'POST',
+            body: fd,
+            credentials: 'include'
+        }
+    )
+    .then(function(response) {
+        if(response.status === 401) {
+            populateAlert('Not Authorized, to enqueue', 'error');
+            return;
+        }
+        if(response.status === 201) {
+            populateAlert('item queued', 'notice');
+            // UPDATE THE QUEUE
+            return;
+        }
+    })
+    .catch(function(err) {
+        populateAlert('Connection unavailable', 'error');
+    });
+}
+
+function dequeue() {
+    closeAllModals();
+    populateAlert('Loading...', 'notice');
+    var url = 'https://api.localhost/api.php?action=dequeue&queueitem=' + queueitem.value; 
+    fetch(url, 
+        {
+            method: 'UPDATE',
+            credentials: 'include'
+        }
+    )
+    .then(function(response) {
+        if(response.status === 401) {
+            populateAlert('Not Authorized, to dequeue', 'error');
+            return;
+        }
+        if(response.status === 202) {
+            populateAlert('queue item removed', 'notice');
+            return;
+        }
+    })
+    .catch(function(err) {
+        populateAlert('Connection unavailable', 'error');
+    });
+}
+
+function passCheck(){
+    if (passwordr.value.length >0 && password2r.value.length> 0){
+        if (passwordr.value === password2r.value) {
+         error.innerHTML = "";
+         pass1.setCustomValidity('');
+         pass2.setCustomValidity('');
+         return true;
+        } else {
+         error.innerHTML= "Passwords do not Match";
+         passwordr.setCustomValidity('test');
+          password2r.setCustomValidity('test2');
+          return false;
+        }
+    }
+}
+
+function formcheckjoin() {
+    var errorStr ='';
+    // if(passCheck() === false) {
+    //     errorStr += 'Passwords do not match';
+	// }
+	
+    // console.log('passcheck');
+    if (name.checkValidity() === false){
+        errorStr +='Please insert a valid name ';
+    console.log('namechack');
+	}
+
+    if (username.checkValidity() === false) {
+        errorStr += 'Please insert a valid username ';
+	console.log('usernamecheck');
+	}
+
+    if (facebook.checkValidity() === false) {
+        errorStr += 'Please insert a valid facebook account ';
+	}
+
+    if (instagram.checkValidity() === false) {
+		errorStr += 'Please insert a a valid instagram account ';
+	}
+
+    if (phone.checkValidity() === false){
+		errorStr +='Please insert a valid phone number ';
+		console.log('phonecheck');
+	}
+
+    if (email.checkValidity() === false){
+		errorStr +='Please insert a valid email ';
+		console.log('emailcheck');
+	}
+	
+    if (character.checkValidity() === false){
+		 errorStr +='Please insert your character name ';
+	}
+	
+    if (series.checkValidity() === false){
+        errorStr +='Please insert your series name ';
+	}
+	
+    if (genre.checkValidity() === false){
+        errorStr +='Please answer if you are part of a group ';
+	}
+	
+    if (group.checkValidity() === false){
+        errorStr +='Please insert a Valid Name for Player 4 ';
+	}
+	
+    error.innerHTML = errorStr
+	formdata = new FormData()
+	formdata.set("action", "reg")
+	formdata.set("name", namei.value)
+	formdata.set("username", usernamei.value)
+	formdata.set("facebook", facebooki.value)
+	formdata.set("instagram", instagrami.value)
+	formdata.set("phone", phonei.value)
+	formdata.set("email", emaili.value)
+	formdata.set("character", characteri.value)
+	formdata.set("series", seriesi.value)
+	formdata.set("genre", genrei.value)
+	formdata.set("group", groupi.value)
+    fetch('../api/api.php?action=reg', {
+          method: "POST",
+		  body: formdata,
+		  credentials: 'include',
+		
+          })
+}
+
+function formchecklogin() {
+    var errorStr ='';
+    // if(passCheck() === false) {
+    //     errorStr += 'Passwords do not match';
+	// }
+	
+    // console.log('passcheck');
+    if (username.checkValidity() === false){
+        errorStr +='Please insert a valid name ';
+    console.log('usernamechack');
+	}
+
+    if (password.checkValidity() === false) {
+        errorStr += 'Please insert a valid username ';
+	console.log('passwordcheck');
+	}
+	
+    error.innerHTML = errorStr
+	formdata = new FormData()
+	formdata.set("action", "reg")
+	formdata.set("username", namel.value)
+	formdata.set("password", passwordl.value)
+    fetch('../api/api.php?action=reg', {
+          method: "POST",
+		  body: formdata,
+		  credentials: 'include',
+		
+          })
+}
+
+function formcheckregister() {
+    var errorStr ='';
+    if(passCheck() === false) {
+        errorStr += 'Passwords do not match';
+	}
+	
+    // console.log('passcheck');
+    if (name.checkValidity() === false){
+        errorStr +='Please insert a valid name ';
+    console.log('namechack');
+	}
+
+    if (username.checkValidity() === false) {
+        errorStr += 'Please insert a valid username ';
+	console.log('usernamecheck');
+	}
+
+    if (facebook.checkValidity() === false) {
+        errorStr += 'Please insert a valid facebook account ';
+	}
+
+    if (instagram.checkValidity() === false) {
+		errorStr += 'Please insert a a valid instagram account ';
+	}
+
+    if (phone.checkValidity() === false){
+		errorStr +='Please insert a valid phone number ';
+		console.log('phonecheck');
+	}
+
+    if (email.checkValidity() === false){
+		errorStr +='Please insert a valid email ';
+		console.log('emailcheck');
+	}
+	
+    error.innerHTML = errorStr
+	formdata = new FormData()
+	formdata.set("action", "reg")
+	formdata.set("name", namei.value)
+	formdata.set("username", usernamei.value)
+	formdata.set("facebook", facebooki.value)
+	formdata.set("instagram", instagrami.value)
+	formdata.set("phone", phonei.value)
+	formdata.set("email", emaili.value)
+	formdata.set("password", passwordr.value)
+	formdata.set("series", seriesi.value)
+    fetch('../api/api.php?action=reg', {
+          method: "POST",
+		  body: formdata,
+		  credentials: 'include',
+		
+          })
+}
+
+function formcheckupdate() {
+    var errorStr ='';
+	
+    // console.log('passcheck');
+    if (name.checkValidity() === false){
+        errorStr +='Please insert a valid name ';
+    console.log('namechack');
+	}
+
+    if (username.checkValidity() === false) {
+        errorStr += 'Please insert a valid username ';
+	console.log('usernamecheck');
+	}
+
+    if (facebook.checkValidity() === false) {
+        errorStr += 'Please insert a valid facebook account ';
+	}
+
+    if (instagram.checkValidity() === false) {
+		errorStr += 'Please insert a a valid instagram account ';
+	}
+
+    if (phone.checkValidity() === false){
+		errorStr +='Please insert a valid phone number ';
+		console.log('phonecheck');
+	}
+
+    if (email.checkValidity() === false){
+		errorStr +='Please insert a valid email ';
+		console.log('emailcheck');
+	}
+	
+    if (character.checkValidity() === false){
+		 errorStr +='Please insert your character name ';
+	}
+	
+    if (series.checkValidity() === false){
+        errorStr +='Please insert your series name ';
+	}
+	
+    if (genre.checkValidity() === false){
+        errorStr +='Please answer if you are part of a group ';
+	}
+	
+    if (group.checkValidity() === false){
+        errorStr +='Please insert a Valid Name for Player 4 ';
+	}
+	
+    error.innerHTML = errorStr
+	formdata = new FormData()
+	formdata.set("action", "reg")
+	formdata.set("name", namer.value)
+	formdata.set("username", usernamer.value)
+	formdata.set("facebook", facebookr.value)
+	formdata.set("instagram", instagramr.value)
+	formdata.set("phone", phoner.value)
+	formdata.set("email", emailr.value)
+	formdata.set("character", characterr.value)
+	formdata.set("series", seriesr.value)
+	formdata.set("genre", genrer.value)
+	formdata.set("group", groupr.value)
+    fetch('../api/api.php?action=reg', {
+          method: "POST",
+		  body: formdata,
+		  credentials: 'include',
+		
+          })
+}
+
+
 // document.getElementById('submit-btn').addEventListener('submit', processForm(evt))
 
 // document.getElementById('login-btn').addEventListener('submit', processForm(evt))
