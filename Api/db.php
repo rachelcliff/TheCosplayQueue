@@ -1,11 +1,17 @@
 <?php
 class cosplayQueueModel {
     private $dbconn;
-    public function __construct() {
-        $this->dbconn = new PDO("mysql:host=localhost;dbname=cosplay_queue", "root", "");
-        // debug code; comment out once complete
+
+    public function __construct()
+    {
+        $servername = "localhost";
+        $dbusername = "root";
+        $dbpassword = "";
+        $this->dbconn = new PDO("mysql:host=$servername;dbname=cosplay_queue", $dbusername, $dbpassword);
+        // set the PDO error mode to exception 
+        // (debug - comment out in production)
         $this->dbconn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        echo "connection successful";
+        echo "Connected successfully!!";
     }
 
 // function joinQueue($)
@@ -45,7 +51,7 @@ class cosplayQueueModel {
     //         }
     //     }
         //new user function
-        function newUser($name, $username, $facebook, $instagram, $phone, $email, $password, $password-re, $accessRights) {
+        function newUser($name, $username, $facebook, $instagram, $phone, $email, $password, $accessRights) {
         
             try {
                 $this->dbconn->beginTransaction();
@@ -59,6 +65,10 @@ class cosplayQueueModel {
                 $stmt->bindValue(':password', $password);
                 $stmt->execute();
                 $this->dbconn->commit();
+            }
+            catch (PDOException $ex){
+                $this->dbconn->rollBack();
+                throw $ex;
             }
         }
         
@@ -84,25 +94,25 @@ class cosplayQueueModel {
             }  
 }
 
-function checkLogin($username, $password) {
-    try {
-        $this->dbconn->beginTransaction();
-        $stmt=$conn->prepare("SELECT LoginID, Password, accessRights from login where Username="username");
-        $stmt->bindParam(':user', $username);
-        $stmt->execute();
-        $row=$stmt ->fetch();
-        if (password_verify($password, $row['Password'])){
+// function checkLogin($username, $password) {
+//     try {
+//         $this->dbconn->beginTransaction();
+//         $stmt=$conn->prepare("SELECT LoginID, Password, accessRights from login where username="username");
+//         $stmt->bindParam(':user', $username);
+//         $stmt->execute();
+//         $row=$stmt ->fetch();
+//         if (password_verify($password, $row['Password'])){
 
-            //assign session variables
-            $_SESSION["username"] = $username;
-            $_SESSION["LoginID"] = $row["LoginID"];
-            $_SESSION["login"] = 'yes';
-        }
-}
+//             //assign session variables
+//             $_SESSION["username"] = $username;
+//             $_SESSION["LoginID"] = $row["LoginID"];
+//             $_SESSION["login"] = 'yes';
+//         }
+// }
 
-catch (PDOException $ex) {
-    throw $ex;
-}
+// catch (PDOException $ex) {
+//     throw $ex;
+// }
 }
 
 ?>

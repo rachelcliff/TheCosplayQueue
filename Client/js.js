@@ -6,6 +6,11 @@ $(document).ready(function () {
 	$('.modal').modal();
 });
 
+// // JSON Convert
+// fetch('../Api/db.php')
+//   .then(response => response.json())
+//   .then(json => console.log(json))
+
 function postWithFetch() {
 	var fd = new FormData();
 	fd.append('namei', namei.value);
@@ -131,6 +136,7 @@ function savepassword2r() {
 		localStorage.setItem("password2r", password2r.value);
 	}
 }
+
 // side nav and collapsibles
 $(document).ready(function () {
 	$('.collapsible').collapsible();
