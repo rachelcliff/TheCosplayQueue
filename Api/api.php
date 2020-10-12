@@ -33,18 +33,45 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
 else if($_SERVER["REQUEST_METHOD"] == "POST") {
 	switch ($_POST["action"]) {
         case "join":
-            $name = $_POST['name']
+            $name = $_POST['namei'];
+            $username = $_POST['usernamei'];
+            $facebook = $_POST['facebooki'];
+            $instagram = $_POST['instagrami'];
+            $phone = $_POST['phonei'];
+            $email = $_POST['emaili'];
+            $character = $_POST['characteri'];
+            $series = $_POST['seriesi'];
+            $genre = $_POST['genrei'];
+            $group = $_POST['groupi'];
             break;
         case "sign-in"
-        http_response_code(202);
-        break;
+        $username = $_POST['namel'];
+        $password = $_POST['passwordl'];
+    break;
         case "sign-up":
-            http_response_code(202);
+            $name = $_POST['names'];
+            $username = $_POST['usernames'];
+            $facebook = $_POST['facebooks'];
+            $instagram = $_POST['instagrams'];
+            $phone = $_POST['phones'];
+            $email = $_POST['emails'];
+            $password = $_POST['passwords'];
         break;
         case "update":
-            http_response_code(202);
+            $name = $_POST['namer'];
+            $username = $_POST['usernamer'];
+            $facebook = $_POST['facebookr'];
+            $instagram = $_POST['instagramr'];
+            $phone = $_POST['phoner'];
+            $email = $_POST['email'];
+            $password = $_POST['passwordr'];
         break;
 	}
+} else if($_SERVER["REQUEST_METHOD"] == "UPDATE") {
+    switch ($_DELETE["action"]) {
+        case "dequeue"
+        http_response_code(201);
+    }
 }
 // switch($_GET['action']) {
 // case 'enqueue':
