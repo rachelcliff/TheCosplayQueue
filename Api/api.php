@@ -3,8 +3,8 @@ header('Access-Control-Allow-Origin: https://localhost');
 header('Access-Control-Allow-Credentials: true');
 header('Content-Type: application/json'); // All echo statemes are json_encode
 
-require('db.php'); $db = new cosplayQueueModel;
-require('session.php'); $se = new cosplayQueueSession;
+//require('db.php'); $db = new cosplayQueueModel;
+//require('session.php'); $se = new cosplayQueueSession;
 
 session_start();
 
@@ -19,8 +19,13 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
         case "login":
             http_response_code(202);
         break;
-        case
     }
+}
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+	switch ($_POST["action"]) {
+		case "join":
+			http_response_code(503);
+	}
 }
 switch($_GET['action']) {
 case 'enqueue':
