@@ -19,7 +19,6 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
         case "login":
             http_response_code(202);
         break;
-        case
     }
 }
 switch($_GET['action']) {
