@@ -1,15 +1,17 @@
 body {
-color: black;
-width:100%;
-background-color: white;
-height:auto;
-text-align: center;
-align-content: center;
+	color: black;
+	width: 100%;
+	background-color: white;
+	height: auto;
+	text-align: center;
+	align-content: center;
 }
 
 #mode-switch {
-    color: white;
+	color: white;
 }
+
+
 /*.container {
 width:100%;
 background-color: white;
@@ -19,243 +21,245 @@ align-content: center;
 }*/
 
 .collapsible-header {
-    display: block;
-    align-content:center;
-    background-color: transparent;
+	display: block;
+	align-content: center;
+	background-color: transparent;
 }
 
 #form {
-    align-items: center;
+	align-items: center;
 }
+
 #name {
-    border-style: solid;
-    border-color: purple;
+	border-style: solid;
+	border-color: purple;
 }
 
 #username {
-    border-style: solid;
-    border-color: orange;
+	border-style: solid;
+	border-color: orange;
 }
 
 #facebook {
-    border-style: solid;
-    border-color: aqua;
+	border-style: solid;
+	border-color: aqua;
 }
 
 #instagram {
-    border-style: solid;
-    border-color: hotpink;
+	border-style: solid;
+	border-color: hotpink;
 }
 
 #phone {
-    border-style: solid;
-    border-color: purple;
+	border-style: solid;
+	border-color: purple;
 }
 
 #email {
-    border-style: solid;
-    border-color: orange;
+	border-style: solid;
+	border-color: orange;
 }
 
 #character {
-    border-style: solid;
-    border-color: aqua;
+	border-style: solid;
+	border-color: aqua;
 }
 
 #series {
-    border-style: solid;
-    border-color: hotpink;
+	border-style: solid;
+	border-color: hotpink;
 }
 
 #genre {
-    border-style: solid;
-    border-color: purple;
+	border-style: solid;
+	border-color: purple;
 }
 
 #group {
-    border-style: solid;
-    border-color: orange;
+	border-style: solid;
+	border-color: orange;
 }
 
 #bottom-buttons {
-    padding:2em;
+	padding: 2em;
 }
 
 #password {
-    border-style: solid;
-    border-color: aqua;
+	border-style: solid;
+	border-color: aqua;
 }
 
 #password-re {
-    border-style: solid;
-    border-color: hotpink;
+	border-style: solid;
+	border-color: hotpink;
 }
 
 #login-btn {
-    background-color:aqua;
-    border-style: solid;
-    border-color: purple;
-    height:40px;
-    color:black;
-    font-weight: bold;
+	background-color: aqua;
+	border-style: solid;
+	border-color: purple;
+	height: 40px;
+	color: black;
+	font-weight: bold;
 }
 
 #signup-btn {
-    background-color: purple;
-    border-style: solid;
-    border-color: aqua;
-    color: white;
-    height:40px;
-    font-weight:bold;
+	background-color: purple;
+	border-style: solid;
+	border-color: aqua;
+	color: white;
+	height: 40px;
+	font-weight: bold;
 }
 
 #submit-btn {
-    background-color: purple;
+	background-color: purple;
 }
 
 nav {
-    background-color: aqua;
-    text-align: right;
-    height:5em;
-    width:auto;
-    padding-left: 2em;
-    padding-right: 2em;
+	background-color: aqua;
+	text-align: right;
+	height: 5em;
+	width: auto;
+	padding-left: 2em;
+	padding-right: 2em;
 }
 
 .sidenav {
-    background-color: grey;
-    color: white;
+	background-color: grey;
+	color: white;
 }
 
 input {
-    color: hotpink;
+	color: hotpink;
 }
 
 .sidenav li>a {
-    color: white;
+	color: white;
 }
 
 #logo {
-    height: 6em;
-    margin-top:-.5em;
-    align-content: center;
+	height: 6em;
+	margin-top: -.5em;
+	align-content: center;
 }
 
 #hamburger {
-    text-align: left;
+	text-align: left;
 }
 
 nav i.material-icons {
-font-size: 50px;
+	font-size: 50px;
 }
 
-.sidenav li>a>i, .sidenav li>a>[class^="mdi-"], .sidenav li>a li>a>[class*="mdi-"], .sidenav li>a>i.material-icons {
-    color: white;
+.sidenav li>a>i,
+.sidenav li>a>[class^="mdi-"],
+.sidenav li>a li>a>[class*="mdi-"],
+.sidenav li>a>i.material-icons {
+	color: white;
 }
 
 .modal .modal-footer {
-    background-color: hotpink;
-margin-top: 3em;
+	background-color: hotpink;
+	margin-top: 3em;
 }
-
 
 #preloader-overlay {
-    content: '';
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.6);
-    z-index: 20000;
+	content: '';
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.6);
+	z-index: 20000;
 }
+
 #preloader {
-    display: none;
-    position: fixed;
-    z-index: 20001;
-    overflow: show;
-    margin: auto;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
+	display: none;
+	position: fixed;
+	z-index: 20001;
+	overflow: show;
+	margin: auto;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
 }
 
 .page-title {
-    font-size: 30px;
-    color: hotpink;
-    font-weight: bold;
-    text-align: center;
-    padding-top: 1em;
-    padding-bottom: 1em;
+	font-size: 30px;
+	color: hotpink;
+	font-weight: bold;
+	text-align: center;
+	padding-top: 1em;
+	padding-bottom: 1em;
 }
 
 #logo-home {
-    height:20em;
-    width:20em;
-    text-align: center;
+	height: 20em;
+	width: 20em;
+	text-align: center;
 }
 
 #join {
-    height:20em;
-    width:20em;
-}
-#sign-in {
-   
-    height:20em;
-    width:20em;
-}
-#register {
-    height:20em;
-    width:20em;
+	height: 20em;
+	width: 20em;
 }
 
+#sign-in {
+	height: 20em;
+	width: 20em;
+}
+
+#register {
+	height: 20em;
+	width: 20em;
+}
 
 #logo-menu {
-    height: 10em;
-    margin-left:5em;
+	height: 10em;
+	margin-left: 5em;
 }
 
 .divider {
-    height:3px;
-    background-color: aqua;
+	height: 3px;
+	background-color: aqua;
 }
 
-
-#login-modal{
-    padding: 2em;
-    text-align: center;
- 
+#login-modal {
+	padding: 2em;
+	text-align: center;
 }
 
 #details-btn {
-    margin-top: 2em;
-    background-color: aqua;
-    color: black;
-    border-color: purple;
-    border-style: solid;
-    height:auto;
+	margin-top: 2em;
+	background-color: aqua;
+	color: black;
+	border-color: purple;
+	border-style: solid;
+	height: auto;
 }
 
 #index-btn {
-    margin-top: 2em;
-    background-color: purple;
-    border-color: aqua;
-    border-style: solid;
-    height:auto;
+	margin-top: 2em;
+	background-color: purple;
+	border-color: aqua;
+	border-style: solid;
+	height: auto;
 }
 
 .modal.bottom-sheet {
-    max-height: 100%;
+	max-height: 100%;
 }
 
 #checkbox {
-    text-align: center;
+	text-align: center;
 }
 
 #queue {
-    width: 80%;
-    background-color: aquamarine;
-    padding:2em;
+	width: 80%;
+	background-color: aquamarine;
+	padding: 2em;
 }

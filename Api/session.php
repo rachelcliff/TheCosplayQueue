@@ -1,6 +1,6 @@
 <?php
 class cosplayQueueSession {
-/*Is logged in function*/
+// Is logged in function
 public function is_logged_in() {
     if($this->studentid > 400000000) {
         if($this->privilege === 0) {
@@ -15,11 +15,11 @@ function is_logged_in() {
     return true;
 }
 
-/*login function*/
+// login function
 public function login($username, $password) {
-    global $sqsdb;
+    global $cosplay_queue;
 
-    $result = $sqsdb->login_process($username, $password);
+    $result = $cosplay_queue->login_process($username, $password);
     if($result ==  0) {
         $this->privilege = 0;
         $this->studentid = $username;
@@ -42,12 +42,12 @@ public function login($username, $password) {
     return false;
 }
 
-function login() {
-    global $db;
-    $db->checkUserAccount();
-    return true;
-}
-/*logout function*/
+// function login() {
+//     global $db;
+//     return true;
+// }
+
+// logout function
 function logout() {
     $this->privilege = -1;
     unset($this->studentid);
@@ -60,7 +60,7 @@ return true;
 }
 }
 
-/*Changelog*/
+// Changelog
 public function log_event() {
     global $sqsdb;
     $request_url = $_SERVER['host'] + $_SERVER['get'];
@@ -70,7 +70,7 @@ public function log_event() {
     }
 }
 
-/*rate limiting*/
+// rate limiting
 public function rate_limiting() {
     if($this->last_visit == time()) {
         $this->last_visit = time();
