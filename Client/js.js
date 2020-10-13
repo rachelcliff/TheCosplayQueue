@@ -19,25 +19,25 @@ function postWithFetch() {
 			method: 'POST',
 			body: formdata,
 			credentials: 'include'
-		})
-//		.then(function (response) {
-//			if (response.status === 400) {
-//				console.log('not inserted');
-//				return;
-//			}
-//			if (response.status === 401) {
-//				console.log('no permissions');
-//				return;
-//			}
-//			if (response.status === 501) {
-//				console.log('not implemented');
-//				return;
-//			}
-//			if (response.status === 202) {
-//				console.log('success');
-//				return;
-//			}
-//		});
+		// })
+		// .then(function (response) {
+		// 	if (response.status === 400) {
+		// 		console.log('not inserted');
+		// 		return;
+		// 	}
+		// 	if (response.status === 401) {
+		// 		console.log('no permissions');
+		// 		return;
+		// 	}
+		// 	if (response.status === 501) {
+		// 		console.log('not implemented');
+		// 		return;
+		// 	}
+		// 	if (response.status === 202) {
+		// 		console.log('success');
+		// 		return;
+		// 	}
+		});
 	return false;
 }
 // local storage
@@ -387,11 +387,19 @@ function formcheckjoin() {
 	}
 	
     if (group.checkValidity() === false){
-        errorStr +='Please insert a Valid Name for Player 4 ';
+        errorStr +='Please a Valid response ';
 	}
 	
     error.innerHTML = errorStr
 	formdata = new FormData()
+	formdata.set("action", "join")
+	formdata.set('namei', namei.value);
+	fetch('../Api/api.php?action=join', {
+			method: 'POST',
+			body: formdata,
+			credentials: 'include'
+	})
+
 	formdata.set("action", "reg")
 	formdata.set("name", namei.value)
 	formdata.set("username", usernamei.value)
@@ -403,12 +411,7 @@ function formcheckjoin() {
 	formdata.set("series", seriesi.value)
 	formdata.set("genre", genrei.value)
 	formdata.set("group", groupi.value)
-    fetch('../api/api.php?action=reg', {
-          method: "POST",
-		  body: formdata,
-		  credentials: 'include',
-		
-          })
+
 }
 
 function formchecklogin() {
@@ -478,7 +481,6 @@ function formcheckregister() {
 	
     error.innerHTML = errorStr
 	formdata = new FormData()
-	formdata.set("action", "reg")
 	formdata.set("name", namei.value)
 	formdata.set("username", usernamei.value)
 	formdata.set("facebook", facebooki.value)
@@ -487,11 +489,13 @@ function formcheckregister() {
 	formdata.set("email", emaili.value)
 	formdata.set("password", passwordr.value)
 	formdata.set("series", seriesi.value)
-    fetch('../api/api.php?action=reg', {
-          method: "POST",
-		  body: formdata,
-		  credentials: 'include',
-		
+
+	formdata.set("action", "sign-up")
+	formdata.set('namei', namei.value);
+	fetch('../Api/api.php?action=sign-up', {
+			method: 'POST',
+			body: formdata,
+			credentials: 'include'
           })
 }
 
@@ -556,11 +560,13 @@ function formcheckupdate() {
 	formdata.set("series", seriesr.value)
 	formdata.set("genre", genrer.value)
 	formdata.set("group", groupr.value)
-    fetch('../api/api.php?action=reg', {
-          method: "POST",
-		  body: formdata,
-		  credentials: 'include',
-		
+
+	formdata.set("action", "update")
+	formdata.set('namei', namei.value);
+	fetch('../Api/api.php?action=update', {
+			method: 'POST',
+			body: formdata,
+			credentials: 'include'
           })
 }
 

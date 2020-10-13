@@ -43,6 +43,7 @@ else if($_SERVER["REQUEST_METHOD"] == "POST") {
             $series = $_POST['seriesi'];
             $genre = $_POST['genrei'];
             $group = $_POST['groupi'];
+            $photo = $_POST['photo'];
             break;
         case "sign-in"
         $username = $_POST['namel'];
@@ -71,7 +72,10 @@ else if($_SERVER["REQUEST_METHOD"] == "POST") {
     switch ($_DELETE["action"]) {
         case "dequeue"
         http_response_code(201);
+    break;
     }
+} else {
+    http_response_code(501);
 }
 // switch($_GET['action']) {
 // case 'enqueue':
