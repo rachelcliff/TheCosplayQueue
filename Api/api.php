@@ -45,7 +45,7 @@ else if($_SERVER["REQUEST_METHOD"] == "POST") {
             $group = $_POST['groupi'];
             $photo = $_POST['photo'];
             break;
-        case "sign-in"
+        case "sign-in":
         $username = $_POST['namel'];
         $password = $_POST['passwordl'];
     break;
@@ -70,7 +70,7 @@ else if($_SERVER["REQUEST_METHOD"] == "POST") {
 	}
 } else if($_SERVER["REQUEST_METHOD"] == "UPDATE") {
     switch ($_DELETE["action"]) {
-        case "dequeue"
+        case "dequeue":
         http_response_code(201);
     break;
     }

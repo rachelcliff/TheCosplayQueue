@@ -146,7 +146,7 @@
                               </div>
                            </div>
                            <div class="col s12"></div>
-                           <button class="btn waves-effect waves-light col offset-s1 s4 modal-trigger" type="submit" name="action" id="submit-btn" href="#modal1" onClick="postWithFetch()">Submit
+                           <button class="btn waves-effect waves-light col offset-s1 s4 modal-trigger" type="submit" name="action" id="submit-btn" href="#modal1" onClick="formcheckjoin()">Submit
                               <i class="material-icons right">send</i>
                            </button>
                         </div>
@@ -175,7 +175,7 @@
                         <!-- <label for="icon_prefix">Password</label> -->
                         </div>
                         <div class="col s12"></div>
-                        <button class="btn waves-effect waves-light col offset-s1 s4 modal-trigger" type="submit" name="action" id="login-btn" href="#modal2">Log In
+                        <button class="btn waves-effect waves-light col offset-s1 s4 modal-trigger" type="submit" name="action" id="login-btn" href="#modal2" onClick="loginQueue()">Log In
                         <i class="material-icons right">send</i>
                         </button>
                         </form>
@@ -235,7 +235,7 @@
                            </div>
                      </form>
                      <div class="col s12"></div>
-                     <button class="btn waves-effect waves-light col offset-s1 s4 modal-trigger" type="submit" name="action" id="update-btn" href="#modal2">Submit
+                     <button class="btn waves-effect waves-light col offset-s1 s4 modal-trigger" type="submit" name="action" id="register-btn" href="#modal2" onClick="registerQueue()">Submit
                      <i class="material-icons right">send</i>
                      </button>
                      </div>
@@ -323,6 +323,9 @@
                         </label>
                      </p>
                   </div>
+                  <button class="btn waves-effect waves-light col offset-s1 s4 modal-trigger" type="submit" name="action" id="update-btn" href="#modal2" onClick="updateQueue()">Submit
+                     <i class="material-icons right">send</i>
+                     </button>
                </form>
             </div>
 
