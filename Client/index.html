@@ -201,7 +201,7 @@
                            </div>
                            <div class="input-field col offset-s1 s10" id="username">
                               <i class="material-icons prefix">account_circle</i>
-                              <input class="icon_prefix" type="text" is="usernames" placeholder="Cosplay Name/Username" required>
+                              <input class="icon_prefix" type="text" id="usernames" placeholder="Cosplay Name/Username" required>
                               <!-- <label for="icon_prefix">Cosplay Name/Username</label> -->
                            </div>
                            <div class="input-field col offset-s1 s10" id="facebook">
@@ -216,7 +216,7 @@
                            </div>
                            <div class="input-field col offset-s1 s10" id="phone">
                               <i class="material-icons prefix">phone</i>
-                              <input class="icon_prefix" type="tel" is="phones" placeholder="Mobile Number" required>
+                              <input class="icon_prefix" type="text" id="phones" placeholder="Mobile Phone Number" required>
                               <!-- <label for="icon_prefix">Mobile Number</label> -->
                            </div>
                            <div class="input-field col offset-s1 s10" id="email">
@@ -236,7 +236,7 @@
                            </div>
                      </form>
                      <div class="col s12"></div>
-                     <button class="btn waves-effect waves-light col offset-s1 s4 modal-trigger" type="submit" name="action" id="register-btn" href="#modal2" onClick="registerQueue()">Submit
+                     <button class="btn waves-effect waves-light col offset-s1 s4 modal-trigger" type="submit" name="action" id="register-btn" href="#modal2" onClick="formcheckregister()">Submit
                      <i class="material-icons right">send</i>
                      </button>
                      </div>
@@ -324,7 +324,7 @@
                         </label>
                      </p>
                   </div>
-                  <button class="btn waves-effect waves-light col offset-s1 s4 modal-trigger" type="submit" name="action" id="update-btn" href="#modal2" onClick="updateQueue()">Submit
+                  <button class="btn waves-effect waves-light col offset-s1 s4 modal-trigger" type="submit" name="action" id="update-btn" href="#modal2" onClick="formcheckupdate()">Submit
                      <i class="material-icons right">send</i>
                      </button>
                </form>

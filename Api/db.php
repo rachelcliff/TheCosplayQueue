@@ -14,7 +14,7 @@ class cosplayQueueModel {
         echo "Connected successfully!!";
     }
 //join function
-    function join($name, $cosplay_name, $facebook, $instagram, $phone, $email, $character, $series, $genre, $group, $photo, $photo_taken) {
+    function join($name, $cosplay_name, $facebook, $instagram, $phone, $email, $character_name, $series, $genre, $r_group, $reference_photo, $photo_taken) {
         try {
             $this->dbconn->beginTransaction();
             $stmt = $this->dbconn->prepare("INSERT INTO users(name, cosplay_name, facebook, instagram, phone, email) values (:name, :cosplay_name, :facebook, :instagram, :phone, :email)");
@@ -27,14 +27,14 @@ class cosplayQueueModel {
             $stmt->execute();
 
             $lastuserID = $this->dbconn->lastInsertId();
-            $stmt = $this->dbconn->prepare("INSERT INTO queue(character_name, series, genre, group_y/n, photo, userID) values (:character_name, :series, :genre, :group, :reference_photo, :userID)");
+            $stmt = $this->dbconn->prepare("INSERT INTO queue(character_name, series, genre, r_group, reference_photo, photo_taken, user_ID) values (:character_name, :series, :genre, :r_group, :reference_photo, :photo_taken, :user_ID)");
             $stmt->bindValue(':character_name', $character_name);
             $stmt->bindValue(':series', $series);
             $stmt->bindValue(':genre', $genre);
-            $stmt->bindValue(':group_y/n', $group);
-            $stmt->bindValue(':reference_photo', $photo);
+            $stmt->bindValue(':r_group', $r_group);
+            $stmt->bindValue(':reference_photo', $reference_photo);
             $stmt->bindValue(':photo_taken', $photo_taken);
-            $stmt->bindValue(':userId', $lastuserID );
+            $stmt->bindValue(':user_ID', $lastuserID );
             $stmt->execute();
             $this->dbconn->commit();
         }
@@ -65,16 +65,16 @@ class cosplayQueueModel {
     
             try {
                 $this->dbconn->beginTransaction();
-                $stmt = $this->dbconn->prepare("INSERT INTO users(name, cosplay_name, facebook, instagram, phone, email, password) values (:name, :cosplay_name, :facebook, :instagram, :phone, :email :password)");
-                $stmt->bindValue(':name', $name);
-                $stmt->bindValue(':cosplay_name', $cosplay_name);
-                $stmt->bindValue(':facebook', $facebook);
-                $stmt->bindValue(':instagram', $instagram);
-                $stmt->bindValue(':phone', $phone);
-                $stmt->bindValue(':email', $email);
-                $stmt->bindValue(':password', $password);
-                $stmt->execute();
-                $this->dbconn->commit();
+            $stmt = $this->dbconn->prepare("INSERT INTO users(name, cosplay_name, facebook, instagram, phone, email) values (:name, :cosplay_name, :facebook, :instagram, :phone, :email)");
+            $stmt->bindValue(':name', $name);
+            $stmt->bindValue(':cosplay_name', $cosplay_name);
+            $stmt->bindValue(':facebook', $facebook);
+            $stmt->bindValue(':instagram', $instagram);
+            $stmt->bindValue(':phone', $phone);
+            $stmt->bindValue(':email', $email);
+            $stmt->execute();
+            $this->dbconn->commit();
+
             }
             catch (PDOException $ex){
                 $this->dbconn->rollBack();

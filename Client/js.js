@@ -41,94 +41,34 @@ function joinQueue() {
 	return false;
 }
 
-function loginQueue() {
-	formdata = new FormData();
-	formdata.set("action", "join")
-	fetch('../Api/api.php?action=sign-in', {
-			method: 'POST',
-			body: formdata,
-			credentials: 'include'
-		// })
-		// .then(function (response) {
-		// 	if (response.status === 400) {
-		// 		console.log('not inserted');
-		// 		return;
-		// 	}
-		// 	if (response.status === 401) {
-		// 		console.log('no permissions');
-		// 		return;
-		// 	}
-		// 	if (response.status === 501) {
-		// 		console.log('not implemented');
-		// 		return;
-		// 	}
-		// 	if (response.status === 202) {
-		// 		console.log('success');
-		// 		return;
-		// 	}
-		});
-	return false;
-}
-
-function registerQueue() {
-	formdata = new FormData();
-	formdata.set("action", "join")
-	formdata.set('namei', namei.value);
-	fetch('../Api/api.php?action=sign-up', {
-			method: 'POST',
-			body: formdata,
-			credentials: 'include'
-		// })
-		// .then(function (response) {
-		// 	if (response.status === 400) {
-		// 		console.log('not inserted');
-		// 		return;
-		// 	}
-		// 	if (response.status === 401) {
-		// 		console.log('no permissions');
-		// 		return;
-		// 	}
-		// 	if (response.status === 501) {
-		// 		console.log('not implemented');
-		// 		return;
-		// 	}
-		// 	if (response.status === 202) {
-		// 		console.log('success');
-		// 		return;
-		// 	}
-		});
-	return false;
-}
-
-function updateQueue() {
-	formdata = new FormData();
-	formdata.set("action", "join")
-	formdata.set('namei', namei.value);
-	fetch('../Api/api.php?action=update', {
-			method: 'POST',
-			body: formdata,
-			credentials: 'include'
-		// })
-		// .then(function (response) {
-		// 	if (response.status === 400) {
-		// 		console.log('not inserted');
-		// 		return;
-		// 	}
-		// 	if (response.status === 401) {
-		// 		console.log('no permissions');
-		// 		return;
-		// 	}
-		// 	if (response.status === 501) {
-		// 		console.log('not implemented');
-		// 		return;
-		// 	}
-		// 	if (response.status === 202) {
-		// 		console.log('success');
-		// 		return;
-		// 	}
-		});
-	return false;
-}
+// function loginQueue() {
+// 	formdata = new FormData();
+// 	formdata.set("action", "join")
+// 	fetch('../Api/api.php?action=sign-in', {
+// 			method: 'POST',
+// 			body: formdata,
+// 			credentials: 'include'
+// 		// })
+// 		// .then(function (response) {
+// 		// 	if (response.status === 400) {
+// 		// 		console.log('not inserted');
+// 		// 		return;
+// 		// 	}
+// 		// 	if (response.status === 401) {
+// 		// 		console.log('no permissions');
+// 		// 		return;
+// 		// 	}
+// 		// 	if (response.status === 501) {
+// 		// 		console.log('not implemented');
+// 		// 		return;
+// 		// 	}
+// 		// 	if (response.status === 202) {
+// 		// 		console.log('success');
+// 		// 		return;
+// 		// 	}
+// 		});
+// 	return false;
+// }
 
 // local storage
 function storage() {
@@ -361,67 +301,15 @@ function switchBG(checkBG) {
 	}
 }
 
-// function enqueue() {
-// 	populateAlert('Loading...', 'notice');
-//     var fd = new FormData();
-//     fd.append('queuetopic', queuetopic.value);
-//     fetch('https://api.localhost/api.php?action=enqueue',
-//         {
-//             method: 'POST',
-//             body: fd,
-//             credentials: 'include'
-//         }
-//     )
-//     .then(function(response) {
-//         if(response.status === 401) {
-//             populateAlert('Not Authorized, to enqueue', 'error');
-//             return;
-//         }
-//         if(response.status === 201) {
-//             populateAlert('item queued', 'notice');
-//             // UPDATE THE QUEUE
-//             return;
-//         }
-//     })
-//     .catch(function(err) {
-//         populateAlert('Connection unavailable', 'error');
-//     });
-// }
-
-// function dequeue() {
-//     closeAllModals();
-//     populateAlert('Loading...', 'notice');
-//     var url = 'https://api.localhost/api.php?action=dequeue&queueitem=' + queueitem.value; 
-//     fetch(url, 
-//         {
-//             method: 'UPDATE',
-//             credentials: 'include'
-//         }
-//     )
-//     .then(function(response) {
-//         if(response.status === 401) {
-//             populateAlert('Not Authorized, to dequeue', 'error');
-//             return;
-//         }
-//         if(response.status === 202) {
-//             populateAlert('queue item removed', 'notice');
-//             return;
-//         }
-//     })
-//     .catch(function(err) {
-//         populateAlert('Connection unavailable', 'error');
-//     });
-// }
-
 function passCheck(){
     if (passwordr.value.length >0 && password2r.value.length> 0){
         if (passwordr.value === password2r.value) {
-         error.innerHTML = "";
-         pass1.setCustomValidity('');
-         pass2.setCustomValidity('');
+        //  error.innerHTML = "";
+         passwordr.setCustomValidity('');
+         password2r.setCustomValidity('');
          return true;
         } else {
-         error.innerHTML= "Passwords do not Match";
+        //  error.innerHTML= "Passwords do not Match";
          passwordr.setCustomValidity('test');
           password2r.setCustomValidity('test2');
           return false;
@@ -499,6 +387,111 @@ function formcheckjoin() {
 })
 
 }
+function formcheckregister() {
+    var errorStr ='';
+    if(passCheck() === false) {
+        errorStr += 'Passwords do not match';
+	}
+	console.log('password checked');
+	
+	if (names.checkValidity() === false){
+        errorStr +='Please insert a valid name ';
+    console.log('name checked');
+	}
+
+    if (usernames.checkValidity() === false) {
+        errorStr += 'Please insert a valid username ';
+	console.log('username checked');
+	}
+
+    if (facebooks.checkValidity() === false) {
+        errorStr += 'Please insert a valid facebook account ';
+	}
+
+    if (instagrams.checkValidity() === false) {
+		errorStr += 'Please insert a a valid instagram account ';
+	}
+
+    if (phones.checkValidity() === false){
+		errorStr +='Please insert a valid phone number ';
+		console.log('phone checked');
+	}
+
+    if (emails.checkValidity() === false){
+		errorStr +='Please insert a valid email ';
+		console.log('email checked');
+	}
+	
+	formdata = new FormData()
+	formdata.set("action", "signup")
+
+	formdata.set("names", names.value)
+	formdata.set("usernames", usernames.value)
+	formdata.set("facebooks", facebooks.value)
+	formdata.set("instagrams", instagrams.value)
+	formdata.set("phones", phones.value)
+	formdata.set("emails", emails.value)
+	formdata.set("passwords", passwords.value)
+
+	fetch('../Api/api.php?action=signup', {
+		method: 'POST',
+		body: formdata,
+		// credentials: 'include'
+})
+}
+
+function formcheckupdate() {
+    var errorStr ='';
+    if(passCheck() === false) {
+        errorStr += 'Passwords do not match';
+	}
+	console.log('password checked');
+	
+	if (namer.checkValidity() === false){
+        errorStr +='Please insert a valid name ';
+    console.log('name checked');
+	}
+
+    if (usernamer.checkValidity() === false) {
+        errorStr += 'Please insert a valid username ';
+	console.log('username checked');
+	}
+
+    if (facebookr.checkValidity() === false) {
+        errorStr += 'Please insert a valid facebook account ';
+	}
+
+    if (instagramr.checkValidity() === false) {
+		errorStr += 'Please insert a a valid instagram account ';
+	}
+
+    if (phoner.checkValidity() === false){
+		errorStr +='Please insert a valid phone number ';
+		console.log('phone checked');
+	}
+
+    if (emailr.checkValidity() === false){
+		errorStr +='Please insert a valid email ';
+		console.log('email checked');
+	}
+	
+	formdata = new FormData()
+	formdata.set("action", "update")
+
+	formdata.set("namer", namer.value)
+	formdata.set("usernamer", usernamer.value)
+	formdata.set("facebookr", facebookr.value)
+	formdata.set("instagramr", instagramr.value)
+	formdata.set("phoner", phoner.value)
+	formdata.set("emailr", emailr.value)
+	formdata.set("passwordr", passwordr.value)
+
+	fetch('../Api/api.php?action=update', {
+		method: 'POST',
+		body: formdata,
+		// credentials: 'include'
+})
+}
 
 function formchecklogin() {
     var errorStr ='';
@@ -530,131 +523,7 @@ function formchecklogin() {
           })
 }
 
-function formcheckregister() {
-    var errorStr ='';
-    if(passCheck() === false) {
-        errorStr += 'Passwords do not match';
-	}
-	
-    // console.log('passcheck');
-    if (name.checkValidity() === false){
-        errorStr +='Please insert a valid name ';
-    console.log('namechack');
-	}
 
-    if (username.checkValidity() === false) {
-        errorStr += 'Please insert a valid username ';
-	console.log('usernamecheck');
-	}
-
-    if (facebook.checkValidity() === false) {
-        errorStr += 'Please insert a valid facebook account ';
-	}
-
-    if (instagram.checkValidity() === false) {
-		errorStr += 'Please insert a a valid instagram account ';
-	}
-
-    if (phone.checkValidity() === false){
-		errorStr +='Please insert a valid phone number ';
-		console.log('phonecheck');
-	}
-
-    if (email.checkValidity() === false){
-		errorStr +='Please insert a valid email ';
-		console.log('emailcheck');
-	}
-	
-    error.innerHTML = errorStr
-	formdata = new FormData()
-	formdata.set("name", namei.value)
-	formdata.set("username", usernamei.value)
-	formdata.set("facebook", facebooki.value)
-	formdata.set("instagram", instagrami.value)
-	formdata.set("phone", phonei.value)
-	formdata.set("email", emaili.value)
-	formdata.set("password", passwordr.value)
-	formdata.set("series", seriesi.value)
-
-	formdata.set("action", "signup")
-	formdata.set('namei', namei.value);
-	fetch('../Api/api.php?action=signup', {
-			method: 'POST',
-			body: formdata,
-			credentials: 'include'
-          })
-}
-
-function formcheckupdate() {
-    var errorStr ='';
-	
-    // console.log('passcheck');
-    if (name.checkValidity() === false){
-        errorStr +='Please insert a valid name ';
-    console.log('namechack');
-	}
-
-    if (username.checkValidity() === false) {
-        errorStr += 'Please insert a valid username ';
-	console.log('usernamecheck');
-	}
-
-    if (facebook.checkValidity() === false) {
-        errorStr += 'Please insert a valid facebook account ';
-	}
-
-    if (instagram.checkValidity() === false) {
-		errorStr += 'Please insert a a valid instagram account ';
-	}
-
-    if (phone.checkValidity() === false){
-		errorStr +='Please insert a valid phone number ';
-		console.log('phonecheck');
-	}
-
-    if (email.checkValidity() === false){
-		errorStr +='Please insert a valid email ';
-		console.log('emailcheck');
-	}
-	
-    if (character.checkValidity() === false){
-		 errorStr +='Please insert your character name ';
-	}
-	
-    if (series.checkValidity() === false){
-        errorStr +='Please insert your series name ';
-	}
-	
-    if (genre.checkValidity() === false){
-        errorStr +='Please answer if you are part of a group ';
-	}
-	
-    if (group.checkValidity() === false){
-        errorStr +='Please insert a Valid Name for Player 4 ';
-	}
-	
-    error.innerHTML = errorStr
-	formdata = new FormData()
-	formdata.set("action", "reg")
-	formdata.set("name", namer.value)
-	formdata.set("username", usernamer.value)
-	formdata.set("facebook", facebookr.value)
-	formdata.set("instagram", instagramr.value)
-	formdata.set("phone", phoner.value)
-	formdata.set("email", emailr.value)
-	formdata.set("character", characterr.value)
-	formdata.set("series", seriesr.value)
-	formdata.set("genre", genrer.value)
-	formdata.set("group", groupr.value)
-
-	formdata.set("action", "update")
-	formdata.set('namei', namei.value);
-	fetch('../Api/api.php?action=update', {
-			method: 'POST',
-			body: formdata,
-			credentials: 'include'
-          })
-}
 
 
 // document.getElementById('submit-btn').addEventListener('submit', processForm(evt))

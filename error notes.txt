@@ -1,4 +1,4 @@
-Notice: Undefined index: photo in C:\wamp64\www\TheCosplayQueue\Api\api.php on line 51
-Notice: Undefined index: photo_taken in C:\wamp64\www\TheCosplayQueue\Api\api.php on line Notice: Undefined variable: character_name in C:\wamp64\www\TheCosplayQueue\Api\db.php on line 31
-Fatal error: Uncaught PDOException: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in C:\wamp64\www\TheCosplayQueue\Api\db.php on line 38
-PDOException: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in C:\wamp64\www\TheCosplayQueue\Api\db.php on line 38
+Notice: Undefined variable: userID in C:\wamp64\www\GitHub\TheCosplayQueue\Api\api.php on line 59 
+Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'userID' in 'field list' in C:\wamp64\www\GitHub\TheCosplayQueue\Api\db.php on line <i>38</i></th></tr>
+
+ PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'userID' in 'field list' in C:\wamp64\www\GitHub\TheCosplayQueue\Api\db.php on line <i>38</i></th></tr>

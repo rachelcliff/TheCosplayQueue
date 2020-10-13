@@ -10,8 +10,8 @@ require('db.php'); $db = new cosplayQueueModel;
 require('session.php'); $se = new cosplayQueueSession;
 
 
-echo "testing";
-die;
+// echo "testing";
+// die;
 
 
 // Base Case
@@ -49,19 +49,20 @@ else if($_SERVER["REQUEST_METHOD"] == "POST") {
             $character_name = $_POST['characteri'];
             $series = $_POST['seriesi'];
             $genre = $_POST['genrei'];
-            $group = $_POST['groupi'];
-            $photo = $_POST['photo'];
+            $r_group = $_POST['groupi'];
+            $reference_photo = $_POST['photo'];
             $photo_taken = $_POST['photo_taken'];
 
             // http_response_code(404);
 
             if(isset($cosplay_name)){
-                $db->join($name, $cosplay_name, $facebook, $instagram, $phone, $email, $character_name, $series, $genre, $group, $photo, $photo_taken);
+                $db->join($name, $cosplay_name, $facebook, $instagram, $phone, $email, $character_name, $series, $genre, $r_group, $reference_photo, $photo_taken);
                 http_response_code(202);
             }else{
                 http_response_code(501);
             }
             break;
+
         case "login":
         $username = $_POST['namel'];
         $password = $_POST['passwordl'];
