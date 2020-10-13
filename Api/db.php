@@ -4,31 +4,37 @@ class cosplayQueueModel {
 
     public function __construct()
     {
-        $servername = "localhost";
-        $dbusername = "root";
-        $dbpassword = "";
-        $this->dbconn = new PDO("mysql:host=$servername;dbname=cosplay_queue", $dbusername, $dbpassword);
+        // $servername = "localhost";
+        // $dbusername = "root";
+        // $dbpassword = "";
+        $this->dbconn = new PDO("mysql:host=localhost;dbname=cosplay_queue", "root", "");
         // set the PDO error mode to exception 
         // (debug - comment out in production)
         $this->dbconn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         echo "Connected successfully!!";
     }
 //join function
-    function join($namei, $usernamei, $facebooki, $instagrami, $phonei, $emaili, $characteri, $seriesi, $genrei, $groupi, $photo) {
+    function join($name, $cosplay_name, $facebook, $instagram, $phone, $email, $character, $series, $genre, $group, $photo, $photo_taken) {
         try {
             $this->dbconn->beginTransaction();
-            $stmt = $this->dbconn->prepare("INSERT INTO queue(name, username, facebook, instagram, phone, email, character, series, genre, group, photo) values (:name, :username, :facebook, :instagram, :phone, :email :character, :series, :genre, :group, :photo)");
-            $stmt->bindValue(':name', $namei);
-            $stmt->bindValue(':username', $usernamei);
-            $stmt->bindValue(':facebook', $facebooki);
-            $stmt->bindValue(':instagram', $instagrami);
-            $stmt->bindValue(':phone', $phonei);
-            $stmt->bindValue(':email', $emaili);
-            $stmt->bindValue(':character', $characteri);
-            $stmt->bindValue(':series', $seriesi);
-            $stmt->bindValue(':genre', $genrei);
-            $stmt->bindValue(':group', $groupi);
-            $stmt->bindValue(':photo', $photo);
+            $stmt = $this->dbconn->prepare("INSERT INTO users(name, cosplay_name, facebook, instagram, phone, email) values (:name, :cosplay_name, :facebook, :instagram, :phone, :email)");
+            $stmt->bindValue(':name', $name);
+            $stmt->bindValue(':cosplay_name', $cosplay_name);
+            $stmt->bindValue(':facebook', $facebook);
+            $stmt->bindValue(':instagram', $instagram);
+            $stmt->bindValue(':phone', $phone);
+            $stmt->bindValue(':email', $email);
+            $stmt->execute();
+
+            $lastuserID = $this->dbconn->lastInsertId();
+            $stmt = $this->dbconn->prepare("INSERT INTO queue(character_name, series, genre, group_y/n, photo, userID) values (:character_name, :series, :genre, :group, :reference_photo, :userID)");
+            $stmt->bindValue(':character_name', $character_name);
+            $stmt->bindValue(':series', $series);
+            $stmt->bindValue(':genre', $genre);
+            $stmt->bindValue(':group', $group);
+            $stmt->bindValue(':reference_photo', $photo);
+            $stmt->bindValue(':photo_taken', $photo_taken);
+            $stmt->bindValue(':userId', $lastuserID );
             $stmt->execute();
             $this->dbconn->commit();
         }
@@ -36,15 +42,15 @@ class cosplayQueueModel {
             $this->dbconn->rollBack();
             throw $ex;
         }
-    } 
+    }
 
     // login function
-    function log-in($usernamel, $passwordl) {
+    function login($username, $password) {
         try {
             $this->dbconn->beginTransaction();
             $stmt = $this->dbconn->prepare("INSERT INTO logins(username, password) values (:username,:password)");
-            $stmt->bindValue(':username', $usernamel);
-            $stmt->bindValue(':password', $passwordl);
+            $stmt->bindValue(':username', $username);
+            $stmt->bindValue(':password', $password);
             $stmt->execute();
             $this->dbconn->commit();
         }
@@ -55,18 +61,18 @@ class cosplayQueueModel {
 }
 
         //new user function
-        function sign-up($names, $usernames, $facebooks, $instagrams, $phones, $emails, $passwords) {
+        function signup($name, $cosplay_name, $facebook, $instagram, $phone, $email, $password) {
     
             try {
                 $this->dbconn->beginTransaction();
-                $stmt = $this->dbconn->prepare("INSERT INTO users(name, username, facebook, instagram, phone, email, password) values (:name, :username, :facebook, :instagram, :phone, :email :password)");
-                $stmt->bindValue(':name', $names);
-                $stmt->bindValue(':username', $usernames);
-                $stmt->bindValue(':facebook', $facebooks);
-                $stmt->bindValue(':instagram', $instagrams);
-                $stmt->bindValue(':phone', $phones);
-                $stmt->bindValue(':email', $emails);
-                $stmt->bindValue(':password', $passwords);
+                $stmt = $this->dbconn->prepare("INSERT INTO users(name, cosplay_name, facebook, instagram, phone, email, password) values (:name, :cosplay_name, :facebook, :instagram, :phone, :email :password)");
+                $stmt->bindValue(':name', $name);
+                $stmt->bindValue(':cosplay_name', $cosplay_name);
+                $stmt->bindValue(':facebook', $facebook);
+                $stmt->bindValue(':instagram', $instagram);
+                $stmt->bindValue(':phone', $phone);
+                $stmt->bindValue(':email', $email);
+                $stmt->bindValue(':password', $password);
                 $stmt->execute();
                 $this->dbconn->commit();
             }
@@ -77,18 +83,18 @@ class cosplayQueueModel {
         }
         
         //update user function
-        function update($namer, $usernamer, $facebookr, $instagramr, $phoner, $emailr, $passwordr) {
+        function update($name, $cosplay_name, $facebook, $instagram, $phone, $email, $password) {
 
             try {
                 $this->dbconn->beginTransaction();
-                $stmt = $this->dbconn->prepare("update users SET name=:name, cosplayName=:username, facebook=:facebook, instagram=:instagram, phone=:phone, email=:email, password=:password, values (:name, :username, :facebook, :instagram, :phone, :email :password)");
+                $stmt = $this->dbconn->prepare("update users SET name=:name, cosplay_name=:cosplay_name, facebook=:facebook, instagram=:instagram, phone=:phone, email=:email, password=:password, values (:name, :username, :facebook, :instagram, :phone, :email :password)");
                 $stmt->bindValue(':name', $namer);
-                $stmt->bindValue(':username', $usernamer);
-                $stmt->bindValue(':facebook', $facebookr);
-                $stmt->bindValue(':instagram', $instagramr);
-                $stmt->bindValue(':phone', $phoner);
-                $stmt->bindValue(':email', $emailr);
-                $stmt->bindValue(':password', $passwordr);
+                $stmt->bindValue(':cosplay_name', $cosplay_name);
+                $stmt->bindValue(':facebook', $facebook);
+                $stmt->bindValue(':instagram', $instagram);
+                $stmt->bindValue(':phone', $phone);
+                $stmt->bindValue(':email', $email);
+                $stmt->bindValue(':password', $password);
                 $stmt->execute();
                 $this->dbconn->commit();
             }
@@ -118,6 +124,5 @@ class cosplayQueueModel {
 // catch (PDOException $ex) {
 //     throw $ex;
 // }
-}
 
 ?>

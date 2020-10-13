@@ -33,40 +33,72 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
 else if($_SERVER["REQUEST_METHOD"] == "POST") {
 	switch ($_POST["action"]) {
         case "join":
+         
             $name = $_POST['namei'];
-            $username = $_POST['usernamei'];
+            $cosplay_name = $_POST['usernamei'];
             $facebook = $_POST['facebooki'];
             $instagram = $_POST['instagrami'];
             $phone = $_POST['phonei'];
             $email = $_POST['emaili'];
-            $character = $_POST['characteri'];
+            $character_name = $_POST['characteri'];
             $series = $_POST['seriesi'];
             $genre = $_POST['genrei'];
             $group = $_POST['groupi'];
             $photo = $_POST['photo'];
+            $photo_taken = $_POST['photo_taken'];
+
+            // http_response_code(404);
+
+            if(isset($cosplay_name)){
+                $db->join($name, $cosplay_name, $facebook, $instagram, $phone, $email, $character_name, $series, $genre, $group, $photo, $photo_taken);
+                http_response_code(202);
+            }else{
+                http_response_code(501);
+            }
             break;
-        case "sign-in":
+        case "login":
         $username = $_POST['namel'];
         $password = $_POST['passwordl'];
-    break;
-        case "sign-up":
+
+        if(isset($username)){
+            $db->login($username, $password);
+            http_response_code(202);
+        }else{
+            http_response_code(501);
+        }
+        break;
+        case "signup":
             $name = $_POST['names'];
-            $username = $_POST['usernames'];
+            $cosplay_name = $_POST['usernames'];
             $facebook = $_POST['facebooks'];
             $instagram = $_POST['instagrams'];
             $phone = $_POST['phones'];
             $email = $_POST['emails'];
             $password = $_POST['passwords'];
+
+            if(isset($cosplay_name)){
+                $db->signup($name, $cosplay_name, $facebook, $instagram, $phone, $email, $password);
+                http_response_code(202);
+            }else{
+                http_response_code(501);
+            }
         break;
         case "update":
             $name = $_POST['namer'];
-            $username = $_POST['usernamer'];
+            $cosplay_name = $_POST['usernamer'];
             $facebook = $_POST['facebookr'];
             $instagram = $_POST['instagramr'];
             $phone = $_POST['phoner'];
             $email = $_POST['email'];
             $password = $_POST['passwordr'];
-        break;
+
+            if(isset($cosplay_name)){
+                $db->update($name, $cosplay_name, $facebook, $instagram, $phone, $email, $password);
+                http_response_code(202);
+            }else{
+                http_response_code(501);
+            }
+            break;
 	}
 } else if($_SERVER["REQUEST_METHOD"] == "UPDATE") {
     switch ($_DELETE["action"]) {
@@ -138,5 +170,4 @@ else if($_SERVER["REQUEST_METHOD"] == "POST") {
 //         http_response_code(401);
 //     }
 //     break;
-}
 ?>

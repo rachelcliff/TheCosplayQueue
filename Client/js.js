@@ -431,19 +431,14 @@ function passCheck(){
 
 function formcheckjoin() {
     var errorStr ='';
-    // if(passCheck() === false) {
-    //     errorStr += 'Passwords do not match';
-	// }
-	
-    // console.log('passcheck');
     if (namei.checkValidity() === false){
         errorStr +='Please insert a valid name ';
-    console.log('namechack');
+    console.log('name checked');
 	}
 
     if (usernamei.checkValidity() === false) {
         errorStr += 'Please insert a valid username ';
-	console.log('usernamecheck');
+	console.log('username checked');
 	}
 
     if (facebooki.checkValidity() === false) {
@@ -456,12 +451,12 @@ function formcheckjoin() {
 
     if (phonei.checkValidity() === false){
 		errorStr +='Please insert a valid phone number ';
-		console.log('phonecheck');
+		console.log('phone checked');
 	}
 
     if (emaili.checkValidity() === false){
 		errorStr +='Please insert a valid email ';
-		console.log('emailcheck');
+		console.log('email checked');
 	}
 	
     if (characteri.checkValidity() === false){
@@ -477,23 +472,23 @@ function formcheckjoin() {
 	}
 	
     if (groupi.checkValidity() === false){
-        errorStr +='Please a Valid response ';
+        errorStr +='Please insert a Valid response ';
 	}
 	
-    // error.innerHTML = errorStr
+  
 	formdata = new FormData()
 	formdata.set("action", "join")
 	
-	formdata.set("name", namei.value)
-	formdata.set("username", usernamei.value)
-	formdata.set("facebook", facebooki.value)
-	formdata.set("instagram", instagrami.value)
-	formdata.set("phone", phonei.value)
-	formdata.set("email", emaili.value)
-	formdata.set("character", characteri.value)
-	formdata.set("series", seriesi.value)
-	formdata.set("genre", genrei.value)
-	formdata.set("group", groupi.value)
+	formdata.set("namei", namei.value)
+	formdata.set("usernamei", usernamei.value)
+	formdata.set("facebooki", facebooki.value)
+	formdata.set("instagrami", instagrami.value)
+	formdata.set("phonei", phonei.value)
+	formdata.set("emaili", emaili.value)
+	formdata.set("characteri", characteri.value)
+	formdata.set("seriesi", seriesi.value)
+	formdata.set("genrei", genrei.value)
+	formdata.set("groupi", groupi.value)
 
 	fetch('../Api/api.php?action=join', {
 		method: 'POST',
@@ -522,10 +517,10 @@ function formchecklogin() {
 	
     error.innerHTML = errorStr
 	formdata = new FormData()
-	formdata.set("action", "reg")
+	formdata.set("action", "signin")
 	formdata.set("username", namel.value)
 	formdata.set("password", passwordl.value)
-    fetch('../api/api.php?action=reg', {
+    fetch('../api/api.php?action=signin', {
           method: "POST",
 		  body: formdata,
 		  credentials: 'include',
@@ -579,9 +574,9 @@ function formcheckregister() {
 	formdata.set("password", passwordr.value)
 	formdata.set("series", seriesi.value)
 
-	formdata.set("action", "sign-up")
+	formdata.set("action", "signup")
 	formdata.set('namei', namei.value);
-	fetch('../Api/api.php?action=sign-up', {
+	fetch('../Api/api.php?action=signup', {
 			method: 'POST',
 			body: formdata,
 			credentials: 'include'
