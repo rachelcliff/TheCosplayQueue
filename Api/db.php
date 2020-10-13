@@ -31,7 +31,7 @@ class cosplayQueueModel {
             $stmt->bindValue(':character_name', $character_name);
             $stmt->bindValue(':series', $series);
             $stmt->bindValue(':genre', $genre);
-            $stmt->bindValue(':group', $group);
+            $stmt->bindValue(':group_y/n', $group);
             $stmt->bindValue(':reference_photo', $photo);
             $stmt->bindValue(':photo_taken', $photo_taken);
             $stmt->bindValue(':userId', $lastuserID );

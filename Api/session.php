@@ -1,4 +1,4 @@
-<!-- <?php
+<?php
 class cosplayQueueSession {
 // // Is logged in function
 // public function is_logged_in() {
@@ -79,4 +79,4 @@ class cosplayQueueSession {
 //     $this->last_visit = time();
 //     return false;
 }
-?> -->
+?>

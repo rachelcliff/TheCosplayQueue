@@ -1,4 +1,7 @@
 <?php
+// session_start();
+// session_destroy();
+
 header('Access-Control-Allow-Origin: https://localhost');
 header('Access-Control-Allow-Credentials: true');
 header('Content-Type: application/json'); // All echo statemes are json_encode
@@ -6,7 +9,10 @@ header('Content-Type: application/json'); // All echo statemes are json_encode
 require('db.php'); $db = new cosplayQueueModel;
 require('session.php'); $se = new cosplayQueueSession;
 
-session_start();
+
+echo "testing";
+die;
+
 
 // Base Case
 if(!isset($_GET['action'])) { //wrong usage

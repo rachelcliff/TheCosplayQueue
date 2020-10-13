@@ -489,11 +489,13 @@ function formcheckjoin() {
 	formdata.set("seriesi", seriesi.value)
 	formdata.set("genrei", genrei.value)
 	formdata.set("groupi", groupi.value)
+	formdata.set("photo", photo.value)
+	formdata.set("photo_taken", photo_taken.value)
 
 	fetch('../Api/api.php?action=join', {
 		method: 'POST',
 		body: formdata,
-		credentials: 'include'
+		// credentials: 'include'
 })
 
 }

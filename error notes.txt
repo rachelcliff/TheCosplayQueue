@@ -1,0 +1,4 @@
+Notice: Undefined index: photo in C:\wamp64\www\TheCosplayQueue\Api\api.php on line 51
+Notice: Undefined index: photo_taken in C:\wamp64\www\TheCosplayQueue\Api\api.php on line Notice: Undefined variable: character_name in C:\wamp64\www\TheCosplayQueue\Api\db.php on line 31
+Fatal error: Uncaught PDOException: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in C:\wamp64\www\TheCosplayQueue\Api\db.php on line 38
+PDOException: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in C:\wamp64\www\TheCosplayQueue\Api\db.php on line 38
