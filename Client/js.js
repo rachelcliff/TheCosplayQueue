@@ -11,35 +11,35 @@ $(document).ready(function () {
 //   .then(response => response.json())
 //   .then(json => console.log(json))
 
-function joinQueue() {
-	formdata = new FormData();
-	formdata.set("action", "join")
-	formdata.set('namei', namei.value);
-	fetch('../Api/api.php?action=join', {
-			method: 'POST',
-			body: formdata,
-			credentials: 'include'
-		// })
-		// .then(function (response) {
-		// 	if (response.status === 400) {
-		// 		console.log('not inserted');
-		// 		return;
-		// 	}
-		// 	if (response.status === 401) {
-		// 		console.log('no permissions');
-		// 		return;
-		// 	}
-		// 	if (response.status === 501) {
-		// 		console.log('not implemented');
-		// 		return;
-		// 	}
-		// 	if (response.status === 202) {
-		// 		console.log('success');
-		// 		return;
-		// 	}
-		});
-	return false;
-}
+// function joinQueue() {
+// 	formdata = new FormData();
+// 	formdata.set("action", "join")
+// 	formdata.set('namei', namei.value);
+// 	fetch('../Api/api.php?action=join', {
+// 			method: 'POST',
+// 			body: formdata,
+// 			credentials: 'include'
+// 		})
+// 		.then(function (response) {
+// 			if (response.status === 400) {
+// 				console.log('not inserted');
+// 				return;
+// 			}
+// 			if (response.status === 401) {
+// 				console.log('no permissions');
+// 				return;
+// 			}
+// 			if (response.status === 501) {
+// 				console.log('not implemented');
+// 				return;
+// 			}
+// 			if (response.status === 202) {
+// 				console.log('success');
+// 				return;
+// 			}
+// 		});
+// 	return false;
+// }
 
 // function loginQueue() {
 // 	formdata = new FormData();
@@ -436,7 +436,7 @@ function formcheckregister() {
 	fetch('../Api/api.php?action=signup', {
 		method: 'POST',
 		body: formdata,
-		// credentials: 'include'
+		credentials: 'include'
 })
 }
 
@@ -489,28 +489,27 @@ function formcheckupdate() {
 	fetch('../Api/api.php?action=update', {
 		method: 'POST',
 		body: formdata,
-		// credentials: 'include'
+		credentials: 'include'
 })
 }
 
 function formchecklogin() {
     var errorStr ='';
-    // if(passCheck() === false) {
-    //     errorStr += 'Passwords do not match';
-	// }
+    if(passCheck() === false) {
+        errorStr += 'Passwords do not match';
+	}
 	
     // console.log('passcheck');
     if (namel.checkValidity() === false){
         errorStr +='Please insert a valid name ';
-    console.log('usernamechack');
+    console.log('username checked');
 	}
 
     if (passwordl.checkValidity() === false) {
         errorStr += 'Please insert a valid username ';
-	console.log('passwordcheck');
+	console.log('password checked');
 	}
 	
-    error.innerHTML = errorStr
 	formdata = new FormData()
 	formdata.set("action", "signin")
 	formdata.set("username", namel.value)

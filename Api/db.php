@@ -87,14 +87,16 @@ class cosplayQueueModel {
 
             try {
                 $this->dbconn->beginTransaction();
-                $stmt = $this->dbconn->prepare("update users SET name=:name, cosplay_name=:cosplay_name, facebook=:facebook, instagram=:instagram, phone=:phone, email=:email, password=:password, values (:name, :username, :facebook, :instagram, :phone, :email :password)");
-                $stmt->bindValue(':name', $namer);
+                $stmt = $this->dbconn->prepare("UPDATE users SET name=:name, cosplay_name=:cosplay_name, facebook=:facebook, instagram=:instagram, phone=:phone, email=:email, password=:password, userID=:userID values (:name, :username, :facebook, :instagram, :phone, :email :password) WHERE user_ID = :user_ID");
+
+                $stmt->bindValue(':name', $name);
                 $stmt->bindValue(':cosplay_name', $cosplay_name);
                 $stmt->bindValue(':facebook', $facebook);
                 $stmt->bindValue(':instagram', $instagram);
                 $stmt->bindValue(':phone', $phone);
                 $stmt->bindValue(':email', $email);
                 $stmt->bindValue(':password', $password);
+                $stmt->bindValue(':user_ID', $user_ID);
                 $stmt->execute();
                 $this->dbconn->commit();
             }

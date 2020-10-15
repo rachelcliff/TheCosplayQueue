@@ -20,21 +20,28 @@ if(!isset($_GET['action'])) { //wrong usage
     die;
 }
 
-if($_SERVER["REQUEST_METHOD"] == "GET") {
-    switch ($_GET["action"]) {
-        case "login":
-            http_response_code(202);
-        break;
-        case "display-place":
-            http_response_code(202);
-        break;
-        case "refresh":
-            http_response_code(202);
-        break;
-        case "autofill":
-            http_response_code(202);
-        break;
-    }
+$_SESSION["login"] = "true";
+	$_SESSION["loginID"] = 1;
+    
+    if($_SERVER["REQUEST_METHOD"] == "GET"){
+        switch ($_GET["action"]){
+            case "login":
+                http_response_code(202);
+				
+                break;
+            case "viewfix":				
+				http_response_code(418);
+				
+                break;
+            case "viewlad":
+				http_response_code(200);
+				
+                break;
+            case "prefill":
+				http_response_code(200);
+				
+                break;
+        }
 }
 else if($_SERVER["REQUEST_METHOD"] == "POST") {
 	switch ($_POST["action"]) {
@@ -96,18 +103,20 @@ else if($_SERVER["REQUEST_METHOD"] == "POST") {
             $facebook = $_POST['facebookr'];
             $instagram = $_POST['instagramr'];
             $phone = $_POST['phoner'];
-            $email = $_POST['email'];
+            $email = $_POST['emailr'];
             $password = $_POST['passwordr'];
 
+            if($_SESSION["login"] == "true"){
             if(isset($cosplay_name)){
-                $db->update($name, $cosplay_name, $facebook, $instagram, $phone, $email, $password);
+                $db->update($userID, $name, $cosplay_name, $facebook, $instagram, $phone, $email, $password);
                 http_response_code(202);
             }else{
                 http_response_code(501);
             }
             break;
 	}
-} else if($_SERVER["REQUEST_METHOD"] == "UPDATE") {
+} }
+else if($_SERVER["REQUEST_METHOD"] == "UPDATE") {
     switch ($_DELETE["action"]) {
         case "dequeue":
         http_response_code(201);
@@ -116,65 +125,3 @@ else if($_SERVER["REQUEST_METHOD"] == "POST") {
 } else {
     http_response_code(501);
 }
-// switch($_GET['action']) {
-// case 'enqueue':
-//     if($_SESSION['session_object']->is_logged_in()) {
-//         if(count($_POST) > 0) {
-//             if(isset($_POST['queuetopic'])) {
-//                 $result = $sqsdb->enqueue($_POST['queuetopic']);
-//                 if($result == true) {
-//                     http_response_code(201);
-//                 } else {
-//                     http_response_code(400);
-//                 }
-//             }
-//         } else {
-//             http_response_code(501);
-//         }
-//     } else {
-//         http_response_code(401);
-//     }
-//     break;
-// case 'dequeue':
-//     if($_SESSION['session_object']->is_logged_in()) {
-//         if($_SERVER['REQUEST_METHOD'] === 'DELETE') {;
-//             if(isset($_GET['queueitem'])) {
-//                 if(is_numeric($_GET['queueitem'])) {
-//                     $result = $sqsdb->dequeue($_GET['queueitem']);
-//                     if($result == true) {
-//                         http_response_code(202);
-//                     } else {
-//                         http_response_code(400);
-//                     }
-//                 } else {
-//                     http_response_code(501);
-//                 }
-//             } else {
-//                 http_response_code(501);
-//             }
-//         } else {
-//             http_response_code(501);
-//         }
-//     } else {
-//         http_response_code(401);
-//     }
-//     break;
-// case 'updateprofile':
-//     if($_SESSION['session_object']->is_logged_in()) {
-//         if(count($_POST) > 0) {
-//             if(isset($_POST['nick']) &&
-//                isset($_POST['theme']) &&
-//                isset($_POST['icon']) &&
-//                isset($_POST['color'])) {
-//                 http_response_code(201);
-//             } else {
-//                 http_response_code(400);
-//             }
-//         } else {
-//             http_response_code(400);
-//         }
-//     } else {
-//         http_response_code(401);
-//     }
-//     break;
-?>

@@ -1,4 +1,6 @@
-Notice: Undefined variable: userID in C:\wamp64\www\GitHub\TheCosplayQueue\Api\api.php on line 59 
-Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'userID' in 'field list' in C:\wamp64\www\GitHub\TheCosplayQueue\Api\db.php on line <i>38</i></th></tr>
+Connected successfully!!
+Notice: Undefined variable: emailr in C:\wamp64\www\GitHub\TheCosplayQueue\Api\db.php on line 96
 
- PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'userID' in 'field list' in C:\wamp64\www\GitHub\TheCosplayQueue\Api\db.php on line <i>38</i></th></tr>
+Notice: Undefined variable: user_ID in C:\wamp64\www\GitHub\TheCosplayQueue\Api\db.php on line 98
+
+Fatal error: Uncaught PDOException: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in C:\wamp64\www\GitHub\TheCosplayQueue\Api\db.php on line 99
