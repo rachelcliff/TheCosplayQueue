@@ -1,6 +1,4 @@
-Connected successfully!!
-Notice: Undefined variable: emailr in C:\wamp64\www\GitHub\TheCosplayQueue\Api\db.php on line 96
-
-Notice: Undefined variable: user_ID in C:\wamp64\www\GitHub\TheCosplayQueue\Api\db.php on line 98
-
-Fatal error: Uncaught PDOException: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in C:\wamp64\www\GitHub\TheCosplayQueue\Api\db.php on line 99
+Connected successfully!!<br />
+Notice: Undefined variable: user_ID in C:\wamp64\www\GitHub\TheCosplayQueue\Api\db.php on line <i>99</i></th></tr>
+1'><table class='xdebug-error xe-uncaught-exception' dir='ltr' border='1' cellspacing='0' cellpadding='1'>
+ Fatal error: Uncaught PDOException: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in C:\wamp64\www\GitHub\TheCosplayQueue\Api\db.php on line <i>100</i></th></tr>

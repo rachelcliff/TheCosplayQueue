@@ -168,7 +168,7 @@
                         <form class="col s12 m12">
                         <div class="input-field col offset-s1 s10" id="name">
                         <i class="material-icons prefix">account_circle</i>
-                        <input class="icon_prefix" type="text" id="namel" placeholder="Username" required>
+                        <input class="icon_prefix" type="text" id="namel" placeholder="Username" name="group" value="" pattern="[a-zA-Z']{2,}" title="name must have 2 or more lowercase letters" oninput="animateElement(this)"required>
                         </div>
                         <div class="input-field col offset-s1 s10" id="password">
                         <i class="material-icons prefix">lock</i>

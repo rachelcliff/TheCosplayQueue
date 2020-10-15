@@ -42,10 +42,10 @@ class cosplayQueueSession {
 //     return false;
 // }
 
-function login() {
-    global $db;
-    return true;
-}
+// function login() {
+//     global $db;
+//     return true;
+// }
 
 // // logout function
 // function logout() {

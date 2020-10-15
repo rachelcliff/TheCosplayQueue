@@ -45,11 +45,11 @@ class cosplayQueueModel {
     }
 
     // login function
-    function login($username, $password) {
+    function login($cosplay_name, $password) {
         try {
             $this->dbconn->beginTransaction();
-            $stmt = $this->dbconn->prepare("INSERT INTO logins(username, password) values (:username,:password)");
-            $stmt->bindValue(':username', $username);
+            $stmt = $this->dbconn->prepare("INSERT INTO logins(cosplay_name, password) values (:cosplay_name,:password)");
+            $stmt->bindValue(':cosplay_name', $cosplay_name);
             $stmt->bindValue(':password', $password);
             $stmt->execute();
             $this->dbconn->commit();

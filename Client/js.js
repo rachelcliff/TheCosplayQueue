@@ -511,15 +511,15 @@ function formchecklogin() {
 	}
 	
 	formdata = new FormData()
-	formdata.set("action", "signin")
-	formdata.set("username", namel.value)
-	formdata.set("password", passwordl.value)
-    fetch('../api/api.php?action=signin', {
+	formdata.set("action", "login")
+	formdata.set("namel", namel.value)
+	formdata.set("passwordl", passwordl.value)
+    fetch('../api/api.php?action=login', {
           method: "POST",
 		  body: formdata,
 		  credentials: 'include',
 		
-          })
+		  })
 }
 
 

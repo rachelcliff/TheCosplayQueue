@@ -71,11 +71,11 @@ else if($_SERVER["REQUEST_METHOD"] == "POST") {
             break;
 
         case "login":
-        $username = $_POST['namel'];
+        $cosplay_name = $_POST['namel'];
         $password = $_POST['passwordl'];
 
         if(isset($username)){
-            $db->login($username, $password);
+            $db->login($cosplay_name, $password);
             http_response_code(202);
         }else{
             http_response_code(501);
