@@ -25,8 +25,18 @@ $_SESSION["login"] = "true";
     
     if($_SERVER["REQUEST_METHOD"] == "GET"){
         switch ($_GET["action"]){
-            case "login":
-                http_response_code(202);
+            case "displayDetails":
+                // if($_SESSION['session_object']->is_logged_in()) {
+                    $result = $dbconn->showQueue();
+                    if($result == false) {
+                        http_response_code(204);
+                    } elseif(is_array($result)) {
+                        echo json_encode($result);
+                    }
+                // } else {
+                //     http_response_code(401);
+                // }
+                break;
 				
                 break;
             case "viewfix":				
@@ -74,13 +84,14 @@ else if($_SERVER["REQUEST_METHOD"] == "POST") {
         $cosplay_name = $_POST['namel'];
         $password = $_POST['passwordl'];
 
-        if(isset($username)){
+        if(isset($cosplay_name)){
             $db->login($cosplay_name, $password);
             http_response_code(202);
         }else{
             http_response_code(501);
         }
         break;
+
         case "signup":
             $name = $_POST['names'];
             $cosplay_name = $_POST['usernames'];

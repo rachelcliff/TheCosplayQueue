@@ -58,22 +58,11 @@
                </li>
             </ul>
          </header>
-         <div id="preloader-overlay" class="valign-wrapper">
-            <div class="preloader-wrapper big active">
-               <div class="spinner-layer spinner-blue">
-                  <div class="circle-clipper left">
-                     <div class="circle"></div>
-                  </div>
-                  <div class="gap-patch">
-                     <div class="circle"></div>
-                  </div>
-                  <div class="circle-clipper right">
-                     <div class="circle"></div>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <div>
+         <div
+            div class="message" 
+         id="alertMsg"
+         onclick="this.style.display = 'none'">
+    </div>
             <ul class="collapsible">
                <li>
                   <div class="collapsible-header">
@@ -168,7 +157,7 @@
                         <form class="col s12 m12">
                         <div class="input-field col offset-s1 s10" id="name">
                         <i class="material-icons prefix">account_circle</i>
-                        <input class="icon_prefix" type="text" id="namel" placeholder="Username" name="group" value="" pattern="[a-zA-Z']{2,}" title="name must have 2 or more lowercase letters" oninput="animateElement(this)"required>
+                        <input class="icon_prefix" type="text" id="namel" placeholder="Username" name="username" value="" pattern="[a-zA-Z']{2,}" title="name must have 2 or more lowercase letters" oninput="animateElement(this)"required>
                         </div>
                         <div class="input-field col offset-s1 s10" id="password">
                         <i class="material-icons prefix">lock</i>
@@ -196,42 +185,42 @@
                         <div class="row">
                            <div class="input-field col offset-s1 s10" id="name">
                               <i class="material-icons prefix">account_circle</i>
-                              <input class="icon_prefix" type="text" id="names" placeholder="Name" required>
+                              <input class="icon_prefix" type="text" id="names" placeholder="Name" name="name" value="" pattern="[a-zA-Z']{2,}" title="name must have 2 or more uppercase letters" required>
                               <!-- <label for="icon_prefix">Name</label> -->
                            </div>
                            <div class="input-field col offset-s1 s10" id="username">
                               <i class="material-icons prefix">account_circle</i>
-                              <input class="icon_prefix" type="text" id="usernames" placeholder="Cosplay Name/Username" required>
+                              <input class="icon_prefix" type="text" id="usernames" placeholder="Cosplay Name/Username" name="username" value="" pattern="[a-zA-Z']{2,}" title="name must have 2 or more loawercase letters" required>
                               <!-- <label for="icon_prefix">Cosplay Name/Username</label> -->
                            </div>
                            <div class="input-field col offset-s1 s10" id="facebook">
                               <i class="material-icons prefix">facebook</i>
-                              <input class="icon_prefix" type="text" id="facebooks" placeholder="Facebook Page (if applicable)">
+                              <input class="icon_prefix" type="text" id="facebooks" placeholder="Facebook Page (if applicable)" ame="facebook" value="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="name must have 2 or more lowercase letters">
                               <!-- <label for="icon_prefix">Facebook Page (if applicable)</label>  -->
                            </div>
                            <div class="input-field col offset-s1 s10" id="instagram">
                               <i class="material-icons prefix">photo_camera</i>
-                              <input class="icon_prefix" type="text" id="instagrams" placeholder="Instagram Account (if applicable)">
+                              <input class="icon_prefix" type="text" id="instagrams" placeholder="Instagram Account (if applicable)" name="instagram" value="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="name must have 2 or more lowercase letters">
                               <!-- <label for="icon_prefix">Instagram Account (if applicable)</label> -->
                            </div>
                            <div class="input-field col offset-s1 s10" id="phone">
                               <i class="material-icons prefix">phone</i>
-                              <input class="icon_prefix" type="text" id="phones" placeholder="Mobile Phone Number" required>
+                              <input class="icon_prefix" type="text" id="phones" placeholder="Mobile Phone Number" name="phone" value="" pattern="[0-9]" title="number must have 12 or more numbers" required>
                               <!-- <label for="icon_prefix">Mobile Number</label> -->
                            </div>
                            <div class="input-field col offset-s1 s10" id="email">
                               <i class="material-icons prefix">email</i>
-                              <input class="icon_prefix" type="text" id="emails" placeholder="Email Address" required>
+                              <input class="icon_prefix" type="text" id="emails" placeholder="Email Address" name="email" value="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="name must have 2 or more lowercase letters" required>
                               <!-- <label for="icon_prefix">Email Address</label> -->
                            </div>
                            <div class="input-field col offset-s1 s10" id="password">
                               <i class="material-icons prefix">lock</i>
-                              <input class="icon_prefix" type="text" id="passwords" placeholder="Password" required>
+                              <input class="icon_prefix" type="text" id="passwords" placeholder="Password" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
                               <!-- <label for="icon_prefix">Password</label> -->
                            </div>
                            <div class="input-field col offset-s1 s10" id="password-re">
                               <i class="material-icons prefix">lock</i>
-                              <input class="icon_prefix" type="text" id="password2s" placeholder="Re-enter Password" required>
+                              <input class="icon_prefix" type="text" id="password2s" placeholder="Re-enter Password" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
                               <!-- <label for="icon_prefix">Re-enter Password</label> -->
                            </div>
                      </form>
@@ -258,9 +247,10 @@
          <section id="section1">
             <div class="modal-content">
                <h4>You have successfully joined the queue</h4>
-               <p>You are now number</p>
-               <table id="queue"></table>
-               <button onClick="refreshJson()">Refresh</button>
+               <p>You are now number:</p>
+               
+               <button onClick="showDetail()">Show Details</button>
+               <button onClick="refreshJson()">Refresh Queue</button>
             </div>
             <div class="modal-footer">
                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
@@ -278,42 +268,42 @@
                <form class="col s12 m12">
                   <div class="input-field col offset-s1 s10" id="name">
                      <i class="material-icons prefix">account_circle</i>
-                     <input class="icon_prefix" type="text" id="namer" onblur="save()" placeholder="Name">
+                     <input class="icon_prefix" type="text" id="namer" placeholder="Full Name" name="name" value="" pattern="[a-zA-Z']{2,}" title="name must have 2 or more uppercase letters" onblur="save()" placeholder="Name">
                      <!-- <label for="icon_prefix">Name</label> -->
                   </div>
                   <div class="input-field col offset-s1 s10" id="username">
                      <i class="material-icons prefix">account_circle</i>
-                     <input class="icon_prefix" type="text" id="usernamer" placeholder="Username" >
+                     <input class="icon_prefix" type="text" id="usernamer" placeholder="Username" name="username" value="" pattern="[a-zA-Z']{2,}" title="name must have 2 or more loawercase letters">
                      <!-- <label for="icon_prefix">Cosplay Name/Username</label> -->
                   </div>
                   <div class="input-field col offset-s1 s10" id="facebook">
                      <i class="material-icons prefix">facebook</i>
-                     <input class="icon_prefix" type="text" id="facebookr" onblur="savefacebookr()" placeholder="Facebook Page (if applicable)">
+                     <input class="icon_prefix" type="text" id="facebookr" ame="facebook" value="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="name must have 2 or more lowercase letters" onblur="savefacebookr()" placeholder="Facebook Page (if applicable)">
                      <!-- <label for="icon_prefix">Facebook Page (if applicable)</label>  -->
                   </div>
                   <div class="input-field col offset-s1 s10" id="instagram">
                      <i class="material-icons prefix">photo_camera</i>
-                     <input class="icon_prefix" type="text" id="instagramr" placeholder="Instagram Account (if applicable)" onblur= "saveinstagramr()">
+                     <input class="icon_prefix" type="text" id="instagramr" placeholder="Instagram Account (if applicable)" name="instagram" value="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="name must have 2 or more lowercase letters" onblur= "saveinstagramr()">
                      <!-- <label for="icon_prefix">Instagram Account (if applicable)</label> -->
                   </div>
                   <div class="input-field col offset-s1 s10" id="phone">
                      <i class="material-icons prefix">phone</i>
-                     <input class="icon_prefix" type="tel" id="phoner" placeholder="Mobile Number" onblur="savephoner()">
+                     <input class="icon_prefix" type="tel" id="phoner" placeholder="Mobile Number" name="phone" value="" pattern="[0-9]" title="number must have 12 or more numbers" onblur="savephoner()">
                      <!-- <label for="icon_prefix">Mobile Number</label> -->
                   </div>
                   <div class="input-field col offset-s1 s10" id="email">
                      <i class="material-icons prefix">email</i>
-                     <input class="icon_prefix" type="text" id="emailr" onblur="saveemailr()" placeholder="Email Address">
+                     <input class="icon_prefix" type="text" id="emailr" name="email" value="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="name must have 2 or more lowercase letters" onblur="saveemailr()" placeholder="Email Address">
                      <!-- <label for="icon_prefix">Email Address</label> -->
                   </div>
                   <div class="input-field col offset-s1 s10" id="password">
                      <i class="material-icons prefix">lock</i>
-                     <input class="icon_prefix" type="text" id="passwordr" placeholder="Password" onblur="savepasswordr()">
+                     <input class="icon_prefix" type="text" id="passwordr" placeholder="Password" value="" pattern="[a-zA-Z']{2,}" onblur="savepasswordr()">
                      <!-- <label for="icon_prefix">Password</label> -->
                   </div>
                   <div class="input-field col offset-s1 s10" id="password-re">
                      <i class="material-icons prefix">lock</i>
-                     <input class="icon_prefix" type="text" id="password2r" placeholder="Re-enter Password" onblur="savepassword2r()">
+                     <input class="icon_prefix" type="text" id="password2r" placeholder="Re-enter Password" value="" pattern="[a-zA-Z']{2,}" onblur="savepassword2r()">
                      <!-- <label for="icon_prefix">Re-enter Password</label> -->
                   </div>
                   <div action="#" id="checkbox">

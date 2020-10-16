@@ -65,34 +65,33 @@ CREATE TABLE IF NOT EXISTS `logins` (
   `username` varchar(150) NOT NULL,
   `password` varchar(200) NOT NULL,
   PRIMARY KEY (`login_id`),
-  KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `logins`
 --
 
-INSERT INTO `logins` (`login_id`, `user_id`, `username`, `password`) VALUES
-(1, 1, 'ggritten0', '94RQVib'),
-(2, 2, 'imckerron1', '1xo9wWtLLy'),
-(3, 3, 'ddumphries2', 'SHu2r9YxwPCP'),
-(4, 4, 'rhaverson3', 'Q49s01'),
-(5, 5, 'cdarrigone4', 'EGas50'),
-(6, 6, 'bbannister5', 'cI0fJDzXdU'),
-(7, 7, 'ctreweela6', 'EVRoT7'),
-(8, 8, 'asharply7', 'LZ3icdnfE'),
-(9, 9, 'pkobke8', 'mroXCC5jIS4'),
-(10, 10, 'akilmaster9', 'cjZ6TQsWv'),
-(11, 11, 'docarneya', '2OcjLHF'),
-(12, 12, 'mgeibelb', 'rD6surtlr'),
-(13, 13, 'avinckc', 'GzQRFjEqxQT'),
-(14, 14, 'sshimmingsd', '3JcI7dnz6Taj'),
-(15, 15, 'asouthernse', 'SjgQcm'),
-(16, 16, 'arodearf', 'reoEMqnDZ'),
-(17, 17, 'bhazlegroveg', '6JQu2xokx'),
-(18, 18, 'bventurolih', 'eyZIt8uZkE'),
-(19, 19, 'ohelmi', 'wCCwDd1eQfxo'),
-(20, 20, 'thaythornej', 'rP3dtn3Sq');
+INSERT INTO `logins` (`login_id`, `username`, `password`) VALUES
+(1, 'ggritten0', '94RQVib'),
+(2, 'imckerron1', '1xo9wWtLLy'),
+(3, 'ddumphries2', 'SHu2r9YxwPCP'),
+(4, 'rhaverson3', 'Q49s01'),
+(5, 'cdarrigone4', 'EGas50'),
+(6, 'bbannister5', 'cI0fJDzXdU'),
+(7, 'ctreweela6', 'EVRoT7'),
+(8, 'asharply7', 'LZ3icdnfE'),
+(9, 'pkobke8', 'mroXCC5jIS4'),
+(10, 'akilmaster9', 'cjZ6TQsWv'),
+(11, 'docarneya', '2OcjLHF'),
+(12, 'mgeibelb', 'rD6surtlr'),
+(13, 'avinckc', 'GzQRFjEqxQT'),
+(14, 'sshimmingsd', '3JcI7dnz6Taj'),
+(15, 'asouthernse', 'SjgQcm'),
+(16, 'arodearf', 'reoEMqnDZ'),
+(17, 'bhazlegroveg', '6JQu2xokx'),
+(18, 'bventurolih', 'eyZIt8uZkE'),
+(19, 'ohelmi', 'wCCwDd1eQfxo'),
+(20, 'thaythornej', 'rP3dtn3Sq');
 
 -- --------------------------------------------------------
 
@@ -158,6 +157,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `phone` varchar(20) NOT NULL,
   `email` varchar(200) NOT NULL,
   PRIMARY KEY (`user_id`)
+    KEY `login_id` (`login_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 --

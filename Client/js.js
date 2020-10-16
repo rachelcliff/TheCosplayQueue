@@ -6,70 +6,6 @@ $(document).ready(function () {
 	$('.modal').modal();
 });
 
-// // JSON Convert
-// fetch('../Api/db.php')
-//   .then(response => response.json())
-//   .then(json => console.log(json))
-
-// function joinQueue() {
-// 	formdata = new FormData();
-// 	formdata.set("action", "join")
-// 	formdata.set('namei', namei.value);
-// 	fetch('../Api/api.php?action=join', {
-// 			method: 'POST',
-// 			body: formdata,
-// 			credentials: 'include'
-// 		})
-// 		.then(function (response) {
-// 			if (response.status === 400) {
-// 				console.log('not inserted');
-// 				return;
-// 			}
-// 			if (response.status === 401) {
-// 				console.log('no permissions');
-// 				return;
-// 			}
-// 			if (response.status === 501) {
-// 				console.log('not implemented');
-// 				return;
-// 			}
-// 			if (response.status === 202) {
-// 				console.log('success');
-// 				return;
-// 			}
-// 		});
-// 	return false;
-// }
-
-// function loginQueue() {
-// 	formdata = new FormData();
-// 	formdata.set("action", "join")
-// 	fetch('../Api/api.php?action=sign-in', {
-// 			method: 'POST',
-// 			body: formdata,
-// 			credentials: 'include'
-// 		// })
-// 		// .then(function (response) {
-// 		// 	if (response.status === 400) {
-// 		// 		console.log('not inserted');
-// 		// 		return;
-// 		// 	}
-// 		// 	if (response.status === 401) {
-// 		// 		console.log('no permissions');
-// 		// 		return;
-// 		// 	}
-// 		// 	if (response.status === 501) {
-// 		// 		console.log('not implemented');
-// 		// 		return;
-// 		// 	}
-// 		// 	if (response.status === 202) {
-// 		// 		console.log('success');
-// 		// 		return;
-// 		// 	}
-// 		});
-// 	return false;
-// }
-
 // local storage
 function storage() {
 	// var checkbox = document.getElementById("checkbox");
@@ -222,6 +158,7 @@ function register() {
 
 //load json partial
 function loadJSONpartial() {
+	// populateAlert('Loading...', 'notice');
 	var out = '';
 	var disabled = '';
 	fetch(url, {
@@ -254,6 +191,37 @@ function loadJSONpartial() {
 						'</td><td>' + row.group +
 						'</td><td><img src="' + row.photo + '"></td><td><button ' + disabled + '>Delete</button>' +
 						'</td><td><button ' + disabled + '>Preview</button>' +
+						'</td></tr>';
+				});
+				document.getElementById('queue').innerHTML = outStr;
+			})
+		});
+
+}
+//load json 
+function showDetails() {
+	// populateAlert('Loading...', 'notice');
+	var out = '';
+	var disabled = '';
+	fetch( 
+		{
+			method: 'GET',
+			credentials: 'include'
+		})
+		.then(function (response) {
+			response.json().then(function (data) {
+				console.log(data);
+				data.forEach(row => {
+					if (row.user_ID == 1) {
+						disabled = '';
+					} else {
+						disabled = 'disabled';
+					}
+					out += '<tr><td>' + row.character +
+						'</td><td>' + row.series +
+						'</td><td>' + row.genre +
+						'</td><td>' + row.group +
+						'</td><td><img src="' + row.photo + '"></td><td><button ' + disabled + '>Delete</button>' +
 						'</td></tr>';
 				});
 				document.getElementById('queue').innerHTML = outStr;
@@ -318,6 +286,7 @@ function passCheck(){
 }
 
 function formcheckjoin() {
+	// populateAlert('Loading...', 'notice');
     var errorStr ='';
     if (namei.checkValidity() === false){
         errorStr +='Please insert a valid name ';
@@ -388,6 +357,7 @@ function formcheckjoin() {
 
 }
 function formcheckregister() {
+	// populateAlert('Loading...', 'notice');
     var errorStr ='';
     if(passCheck() === false) {
         errorStr += 'Passwords do not match';
@@ -441,6 +411,7 @@ function formcheckregister() {
 }
 
 function formcheckupdate() {
+	// populateAlert('Loading...', 'notice');
     var errorStr ='';
     if(passCheck() === false) {
         errorStr += 'Passwords do not match';
@@ -494,12 +465,8 @@ function formcheckupdate() {
 }
 
 function formchecklogin() {
+	// populateAlert('Loading...', 'notice');
     var errorStr ='';
-    if(passCheck() === false) {
-        errorStr += 'Passwords do not match';
-	}
-	
-    // console.log('passcheck');
     if (namel.checkValidity() === false){
         errorStr +='Please insert a valid name ';
     console.log('username checked');
@@ -520,58 +487,4 @@ function formchecklogin() {
 		  credentials: 'include',
 		
 		  })
-}
-
-
-
-
-// document.getElementById('submit-btn').addEventListener('submit', processForm(evt))
-
-// document.getElementById('login-btn').addEventListener('submit', processForm(evt))
-
-// document.getElementById('signup-btn').addEventListener('submit', processForm(evt))
-
-// function processForm(evt) {
-//   evt.preventDefault();
-//   var validateArray = Array();
-//   alertbox.innerHTML= '';
-//   for(var loop=0;loop <evt.srcElement.length;loop++) {
-//     evt.srcElement[loop].setCustomValidity('');
-//     if(evt.srcElement[loop].hasArrributr('required')) {
-//       if(evt.srcElement[loop].value.length>0) {
-//         if(evt.srcElement[loop].checkValidity()) {
-//           evt.srcElement[loop].setCustomValidity('');
-//           validateArray.push({type: evt.srcElement[loop].type,
-//                               name: evt.srcElement[loop].name,
-//                               value: evt.srcElement[loop].value});
-//         } else {
-//           evt.srcElement[loop].setCustomValidity(evt.srcElement[loop].title),
-//           alertbox.innerHTML = evt.srcElement[loop].title;
-//           validateArray = Array(); //destroy array
-//           break;
-//         }
-//       } else {
-//         validateArray = Array();
-//         break;
-//       }
-//     } else { //field not required validation}
-//     validatedArray.push({type: evt.srcElement[loop].type,
-//                           name:evt.srcElement[loop].name,
-//                           value:evt.srcElement[loop].value})
-
-//     }
-//     }
-//     if (validatedArray.length === 0) {
-//       console.log('err'); 
-//     } else {
-//       console.log(validatedArray);
-//     }
-//     }
-
-//     function populateAlert(msg) {
-//       alertbox.innerHTML = msg;
-//     }
-
-function animateElement(elem) {
-
 }

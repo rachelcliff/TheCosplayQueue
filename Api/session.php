@@ -10,7 +10,7 @@ class cosplayQueueSession {
 //         }
 //     }
 //     return false;
-// }
+// // }
 // function is_logged_in() {
 //     return true;
 // }
@@ -70,7 +70,7 @@ class cosplayQueueSession {
 //     }
 // }
 
-// // rate limiting
+// rate limiting
 // public function rate_limiting() {
 //     if($this->last_visit == time()) {
 //         $this->last_visit = time();
@@ -78,5 +78,6 @@ class cosplayQueueSession {
 //     }
 //     $this->last_visit = time();
 //     return false;
+// }
 }
 ?>
