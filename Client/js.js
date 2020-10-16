@@ -158,7 +158,7 @@ function register() {
 
 //load json partial
 function loadJSONpartial() {
-	// populateAlert('Loading...', 'notice');
+	populateAlert('Loading...', 'notice');
 	var out = '';
 	var disabled = '';
 	fetch(url, {
@@ -200,7 +200,7 @@ function loadJSONpartial() {
 }
 //load json 
 function showDetails() {
-	// populateAlert('Loading...', 'notice');
+	populateAlert('Loading...', 'notice');
 	var out = '';
 	var disabled = '';
 	fetch( 
@@ -229,6 +229,20 @@ function showDetails() {
 		});
 
 }
+
+function dequeue() {
+	populateAlert('Loading...', 'notice');
+	var out = '';
+	var disabled = '';
+	
+	fetch('../Api/api.php?action=dequeue', {
+		method: 'update',
+		body: formdata,
+		// credentials: 'include'
+});
+}
+
+
 // dark mode
 window.addEventListener("load", function () {
 	console.log(localStorage.getItem("darktheme"))
@@ -286,7 +300,7 @@ function passCheck(){
 }
 
 function formcheckjoin() {
-	// populateAlert('Loading...', 'notice');
+	populateAlert('Loading...', 'notice');
     var errorStr ='';
     if (namei.checkValidity() === false){
         errorStr +='Please insert a valid name ';
@@ -347,6 +361,7 @@ function formcheckjoin() {
 	formdata.set("genrei", genrei.value)
 	formdata.set("groupi", groupi.value)
 	formdata.set("photo", photo.value)
+	formdata.set("joini", joini.value)
 	formdata.set("photo_taken", photo_taken.value)
 
 	fetch('../Api/api.php?action=join', {
@@ -357,7 +372,7 @@ function formcheckjoin() {
 
 }
 function formcheckregister() {
-	// populateAlert('Loading...', 'notice');
+	populateAlert('Loading...', 'notice');
     var errorStr ='';
     if(passCheck() === false) {
         errorStr += 'Passwords do not match';
@@ -402,6 +417,7 @@ function formcheckregister() {
 	formdata.set("phones", phones.value)
 	formdata.set("emails", emails.value)
 	formdata.set("passwords", passwords.value)
+	formdata.set("registers", registers.value)
 
 	fetch('../Api/api.php?action=signup', {
 		method: 'POST',
@@ -411,7 +427,7 @@ function formcheckregister() {
 }
 
 function formcheckupdate() {
-	// populateAlert('Loading...', 'notice');
+	populateAlert('Loading...', 'notice');
     var errorStr ='';
     if(passCheck() === false) {
         errorStr += 'Passwords do not match';
@@ -456,6 +472,7 @@ function formcheckupdate() {
 	formdata.set("phoner", phoner.value)
 	formdata.set("emailr", emailr.value)
 	formdata.set("passwordr", passwordr.value)
+	formdata.set("updater", updater.value)
 
 	fetch('../Api/api.php?action=update', {
 		method: 'POST',
@@ -464,8 +481,30 @@ function formcheckupdate() {
 })
 }
 
+function populateAlert(msg, priority) {
+
+	var timeoutVar = setTimeout(function() {
+        alertMsg.style.display = 'none'; 1000
+    })
+    clearTimeout(timeoutVar);
+    alertMsg.setAttribute('class', 'message ' + priority);
+    alertMsg.innerHTML = msg;
+    alertMsg.style.display = 'block';
+}
+
+function killAlert() {
+    clearTimeout(timeoutVariable);
+    alertMsg.style.display = 'none';
+}
+
+// // JSON Convert
+// fetch('../Api/db.php')
+//   .then(response => response.json())
+//   .then(json => console.log(json))
+
+
 function formchecklogin() {
-	// populateAlert('Loading...', 'notice');
+	populateAlert('Loading...', 'notice');
     var errorStr ='';
     if (namel.checkValidity() === false){
         errorStr +='Please insert a valid name ';
@@ -481,6 +520,7 @@ function formchecklogin() {
 	formdata.set("action", "login")
 	formdata.set("namel", namel.value)
 	formdata.set("passwordl", passwordl.value)
+	formdata.set('loginl', loginl.value)
     fetch('../api/api.php?action=login', {
           method: "POST",
 		  body: formdata,

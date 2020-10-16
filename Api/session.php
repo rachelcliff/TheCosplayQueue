@@ -15,38 +15,6 @@ class cosplayQueueSession {
 //     return true;
 // }
 
-// // login function
-// public function login($username, $password) {
-//     global $cosplay_queue;
-
-//     $result = $cosplay_queue->login_process($username, $password);
-//     if($result ==  0) {
-//         $this->privilege = 0;
-//         $this->studentid = $username;
-//         return 0;
-//     }
-//     if($result == 1) {
-//         $this->privilege = 1;
-//         $this->studentid = $username;
-//         $details = $sqsdb->login_details($username);
-//         if(sizeof($details) > 0) {
-//             $this->nick = $details['nick'];
-//             $this->icon = $details['icon'];
-//             $this->color = $details['color'];
-//             $this->hash = $details['hash'];
-//             $this->theme = $details['theme'];
-//             return $details;
-//         }
-//         return 1;
-//     }
-//     return false;
-// }
-
-// function login() {
-//     global $db;
-//     return true;
-// }
-
 // // logout function
 // function logout() {
 //     $this->privilege = -1;
@@ -62,10 +30,10 @@ class cosplayQueueSession {
 
 // // Changelog
 // public function log_event() {
-//     global $sqsdb;
+//     global $db;
 //     $request_url = $_SERVER['host'] + $_SERVER['get'];
-//     if($sqsdb->logActivity($this->studentid, $this->privilege,
-//                         session_id(), $request_url, true)) {
+//     if($db->logActivity($this->user_ID, session_id(), $request_url, true)) {
+//                             echo "success";
 //         return true;
 //     }
 // }

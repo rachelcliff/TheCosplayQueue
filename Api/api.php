@@ -69,11 +69,14 @@ else if($_SERVER["REQUEST_METHOD"] == "POST") {
             $r_group = $_POST['groupi'];
             $reference_photo = $_POST['photo'];
             $photo_taken = $_POST['photo_taken'];
+            $date=date('Y-m-d H:i:s');
+            $browserAgent = $_SERVER['HTTP_USER_AGENT'];
+            $actiontype = $_POST['joini'];
 
             // http_response_code(404);
 
             if(isset($cosplay_name)){
-                $db->join($name, $cosplay_name, $facebook, $instagram, $phone, $email, $character_name, $series, $genre, $r_group, $reference_photo, $photo_taken);
+                $db->join($name, $cosplay_name, $facebook, $instagram, $phone, $email, $character_name, $series, $genre, $r_group, $reference_photo, $photo_taken, $date, $browserAgent, $actiontype);
                 http_response_code(202);
             }else{
                 http_response_code(501);
@@ -100,9 +103,12 @@ else if($_SERVER["REQUEST_METHOD"] == "POST") {
             $phone = $_POST['phones'];
             $email = $_POST['emails'];
             $password = $_POST['passwords'];
+            $date=date('Y-m-d H:i:s');
+            $browserAgent = $_SERVER['HTTP_USER_AGENT'];
+            $actiontype = $_POST['registers'];
 
             if(isset($cosplay_name)){
-                $db->signup($name, $cosplay_name, $facebook, $instagram, $phone, $email, $password);
+                $db->signup($name, $cosplay_name, $facebook, $instagram, $phone, $email, $password, $date, $browserAgent, $actiontype);
                 http_response_code(202);
             }else{
                 http_response_code(501);
@@ -116,10 +122,13 @@ else if($_SERVER["REQUEST_METHOD"] == "POST") {
             $phone = $_POST['phoner'];
             $email = $_POST['emailr'];
             $password = $_POST['passwordr'];
+            $date=date('Y-m-d H:i:s');
+            $browserAgent = $_SERVER['HTTP_USER_AGENT'];
+            $actiontype=$_POST['updater'];
 
             if($_SESSION["login"] == "true"){
             if(isset($cosplay_name)){
-                $db->update($userID, $name, $cosplay_name, $facebook, $instagram, $phone, $email, $password);
+                $db->update($userID, $name, $cosplay_name, $facebook, $instagram, $phone, $email, $password, $date, $browserAgent, $actiontype);
                 http_response_code(202);
             }else{
                 http_response_code(501);
@@ -128,7 +137,7 @@ else if($_SERVER["REQUEST_METHOD"] == "POST") {
 	}
 } }
 else if($_SERVER["REQUEST_METHOD"] == "UPDATE") {
-    switch ($_DELETE["action"]) {
+    switch ($_UPDATE["action"]) {
         case "dequeue":
         http_response_code(201);
     break;
