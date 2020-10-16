@@ -34,6 +34,7 @@ $(document).ready(function () {
 	$('.modal').modal();
 });
 
+
 // local storage
 function storage() {
 	// var checkbox = document.getElementById("checkbox");
@@ -227,11 +228,11 @@ function loadJSONpartial() {
 
 }
 //load json 
-function showDetails() {
+function showDetail() {
 	populateAlert('Loading...', 'notice');
 	var out = '';
 	var disabled = '';
-	fetch( 
+	fetch( '../Api/api.php?action=showDetail',
 		{
 			method: 'GET',
 			credentials: 'include'
@@ -395,7 +396,7 @@ function formcheckjoin() {
 	fetch('../Api/api.php?action=join', {
 		method: 'POST',
 		body: formdata,
-		// credentials: 'include'
+		credentials: 'same-origin'
 })
 
 }
@@ -450,7 +451,7 @@ function formcheckregister() {
 	fetch('../Api/api.php?action=signup', {
 		method: 'POST',
 		body: formdata,
-		credentials: 'include'
+		credentials: 'same-origin'
 })
 }
 

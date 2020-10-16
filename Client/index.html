@@ -254,7 +254,7 @@
                <p>You are now number:</p>
                
                <button onClick="showDetail()">Show Details</button>
-               <button onClick="refreshJson()">Refresh Queue</button>
+               <button onClick="loadJSONPartial()">Refresh Queue</button>
                <button onClick="dequeue()">Leave Queue</button>
             </div>
             <div class="modal-footer">
@@ -311,6 +311,7 @@
                      <input class="icon_prefix" type="text" id="password2r" placeholder="Re-enter Password" value="" pattern="[a-zA-Z']{2,}" onblur="savepassword2r()">
                      <!-- <label for="icon_prefix">Re-enter Password</label> -->
                      <input type="hidden" id= "updater" name="actiontype" value="update"/>
+                     <input type="hidden" value="<?php echo $userId ?>" name="id" />
                   </div>
                   <div action="#" id="checkbox">
                      <p>

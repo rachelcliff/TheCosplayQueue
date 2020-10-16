@@ -1,5 +1,41 @@
 <?php
 class cosplayQueueSession {
+// rate limiting
+public function setStartTime($startTime)
+{
+    $this->_startTime=$startTime;
+}
+public function getStartTime()
+{
+    return $this->_startTime;
+}
+public function setRequestCounters($requestCounter) 
+{
+    $this->_requestCounter = $requestCounter;
+}
+public function getRequestCounter() 
+{
+    return $this->_requestCounters;
+}
+
+public function Rate24HourCheck() {
+    if ($this->_startTime == null) {
+        $this->_startTime = time();
+    }
+
+    $this->requestCounter++;
+    $hours = (time() - $this->_startTime /3600);
+
+    $this->_startTime=time();
+    if ($hours <24 && $this ->_requestCounter >1000){
+        return false;
+    } else if ($hours >=24){
+        $this->_requestCounter=0;
+    }
+    return $this->_requestCounter;
+}
+
+
 // // Is logged in function
 // public function is_logged_in() {
 //     if($this->studentid > 400000000) {
@@ -28,24 +64,5 @@ class cosplayQueueSession {
 // }
 // }
 
-// // Changelog
-// public function log_event() {
-//     global $db;
-//     $request_url = $_SERVER['host'] + $_SERVER['get'];
-//     if($db->logActivity($this->user_ID, session_id(), $request_url, true)) {
-//                             echo "success";
-//         return true;
-//     }
-// }
-
-// rate limiting
-// public function rate_limiting() {
-//     if($this->last_visit == time()) {
-//         $this->last_visit = time();
-//         return true;
-//     }
-//     $this->last_visit = time();
-//     return false;
-// }
 }
 ?>

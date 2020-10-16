@@ -44,7 +44,7 @@ class cosplayQueueModel {
        $stmt->bindvalue(':actiontype', $actiontype);
         $stmt->execute();
             $this->dbconn->commit();
-        }
+}
         catch (PDOException $ex){
             $this->dbconn->rollBack();
             throw $ex;
@@ -123,45 +123,45 @@ class cosplayQueueModel {
             }
         }
         
-        // public function showDetails() {
-        //     $result = Array(
-        //                   Array('character_name'=>$character_name,
-        //                         'series'=>$_series,
-        //                         'genre'=>$_genre,
-        //                         'r_group'=>$r_group),
-        //               );
-        //     return $result;
-        // }
-
-        //update user function
-        function update($name, $cosplay_name, $facebook, $instagram, $phone, $email, $password, $user_ID, $date, $browserAgent) {
-            try {
-                $this->dbconn->beginTransaction();
-                $stmt = $this->dbconn->prepare("UPDATE users SET name=:name, cosplay_name=:cosplay_name, facebook=:facebook, instagram=:instagram, phone=:phone, email=:email, password=:password, userID=:userID) values (:name, :username, :facebook, :instagram, :phone, :email :password) WHERE user_ID = :user_ID");
-
-                $stmt->bindValue(':name', $name);
-                $stmt->bindValue(':cosplay_name', $cosplay_name);
-                $stmt->bindValue(':facebook', $facebook);
-                $stmt->bindValue(':instagram', $instagram);
-                $stmt->bindValue(':phone', $phone);
-                $stmt->bindValue(':email', $email);
-                $stmt->bindValue(':password', $password);
-                $stmt->bindValue(':user_ID', $user_ID);
-                $stmt->execute();
-
-                $stmt = $this->dbconn->prepare("INSERT INTO changelog(date, browser, user_ID) Values (:date, :browser, :user_id)");
-                $stmt->bindValue(':date', $date);
-                $stmt->bindValue(':browser', $browserAgent);
-                $stmt->bindValue(':user_id', $lastuserID);
-                $this->dbconn->commit();
-
-                $this->dbconn->commit();
-            }
-            catch (PDOException $ex){
-                $this->dbconn->rollBack();
-                throw $ex;
-            }
+        public function showDetails() {
+            $result = Array(
+                          Array('character_name'=>$character_name,
+                                'series'=>$_series,
+                                'genre'=>$_genre,
+                                'r_group'=>$r_group),
+                      );
+            return $result;
         }
+
+//         //update user function
+//         function update($name, $cosplay_name, $facebook, $instagram, $phone, $email, $password, $user_ID, $date, $browserAgent) {
+//             try {
+//                 $this->dbconn->beginTransaction();
+//                 $stmt = $this->dbconn->prepare("UPDATE users SET name=:name, cosplay_name=:cosplay_name, facebook=:facebook, instagram=:instagram, phone=:phone, email=:email, password=:password, userID=:userID) values (:name, :username, :facebook, :instagram, :phone, :email :password) WHERE user_ID = $_SESSION['id']");
+
+//                 $stmt->bindValue(':name', $name);
+//                 $stmt->bindValue(':cosplay_name', $cosplay_name);
+//                 $stmt->bindValue(':facebook', $facebook);
+//                 $stmt->bindValue(':instagram', $instagram);
+//                 $stmt->bindValue(':phone', $phone);
+//                 $stmt->bindValue(':email', $email);
+//                 $stmt->bindValue(':password', $password);
+//                 $stmt->bindValue(':user_ID', $user_ID);
+//                 $stmt->execute();
+
+//                 $stmt = $this->dbconn->prepare("INSERT INTO changelog(date, browser, user_ID) Values (:date, :browser, :user_ID)");
+//                 $stmt->bindValue(':date', $date);
+//                 $stmt->bindValue(':browser', $browserAgent);
+//                 $stmt->bindValue(':user_id', $userID);
+//                 $this->dbconn->commit();
+
+//                 $this->dbconn->commit();
+//             }
+//             catch (PDOException $ex){
+//                 $this->dbconn->rollBack();
+//                 throw $ex;
+//             }
+//         }
 }
 
 // function dequeue($photo_taken) {

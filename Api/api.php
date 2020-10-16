@@ -1,6 +1,4 @@
 <?php
-// session_start();
-// session_destroy();
 
 header('Access-Control-Allow-Origin: https://localhost');
 header('Access-Control-Allow-Credentials: true');
@@ -9,10 +7,16 @@ header('Content-Type: application/json'); // All echo statemes are json_encode
 require('db.php'); $db = new cosplayQueueModel;
 require('session.php'); $se = new cosplayQueueSession;
 
+session_start();
 
-// echo "testing";
-// die;
+if(!isset($_SESSION['sessionOBJ'])) 
+        $_SESSION['sessionOBJ'] = new cosplayQueueSession; 
 
+        if($_SESSION['sessionOBJ']->Rate24HourCheck() === false) {
+            http_response_code(429);//Too Many Requests
+            die();
+        }
+        
 
 // Base Case
 if(!isset($_GET['action'])) { //wrong usage
@@ -20,39 +24,26 @@ if(!isset($_GET['action'])) { //wrong usage
     die;
 }
 
+
 $_SESSION["login"] = "true";
 	$_SESSION["loginID"] = 1;
     
     if($_SERVER["REQUEST_METHOD"] == "GET"){
         switch ($_GET["action"]){
             case "displayDetails":
-                // if($_SESSION['session_object']->is_logged_in()) {
+                if($_SESSION['sessionOBJ']->is_logged_in()) {
                     $result = $dbconn->showQueue();
                     if($result == false) {
                         http_response_code(204);
                     } elseif(is_array($result)) {
                         echo json_encode($result);
                     }
-                // } else {
-                //     http_response_code(401);
-                // }
+                } else {
+                    http_response_code(401);
+                }
                 break;
-				
-                break;
-            case "viewfix":				
-				http_response_code(418);
-				
-                break;
-            case "viewlad":
-				http_response_code(200);
-				
-                break;
-            case "prefill":
-				http_response_code(200);
-				
-                break;
+            }
         }
-}
 else if($_SERVER["REQUEST_METHOD"] == "POST") {
 	switch ($_POST["action"]) {
         case "join":
@@ -72,8 +63,6 @@ else if($_SERVER["REQUEST_METHOD"] == "POST") {
             $date=date('Y-m-d H:i:s');
             $browserAgent = $_SERVER['HTTP_USER_AGENT'];
             $actiontype = $_POST['joini'];
-
-            // http_response_code(404);
 
             if(isset($cosplay_name)){
                 $db->join($name, $cosplay_name, $facebook, $instagram, $phone, $email, $character_name, $series, $genre, $r_group, $reference_photo, $photo_taken, $date, $browserAgent, $actiontype);
@@ -115,6 +104,7 @@ else if($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         break;
         case "update":
+            $_SESSION['id'] = $userID;
             $name = $_POST['namer'];
             $cosplay_name = $_POST['usernamer'];
             $facebook = $_POST['facebookr'];
@@ -135,7 +125,8 @@ else if($_SERVER["REQUEST_METHOD"] == "POST") {
             }
             break;
 	}
-} }
+}
+}
 else if($_SERVER["REQUEST_METHOD"] == "UPDATE") {
     switch ($_UPDATE["action"]) {
         case "dequeue":
@@ -145,3 +136,4 @@ else if($_SERVER["REQUEST_METHOD"] == "UPDATE") {
 } else {
     http_response_code(501);
 }
+?>
