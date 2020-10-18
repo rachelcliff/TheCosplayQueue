@@ -30,9 +30,9 @@ $_SESSION["login"] = "true";
     
     if($_SERVER["REQUEST_METHOD"] == "GET"){
         switch ($_GET["action"]){
-            case "displayDetails":
+            case "showDetails":
                 if($_SESSION['sessionOBJ']->is_logged_in()) {
-                    $result = $dbconn->showQueue();
+                    $result = $dbconn->showDetails();
                     if($result == false) {
                         http_response_code(204);
                     } elseif(is_array($result)) {

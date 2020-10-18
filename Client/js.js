@@ -228,36 +228,47 @@ function loadJSONpartial() {
 
 }
 //load json 
-function showDetail() {
+function showDetails() {
 	populateAlert('Loading...', 'notice');
 	var out = '';
 	var disabled = '';
-	fetch( '../Api/api.php?action=showDetail',
-		{
-			method: 'GET',
-			credentials: 'include'
-		})
-		.then(function (response) {
-			response.json().then(function (data) {
-				console.log(data);
-				data.forEach(row => {
-					if (row.user_ID == 1) {
-						disabled = '';
-					} else {
-						disabled = 'disabled';
-					}
-					out += '<tr><td>' + row.character +
-						'</td><td>' + row.series +
-						'</td><td>' + row.genre +
-						'</td><td>' + row.group +
-						'</td><td><img src="' + row.photo + '"></td><td><button ' + disabled + '>Delete</button>' +
-						'</td></tr>';
-				});
-				document.getElementById('queue').innerHTML = outStr;
-			})
-		});
-
+	fetch('url, ')
+			// {
+		// 	method: 'GET',
+		// 	credentials: 'include'
+		// }
+.then((resp) => resp.json())
+.then(function(data) {
+	let people =data.results
+	return people.map(function(person) {
+		console.log(person.name.first)
+		console.log(person.name.last)
+		console.log(person.phone)
+})
+})
 }
+
+		// .then(function (response) {
+			// response.json().then(function (data) {
+			// 	console.log(data);
+			// 	data.forEach(row => {
+			// 		// if (row.user_ID == 1) {
+			// 		// 	disabled = '';
+			// 		// } else {
+			// 		// 	disabled = 'disabled';
+			// 		// }
+			// 		out += '<tr><td>' + row.character +
+			// 			'</td><td>' + row.series +
+			// 			'</td><td>' + row.genre +
+			// 			'</td><td>' + row.group +
+			// 			'</td><td><img src="' + row.photo + '"></td><td><button ' + disabled + '>Delete</button>' +
+			// 			'</td></tr>';
+			// 	});
+			// 	document.getElementById('queue').innerHTML = outStr;
+// 			})
+// 		});
+
+// }
 
 function dequeue() {
 	populateAlert('Loading...', 'notice');
