@@ -37,12 +37,12 @@ class cosplayQueueModel {
             $stmt->bindValue(':user_id', $lastuserID );
             $stmt->execute();
             
-            $stmt = $this->dbconn->prepare("INSERT INTO changelog(date, browser, user_ID, actiontype) Values (:date, :browser, :user_id, :actiontype)");
-       $stmt->bindValue(':date', $date);
-      $stmt->bindValue(':browser', $browserAgent);
-       $stmt->bindValue(':user_id', $lastuserID);
-       $stmt->bindvalue(':actiontype', $actiontype);
-        $stmt->execute();
+    //         $stmt = $this->dbconn->prepare("INSERT INTO changelog(date, browser, user_ID, actiontype) Values (:date, :browser, :user_id, :actiontype)");
+    //    $stmt->bindValue(':date', $date);
+    //   $stmt->bindValue(':browser', $browserAgent);
+    //    $stmt->bindValue(':user_id', $lastuserID);
+    //    $stmt->bindvalue(':actiontype', $actiontype);
+    //     $stmt->execute();
             $this->dbconn->commit();
 }
         catch (PDOException $ex){
@@ -60,22 +60,22 @@ class cosplayQueueModel {
     $stmt->execute();
     $row = $stmt->fetch();
     if (password_verify($password, $row['password'])) {
-        $_SESSION["cosplay_name"] = $cosplay_name;
-        $_SESSION["loginID"] = $row['loginID'];
-        $_SESSION["login"] = 'yes';
-        $_SESSION["userID"] = $row['userID'];
+        // $_SESSION["cosplay_name"] = $cosplay_name;
+        // $_SESSION["loginID"] = $row['loginID'];
+        // $_SESSION["login"] = 'yes';
+        // $_SESSION["userID"] = $row['userID'];
         echo 'success';
     } else {
         echo "Cannot log in";
     }
 
-     $lastuserID = $this->dbconn->$_SESSION["userID"];
-            $stmt = $this->dbconn->prepare("INSERT INTO changelog(date, browser, actiontype user_ID) Values (:date, :browser, :actiontype :user_id)");
-            $stmt->bindValue(':date', $date);
-            $stmt->bindValue(':browser', $browserAgent);
-            $stmt->bindValue(':actiontype', $actiontype);
-            $stmt->bindValue(':user_id', $lastuserID);
-            $stmt->execute();
+    //  $lastuserID = $this->dbconn->$_SESSION["userID"];
+    //         $stmt = $this->dbconn->prepare("INSERT INTO changelog(date, browser, actiontype user_ID) Values (:date, :browser, :actiontype :user_id)");
+    //         $stmt->bindValue(':date', $date);
+    //         $stmt->bindValue(':browser', $browserAgent);
+    //         $stmt->bindValue(':actiontype', $actiontype);
+    //         $stmt->bindValue(':user_id', $lastuserID);
+    //         $stmt->execute();
             $this->dbconn->commit();
 
         }
@@ -107,13 +107,13 @@ class cosplayQueueModel {
             $stmt->bindValue(':login_id', $lastloginID);
             $stmt->execute();
 
-            $lastuserID = $this->dbconn->lastInsertID();
-            $stmt = $this->dbconn->prepare("INSERT INTO changelog(date, browser, actiontype user_ID) Values (:date, :browser, :actiontype :user_id)");
-            $stmt->bindValue(':date', $date);
-            $stmt->bindValue(':browser', $browserAgent);
-            $stmt->bindValue(':actiontype', $actiontype);
-            $stmt->bindValue(':user_id', $lastuserID);
-            $stmt->execute();
+            // $lastuserID = $this->dbconn->lastInsertID();
+            // $stmt = $this->dbconn->prepare("INSERT INTO changelog(date, browser, actiontype user_ID) Values (:date, :browser, :actiontype :user_id)");
+            // $stmt->bindValue(':date', $date);
+            // $stmt->bindValue(':browser', $browserAgent);
+            // $stmt->bindValue(':actiontype', $actiontype);
+            // $stmt->bindValue(':user_id', $lastuserID);
+            // $stmt->execute();
             $this->dbconn->commit();
 
             }

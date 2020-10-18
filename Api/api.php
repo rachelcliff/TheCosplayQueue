@@ -8,14 +8,16 @@ require('db.php'); $db = new cosplayQueueModel;
 require('session.php'); $se = new cosplayQueueSession;
 
 session_start();
+// $_SESSION["login"] = "true";
+// 	$_SESSION["loginID"] = 1;
 
-if(!isset($_SESSION['sessionOBJ'])) 
-        $_SESSION['sessionOBJ'] = new cosplayQueueSession; 
+// if(!isset($_SESSION['sessionOBJ'])) 
+//         $_SESSION['sessionOBJ'] = new cosplayQueueSession; 
 
-        if($_SESSION['sessionOBJ']->Rate24HourCheck() === false) {
-            http_response_code(429);//Too Many Requests
-            die();
-        }
+//         if($_SESSION['sessionOBJ']->Rate24HourCheck() === false) {
+//             http_response_code(429);//Too Many Requests
+//             die();
+//         }
         
 
 // Base Case
@@ -23,11 +25,6 @@ if(!isset($_GET['action'])) { //wrong usage
     http_response_code(501);
     die;
 }
-
-
-$_SESSION["login"] = "true";
-	$_SESSION["loginID"] = 1;
-    
     if($_SERVER["REQUEST_METHOD"] == "GET"){
         switch ($_GET["action"]){
             case "showDetails":
@@ -75,6 +72,7 @@ else if($_SERVER["REQUEST_METHOD"] == "POST") {
         case "login":
         $cosplay_name = $_POST['namel'];
         $password = $_POST['passwordl'];
+            // http_response_code(404);
 
         if(isset($cosplay_name)){
             $db->login($cosplay_name, $password);
