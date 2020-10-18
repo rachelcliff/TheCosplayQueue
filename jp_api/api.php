@@ -7,7 +7,26 @@ header('Content-Type: application/json'); // All echo statemes are json_encode
 require('db.php'); $db = new cosplayQueueModel;
 require('session.php'); $se = new cosplayQueueSession;
 
+
 session_start();
+
+if(isset($_GET["action"]){
+    switch ($_GET["action"]){
+        case "dequeue":
+            echo json_encode(Array('dequeue'));
+            break;
+        case "enqueue":
+            if(isset($_POST["queueitem"]){
+                echo 'dequeue';
+            } else {
+                echo 'dequeue';
+            }
+            break;
+    }
+}
+
+
+
 // $_SESSION["login"] = "true";
 // 	$_SESSION["loginID"] = 1;
 
@@ -21,11 +40,18 @@ session_start();
         
 
 // Base Case
+//
+//
 if(!isset($_GET['action'])) { //wrong usage
     http_response_code(501);
     die;
 }
-    if($_SERVER["REQUEST_METHOD"] == "GET"){
+
+
+
+/*
+    if($_SERVER["REQUEST_METHOD"] == "GET") {
+                echo 'foo';
         switch ($_GET["action"]){
             case "showDetails":
                 if($_SESSION['sessionOBJ']->is_logged_in()) {
@@ -39,12 +65,15 @@ if(!isset($_GET['action'])) { //wrong usage
                     http_response_code(401);
                 }
                 break;
+            default:
+               http_response_code(501);
+               break;
             }
         }
 else if($_SERVER["REQUEST_METHOD"] == "POST") {
+    echo 'bar';
 	switch ($_POST["action"]) {
         case "join":
-         
             $name = $_POST['namei'];
             $cosplay_name = $_POST['usernamei'];
             $facebook = $_POST['facebooki'];
@@ -134,4 +163,6 @@ else if($_SERVER["REQUEST_METHOD"] == "UPDATE") {
 } else {
     http_response_code(501);
 }
+ */
 ?>
+

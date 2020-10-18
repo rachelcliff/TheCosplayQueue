@@ -11,7 +11,6 @@ class cosplayQueueModel {
         // set the PDO error mode to exception 
         // (debug - comment out in production)
         $this->dbconn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        echo "Connected successfully!!";
     }
 //join function
     function join($name, $cosplay_name, $facebook, $instagram, $phone, $email, $character_name, $series, $genre, $r_group, $reference_photo, $photo_taken, $date, $browserAgent, $actiontype) {
