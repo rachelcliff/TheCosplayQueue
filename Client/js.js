@@ -255,7 +255,6 @@ function showDetails() {
   var out = "";
   var disabled = "";
   fetch("../Api/api.php?action=showDetails",
-<<<<<<< HEAD
      {
      	method: 'GET',
      	credentials: 'include'
@@ -267,32 +266,13 @@ function showDetails() {
         return people.map(function (queue) {
           console.log(queue.character_name);
           console.log(queue.genre);
-          console.log(queue.genre);
           console.log(queue.group);
           console.log(queue.photo);
         })
       }
     })
 }
-=======
-    {
-    	method: 'GET',
-    	credentials: 'include'
-    })
-       .then(function(response) {
-         if(response.status === 201){
-          let queue = data.results;
-            return queue.map(function (queue) {
-              console.log(queue.character_name);
-              console.log(queue.genre);
-              console.log(queue.genre);
-              console.log(queue.group);
-              console.log(queue.photo);
-         })
-        }
-       })
-} 
-    
+  
     // .then((resp) => resp.json())
     // .then(function (data) {
     //   let people = data.results;
@@ -305,22 +285,7 @@ function showDetails() {
     //   });
     // });
 
->>>>>>> origin/master
 
-
-//		
-//	//(resp) => resp.json())
-//    .then(function (data) {
-//      let people = data.results;
-//	  return people.map(function (queue) {
-//        console.log(queue.character_name);
-//        console.log(queue.genre);
-//		console.log(queue.genre);
-//		console.log(queue.group);
-//		console.log(queue.photo);
-//      });
-//    });
-//)}
 
 // .then(function (response) {
 // response.json().then(function (data) {
@@ -341,7 +306,6 @@ function showDetails() {
 // 	document.getElementById('queue').innerHTML = outStr;
 // 			})
 // 		});
-
 // }
 
 // Dequeue
@@ -483,10 +447,7 @@ function formcheckjoin() {
   });
 }
 
-<<<<<<< HEAD
-=======
 // Form Validation - Register
->>>>>>> origin/master
 function formcheckregister() {
   populateAlert("Loading...", "notice");
   var errorStr = "";
@@ -616,15 +577,12 @@ function killAlert() {
   alertMsg.style.display = "none";
 }
 
-<<<<<<< HEAD
 // JSON Convert
 //fetch('../Api/db.php')
 //  .then(response => response.json())
 //  .then(json => console.log(json))
 
-=======
 // Form Validation - Login
->>>>>>> origin/master
 function formchecklogin() {
   populateAlert("Loading...", "notice");
   var errorStr = "";

@@ -32,18 +32,15 @@ if (isset($_GET["action"])) {
     switch ($_GET["action"]) {
         case "showDetails":
             if ($_SESSION['sessionOBJ']->is_logged_in()) {
-<<<<<<< HEAD:Api/Changes/api.php
-                 $result = $db->showDetails();
+                //  $result = $db->showDetails();
+                // if ($result == false) {
+                //     http_response_code(204);
+                // } else {
+				// 	http_response_code(201);
+                $result = $db->showDetails($character_name, $series, $genre, $r_group);
                 if ($result == false) {
                     http_response_code(204);
                 } else {
-					http_response_code(201);
-=======
-                $result = $cosplayQueueModel->showDetails();
-                if ($result == false) {
-                    http_response_code(204);
-                } else {
->>>>>>> origin/master:Api/api.php
                     echo json_encode($result);
                     http_response_code(201);
                 }

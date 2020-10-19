@@ -1,2 +1,11 @@
-Notice: Undefined variable: cosplayQueueModel in C:\wamp64\www\TheCosplayQueue\Api\api.php on line 35
-Fatal error: Uncaught Error: Call to a member function showDetails() on null in C:\wamp64\www\TheCosplayQueue\Api\api.php on line 35
+Notice: Undefined variable: character_name in C:\wamp64\www\TheCosplayQueue\Api\api.php on line 
+
+Notice: Undefined variable: series in C:\wamp64\www\TheCosplayQueue\Api\api.php on line 40
+
+Notice: Undefined variable: genre in C:\wamp64\www\TheCosplayQueue\Api\api.php on line 40
+
+Notice: Undefined variable: r_group in C:\wamp64\www\TheCosplayQueue\Api\api.php on line 40
+
+Notice: Undefined variable: query in C:\wamp64\www\TheCosplayQueue\Api\db.php on line 128
+
+Catchable fatal error: Object of class cosplayQueueModel could not be converted to string in C:\wamp64\www\TheCosplayQueue\Api\db.php on line 128
