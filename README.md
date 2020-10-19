@@ -5,19 +5,28 @@ The queue is part of the admin user panel and as such it isn't displayed on the 
 
 Folders have been completely restructured to accommodate a more streamlined app processs. 
 
-API:
-- functions started for pulling data utilising the code from Monday/Tuesday's classes. Will spend more time over the break getting everything up and functioning. 
-- Started the function on the join the queue modal to display the relevant position in the queue using JSON. This function has been put on the backburner until it is determined whether I will be using straight JSON or Websockets to implement the feature. 
+Notes about UX2
+The UX2 assessment has been completed and is functional. Some functions from Proj2 are still WIP.
 
-WIP functions -> still need to be combined into the single functions folder:
-- changelog -> WIP
-- user sign up-> WIP
+Functions:
+- changelog -> Complete
+- user sign up-> Complete
 - update user data-> WIP
 - logout-> Complete
-- filterInput-> Complete
-- checkLogin-> WIP
+- checkLogin-> Complete
 - database-connect-> Complete
-- rate limiting -> WIP
+- rate limiting -> Complete
+- show data inputted into queue - WIP
+- show current place in queue - WIP
+- refresh queue - WIP
+- autofill queue update form - WIP
+- autofill queue join form once logged in - WIP
+- join queue - Complete
+- Login - Complete
+- Register - Complete
+- Update user details - WIP
+- Create user - Complete
+- Remove self from queue - WIP
 
 Front-end pages:
 - index (contains all of bases for the app)
@@ -33,20 +42,19 @@ Images:
 
 Planning:
 $_GET
-- 1- preview next in line on backend profile
+- 1- Echo data inputted to form
 - 2- echo current place in queue
 - 3- refresh queue
-- 4- Get details from database to auto-fill join queue form
+- 4- autofill join and update forms
 
 $_POST
 - 1- join queue
-- 2- sign in
+- 2- login
 - 3- sign up
 - 4- update user details in local storage and database
 
-CRUD 1- Update
-- Update user details using form
+CRUD 1- Create
+- Create new user
 
 CRUD 2 - Delete
-- Remove user from queue
 - Remove self from queue
