@@ -164,7 +164,7 @@ function join() {
   });
   $(".sidenav").sidenav({
     menuWidth: 300, // Default is 240
-    closeOnClick: true, 
+    closeOnClick: true,
   });
 }
 
@@ -177,7 +177,7 @@ function sign() {
   });
   $(".sidenav").sidenav({
     menuWidth: 300, // Default is 240
-    closeOnClick: true, 
+    closeOnClick: true,
   });
 }
 
@@ -190,7 +190,7 @@ function register() {
   });
   $(".sidenav").sidenav({
     menuWidth: 300, // Default is 240
-    closeOnClick: true, 
+    closeOnClick: true,
   });
 }
 
@@ -247,12 +247,13 @@ function loadJSONpartial() {
     });
   });
 }
+
 //Show Queue
 function showDetails() {
   populateAlert("Loading...", "notice");
   var out = "";
   var disabled = "";
-  fetch("../Api/api.php?action=showDetails",)
+  fetch("../Api/api.php?action=showDetails")
     // {
     // 	method: 'GET',
     // 	credentials: 'include'
@@ -260,12 +261,12 @@ function showDetails() {
     .then((resp) => resp.json())
     .then(function (data) {
       let people = data.results;
-	  return people.map(function (queue) {
+      return people.map(function (queue) {
         console.log(queue.character_name);
         console.log(queue.genre);
-		console.log(queue.genre);
-		console.log(queue.group);
-		console.log(queue.photo);
+        console.log(queue.genre);
+        console.log(queue.group);
+        console.log(queue.photo);
       });
     });
 }
@@ -292,6 +293,7 @@ function showDetails() {
 
 // }
 
+// Dequeue
 function dequeue() {
   populateAlert("Loading...", "notice");
   var out = "";
@@ -343,6 +345,7 @@ function switchBG(checkBG) {
   }
 }
 
+// Password Check
 function passCheck() {
   if (passwordr.value.length > 0 && password2r.value.length > 0) {
     if (passwordr.value === password2r.value) {
@@ -358,7 +361,7 @@ function passCheck() {
     }
   }
 }
-
+// Form Validation - Join
 function formcheckjoin() {
   populateAlert("Loading...", "notice");
   var errorStr = "";
@@ -428,6 +431,8 @@ function formcheckjoin() {
     credentials: "same-origin",
   });
 }
+
+// Form Validation - Register
 function formcheckregister() {
   populateAlert("Loading...", "notice");
   var errorStr = "";
@@ -483,6 +488,7 @@ function formcheckregister() {
   });
 }
 
+// Form Validation - Update
 function formcheckupdate() {
   populateAlert("Loading...", "notice");
   var errorStr = "";
@@ -538,6 +544,7 @@ function formcheckupdate() {
   });
 }
 
+// Alert Message
 function populateAlert(msg, priority) {
   var timeoutVar = setTimeout(function () {
     alertMsg.style.display = "none";
@@ -549,16 +556,13 @@ function populateAlert(msg, priority) {
   alertMsg.style.display = "block";
 }
 
+// Kill Alert Message
 function killAlert() {
   clearTimeout(timeoutVariable);
   alertMsg.style.display = "none";
 }
 
-// JSON Convert
-fetch('../Api/db.php')
-  .then(response => response.json())
-  .then(json => console.log(json))
-
+// Form Validation - Login
 function formchecklogin() {
   populateAlert("Loading...", "notice");
   var errorStr = "";
@@ -583,3 +587,8 @@ function formchecklogin() {
     credentials: "include",
   });
 }
+
+// JSON Convert
+fetch("../Api/db.php")
+  .then((response) => response.json())
+  .then((json) => console.log(json));
