@@ -1,11 +1,9 @@
-Notice: Undefined variable: character_name in C:\wamp64\www\TheCosplayQueue\Api\api.php on line 
+Notice: Undefined variable: character_name in C:\wamp64\www\TheCosplayQueue\Api\api.php on line <i>40
 
-Notice: Undefined variable: series in C:\wamp64\www\TheCosplayQueue\Api\api.php on line 40
+Notice: Undefined variable: series in C:\wamp64\www\TheCosplayQueue\Api\api.php on line <i>40
 
-Notice: Undefined variable: genre in C:\wamp64\www\TheCosplayQueue\Api\api.php on line 40
+Notice: Undefined variable: genre in C:\wamp64\www\TheCosplayQueue\Api\api.php on line <i>40
 
-Notice: Undefined variable: r_group in C:\wamp64\www\TheCosplayQueue\Api\api.php on line 40
+Notice: Undefined variable: r_group in C:\wamp64\www\TheCosplayQueue\Api\api.php on line <i>40
 
-Notice: Undefined variable: query in C:\wamp64\www\TheCosplayQueue\Api\db.php on line 128
-
-Catchable fatal error: Object of class cosplayQueueModel could not be converted to string in C:\wamp64\www\TheCosplayQueue\Api\db.php on line 128
+[{"character_name":null,"series":null,"genre":null,"r_group":null}]

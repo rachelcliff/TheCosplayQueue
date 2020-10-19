@@ -125,8 +125,8 @@ class cosplayQueueModel
         }
         
         public function showDetails($character_name, $series, $genre, $r_group) {
-			$query->$this->dbconn->prepare("SELECT character_name, series, genre, r_group FROM queue");
-            $result = $query->fetchAll();
+			$this->dbconn->prepare("SELECT character_name, series, genre, r_group FROM queue");
+            // $result = $query->fetchAll();
             $result = Array(
                           Array('character_name'=>$character_name,
                                 'series'=>$series,

@@ -26,9 +26,9 @@ if ($_SESSION['sessionOBJ']->Rate24HourCheck() === false) {
 // Base Case
 //
 if (isset($_GET["action"])) {
-//     http_response_code(501); 
-//     die;
-// }
+    //     http_response_code(501); 
+    //     die;
+    // }
     switch ($_GET["action"]) {
         case "showDetails":
             if ($_SESSION['sessionOBJ']->is_logged_in()) {
@@ -36,7 +36,7 @@ if (isset($_GET["action"])) {
                 // if ($result == false) {
                 //     http_response_code(204);
                 // } else {
-				// 	http_response_code(201);
+                // 	http_response_code(201);
                 $result = $db->showDetails($character_name, $series, $genre, $r_group);
                 if ($result == false) {
                     http_response_code(204);
@@ -115,7 +115,7 @@ if (isset($_GET["action"])) {
             }
             break;
 
-        // case "update":
+            // case "update":
             // echo "update";
             if (isset($_POST["action"])) {
                 $_SESSION['id'] = $user_id;
@@ -145,6 +145,6 @@ if (isset($_GET["action"])) {
             // echo "dequeue";
             if (isset($_POST["action"])) {
             }
-        break;
+            break;
     }
 }

@@ -262,8 +262,8 @@ function showDetails() {
 		)
     .then(function (response) {
       if (response.status === 201) {
-        let people = data.results;
-        return people.map(function (queue) {
+        let queue = data.results;
+        return queue.map(function (queue) {
           console.log(queue.character_name);
           console.log(queue.genre);
           console.log(queue.group);
