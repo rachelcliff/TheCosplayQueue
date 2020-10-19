@@ -2,7 +2,7 @@
 
 header('Access-Control-Allow-Origin: https://localhost');
 header('Access-Control-Allow-Credentials: true');
-header('Content-Type: application/json'); // All echo statemes are json_encode
+header('Content-Type: application/json'); // All echo statements are json_encode
 
 require('db.php');
 $db = new cosplayQueueModel;
@@ -26,6 +26,9 @@ if ($_SESSION['sessionOBJ']->Rate24HourCheck() === false) {
 // Base Case
 //
 if (isset($_GET["action"])) {
+//     http_response_code(501); 
+//     die;
+// }
     switch ($_GET["action"]) {
         case "showDetails":
             echo json_encode($results);
@@ -42,7 +45,7 @@ if (isset($_GET["action"])) {
             break;
 
         case "join":
-            echo "join";
+            // echo "join";
             if (isset($_POST["action"])) {
                 $name = $_POST['namei'];
                 $cosplay_name = $_POST['usernamei'];
@@ -70,11 +73,10 @@ if (isset($_GET["action"])) {
             break;
 
         case "login":
-            echo "login";
+            // echo "login";
             if (isset($_POST["action"])) {
                 $cosplay_name = $_POST['namel'];
                 $password = $_POST['passwordl'];
-                // http_response_code(404);
 
                 if (isset($cosplay_name)) {
                     $db->login($cosplay_name, $password);
@@ -86,7 +88,7 @@ if (isset($_GET["action"])) {
             break;
 
         case "signup":
-            echo "signup";
+            // echo "signup";
             if (isset($_POST["action"])) {
                 $name = $_POST['names'];
                 $cosplay_name = $_POST['usernames'];
@@ -108,38 +110,37 @@ if (isset($_GET["action"])) {
             }
             break;
 
-        case "update":
-            echo "update";
-            if (isset($_POST["action"])) {
-                $_SESSION['id'] = $user_id;
-                $name = $_POST['namer'];
-                $cosplay_name = $_POST['usernamer'];
-                $facebook = $_POST['facebookr'];
-                $instagram = $_POST['instagramr'];
-                $phone = $_POST['phoner'];
-                $email = $_POST['emailr'];
-                $password = $_POST['passwordr'];
-                $date = date('Y-m-d H:i:s');
-                $browserAgent = $_SERVER['HTTP_USER_AGENT'];
-                $actiontype = $_POST['updater'];
+        // case "update":
+            // echo "update";
+        //     if (isset($_POST["action"])) {
+        //         $_SESSION['id'] = $user_id;
+        //         $name = $_POST['namer'];
+        //         $cosplay_name = $_POST['usernamer'];
+        //         $facebook = $_POST['facebookr'];
+        //         $instagram = $_POST['instagramr'];
+        //         $phone = $_POST['phoner'];
+        //         $email = $_POST['emailr'];
+        //         $password = $_POST['passwordr'];
+        //         $date = date('Y-m-d H:i:s');
+        //         $browserAgent = $_SERVER['HTTP_USER_AGENT'];
+        //         $actiontype = $_POST['updater'];
 
-                if ($_SESSION["login"] == "true") {
-                    if (isset($cosplay_name)) {
-                        $db->update($user_id, $name, $cosplay_name, $facebook, $instagram, $phone, $email, $password, $date, $browserAgent, $actiontype);
-                        http_response_code(202);
-                    } else {
-                        http_response_code(501);
-                    }
-                }
-            }
-            break;
+        //         if ($_SESSION["login"] == "true") {
+        //             if (isset($cosplay_name)) {
+        //                 $db->update($user_id, $name, $cosplay_name, $facebook, $instagram, $phone, $email, $password, $date, $browserAgent, $actiontype);
+        //                 http_response_code(202);
+        //             } else {
+        //                 http_response_code(501);
+        //             }
+        //         }
+        //     }
+        //     break;
 
         case "dequeue":
-            echo "dequeue";
+            // echo "dequeue";
             if (isset($_POST["action"])) {
             }
-            break;
+        break;
     }
-} else {
-    http_response_code(501);
 }
+?>

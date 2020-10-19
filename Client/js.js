@@ -164,7 +164,7 @@ function join() {
   });
   $(".sidenav").sidenav({
     menuWidth: 300, // Default is 240
-    closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+    closeOnClick: true, 
   });
 }
 
@@ -177,7 +177,7 @@ function sign() {
   });
   $(".sidenav").sidenav({
     menuWidth: 300, // Default is 240
-    closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+    closeOnClick: true, 
   });
 }
 
@@ -190,7 +190,7 @@ function register() {
   });
   $(".sidenav").sidenav({
     menuWidth: 300, // Default is 240
-    closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+    closeOnClick: true, 
   });
 }
 
@@ -408,7 +408,6 @@ function formcheckjoin() {
 
   formdata = new FormData();
   formdata.set("action", "join");
-
   formdata.set("namei", namei.value);
   formdata.set("usernamei", usernamei.value);
   formdata.set("facebooki", facebooki.value);
@@ -555,10 +554,10 @@ function killAlert() {
   alertMsg.style.display = "none";
 }
 
-// // JSON Convert
-// fetch('../Api/db.php')
-//   .then(response => response.json())
-//   .then(json => console.log(json))
+// JSON Convert
+fetch('../Api/db.php')
+  .then(response => response.json())
+  .then(json => console.log(json))
 
 function formchecklogin() {
   populateAlert("Loading...", "notice");
