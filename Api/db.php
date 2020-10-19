@@ -60,10 +60,10 @@ class cosplayQueueModel {
     $stmt->execute();
     $row = $stmt->fetch();
     if (password_verify($password, $row['password'])) {
-        // $_SESSION["cosplay_name"] = $cosplay_name;
-        // $_SESSION["loginID"] = $row['loginID'];
-        // $_SESSION["login"] = 'yes';
-        // $_SESSION["userID"] = $row['userID'];
+        $_SESSION["cosplay_name"] = $cosplay_name;
+        $_SESSION["loginID"] = $row['loginID'];
+        $_SESSION["login"] = 'yes';
+        $_SESSION["userID"] = $row['userID'];
         echo 'success';
     } else {
         echo "Cannot log in";
@@ -135,34 +135,34 @@ class cosplayQueueModel {
         }
 
 //update user function
-        // function update($name, $cosplay_name, $facebook, $instagram, $phone, $email, $password, $user_id, $date, $browserAgent) {
-        //     try {
-        //         $this->dbconn->beginTransaction();
-        //         $stmt = $this->dbconn->prepare("UPDATE users SET name=:name, cosplay_name=:cosplay_name, facebook=:facebook, instagram=:instagram, phone=:phone, email=:email, password=:password, user_id=:user_id) values (:name, :username, :facebook, :instagram, :phone, :email :password) WHERE user_id = $_SESSION['id']");
+        function update($name, $cosplay_name, $facebook, $instagram, $phone, $email, $password, $user_id, $date, $browserAgent) {
+            try {
+                $this->dbconn->beginTransaction();
+                $stmt = $this->dbconn->prepare("UPDATE users SET name=:name, cosplay_name=:cosplay_name, facebook=:facebook, instagram=:instagram, phone=:phone, email=:email, password=:password,user_id=:user_id) values (:name, :username, :facebook, :instagram, :phone, :email :password) WHERE user_id= $_SESSION['userID']");
 
-        //         $stmt->bindValue(':name', $name);
-        //         $stmt->bindValue(':cosplay_name', $cosplay_name);
-        //         $stmt->bindValue(':facebook', $facebook);
-        //         $stmt->bindValue(':instagram', $instagram);
-        //         $stmt->bindValue(':phone', $phone);
-        //         $stmt->bindValue(':email', $email);
-        //         $stmt->bindValue(':password', $password);
-        //         $stmt->bindValue(':user_id', $user_id);
-        //         $stmt->execute();
+                $stmt->bindValue(':name', $name);
+                $stmt->bindValue(':cosplay_name', $cosplay_name);
+                $stmt->bindValue(':facebook', $facebook);
+                $stmt->bindValue(':instagram', $instagram);
+                $stmt->bindValue(':phone', $phone);
+                $stmt->bindValue(':email', $email);
+                $stmt->bindValue(':password', $password);
+                $stmt->bindValue(':user_id', $user_id);
+                $stmt->execute();
 
-        //         $stmt = $this->dbconn->prepare("INSERT INTO changelog(date, browser, user_id) Values (:date, :browser, :user_id)");
-        //         $stmt->bindValue(':date', $date);
-        //         $stmt->bindValue(':browser', $browserAgent);
-        //         $stmt->bindValue(':user_id', $user_id);
-        //         $this->dbconn->commit();
+                // $stmt = $this->dbconn->prepare("INSERT INTO changelog(date, browser, user_id) Values (:date, :browser, :user_id)");
+                // $stmt->bindValue(':date', $date);
+                // $stmt->bindValue(':browser', $browserAgent);
+                // $stmt->bindValue(':user_id', $user_id);
+                // $this->dbconn->commit();
 
-        //         $this->dbconn->commit();
-        //     }
-        //     catch (PDOException $ex){
-        //         $this->dbconn->rollBack();
-        //         throw $ex;
-        //     }
-        // }
+                $this->dbconn->commit();
+            }
+            catch (PDOException $ex){
+                $this->dbconn->rollBack();
+                throw $ex;
+            }
+        }
 }
 
 // function dequeue($photo_taken) {
