@@ -1,3 +1,2 @@
-Notice: Undefined variable: dbconn in C:\wamp64\www\TheCosplayQueue\Api\api.php on line 35
-Fatal error: Uncaught Error: Call to a member function showDetails() on null in C:\wamp64\www\TheCosplayQueue\Api\api.php on line 36
-Error: Call to a member function showDetails() on null in C:\wamp64\www\TheCosplayQueue\Api\api.php on line 36
+Notice: Undefined variable: cosplayQueueModel in C:\wamp64\www\TheCosplayQueue\Api\api.php on line 35
+Fatal error: Uncaught Error: Call to a member function showDetails() on null in C:\wamp64\www\TheCosplayQueue\Api\api.php on line 35

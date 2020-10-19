@@ -124,7 +124,6 @@ class cosplayQueueModel
 
     public function showDetails($character_name, $series, $genre, $r_group)
     {
-        // $result = $this->dbconn->showDetails();
         $result = array(
             array(
                 'character_name' => $character_name,

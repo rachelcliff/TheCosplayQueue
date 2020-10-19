@@ -32,7 +32,7 @@ if (isset($_GET["action"])) {
     switch ($_GET["action"]) {
         case "showDetails":
             if ($_SESSION['sessionOBJ']->is_logged_in()) {
-                $result = $dbconn->showDetails();
+                $result = $cosplayQueueModel->showDetails();
                 if ($result == false) {
                     http_response_code(204);
                 } else {
