@@ -248,12 +248,14 @@ function loadJSONpartial() {
     });
   });
 }
+
 //Show Queue
 function showDetails() {
   populateAlert("Loading...", "notice");
   var out = "";
   var disabled = "";
   fetch("../Api/api.php?action=showDetails",
+<<<<<<< HEAD
      {
      	method: 'GET',
      	credentials: 'include'
@@ -272,6 +274,38 @@ function showDetails() {
       }
     })
 }
+=======
+    {
+    	method: 'GET',
+    	credentials: 'include'
+    })
+       .then(function(response) {
+         if(response.status === 201){
+          let queue = data.results;
+            return queue.map(function (queue) {
+              console.log(queue.character_name);
+              console.log(queue.genre);
+              console.log(queue.genre);
+              console.log(queue.group);
+              console.log(queue.photo);
+         })
+        }
+       })
+} 
+    
+    // .then((resp) => resp.json())
+    // .then(function (data) {
+    //   let people = data.results;
+    //   return people.map(function (queue) {
+    //     console.log(queue.character_name);
+    //     console.log(queue.genre);
+    //     console.log(queue.genre);
+    //     console.log(queue.group);
+    //     console.log(queue.photo);
+    //   });
+    // });
+
+>>>>>>> origin/master
 
 
 //		
@@ -310,6 +344,7 @@ function showDetails() {
 
 // }
 
+// Dequeue
 function dequeue() {
   populateAlert("Loading...", "notice");
   var out = "";
@@ -361,6 +396,7 @@ function switchBG(checkBG) {
   }
 }
 
+// Password Check
 function passCheck() {
   if (passwordr.value.length > 0 && password2r.value.length > 0) {
     if (passwordr.value === password2r.value) {
@@ -376,7 +412,7 @@ function passCheck() {
     }
   }
 }
-
+// Form Validation - Join
 function formcheckjoin() {
   populateAlert("Loading...", "notice");
   var errorStr = "";
@@ -447,6 +483,10 @@ function formcheckjoin() {
   });
 }
 
+<<<<<<< HEAD
+=======
+// Form Validation - Register
+>>>>>>> origin/master
 function formcheckregister() {
   populateAlert("Loading...", "notice");
   var errorStr = "";
@@ -502,6 +542,7 @@ function formcheckregister() {
   });
 }
 
+// Form Validation - Update
 function formcheckupdate() {
   populateAlert("Loading...", "notice");
   var errorStr = "";
@@ -557,6 +598,7 @@ function formcheckupdate() {
   });
 }
 
+// Alert Message
 function populateAlert(msg, priority) {
   var timeoutVar = setTimeout(function () {
     alertMsg.style.display = "none";
@@ -568,16 +610,21 @@ function populateAlert(msg, priority) {
   alertMsg.style.display = "block";
 }
 
+// Kill Alert Message
 function killAlert() {
   clearTimeout(timeoutVariable);
   alertMsg.style.display = "none";
 }
 
+<<<<<<< HEAD
 // JSON Convert
 //fetch('../Api/db.php')
 //  .then(response => response.json())
 //  .then(json => console.log(json))
 
+=======
+// Form Validation - Login
+>>>>>>> origin/master
 function formchecklogin() {
   populateAlert("Loading...", "notice");
   var errorStr = "";
@@ -602,3 +649,8 @@ function formchecklogin() {
     credentials: "include",
   });
 }
+
+// // JSON Convert
+// fetch("../Api/db.php")
+//   .then((response) => response.json())
+//   .then((json) => console.log(json));

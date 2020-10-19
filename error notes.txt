@@ -1,15 +1,2 @@
-Notice: Undefined property: cosplayQueueSession::$_startTime in C:\wamp64\www\GitHub\TheCosplayQueue\Api\session.php on line <i>22
-
-Notice: Undefined property: cosplayQueueSession::$requestCounter in C:\wamp64\www\GitHub\TheCosplayQueue\Api\session.php on line <i>26</i></th></tr>
-
-Notice: Array to string conversion in C:\wamp64\www\GitHub\TheCosplayQueue\Api\db.php on line <i>72</i></th></tr>
-
-Notice: Undefined property: PDO::$Array in C:\wamp64\www\GitHub\TheCosplayQueue\Api\db.php on line <i>72</i></th></tr>
-
-Notice: Undefined variable: date in C:\wamp64\www\GitHub\TheCosplayQueue\Api\db.php on line <i>74</i></th></tr>
-
-Notice: Undefined variable: browserAgent in C:\wamp64\www\GitHub\TheCosplayQueue\Api\db.php on line <i>75</i></th></tr>
-
-Notice: Undefined variable: actiontype in C:\wamp64\www\GitHub\TheCosplayQueue\Api\db.php on line <i>76</i></th></tr>
-
-Fatal error: Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'user_ID) Values (NULL, NULL, NULL NULL)' at line 1 in C:\wamp64\www\GitHub\TheCosplayQueue\Api\db.php on line <i>78
+Notice: Undefined variable: cosplayQueueModel in C:\wamp64\www\TheCosplayQueue\Api\api.php on line 35
+Fatal error: Uncaught Error: Call to a member function showDetails() on null in C:\wamp64\www\TheCosplayQueue\Api\api.php on line 35
