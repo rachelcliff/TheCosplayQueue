@@ -56,5 +56,5 @@ $_POST
 CRUD 1- Create
 - Create new user
 
-CRUD 2 - Delete
+CRUD 2 - Update
 - Remove self from queue
