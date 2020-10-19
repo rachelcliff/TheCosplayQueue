@@ -29,7 +29,6 @@ if (isset($_GET["action"])) {
     switch ($_GET["action"]) {
         case "showDetails":
             echo "showDetails";
-            echo json_encode(array('dequeue'));
             if ($_SESSION['sessionOBJ']->is_logged_in()) {
                 $result = $dbconn->showDetails();
                 if ($result == false) {
@@ -111,7 +110,7 @@ if (isset($_GET["action"])) {
 
         case "update":
             echo "update";
-            if(isset($_POST["action"]){
+            if(isset($_POST["action"])){
             $_SESSION['id'] = $userID;
             $name = $_POST['namer'];
             $cosplay_name = $_POST['usernamer'];
@@ -130,14 +129,17 @@ if (isset($_GET["action"])) {
                 http_response_code(202);
             }else{
                 http_response_code(501);
-            // }
+            }
+        }
+            }
             break;
 
-        case "dequeue":
-            echo "dequeue";
-            // http_response_code(201);
-            break;
-    }
+            case "dequeue":
+                echo "dequeue";
+                if(isset($_POST["action"])){
+                }
+                break;
+            }
 } else {
     http_response_code(501);
 }

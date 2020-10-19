@@ -247,12 +247,12 @@ function loadJSONpartial() {
     });
   });
 }
-//load json
+//Show Queue
 function showDetails() {
   populateAlert("Loading...", "notice");
   var out = "";
   var disabled = "";
-  fetch("url, ")
+  fetch(" ",)
     // {
     // 	method: 'GET',
     // 	credentials: 'include'

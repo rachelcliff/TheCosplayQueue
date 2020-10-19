@@ -123,15 +123,15 @@ class cosplayQueueModel {
             }
         }
         
-        public function showDetails() {
-            $result = Array(
-                          Array('character_name'=>$character_name,
-                                'series'=>$_series,
-                                'genre'=>$_genre,
-                                'r_group'=>$r_group),
-                      );
-            return $result;
-        }
+        // public function showDetails() {
+        //     $result = Array(
+        //                   Array('character_name'=>$character_name,
+        //                         'series'=>$_series,
+        //                         'genre'=>$_genre,
+        //                         'r_group'=>$r_group),
+        //               );
+        //     return $result;
+        // }
 
 //         //update user function
 //         function update($name, $cosplay_name, $facebook, $instagram, $phone, $email, $password, $user_ID, $date, $browserAgent) {
