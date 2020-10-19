@@ -252,7 +252,7 @@ function showDetails() {
   populateAlert("Loading...", "notice");
   var out = "";
   var disabled = "";
-  fetch(" ",)
+  fetch("../Api/api.php?action=showDetails",)
     // {
     // 	method: 'GET',
     // 	credentials: 'include'
@@ -260,10 +260,12 @@ function showDetails() {
     .then((resp) => resp.json())
     .then(function (data) {
       let people = data.results;
-      return people.map(function (person) {
-        console.log(person.name.first);
-        console.log(person.name.last);
-        console.log(person.phone);
+	  return people.map(function (queue) {
+        console.log(queue.character_name);
+        console.log(queue.genre);
+		console.log(queue.genre);
+		console.log(queue.group);
+		console.log(queue.photo);
       });
     });
 }

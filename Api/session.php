@@ -47,9 +47,9 @@ public function Rate24HourCheck() {
 //     }
 //     return false;
 // // }
-// function is_logged_in() {
-//     return true;
-// }
+function is_logged_in() {
+    return true;
+}
 
 // // logout function
 // function logout() {
