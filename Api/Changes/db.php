@@ -123,8 +123,9 @@ class cosplayQueueModel {
             }
         }
         
-        public function showDetails($character_name, $series, $genre, $r_group) {
-            $result = $this->dbconn->showDetails();
+        public function showDetails() {
+			$query->$this->$dbconn->prepare("SELECT character, series, genre, r_group FROM queue");
+            $result = $query->fetchAll();
             $result = Array(
                           Array('character_name'=>$character_name,
                                 'series'=>$series,
@@ -138,7 +139,7 @@ class cosplayQueueModel {
         function update($name, $cosplay_name, $facebook, $instagram, $phone, $email, $password, $user_id, $date, $browserAgent) {
             try {
                 $this->dbconn->beginTransaction();
-            $stmt= $this->dbconn->prepare("UPDATE users SET name=:name, cosplay_name=:cosplay_name, facebook=:facebook, instagram=:instagram, phone=:phone, email=:email, password=:password, user_id=:user_id) values (:name, :username, :facebook, :instagram, :phone, :email :password) WHERE user_id= $_SESSION['userID']");
+            $stmt= $this->dbconn->prepare("UPDATE users SET name, cosplay_name, facebook, instagram, phone, email, password values :name, :username, :facebook, :instagram, :phone, :email :password) WHERE user_id= :uid");
 
                 $stmt->bindValue(':name', $name);
                 $stmt->bindValue(':cosplay_name', $cosplay_name);
@@ -148,6 +149,7 @@ class cosplayQueueModel {
                 $stmt->bindValue(':email', $email);
                 $stmt->bindValue(':password', $password);
                 $stmt->bindValue(':user_id', $user_id);
+				$stmt->bindValue(':uid', $_SESSION['user-id']);
                 $stmt->execute();
 
                 // $stmt = $this->dbconn->prepare("INSERT INTO changelog(date, browser, user_id) Values (:date, :browser, :user_id)");

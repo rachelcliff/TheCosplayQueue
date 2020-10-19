@@ -164,7 +164,7 @@ function join() {
   });
   $(".sidenav").sidenav({
     menuWidth: 300, // Default is 240
-    closeOnClick: true, 
+    closeOnClick: true,
   });
 }
 
@@ -177,7 +177,7 @@ function sign() {
   });
   $(".sidenav").sidenav({
     menuWidth: 300, // Default is 240
-    closeOnClick: true, 
+    closeOnClick: true,
   });
 }
 
@@ -190,7 +190,7 @@ function register() {
   });
   $(".sidenav").sidenav({
     menuWidth: 300, // Default is 240
-    closeOnClick: true, 
+    closeOnClick: true,
   });
 }
 
@@ -220,28 +220,29 @@ function loadJSONpartial() {
           disabled = "disabled";
         }
         out +=
-          "<tr><td>" +
-          row.id +
-          "</td><td>" +
-          row.name +
-          "</td><td>" +
-          row.cosplay_name +
-          "</td><td>" +
-          row.character +
-          "</td><td>" +
-          row.series +
+          "<tr><td>"
+          + row.id
+          + "</td><td>"
+          + row.name
+          + "</td><td>"
+          + row.cosplay_name
+          + "</td><td>"
+          + row.character
+          + "</td><td>"
+          + row.series
+          +
           // '</td><td>' + row.genre +
-          "</td><td>" +
-          row.group +
-          '</td><td><img src="' +
-          row.photo +
-          '"></td><td><button ' +
-          disabled +
-          ">Delete</button>" +
-          "</td><td><button " +
-          disabled +
-          ">Preview</button>" +
-          "</td></tr>";
+          "</td><td>"
+          + row.group
+          + '</td><td><img src="'
+          + row.photo
+          + '"></td><td><button '
+          + disabled
+          + ">Delete</button>"
+          + "</td><td><button "
+          + disabled
+          + ">Preview</button>"
+          + "</td></tr>";
       });
       document.getElementById("queue").innerHTML = outStr;
     });
@@ -252,23 +253,40 @@ function showDetails() {
   populateAlert("Loading...", "notice");
   var out = "";
   var disabled = "";
-  fetch("../Api/api.php?action=showDetails",)
-    // {
-    // 	method: 'GET',
-    // 	credentials: 'include'
-    // }
-    .then((resp) => resp.json())
-    .then(function (data) {
-      let people = data.results;
-	  return people.map(function (queue) {
-        console.log(queue.character_name);
-        console.log(queue.genre);
-		console.log(queue.genre);
-		console.log(queue.group);
-		console.log(queue.photo);
-      });
-    });
+  fetch("../Api/api.php?action=showDetails",
+     {
+     	method: 'GET',
+     	credentials: 'include'
+     }
+		)
+    .then(function (response) {
+      if (response.status === 201) {
+        let people = data.results;
+        return people.map(function (queue) {
+          console.log(queue.character_name);
+          console.log(queue.genre);
+          console.log(queue.genre);
+          console.log(queue.group);
+          console.log(queue.photo);
+        })
+      }
+    })
 }
+
+
+//		
+//	//(resp) => resp.json())
+//    .then(function (data) {
+//      let people = data.results;
+//	  return people.map(function (queue) {
+//        console.log(queue.character_name);
+//        console.log(queue.genre);
+//		console.log(queue.genre);
+//		console.log(queue.group);
+//		console.log(queue.photo);
+//      });
+//    });
+//)}
 
 // .then(function (response) {
 // response.json().then(function (data) {
@@ -428,6 +446,7 @@ function formcheckjoin() {
     credentials: "same-origin",
   });
 }
+
 function formcheckregister() {
   populateAlert("Loading...", "notice");
   var errorStr = "";
@@ -555,9 +574,9 @@ function killAlert() {
 }
 
 // JSON Convert
-fetch('../Api/db.php')
-  .then(response => response.json())
-  .then(json => console.log(json))
+//fetch('../Api/db.php')
+//  .then(response => response.json())
+//  .then(json => console.log(json))
 
 function formchecklogin() {
   populateAlert("Loading...", "notice");

@@ -33,10 +33,11 @@ if (isset($_GET["action"])) {
         case "showDetails":
             echo json_encode($results);
             if ($_SESSION['sessionOBJ']->is_logged_in()) {
-                // $result = $dbconn->showDetails();
+                 $result = $db->showDetails();
                 if ($result == false) {
                     http_response_code(204);
-                } elseif (is_array($result)) {
+                } else {
+					http_response_code(201);
                     echo json_encode($result);
                 }
             } else {
