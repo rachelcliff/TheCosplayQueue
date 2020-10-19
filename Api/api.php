@@ -4,6 +4,7 @@ header('Access-Control-Allow-Origin: https://localhost');
 header('Access-Control-Allow-Credentials: true');
 header('Content-Type: application/json'); // All echo statements are json_encode
 
+// initiation of database and session
 require('db.php');
 $db = new cosplayQueueModel;
 require('session.php');
@@ -24,7 +25,7 @@ if ($_SESSION['sessionOBJ']->Rate24HourCheck() === false) {
 
 
 // Base Case
-//
+
 if (isset($_GET["action"])) {
     //     http_response_code(501); 
     //     die;
@@ -37,7 +38,8 @@ if (isset($_GET["action"])) {
                 //     http_response_code(204);
                 // } else {
                 // 	http_response_code(201);
-                $result = $db->showDetails($character_name, $series, $genre, $r_group);
+                
+                $result = $db->showDetails($_SESSION['character_name'], $_SESSION['series'], $_SESSION['genre'], $_SESSION['r_group']);
                 if ($result == false) {
                     http_response_code(204);
                 } else {

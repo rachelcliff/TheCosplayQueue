@@ -259,8 +259,8 @@ function showDetails() {
     	credentials: 'include'
     })
        .then(function(response) {
-         if(response.status === 201){
-          let queue = data.results;
+         if(response.status === 202){
+          let queue = $results;
             return queue.map(function (queue) {
               console.log(queue.character_name);
               console.log(queue.genre);

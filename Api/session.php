@@ -36,22 +36,11 @@ public function Rate24HourCheck() {
 }
 
 
-// // Is logged in function
-// public function is_logged_in() {
-//     if($this->studentid > 400000000) {
-//         if($this->privilege === 0) {
-//             return false;
-//         } elseif($this->privilege === 1 || $this->privilege === 2 ) {
-//             return true;
-//         }
-//     }
-//     return false;
-// // }
 function is_logged_in() {
     return true;
 }
 
-// // logout function
+// logout function
 // function logout() {
 //     $this->privilege = -1;
 //     unset($this->studentid);
