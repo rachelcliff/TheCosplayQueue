@@ -253,23 +253,37 @@ function showDetails() {
   populateAlert("Loading...", "notice");
   var out = "";
   var disabled = "";
-  fetch("../Api/api.php?action=showDetails")
-    // {
-    // 	method: 'GET',
-    // 	credentials: 'include'
-    // }
-    .then((resp) => resp.json())
-    .then(function (data) {
-      let people = data.results;
-      return people.map(function (queue) {
-        console.log(queue.character_name);
-        console.log(queue.genre);
-        console.log(queue.genre);
-        console.log(queue.group);
-        console.log(queue.photo);
-      });
-    });
-}
+  fetch("../Api/api.php?action=showDetails",
+    {
+    	method: 'GET',
+    	credentials: 'include'
+    })
+       .then(function(response) {
+         if(response.status === 201){
+          let people = data.results;
+            return people.map(function (queue) {
+              console.log(queue.character_name);
+              console.log(queue.genre);
+              console.log(queue.genre);
+              console.log(queue.group);
+              console.log(queue.photo);
+         })
+        }
+       })
+} 
+    
+    // .then((resp) => resp.json())
+    // .then(function (data) {
+    //   let people = data.results;
+    //   return people.map(function (queue) {
+    //     console.log(queue.character_name);
+    //     console.log(queue.genre);
+    //     console.log(queue.genre);
+    //     console.log(queue.group);
+    //     console.log(queue.photo);
+    //   });
+    // });
+
 
 // .then(function (response) {
 // response.json().then(function (data) {
@@ -588,7 +602,7 @@ function formchecklogin() {
   });
 }
 
-// JSON Convert
-fetch("../Api/db.php")
-  .then((response) => response.json())
-  .then((json) => console.log(json));
+// // JSON Convert
+// fetch("../Api/db.php")
+//   .then((response) => response.json())
+//   .then((json) => console.log(json));

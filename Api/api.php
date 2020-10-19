@@ -31,13 +31,13 @@ if (isset($_GET["action"])) {
 // }
     switch ($_GET["action"]) {
         case "showDetails":
-            echo json_encode($results);
             if ($_SESSION['sessionOBJ']->is_logged_in()) {
-                // $result = $dbconn->showDetails();
+                $result = $dbconn->showDetails();
                 if ($result == false) {
                     http_response_code(204);
-                } elseif (is_array($result)) {
+                } else {
                     echo json_encode($result);
+                    http_response_code(201);
                 }
             } else {
                 http_response_code(401);
