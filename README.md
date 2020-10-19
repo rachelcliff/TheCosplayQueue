@@ -48,13 +48,13 @@ $_GET
 - 4- autofill join and update forms
 
 $_POST
-- 1- join queue
-- 2- login
-- 3- sign up
+- 1- join queue -> Complete
+- 2- login -> Complete
+- 3- sign up -> Complete
 - 4- update user details in local storage and database
 
 CRUD 1- Create
-- Create new user
+- Create new user -> Complete
 
 CRUD 2 - Update
 - Remove self from queue
