@@ -220,29 +220,28 @@ function loadJSONpartial() {
           disabled = "disabled";
         }
         out +=
-          "<tr><td>"
-          + row.id
-          + "</td><td>"
-          + row.name
-          + "</td><td>"
-          + row.cosplay_name
-          + "</td><td>"
-          + row.character
-          + "</td><td>"
-          + row.series
-          +
+          "<tr><td>" +
+          row.id +
+          "</td><td>" +
+          row.name +
+          "</td><td>" +
+          row.cosplay_name +
+          "</td><td>" +
+          row.character +
+          "</td><td>" +
+          row.series +
           // '</td><td>' + row.genre +
-          "</td><td>"
-          + row.group
-          + '</td><td><img src="'
-          + row.photo
-          + '"></td><td><button '
-          + disabled
-          + ">Delete</button>"
-          + "</td><td><button "
-          + disabled
-          + ">Preview</button>"
-          + "</td></tr>";
+          "</td><td>" +
+          row.group +
+          '</td><td><img src="' +
+          row.photo +
+          '"></td><td><button ' +
+          disabled +
+          ">Delete</button>" +
+          "</td><td><button " +
+          disabled +
+          ">Preview</button>" +
+          "</td></tr>";
       });
       document.getElementById("queue").innerHTML = outStr;
     });
@@ -254,31 +253,33 @@ function showDetails() {
   populateAlert("Loading...", "notice");
   var outStr = "";
   var disabled = "";
-  fetch("../Api/api.php?action=showDetails",
-   {
-   	method: 'GET',
-   	credentials: 'include'
-   }
-  )
-.then(function (response) {
-response.json().then(function (results) {
-  console.log(results);
-	results.forEach(row => {
-		// if (row.user_ID == $_SESSION['userID']) {
-		// 	disabled = '';
-		// } else {
-		// 	disabled = 'disabled';
-		// }
-		outStr += '<tr><td>' + row.character_name +
-			'</td><td>' + row.series +
-			'</td><td>' + row.genre +
-			'</td><td>' + row.r_group +
-			// '<td><button ' + disabled + '>Delete</button>' +
-			'</td></tr>';
-	});
-	document.getElementById('queue').innerHTML = outStr;
-			})
-		});
+  fetch("../Api/api.php?action=showDetails", {
+    method: "GET",
+    credentials: "include",
+  }).then(function (response) {
+    response.json().then(function (results) {
+      console.log(results);
+      results.forEach((row) => {
+        // if (row.user_ID == $_SESSION['userID']) {
+        // 	disabled = '';
+        // } else {
+        // 	disabled = 'disabled';
+        // }
+        outStr +=
+          "<tr><td>" +
+          row.character_name +
+          "</td><td>" +
+          row.series +
+          "</td><td>" +
+          row.genre +
+          "</td><td>" +
+          row.r_group +
+          // '<td><button ' + disabled + '>Delete</button>' +
+          "</td></tr>";
+      });
+      document.getElementById("queue").innerHTML = outStr;
+    });
+  });
 }
 
 //Show Queue All
@@ -286,26 +287,30 @@ function showDetailsAll() {
   populateAlert("Loading...", "notice");
   var outStr = "";
   var disabled = "";
-  fetch("../Api/api.php?action=showDetailsAll",
-   {
-   	method: 'GET',
-   	credentials: 'include'
-   }
-  )
-.then(function (response) {
-response.json().then(function (results) {
-  echo(results);
-	results.forEach(row => {
-		outStr += '<tr><td>' + row.character_name +
-			'</td><td>' + row.series +
-			'</td><td>' + row.genre +
-      '</td><td>' + row.r_group +
-      '</td><td><button ' + disabled + '>Delete</button>' +
-			'</td></tr>';
-	});
-	document.getElementById('queue').innerHTML = outStr;
-			})
-		});
+  fetch("../Api/api.php?action=showDetailsAll", {
+    method: "GET",
+    credentials: "include",
+  }).then(function (response) {
+    response.json().then(function (results) {
+      echo(results);
+      results.forEach((row) => {
+        outStr +=
+          "<tr><td>" +
+          row.character_name +
+          "</td><td>" +
+          row.series +
+          "</td><td>" +
+          row.genre +
+          "</td><td>" +
+          row.r_group +
+          "</td><td><button " +
+          disabled +
+          ">Delete</button>" +
+          "</td></tr>";
+      });
+      document.getElementById("queue").innerHTML = outStr;
+    });
+  });
 }
 
 // Dequeue
@@ -436,8 +441,8 @@ function formcheckregister() {
   var errorStr = "";
   if (passCheck() === false) {
     errorStr += "Passwords do not match";
-  console.log("password checked");
-  return;
+    console.log("password checked");
+    return;
   }
 
   if (names.checkValidity() === false) {
@@ -489,8 +494,8 @@ function formcheckupdate() {
   var errorStr = "";
   if (passCheck() === false) {
     errorStr += "Passwords do not match";
-  console.log("password checked");
-  return;
+    console.log("password checked");
+    return;
   }
 
   if (namer.checkValidity() === false) {
@@ -573,7 +578,7 @@ function passCheck() {
       password2r.setCustomValidity("");
       return true;
     } else {
-       error.innerHTML= "Passwords do not Match";
+      error.innerHTML = "Passwords do not Match";
       passwordr.setCustomValidity("test");
       password2r.setCustomValidity("test2");
       return false;

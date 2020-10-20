@@ -1,10 +1,7 @@
 <?php
-// ini_set("display_errors","On");
-// error_reporting(E_ALL); 
-
 header('Access-Control-Allow-Origin: https://localhost');
 header('Access-Control-Allow-Credentials: true');
-header('Content-Type: application/json'); // All echo statements are json_encode
+// header('Content-Type: application/json'); // All echo statements are json_encode
 
 // initiation of database and session
 require('db.php');
@@ -81,9 +78,9 @@ if (isset($_GET["action"])) {
                 $actiontype = $_POST['joini'];
 
                 if (isset($cosplay_name)) {
-                   $db->join($name, $cosplay_name, $facebook, $instagram, $phone, $email, $character_name, $series, $genre, $r_group, $reference_photo, $photo_taken, $date, $browserAgent, $actiontype);
-                        http_response_code(201);
-                    } else {
+                    $db->join($name, $cosplay_name, $facebook, $instagram, $phone, $email, $character_name, $series, $genre, $r_group, $reference_photo, $photo_taken, $date, $browserAgent, $actiontype);
+                    http_response_code(201);
+                } else {
                     http_response_code(501);
                 }
             }
@@ -95,12 +92,12 @@ if (isset($_GET["action"])) {
                 $cosplay_name = $_POST['namel'];
                 $password = $_POST['passwordl'];
                 if (isset($cosplay_name)) {
-                   $success= $db->login($cosplay_name, $password);
-                   if ($success) {
-                    http_response_code(201);
-                   } else {
-                    http_response_code(501);
-                   }
+                    $success = $db->login($cosplay_name, $password);
+                    if ($success) {
+                        http_response_code(201);
+                    } else {
+                        http_response_code(501);
+                    }
                 } else {
                     http_response_code(501);
                 }
@@ -131,7 +128,6 @@ if (isset($_GET["action"])) {
             break;
 
         case "update":
-            // echo "update";
             if (isset($_POST["action"])) {
                 $name = $_POST['namer'];
                 $cosplay_name = $_POST['usernamer'];
@@ -143,16 +139,19 @@ if (isset($_GET["action"])) {
                 $date = date('Y-m-d H:i:s');
                 $browserAgent = $_SERVER['HTTP_USER_AGENT'];
                 $actiontype = $_POST['updater'];
-
                 if ($_SESSION["login"] == "true") {
                     if (isset($cosplay_name)) {
                         $db->update($name, $cosplay_name, $facebook, $instagram, $phone, $email, $password, $date, $browserAgent, $actiontype);
-                            http_response_code(201);
-                           } else {
-                            http_response_code(501);
-                           }
+                        http_response_code(201);
+                    } else {
+                        http_response_code(501);
+                    }
+                } else {
+                    http_response_code(403);
                 }
             }
+            echo "update";
+
             break;
 
         case "dequeue":
