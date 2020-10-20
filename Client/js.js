@@ -195,118 +195,109 @@ function register() {
 }
 
 //load json partial
-function loadJSONpartial() {
-  populateAlert("Loading...", "notice");
-  var out = "";
-  var disabled = "";
-  fetch(url, {
-    method: "GET",
-    credentials: "include",
-  }).then(function (response) {
-    if (response.status === 401) {
-      populateAlert("Not Authorized, please login", "error");
-      return;
-    }
-    if (response.status === 204) {
-      populateAlert("No queue items found", "warning");
-      return;
-    }
-    response.json().then(function (data) {
-      console.log(data);
-      data.forEach((row) => {
-        if (row.student_NO == 1) {
-          disabled = "";
-        } else {
-          disabled = "disabled";
-        }
-        out +=
-          "<tr><td>"
-          + row.id
-          + "</td><td>"
-          + row.name
-          + "</td><td>"
-          + row.cosplay_name
-          + "</td><td>"
-          + row.character
-          + "</td><td>"
-          + row.series
-          +
-          // '</td><td>' + row.genre +
-          "</td><td>"
-          + row.group
-          + '</td><td><img src="'
-          + row.photo
-          + '"></td><td><button '
-          + disabled
-          + ">Delete</button>"
-          + "</td><td><button "
-          + disabled
-          + ">Preview</button>"
-          + "</td></tr>";
-      });
-      document.getElementById("queue").innerHTML = outStr;
-    });
-  });
-}
+// function loadJSONpartial() {
+//   populateAlert("Loading...", "notice");
+//   var out = "";
+//   var disabled = "";
+//   fetch(url, {
+//     method: "GET",
+//     credentials: "include",
+//   }).then(function (response) {
+//     if (response.status === 401) {
+//       populateAlert("Not Authorized, please login", "error");
+//       return;
+//     }
+//     if (response.status === 204) {
+//       populateAlert("No queue items found", "warning");
+//       return;
+//     }
+//     response.json().then(function (data) {
+//       console.log(data);
+//       data.forEach((row) => {
+//         if (row.student_NO == 1) {
+//           disabled = "";
+//         } else {
+//           disabled = "disabled";
+//         }
+//         out +=
+//           "<tr><td>"
+//           + row.id
+//           + "</td><td>"
+//           + row.name
+//           + "</td><td>"
+//           + row.cosplay_name
+//           + "</td><td>"
+//           + row.character
+//           + "</td><td>"
+//           + row.series
+//           +
+//           // '</td><td>' + row.genre +
+//           "</td><td>"
+//           + row.group
+//           + '</td><td><img src="'
+//           + row.photo
+//           + '"></td><td><button '
+//           + disabled
+//           + ">Delete</button>"
+//           + "</td><td><button "
+//           + disabled
+//           + ">Preview</button>"
+//           + "</td></tr>";
+//       });
+//       document.getElementById("queue").innerHTML = outStr;
+//     });
+//   });
+// }
 
 //Show Queue
 function showDetails() {
   populateAlert("Loading...", "notice");
-  var out = "";
+  var outStr = "";
   var disabled = "";
   fetch("../Api/api.php?action=showDetails",
-     {
-     	method: 'GET',
-     	credentials: 'include'
-     }
-		)
-    .then(function (response) {
-      if (response.status === 201) {
-        let queue = data.results;
-        return queue.map(function (queue) {
-          console.log(queue.character_name);
-          console.log(queue.genre);
-          console.log(queue.group);
-          console.log(queue.photo);
-        })
-      }
-    })
-}
-  
-    // .then((resp) => resp.json())
-    // .then(function (data) {
-    //   let people = data.results;
-    //   return people.map(function (queue) {
-    //     console.log(queue.character_name);
-    //     console.log(queue.genre);
-    //     console.log(queue.genre);
-    //     console.log(queue.group);
-    //     console.log(queue.photo);
-    //   });
-    // });
-
-
-
-// .then(function (response) {
-// response.json().then(function (data) {
-// 	console.log(data);
-// 	data.forEach(row => {
-// 		// if (row.user_ID == 1) {
-// 		// 	disabled = '';
-// 		// } else {
-// 		// 	disabled = 'disabled';
-// 		// }
-// 		out += '<tr><td>' + row.character +
-// 			'</td><td>' + row.series +
-// 			'</td><td>' + row.genre +
-// 			'</td><td>' + row.group +
-// 			'</td><td><img src="' + row.photo + '"></td><td><button ' + disabled + '>Delete</button>' +
-// 			'</td></tr>';
-// 	});
-// 	document.getElementById('queue').innerHTML = outStr;
-// 			})
-// 		});
+   {
+   	method: 'GET',
+   	credentials: 'include'
+   }
+  )
+  // fetch("../Api/api.php?action=showDetails",
+    //  {
+    //  	method: 'GET',
+    //  	credentials: 'include'
+    //  }
+		// )
+//     .then(function (response) {
+//       if (response.status === 201) {
+//         let queue = data.results;
+//         return queue.map(function (queue) {
+//           console.log(queue.character_name);
+//           console.log(queue.genre);
+//           console.log(queue.group);
+//           console.log(queue.photo);
+//         })
+//       }
+//     })
 // }
+.then(function (response) {
+response.json().then(function (data) {
+	console.log(data);
+	data.forEach(row => {
+		if (row.user_ID == $_SESSION['userID']) {
+			disabled = '';
+		} else {
+			disabled = 'disabled';
+		}
+		outStr += '<tr><td>' + row.character +
+			'</td><td>' + row.series +
+			'</td><td>' + row.genre +
+			'</td><td>' + row.group +
+			// '</td><td><img src="' + row.photo + '"></td><td><button ' + disabled + '>Delete</button>' +
+			'</td></tr>';
+	});
+	document.getElementById('queue').innerHTML = outStr;
+			})
+		});
+}
 
 // Dequeue
 function dequeue() {

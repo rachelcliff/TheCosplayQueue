@@ -32,6 +32,7 @@ if (isset($_GET["action"])) {
     // }
     switch ($_GET["action"]) {
         case "showDetails":
+            echo "moo";
             if ($_SESSION['sessionOBJ']->is_logged_in()) {
                 //  $result = $db->showDetails();
                 // if ($result == false) {
