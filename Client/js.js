@@ -195,59 +195,59 @@ function register() {
 }
 
 //load json partial
-// function loadJSONpartial() {
-//   populateAlert("Loading...", "notice");
-//   var out = "";
-//   var disabled = "";
-//   fetch(url, {
-//     method: "GET",
-//     credentials: "include",
-//   }).then(function (response) {
-//     if (response.status === 401) {
-//       populateAlert("Not Authorized, please login", "error");
-//       return;
-//     }
-//     if (response.status === 204) {
-//       populateAlert("No queue items found", "warning");
-//       return;
-//     }
-//     response.json().then(function (data) {
-//       console.log(data);
-//       data.forEach((row) => {
-//         if (row.student_NO == 1) {
-//           disabled = "";
-//         } else {
-//           disabled = "disabled";
-//         }
-//         out +=
-//           "<tr><td>"
-//           + row.id
-//           + "</td><td>"
-//           + row.name
-//           + "</td><td>"
-//           + row.cosplay_name
-//           + "</td><td>"
-//           + row.character
-//           + "</td><td>"
-//           + row.series
-//           +
-//           // '</td><td>' + row.genre +
-//           "</td><td>"
-//           + row.group
-//           + '</td><td><img src="'
-//           + row.photo
-//           + '"></td><td><button '
-//           + disabled
-//           + ">Delete</button>"
-//           + "</td><td><button "
-//           + disabled
-//           + ">Preview</button>"
-//           + "</td></tr>";
-//       });
-//       document.getElementById("queue").innerHTML = outStr;
-//     });
-//   });
-// }
+function loadJSONpartial() {
+  populateAlert("Loading...", "notice");
+  var out = "";
+  var disabled = "";
+  fetch(url, {
+    method: "GET",
+    credentials: "include",
+  }).then(function (response) {
+    if (response.status === 401) {
+      populateAlert("Not Authorized, please login", "error");
+      return;
+    }
+    if (response.status === 204) {
+      populateAlert("No queue items found", "warning");
+      return;
+    }
+    response.json().then(function (data) {
+      console.log(data);
+      data.forEach((row) => {
+        if (row.student_NO == 1) {
+          disabled = "";
+        } else {
+          disabled = "disabled";
+        }
+        out +=
+          "<tr><td>"
+          + row.id
+          + "</td><td>"
+          + row.name
+          + "</td><td>"
+          + row.cosplay_name
+          + "</td><td>"
+          + row.character
+          + "</td><td>"
+          + row.series
+          +
+          // '</td><td>' + row.genre +
+          "</td><td>"
+          + row.group
+          + '</td><td><img src="'
+          + row.photo
+          + '"></td><td><button '
+          + disabled
+          + ">Delete</button>"
+          + "</td><td><button "
+          + disabled
+          + ">Preview</button>"
+          + "</td></tr>";
+      });
+      document.getElementById("queue").innerHTML = outStr;
+    });
+  });
+}
 
 //Show Queue
 function showDetails() {
@@ -260,22 +260,10 @@ function showDetails() {
    	credentials: 'include'
    }
   )
-//     .then(function (response) {
-//       if (response.status === 201) {
-//         let queue = data.results;
-//         return queue.map(function (queue) {
-//           console.log(queue.character_name);
-//           console.log(queue.genre);
-//           console.log(queue.group);
-//           console.log(queue.photo);
-//         })
-//       }
-//     })
-// }
 .then(function (response) {
-response.json().then(function (data) {
-  console.log(data);
-	data.forEach(row => {
+response.json().then(function (results) {
+  console.log(results);
+	results.forEach(row => {
 		// if (row.user_ID == $_SESSION['userID']) {
 		// 	disabled = '';
 		// } else {
@@ -285,7 +273,34 @@ response.json().then(function (data) {
 			'</td><td>' + row.series +
 			'</td><td>' + row.genre +
 			'</td><td>' + row.r_group +
-			// '</td><td><img src="' + row.photo + '"></td><td><button ' + disabled + '>Delete</button>' +
+			// '<td><button ' + disabled + '>Delete</button>' +
+			'</td></tr>';
+	});
+	document.getElementById('queue').innerHTML = outStr;
+			})
+		});
+}
+
+//Show Queue All
+function showDetailsAll() {
+  populateAlert("Loading...", "notice");
+  var outStr = "";
+  var disabled = "";
+  fetch("../Api/api.php?action=showDetailsAll",
+   {
+   	method: 'GET',
+   	credentials: 'include'
+   }
+  )
+.then(function (response) {
+response.json().then(function (results) {
+  echo(results);
+	results.forEach(row => {
+		outStr += '<tr><td>' + row.character_name +
+			'</td><td>' + row.series +
+			'</td><td>' + row.genre +
+      '</td><td>' + row.r_group +
+      '</td><td><button ' + disabled + '>Delete</button>' +
 			'</td></tr>';
 	});
 	document.getElementById('queue').innerHTML = outStr;
@@ -345,22 +360,6 @@ function switchBG(checkBG) {
   }
 }
 
-// Password Check
-function passCheck() {
-  if (passwordr.value.length > 0 && password2r.value.length > 0) {
-    if (passwordr.value === password2r.value) {
-      //  error.innerHTML = "";
-      passwordr.setCustomValidity("");
-      password2r.setCustomValidity("");
-      return true;
-    } else {
-      //  error.innerHTML= "Passwords do not Match";
-      passwordr.setCustomValidity("test");
-      password2r.setCustomValidity("test2");
-      return false;
-    }
-  }
-}
 // Form Validation - Join
 function formcheckjoin() {
   populateAlert("Loading...", "notice");
@@ -373,40 +372,39 @@ function formcheckjoin() {
   if (usernamei.checkValidity() === false) {
     errorStr += "Please insert a valid username ";
     console.log("username checked");
-  }
-
-  if (facebooki.checkValidity() === false) {
-    errorStr += "Please insert a valid facebook account ";
-  }
-
-  if (instagrami.checkValidity() === false) {
-    errorStr += "Please insert a a valid instagram account ";
+    return;
   }
 
   if (phonei.checkValidity() === false) {
     errorStr += "Please insert a valid phone number ";
     console.log("phone checked");
+    return;
   }
 
   if (emaili.checkValidity() === false) {
     errorStr += "Please insert a valid email ";
     console.log("email checked");
+    return;
   }
 
   if (characteri.checkValidity() === false) {
     errorStr += "Please insert your character name ";
+    return;
   }
 
   if (seriesi.checkValidity() === false) {
     errorStr += "Please insert your series name ";
+    return;
   }
 
   if (genrei.checkValidity() === false) {
     errorStr += "Please answer if you are part of a group ";
+    return;
   }
 
   if (groupi.checkValidity() === false) {
     errorStr += "Please insert a Valid response ";
+    return;
   }
 
   formdata = new FormData();
@@ -438,35 +436,32 @@ function formcheckregister() {
   var errorStr = "";
   if (passCheck() === false) {
     errorStr += "Passwords do not match";
-  }
   console.log("password checked");
+  return;
+  }
 
   if (names.checkValidity() === false) {
     errorStr += "Please insert a valid name ";
     console.log("name checked");
+    return;
   }
 
   if (usernames.checkValidity() === false) {
     errorStr += "Please insert a valid username ";
     console.log("username checked");
-  }
-
-  if (facebooks.checkValidity() === false) {
-    errorStr += "Please insert a valid facebook account ";
-  }
-
-  if (instagrams.checkValidity() === false) {
-    errorStr += "Please insert a a valid instagram account ";
+    return;
   }
 
   if (phones.checkValidity() === false) {
     errorStr += "Please insert a valid phone number ";
     console.log("phone checked");
+    return;
   }
 
   if (emails.checkValidity() === false) {
     errorStr += "Please insert a valid email ";
     console.log("email checked");
+    return;
   }
 
   formdata = new FormData();
@@ -494,35 +489,42 @@ function formcheckupdate() {
   var errorStr = "";
   if (passCheck() === false) {
     errorStr += "Passwords do not match";
-  }
   console.log("password checked");
+  return;
+  }
 
   if (namer.checkValidity() === false) {
     errorStr += "Please insert a valid name ";
     console.log("name checked");
+    return;
   }
 
   if (usernamer.checkValidity() === false) {
     errorStr += "Please insert a valid username ";
     console.log("username checked");
+    return;
   }
 
   if (facebookr.checkValidity() === false) {
     errorStr += "Please insert a valid facebook account ";
+    return;
   }
 
   if (instagramr.checkValidity() === false) {
     errorStr += "Please insert a a valid instagram account ";
+    return;
   }
 
   if (phoner.checkValidity() === false) {
     errorStr += "Please insert a valid phone number ";
     console.log("phone checked");
+    return;
   }
 
   if (emailr.checkValidity() === false) {
     errorStr += "Please insert a valid email ";
     console.log("email checked");
+    return;
   }
 
   formdata = new FormData();
@@ -562,23 +564,38 @@ function killAlert() {
   alertMsg.style.display = "none";
 }
 
-// JSON Convert
-//fetch('../Api/db.php')
-//  .then(response => response.json())
-//  .then(json => console.log(json))
+// Password Check
+function passCheck() {
+  if (passwordr.value.length > 0 && password2r.value.length > 0) {
+    if (passwordr.value === password2r.value) {
+      //  error.innerHTML = "";
+      passwordr.setCustomValidity("");
+      password2r.setCustomValidity("");
+      return true;
+    } else {
+       error.innerHTML= "Passwords do not Match";
+      passwordr.setCustomValidity("test");
+      password2r.setCustomValidity("test2");
+      return false;
+    }
+  }
+}
 
 // Form Validation - Login
 function formchecklogin() {
   populateAlert("Loading...", "notice");
   var errorStr = "";
+  // dispatchEvent;
   if (namel.checkValidity() === false) {
     errorStr += "Please insert a valid name ";
     console.log("username checked");
+    return;
   }
 
   if (passwordl.checkValidity() === false) {
     errorStr += "Please insert a valid username ";
     console.log("password checked");
+    return;
   }
 
   formdata = new FormData();
@@ -592,8 +609,3 @@ function formchecklogin() {
     credentials: "include",
   });
 }
-
-// // JSON Convert
-// fetch("../Api/db.php")
-//   .then((response) => response.json())
-//   .then((json) => console.log(json));
