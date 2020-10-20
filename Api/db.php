@@ -1,4 +1,7 @@
 <?php
+ini_set("display_errors","On");
+error_reporting(E_ALL); 
+
 class cosplayQueueModel
 {
     private $dbconn;
@@ -45,6 +48,11 @@ class cosplayQueueModel
             //    $stmt->bindValue(':user_id', $lastuserID);
             //    $stmt->bindvalue(':actiontype', $actiontype);
             //     $stmt->execute();
+
+            $_SESSION["character_name"] = $character_name;
+            $_SESSION["series"] = $series;
+            $_SESSION["genre"] = $genre;
+            $_SESSION["r_group"] = $r_group;
             $this->dbconn->commit();
         } catch (PDOException $ex) {
             $this->dbconn->rollBack();
@@ -140,48 +148,6 @@ class cosplayQueueModel
         //     $this->dbconn->rollBack();
         //     throw $ex;
         // }
-
-// //update user function
-//         function update($name, $cosplay_name, $facebook, $instagram, $phone, $email, $password, $user_id, $date, $browserAgent) {
-//             try {
-//                 $this->dbconn->beginTransaction();
-//             $stmt= $this->dbconn->prepare("UPDATE users SET name, cosplay_name, facebook, instagram, phone, email, password values :name, :username, :facebook, :instagram, :phone, :email :password) WHERE user_id= :uid");
-
-//                 $stmt->bindValue(':name', $name);
-//                 $stmt->bindValue(':cosplay_name', $cosplay_name);
-//                 $stmt->bindValue(':facebook', $facebook);
-//                 $stmt->bindValue(':instagram', $instagram);
-//                 $stmt->bindValue(':phone', $phone);
-//                 $stmt->bindValue(':email', $email);
-//                 $stmt->bindValue(':password', $password);
-//                 $stmt->bindValue(':user_id', $user_id);
-// 				$stmt->bindValue(':uid', $_SESSION['user-id']);
-//                 $stmt->execute();
-
-//                 // $stmt = $this->dbconn->prepare("INSERT INTO changelog(date, browser, user_id) Values (:date, :browser, :user_id)");
-//                 // $stmt->bindValue(':date', $date);
-//                 // $stmt->bindValue(':browser', $browserAgent);
-//                 // $stmt->bindValue(':user_id', $user_id);
-//                 // $this->dbconn->commit();
-
-//                 $this->dbconn->commit();
-//             }
-//             catch (PDOException $ex){
-//                 $this->dbconn->rollBack();
-//                 throw $ex;
-//             }
-    // public function showDetails($character_name, $series, $genre, $r_group)
-    // {
-    //     $result = array(
-    //         array(
-    //             'character_name' => $character_name,
-    //             'series' => $series,
-    //             'genre' => $genre,
-    //             'r_group' => $r_group
-    //         ),
-    //     );
-    //     return $result;
-    // }
 
     //update user function
     function update($name, $cosplay_name, $facebook, $instagram, $phone, $email, $password, $user_id, $date, $browserAgent)
