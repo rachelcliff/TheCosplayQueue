@@ -34,14 +34,8 @@ if (isset($_GET["action"])) {
     // }
     switch ($_GET["action"]) {
         case "showDetails":
-            echo "moo";
+            // echo "show";
             if ($_SESSION['sessionOBJ']->is_logged_in()) {
-                //  $result = $db->showDetails();
-                // if ($result == false) {
-                //     http_response_code(204);
-                // } else {
-                // 	http_response_code(201);
-                
                 $result = $db->showDetails($_SESSION['character_name'], $_SESSION['series'], $_SESSION['genre'], $_SESSION['r_group']);
                 if ($result == false) {
                     http_response_code(204);

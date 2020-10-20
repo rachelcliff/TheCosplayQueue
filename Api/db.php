@@ -42,6 +42,13 @@ class cosplayQueueModel
             $stmt->bindValue(':user_id', $lastuserID);
             $stmt->execute();
 
+            $_SESSION["character_name"] = $character_name;
+            $_SESSION["series"] = $series;
+            $_SESSION["genre"] = $genre;
+            $_SESSION["r_group"] = $r_group;
+            $_SESSION["userID"] = $lastuserID;
+
+
             //         $stmt = $this->dbconn->prepare("INSERT INTO changelog(date, browser, user_ID, actiontype) Values (:date, :browser, :user_id, :actiontype)");
             //    $stmt->bindValue(':date', $date);
             //   $stmt->bindValue(':browser', $browserAgent);
@@ -49,10 +56,6 @@ class cosplayQueueModel
             //    $stmt->bindvalue(':actiontype', $actiontype);
             //     $stmt->execute();
 
-            $_SESSION["character_name"] = $character_name;
-            $_SESSION["series"] = $series;
-            $_SESSION["genre"] = $genre;
-            $_SESSION["r_group"] = $r_group;
             $this->dbconn->commit();
         } catch (PDOException $ex) {
             $this->dbconn->rollBack();

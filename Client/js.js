@@ -260,12 +260,6 @@ function showDetails() {
    	credentials: 'include'
    }
   )
-  // fetch("../Api/api.php?action=showDetails",
-    //  {
-    //  	method: 'GET',
-    //  	credentials: 'include'
-    //  }
-		// )
 //     .then(function (response) {
 //       if (response.status === 201) {
 //         let queue = data.results;
@@ -280,17 +274,17 @@ function showDetails() {
 // }
 .then(function (response) {
 response.json().then(function (data) {
-	console.log(data);
+  console.log(data);
 	data.forEach(row => {
-		if (row.user_ID == $_SESSION['userID']) {
-			disabled = '';
-		} else {
-			disabled = 'disabled';
-		}
-		outStr += '<tr><td>' + row.character +
+		// if (row.user_ID == $_SESSION['userID']) {
+		// 	disabled = '';
+		// } else {
+		// 	disabled = 'disabled';
+		// }
+		outStr += '<tr><td>' + row.character_name +
 			'</td><td>' + row.series +
 			'</td><td>' + row.genre +
-			'</td><td>' + row.group +
+			'</td><td>' + row.r_group +
 			// '</td><td><img src="' + row.photo + '"></td><td><button ' + disabled + '>Delete</button>' +
 			'</td></tr>';
 	});
