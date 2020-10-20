@@ -148,13 +148,11 @@ class cosplayQueueModel
         return $result;
     }
     //update user function
-    function update($name, $cosplay_name, $facebook, $instagram, $phone, $email, $password, $user_id, $date, $browserAgent)
+    function update($user_id, $name, $cosplay_name, $facebook, $instagram, $phone, $email, $password, $date, $browserAgent, $actiontype)
     {
         try {
-            $this->dbconn->beginTransaction();
-            $user_id=$_SESSION['UserID'];
+            // $this->dbconn->beginTransaction();
             $stmt = $this->dbconn->prepare("UPDATE users SET name=:name, cosplay_name=:cosplay_name, facebook=:facebook, instagram=:instagram, phone=:phone, email=:email, password=:password) WHERE user_id=:user_id");
-
             $stmt->bindValue(':name', $name);
             $stmt->bindValue(':cosplay_name', $cosplay_name);
             $stmt->bindValue(':facebook', $facebook);
@@ -169,7 +167,7 @@ class cosplayQueueModel
             // $stmt->bindValue(':date', $date);
             // $stmt->bindValue(':browser', $browserAgent);
             // $stmt->bindValue(':user_id', $user_id);
-            // $this->dbconn->commit();
+            // $stmt->execute();
 
             $this->dbconn->commit();
 

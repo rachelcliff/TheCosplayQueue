@@ -128,8 +128,12 @@ if (isset($_GET["action"])) {
             break;
 
         case "update":
+            $user_id=$_SESSION['userID'];
+            // $user_id= 143;
             if (isset($_POST["action"])) {
-                $name = $_POST['namer'];
+                $name = $_POST['name'];
+                // echo $name;
+                // die;
                 $cosplay_name = $_POST['usernamer'];
                 $facebook = $_POST['facebookr'];
                 $instagram = $_POST['instagramr'];
@@ -141,7 +145,8 @@ if (isset($_GET["action"])) {
                 $actiontype = $_POST['updater'];
                 if ($_SESSION["login"] == "true") {
                     if (isset($cosplay_name)) {
-                        $db->update($name, $cosplay_name, $facebook, $instagram, $phone, $email, $password, $date, $browserAgent, $actiontype);
+                        $db->update($user_id, $name, $cosplay_name, $facebook, $instagram, $phone, $email, $password, $date, $browserAgent, $actiontype);
+                        echo "test";
                         http_response_code(201);
                     } else {
                         http_response_code(501);
@@ -150,14 +155,13 @@ if (isset($_GET["action"])) {
                     http_response_code(403);
                 }
             }
-            echo "update";
 
             break;
 
-        case "dequeue":
-            // echo "dequeue";
-            if (isset($_POST["action"])) {
-            }
-            break;
+        // case "dequeue":
+        //     // echo "dequeue";
+        //     if (isset($_POST["action"])) {
+        //     }
+        //     break;
     }
 }
