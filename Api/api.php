@@ -86,8 +86,32 @@ if (isset($_GET["action"])) {
             }
             break;
 
+            case "signup":
+                echo "signup";
+                // if (isset($_POST["action"])) {
+                    $name = isset($_POST['namef']);
+                    echo "test";
+                    $cosplay_name = $_POST['usernamef'];
+                    $facebook = $_POST['facebookf'];
+                    $instagram = $_POST['instagramf'];
+                    $phone = $_POST['phonef'];
+                    $email = $_POST['emailf'];
+                    $password = $_POST['passwordf'];
+                    $date = date('Y-m-d H:i:s');
+                    $browserAgent = $_SERVER['HTTP_USER_AGENT'];
+                    $actiontype = $_POST['registers'];
+    
+                    if (isset($email)) {
+                        $db->signup($name, $cosplay_name, $facebook, $instagram, $phone, $email, $password, $date, $browserAgent, $actiontype);
+                        http_response_code(202);
+                    } else {
+                        http_response_code(501);
+                    }
+                // }
+                break;
+
         case "login":
-            // echo "login";
+            echo "login";
             if (isset($_POST["action"])) {
                 $cosplay_name = $_POST['namel'];
                 $password = $_POST['passwordl'];
@@ -104,33 +128,10 @@ if (isset($_GET["action"])) {
             }
             break;
 
-        case "signup":
-            // echo "signup";
-            if (isset($_POST["action"])) {
-                $name = $_POST['names'];
-                $cosplay_name = $_POST['usernames'];
-                $facebook = $_POST['facebooks'];
-                $instagram = $_POST['instagrams'];
-                $phone = $_POST['phones'];
-                $email = $_POST['emails'];
-                $password = $_POST['passwords'];
-                $date = date('Y-m-d H:i:s');
-                $browserAgent = $_SERVER['HTTP_USER_AGENT'];
-                $actiontype = $_POST['registers'];
-
-                if (isset($cosplay_name)) {
-                    $db->signup($name, $cosplay_name, $facebook, $instagram, $phone, $email, $password, $date, $browserAgent, $actiontype);
-                    http_response_code(202);
-                } else {
-                    http_response_code(501);
-                }
-            }
-            break;
-
-        case "update":
-            $user_id=$_SESSION['userID'];
+        // case "update":
+            $user_id = $_SESSION['userID'];
             // $user_id= 143;
-            if (isset($_POST["action"])) {
+            // if (isset($_POST["action"])) {
                 $name = $_POST['name'];
                 // echo $name;
                 // die;
@@ -154,14 +155,14 @@ if (isset($_GET["action"])) {
                 } else {
                     http_response_code(403);
                 }
-            }
+            // }
 
             break;
 
-        // case "dequeue":
-        //     // echo "dequeue";
-        //     if (isset($_POST["action"])) {
-        //     }
-        //     break;
+            // case "dequeue":
+            //     // echo "dequeue";
+            //     if (isset($_POST["action"])) {
+            //     }
+            //     break;
     }
 }

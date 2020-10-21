@@ -372,6 +372,7 @@ function formcheckjoin() {
   if (namei.checkValidity() === false) {
     errorStr += "Please insert a valid name ";
     console.log("name checked");
+    return;
   }
 
   if (usernamei.checkValidity() === false) {
@@ -445,25 +446,25 @@ function formcheckregister() {
     return;
   }
 
-  if (names.checkValidity() === false) {
+  if (namef.checkValidity() === false) {
     errorStr += "Please insert a valid name ";
     console.log("name checked");
     return;
   }
 
-  if (usernames.checkValidity() === false) {
+  if (usernamef.checkValidity() === false) {
     errorStr += "Please insert a valid username ";
     console.log("username checked");
     return;
   }
 
-  if (phones.checkValidity() === false) {
+  if (phonef.checkValidity() === false) {
     errorStr += "Please insert a valid phone number ";
     console.log("phone checked");
     return;
   }
 
-  if (emails.checkValidity() === false) {
+  if (emailf.checkValidity() === false) {
     errorStr += "Please insert a valid email ";
     console.log("email checked");
     return;
@@ -471,14 +472,13 @@ function formcheckregister() {
 
   formdata = new FormData();
   formdata.set("action", "signup");
-
-  formdata.set("names", names.value);
-  formdata.set("usernames", usernames.value);
-  formdata.set("facebooks", facebooks.value);
-  formdata.set("instagrams", instagrams.value);
-  formdata.set("phones", phones.value);
-  formdata.set("emails", emails.value);
-  formdata.set("passwords", passwords.value);
+  formdata.set("namef", namef.value);
+  formdata.set("usernamef", usernamef.value);
+  formdata.set("facebookf", facebookf.value);
+  formdata.set("instagramf", instagramf.value);
+  formdata.set("phonef", phonef.value);
+  formdata.set("emailf", emailf.value);
+  formdata.set("passwordf", passwordf.value);
   formdata.set("registers", registers.value);
 
   fetch("../Api/api.php?action=signup", {
