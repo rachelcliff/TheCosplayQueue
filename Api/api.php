@@ -89,14 +89,15 @@ if (isset($_GET["action"])) {
             case "signup":
                 echo "signup";
                 // if (isset($_POST["action"])) {
-                    $name = isset($_POST['namef']);
-                    echo "test";
-                    $cosplay_name = $_POST['usernamef'];
-                    $facebook = $_POST['facebookf'];
-                    $instagram = $_POST['instagramf'];
-                    $phone = $_POST['phonef'];
-                    $email = $_POST['emailf'];
-                    $password = $_POST['passwordf'];
+                    $name = $_POST['names'];
+                    echo $name;
+                    die;
+                    $cosplay_name = $_POST['usernames'];
+                    $facebook = $_POST['facebooks'];
+                    $instagram = $_POST['instagrams'];
+                    $phone = $_POST['phones'];
+                    $email = $_POST['emails'];
+                    $password = $_POST['passwords'];
                     $date = date('Y-m-d H:i:s');
                     $browserAgent = $_SERVER['HTTP_USER_AGENT'];
                     $actiontype = $_POST['registers'];
@@ -128,7 +129,7 @@ if (isset($_GET["action"])) {
             }
             break;
 
-        // case "update":
+        case "update":
             $user_id = $_SESSION['userID'];
             // $user_id= 143;
             // if (isset($_POST["action"])) {

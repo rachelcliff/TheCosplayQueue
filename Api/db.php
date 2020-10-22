@@ -87,13 +87,13 @@ class cosplayQueueModel
             $stmt->execute();
 
 
-            $lastuserID = $this->dbconn->lastInsertID();
-            $stmt = $this->dbconn->prepare("INSERT INTO changelog(date, browser, actiontype user_ID) Values (:date, :browser, :actiontype :user_id)");
-            $stmt->bindValue(':date', $date);
-            $stmt->bindValue(':browser', $browserAgent);
-            $stmt->bindValue(':actiontype', $actiontype);
-            $stmt->bindValue(':user_id', $lastuserID);
-            $stmt->execute();
+            // $lastuserID = $this->dbconn->lastInsertID();
+            // $stmt = $this->dbconn->prepare("INSERT INTO changelog(date, browser, actiontype user_ID) Values (:date, :browser, :actiontype :user_id)");
+            // $stmt->bindValue(':date', $date);
+            // $stmt->bindValue(':browser', $browserAgent);
+            // $stmt->bindValue(':actiontype', $actiontype);
+            // $stmt->bindValue(':user_id', $lastuserID);
+            // $stmt->execute();
             $this->dbconn->commit();
         } catch (PDOException $ex) {
             $this->dbconn->rollBack();

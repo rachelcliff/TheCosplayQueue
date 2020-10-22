@@ -80,16 +80,62 @@ align-content: center;
 	border-color: orange;
 }
 
-#bottom-buttons {
-	padding: 2em;
-}
-
 #password {
 	border-style: solid;
 	border-color: aqua;
 }
 
 #password-re {
+	border-style: solid;
+	border-color: hotpink;
+}
+
+#name_login {
+	border-style: solid;
+	border-color: purple;
+}
+
+#password_login {
+	border-style: solid;
+	border-color: aqua;
+}
+
+
+#name_register {
+	border-style: solid;
+	border-color: purple;
+}
+
+#username_register {
+	border-style: solid;
+	border-color: orange;
+}
+
+#facebook_register {
+	border-style: solid;
+	border-color: aqua;
+}
+
+#instagram_register {
+	border-style: solid;
+	border-color: hotpink;
+}
+
+#phone_register {
+	border-style: solid;
+	border-color: purple;
+}
+
+#email_register {
+	border-style: solid;
+	border-color: orange;
+}
+#password_register {
+	border-style: solid;
+	border-color: aqua;
+}
+
+#password2_register {
 	border-style: solid;
 	border-color: hotpink;
 }

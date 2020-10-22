@@ -371,25 +371,25 @@ function formcheckjoin() {
   var errorStr = "";
   if (namei.checkValidity() === false) {
     errorStr += "Please insert a valid name ";
-    console.log("name checked");
+    console.log("name error");
     return;
   }
 
   if (usernamei.checkValidity() === false) {
     errorStr += "Please insert a valid username ";
-    console.log("username checked");
+    console.log("username error");
     return;
   }
 
   if (phonei.checkValidity() === false) {
     errorStr += "Please insert a valid phone number ";
-    console.log("phone checked");
+    console.log("phone error");
     return;
   }
 
   if (emaili.checkValidity() === false) {
     errorStr += "Please insert a valid email ";
-    console.log("email checked");
+    console.log("email error");
     return;
   }
 
@@ -442,43 +442,43 @@ function formcheckregister() {
   var errorStr = "";
   if (passCheck() === false) {
     errorStr += "Passwords do not match";
-    console.log("password checked");
+    console.log("password error");
     return;
   }
 
-  if (namef.checkValidity() === false) {
+  if (names.checkValidity() === false) {
     errorStr += "Please insert a valid name ";
-    console.log("name checked");
+    console.log("name error");
     return;
   }
 
-  if (usernamef.checkValidity() === false) {
+  if (usernames.checkValidity() === false) {
     errorStr += "Please insert a valid username ";
-    console.log("username checked");
+    console.log("username error");
     return;
   }
 
-  if (phonef.checkValidity() === false) {
+  if (phones.checkValidity() === false) {
     errorStr += "Please insert a valid phone number ";
-    console.log("phone checked");
+    console.log("phone error");
     return;
   }
 
-  if (emailf.checkValidity() === false) {
+  if (emails.checkValidity() === false) {
     errorStr += "Please insert a valid email ";
-    console.log("email checked");
+    console.log("email error");
     return;
   }
 
   formdata = new FormData();
-  formdata.set("action", "signup");
-  formdata.set("namef", namef.value);
-  formdata.set("usernamef", usernamef.value);
-  formdata.set("facebookf", facebookf.value);
-  formdata.set("instagramf", instagramf.value);
-  formdata.set("phonef", phonef.value);
-  formdata.set("emailf", emailf.value);
-  formdata.set("passwordf", passwordf.value);
+  formdata.set("action", "register");
+  formdata.set("names", names.value);
+  formdata.set("usernames", usernames.value);
+  formdata.set("facebooks", facebooks.value);
+  formdata.set("instagrams", instagrams.value);
+  formdata.set("phones", phones.value);
+  formdata.set("emails", emails.value);
+  formdata.set("passwords", passwords.value);
   formdata.set("registers", registers.value);
 
   fetch("../Api/api.php?action=signup", {
@@ -494,19 +494,19 @@ function formcheckupdate() {
   var errorStr = "";
   if (passCheck() === false) {
     errorStr += "Passwords do not match";
-    console.log("password checked");
+    console.log("password error");
     return;
   }
 
   if (namer.checkValidity() === false) {
     errorStr += "Please insert a valid name ";
-    console.log("name checked");
+    console.log("name error");
     return;
   }
 
   if (usernamer.checkValidity() === false) {
     errorStr += "Please insert a valid username ";
-    console.log("username checked");
+    console.log("username error");
     return;
   }
 
@@ -522,13 +522,13 @@ function formcheckupdate() {
 
   if (phoner.checkValidity() === false) {
     errorStr += "Please insert a valid phone number ";
-    console.log("phone checked");
+    console.log("phone error");
     return;
   }
 
   if (emailr.checkValidity() === false) {
     errorStr += "Please insert a valid email ";
-    console.log("email checked");
+    console.log("email error");
     return;
   }
 
@@ -593,13 +593,13 @@ function formchecklogin() {
   // dispatchEvent;
   if (namel.checkValidity() === false) {
     errorStr += "Please insert a valid name ";
-    console.log("username checked");
+    console.log("username error");
     return;
   }
 
   if (passwordl.checkValidity() === false) {
     errorStr += "Please insert a valid username ";
-    console.log("password checked");
+    console.log("password error");
     return;
   }
 
