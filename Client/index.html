@@ -185,41 +185,41 @@
                         <div class="row">
                            <div class="input-field col offset-s1 s10" id="name_register">
                               <i class="material-icons prefix">account_circle</i>
-                              <input class="validate" type="text" id="names" placeholder="Full Name" name="name" pattern="[a-zA-Z0-9']{2,}" title="name must have 2 or more uppercase letters" required>
+                              <input class="validate" type="text" id="names" placeholder="Full Name" name="names" pattern="[a-zA-Z0-9']{2,}" title="name must have 2 or more uppercase letters" required>
                               <!-- <label for="icon_prefix">Name</label> -->
                            </div>
                            <div class="input-field col offset-s1 s10" id="username_register">
                               <i class="material-icons prefix">account_circle</i>
-                              <input class="validate" type="text" id="usernames" placeholder="Username" name="username" pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}" title="name must have 2 or more lowercase letters" required>
+                              <input class="validate" type="text" id="usernames" placeholder="Username" name="usernames" pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}" title="name must have 2 or more lowercase letters" required>
                               <!-- <label for="icon_prefix">Cosplay Name/Username</label> -->
                            </div>
                            <div class="input-field col offset-s1 s10" id="facebook_register">
                               <i class="material-icons prefix">facebook</i>
-                              <input class="icon_prefix" type="text" id="facebooks" placeholder="Facebook Page (if applicable)" name="facebook" pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}" title="name must have 2 or more lowercase letters">
+                              <input class="icon_prefix" type="text" id="facebooks" placeholder="Facebook Page (if applicable)" name="facebooks" pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}" title="name must have 2 or more lowercase letters">
                               <!-- <label for="icon_prefix">Facebook Page (if applicable)</label>  -->
                            </div>
                            <div class="input-field col offset-s1 s10" id="instagram_register">
                               <i class="material-icons prefix">photo_camera</i>
-                              <input class="icon_prefix" type="text" id="instagrams" placeholder="Instagram Account (if applicable)" name="instagram" pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}" title="name must have 2 or more lowercase letters" >
+                              <input class="icon_prefix" type="text" id="instagrams" placeholder="Instagram Account (if applicable)" name="instagrams" pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}" title="name must have 2 or more lowercase letters" >
                               <!-- <label for="icon_prefix">Instagram Account (if applicable)</label> -->
                            </div>
                            <div class="input-field col offset-s1 s10" id="phone_register">
                               <i class="material-icons prefix">phone</i>
-                              <input class="validate" type="tel" id="phones" placeholder="Mobile Number" name="phone" pattern="[0-9]{2,}" title="number must have 12 or more numbers" required>
+                              <input class="validate" type="tel" id="phones" placeholder="Mobile Number" name="phones" pattern="[0-9]{2,}" title="number must have 12 or more numbers" required>
                               <!-- <label for="icon_prefix">Mobile Number</label> -->
                            </div>
                            <div class="input-field col offset-s1 s10" id="email_register">
                               <i class="material-icons prefix">email</i>
-                              <input class="validate" type="text" id="emails" placeholder="Email Address" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="name must have 2 or more lowercase letters" required>
+                              <input class="validate" type="text" id="emails" placeholder="Email Address" name="emails" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="name must have 2 or more lowercase letters" required>
                               <!-- <label for="icon_prefix">Email Address</label> -->
                            </div>
                            <div class="input-field col offset-s1 s10" id="password_register">
                               <i class="material-icons prefix">lock</i>
-                              <input class="validate" type="text" id="passwords" placeholder="Password"  pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}" required>
+                              <input class="validate" name="passwords" type="text" id="passwords" placeholder="Password"  pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}" required>
                               </div>
                            <div class="input-field col offset-s1 s10" id="password2_register">
                               <i class="material-icons prefix">lock</i>
-                              <input class="validate" type="text" id="password2s" placeholder="Password-Re"  pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}" required>
+                              <input class="validate" type="text" id="password2s" placeholder="Password-Re"  name="password2s" pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}" required>
                               <input type="hidden" id="registers" name="actiontype" value="register"/>
                               <!-- <label for="icon_prefix">Password</label> -->
                               </div>
@@ -273,42 +273,42 @@
             <div class="row">
                   <div class="input-field col offset-s1 s10" id="name_update">
                      <i class="material-icons prefix">account_circle</i>
-                     <input class="validate" type="text" id="namer" placeholder="Full Name" name="name" value="" pattern="[a-zA-Z0-9']{2,}" title="name must have 2 or more uppercase letters" onblur="save()">
+                     <input class="validate" type="text" id="namer" placeholder="Full Name" name="namer" pattern="[a-zA-Z0-9']{2,}" title="name must have 2 or more uppercase letters" onblur="save()">
                      <!-- <label for="icon_prefix">Name</label> -->
                   </div>
                   <div class="input-field col offset-s1 s10" id="username_update">
                      <i class="material-icons prefix">account_circle</i>
-                     <input class="validate" type="text" id="usernamer" placeholder="Username" name="username" value="" pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}" title="name must have 2 or more loawercase letters">
+                     <input class="validate" type="text" id="usernamer" placeholder="Username" name="usernamer" pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}" title="name must have 2 or more loawercase letters">
                      <!-- <label for="icon_prefix">Cosplay Name/Username</label> -->
                   </div>
                   <div class="input-field col offset-s1 s10" id="facebook_update">
                      <i class="material-icons prefix">facebook</i>
-                     <input class="validate" type="text" id="facebookr" name="facebook" value="" pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}" title="name must have 2 or more lowercase letters" onblur="savefacebookr()" placeholder="Facebook Page (if applicable)">
+                     <input class="validate" type="text" id="facebookr" name="facebookr" pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}" title="name must have 2 or more lowercase letters" onblur="savefacebookr()" placeholder="Facebook Page (if applicable)">
                      <!-- <label for="icon_prefix">Facebook Page (if applicable)</label>  -->
                   </div>
                   <div class="input-field col offset-s1 s10" id="instagram_update">
                      <i class="material-icons prefix">photo_camera</i>
-                     <input class="validate" type="text" id="instagramr" placeholder="Instagram Account (if applicable)" name="instagram" value="" pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}" title="name must have 2 or more lowercase letters" onblur= "saveinstagramr()">
+                     <input class="validate" type="text" id="instagramr" placeholder="Instagram Account (if applicable)" name="instagramr" pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}" title="name must have 2 or more lowercase letters" onblur= "saveinstagramr()">
                      <!-- <label for="icon_prefix">Instagram Account (if applicable)</label> -->
                   </div>
                   <div class="input-field col offset-s1 s10" id="phone_update">
                      <i class="material-icons prefix">phone</i>
-                     <input class="validate" type="tel" id="phoner" placeholder="Mobile Number" name="phone" value="" pattern="[0-9]{2,}" title="number must have 12 or more numbers" onblur="savephoner()">
+                     <input class="validate" type="tel" id="phoner" placeholder="Mobile Number" name="phoner" pattern="[0-9]{2,}" title="number must have 12 or more numbers" onblur="savephoner()">
                      <!-- <label for="icon_prefix">Mobile Number</label> -->
                   </div>
                   <div class="input-field col offset-s1 s10" id="email_update">
                      <i class="material-icons prefix">email</i>
-                     <input class="validate" type="text" id="emailr" name="email" value="" pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}" title="name must have 2 or more lowercase letters" onblur="saveemailr()" placeholder="Email Address">
+                     <input class="validate" type="text" id="emailr" name="emailr" pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}" title="name must have 2 or more lowercase letters" onblur="saveemailr()" placeholder="Email Address">
                      <!-- <label for="icon_prefix">Email Address</label> -->
                   </div>
                   <div class="input-field col offset-s1 s10" id="password_update">
                      <i class="material-icons prefix">lock</i>
-                     <input class="validate" type="text" id="passwordr" placeholder="Password" value="" pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}" onblur="savepasswordr()">
+                     <input class="validate" type="text" name="passwordr" id="passwordr" placeholder="Password"  pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}" onblur="savepasswordr()">
                      <!-- <label for="icon_prefix">Password</label> -->
                   </div>
                   <div class="input-field col offset-s1 s10" id="password-re_update">
                      <i class="material-icons prefix">lock</i>
-                     <input class="icon_prefix" type="text" id="password2r" placeholder="Re-enter Password" value="" pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}" onblur="savepassword2r()">
+                     <input class="icon_prefix" type="text" name="password2r" id="password2r" placeholder="Re-enter Password" value="" pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}" onblur="savepassword2r()">
                      <!-- <label for="icon_prefix">Re-enter Password</label> -->
                      <input type="hidden" id= "updater" name="actiontype" value="update"/>
                      <input type="hidden" value="<?php echo $userId ?>" name="id" />

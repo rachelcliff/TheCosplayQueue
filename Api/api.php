@@ -1,7 +1,7 @@
 <?php
 header('Access-Control-Allow-Origin: https://localhost');
 header('Access-Control-Allow-Credentials: true');
-// header('Content-Type: application/json'); // All echo statements are json_encode
+header('Content-Type: application/json'); // All echo statements are json_encode
 
 // initiation of database and session
 require('db.php');
@@ -87,11 +87,9 @@ if (isset($_GET["action"])) {
             break;
 
             case "signup":
-                echo "signup";
-                // if (isset($_POST["action"])) {
-                    $name = $_POST["names"];
-                    echo $name;
-                    die;
+                // echo "signup";
+                if (isset($_POST["action"])) {
+                    $name = $_POST['names'];
                     $cosplay_name = $_POST['usernames'];
                     $facebook = $_POST['facebooks'];
                     $instagram = $_POST['instagrams'];
@@ -103,12 +101,12 @@ if (isset($_GET["action"])) {
                     $actiontype = $_POST['registers'];
     
                     if (isset($email)) {
-                        $db->signup($name, $cosplay_name, $facebook, $instagram, $phone, $email, $password, $date, $browserAgent, $actiontype);
-                        http_response_code(202);
+                       $db->register($name, $cosplay_name, $facebook, $instagram, $phone, $email, $password, $date, $browserAgent, $actiontype);
+                       http_response_code(201);
                     } else {
                         http_response_code(501);
                     }
-                // }
+                }
                 break;
 
         case "login":
@@ -130,12 +128,11 @@ if (isset($_GET["action"])) {
             break;
 
         case "update":
-            $user_id = $_SESSION['userID'];
-            // $user_id= 143;
-            // if (isset($_POST["action"])) {
-                $name = $_POST['name'];
-                // echo $name;
-                // die;
+            echo "update";
+            // $user_id = $_SESSION['userID'];
+            $user_id= 145;
+            if (isset($_POST["action"])) {
+                $name = $_POST['namer'];
                 $cosplay_name = $_POST['usernamer'];
                 $facebook = $_POST['facebookr'];
                 $instagram = $_POST['instagramr'];
@@ -145,25 +142,21 @@ if (isset($_GET["action"])) {
                 $date = date('Y-m-d H:i:s');
                 $browserAgent = $_SERVER['HTTP_USER_AGENT'];
                 $actiontype = $_POST['updater'];
-                if ($_SESSION["login"] == "true") {
+                $user_id= $_POST['user_id'];
+                // if ($_SESSION["login"] == "true") {
                     if (isset($cosplay_name)) {
-                        $db->update($user_id, $name, $cosplay_name, $facebook, $instagram, $phone, $email, $password, $date, $browserAgent, $actiontype);
-                        echo "test";
+                        $db->updater($user_id, $name, $cosplay_name, $facebook, $instagram, $phone, $email, $password, $date, $browserAgent, $actiontype);
                         http_response_code(201);
                     } else {
                         http_response_code(501);
-                    }
-                } else {
-                    http_response_code(403);
-                }
-            // }
-
+            }
+        }
             break;
 
             // case "dequeue":
             //     // echo "dequeue";
             //     if (isset($_POST["action"])) {
             //     }
-            //     break;
+                break;
     }
 }

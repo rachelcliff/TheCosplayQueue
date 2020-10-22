@@ -62,11 +62,17 @@ class cosplayQueueModel
     }
 
     //new user function
-    function signup($name, $cosplay_name, $facebook, $instagram, $phone, $email, $password, $date, $browserAgent, $actiontype)
+    function register($name, $cosplay_name, $facebook, $instagram, $phone, $email, $password, $date, $browserAgent, $actiontype)
     {
 
         try {
             $this->dbconn->beginTransaction();
+            $stmt = $this->dbconn->prepare("INSERT INTO logins(cosplay_name, password) values (:cosplay_name,:password)");
+            $password = password_hash($password, PASSWORD_DEFAULT);
+            $stmt->bindValue(':cosplay_name', $cosplay_name);
+            $stmt->bindValue(':password', $password);
+            $stmt->execute();
+
             $lastloginID = $this->dbconn->lastInsertId();
             $stmt = $this->dbconn->prepare("INSERT INTO users(name, cosplay_name, facebook, instagram, phone, email, login_id) values (:name, :cosplay_name, :facebook, :instagram, :phone, :email, :login_id)");
             $stmt->bindValue(':name', $name);
@@ -78,23 +84,24 @@ class cosplayQueueModel
             $stmt->bindValue(':login_id', $lastloginID);
             $stmt->execute();
 
-
-            $this->dbconn->beginTransaction();
-            $stmt = $this->dbconn->prepare("INSERT INTO logins(cosplay_name, password) values (:cosplay_name,:password)");
-            $password = password_hash($password, PASSWORD_DEFAULT);
-            $stmt->bindValue(':cosplay_name', $cosplay_name);
-            $stmt->bindValue(':password', $password);
+            $lastuserID = $this->dbconn->lastInsertID();
+            $stmt = $this->dbconn->prepare("INSERT INTO changelog(date, browser, actiontype, user_ID) Values (:date, :browser, :actiontype, :user_id)");
+            $stmt->bindValue(':date', $date);
+            $stmt->bindValue(':browser', $browserAgent);
+            $stmt->bindValue(':actiontype', $actiontype);
+            $stmt->bindValue(':user_id', $lastuserID);
             $stmt->execute();
 
+            // $_SESSION["cosplay_name"] = $cosplay_name;
+            // $_SESSION["name"] = $name;
+            // $_SESSION["facebook"] = $facebook;
+            // $_SESSION["instagram"] = $instagram;
+            // $_SESSION["userID"] = $lastuserID;
+            // $_SERVER["phone"] = $phone;
+            // $_SERVER["emai"] = $email;
 
-            // $lastuserID = $this->dbconn->lastInsertID();
-            // $stmt = $this->dbconn->prepare("INSERT INTO changelog(date, browser, actiontype user_ID) Values (:date, :browser, :actiontype :user_id)");
-            // $stmt->bindValue(':date', $date);
-            // $stmt->bindValue(':browser', $browserAgent);
-            // $stmt->bindValue(':actiontype', $actiontype);
-            // $stmt->bindValue(':user_id', $lastuserID);
-            // $stmt->execute();
             $this->dbconn->commit();
+
         } catch (PDOException $ex) {
             $this->dbconn->rollBack();
             throw $ex;
@@ -151,11 +158,12 @@ class cosplayQueueModel
         $result = $query->fetchAll();
         return $result;
     }
+
     //update user function
-    function update($user_id, $name, $cosplay_name, $facebook, $instagram, $phone, $email, $password, $date, $browserAgent, $actiontype)
+    function updater($user_id, $name, $cosplay_name, $facebook, $instagram, $phone, $email, $password, $date, $browserAgent, $actiontype)
     {
         try {
-            // $this->dbconn->beginTransaction();
+            $this->dbconn->beginTransaction();
             $stmt = $this->dbconn->prepare("UPDATE users SET name=:name, cosplay_name=:cosplay_name, facebook=:facebook, instagram=:instagram, phone=:phone, email=:email, password=:password) WHERE user_id=:user_id");
             $stmt->bindValue(':name', $name);
             $stmt->bindValue(':cosplay_name', $cosplay_name);
@@ -167,11 +175,11 @@ class cosplayQueueModel
             $stmt->bindValue(':user_id', $user_id);
             $stmt->execute();
 
-            $stmt = $this->dbconn->prepare("INSERT INTO changelog(date, browser, user_id) Values (:date, :browser, :user_id)");
-            $stmt->bindValue(':date', $date);
-            $stmt->bindValue(':browser', $browserAgent);
-            $stmt->bindValue(':user_id', $user_id);
-            $stmt->execute();
+            // $stmt = $this->dbconn->prepare("INSERT INTO changelog(date, browser, user_id) Values (:date, :browser, :user_id)");
+            // $stmt->bindValue(':date', $date);
+            // $stmt->bindValue(':browser', $browserAgent);
+            // $stmt->bindValue(':user_id', $user_id);
+            // $stmt->execute();
 
             $this->dbconn->commit();
         } catch (PDOException $ex) {

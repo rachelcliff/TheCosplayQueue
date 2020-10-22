@@ -140,6 +140,45 @@ align-content: center;
 	border-color: hotpink;
 }
 
+#name_update {
+	border-style: solid;
+	border-color: purple;
+}
+
+#username_update {
+	border-style: solid;
+	border-color: orange;
+}
+
+#facebook_update {
+	border-style: solid;
+	border-color: aqua;
+}
+
+#instagram_update {
+	border-style: solid;
+	border-color: hotpink;
+}
+
+#phone_update {
+	border-style: solid;
+	border-color: purple;
+}
+
+#email_update {
+	border-style: solid;
+	border-color: orange;
+}
+#password_update {
+	border-style: solid;
+	border-color: aqua;
+}
+
+#password-re_update {
+	border-style: solid;
+	border-color: hotpink;
+}
+
 #login-btn {
 	background-color: aqua;
 	border-style: solid;

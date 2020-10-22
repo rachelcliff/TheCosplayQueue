@@ -471,7 +471,7 @@ function formcheckregister() {
   }
 
   formdata = new FormData();
-  formdata.set("action", "register");
+  formdata.set("action", "signup");
   formdata.set("names", names.value);
   formdata.set("usernames", usernames.value);
   formdata.set("facebooks", facebooks.value);
@@ -485,6 +485,7 @@ function formcheckregister() {
     method: "POST",
     body: formdata,
     credentials: "same-origin",
+    
   });
 }
 
