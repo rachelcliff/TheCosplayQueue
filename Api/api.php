@@ -89,7 +89,7 @@ if (isset($_GET["action"])) {
             case "signup":
                 echo "signup";
                 // if (isset($_POST["action"])) {
-                    $name = $_POST['names'];
+                    $name = $_POST["names"];
                     echo $name;
                     die;
                     $cosplay_name = $_POST['usernames'];
