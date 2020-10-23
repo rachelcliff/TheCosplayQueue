@@ -25,7 +25,7 @@ Functions:
 - Register - Complete
 - Update user details - Complete
 - Create user - Complete
-- Remove self from queue - WIP
+- Remove self from queue - Complete
 
 Front-end pages:
 - index (contains all of bases for the app)
@@ -42,8 +42,8 @@ Images:
 Planning:
 $_GET
 - 1- Echo data inputted to form -> Complete
-- 2- echo current place in queue
-- 3- refresh queue
+- 2- echo current place in queue (count sql query where photo taken = no) -> WIP
+- 3- refresh queue (PUT statement need help with this one) -> WIP
 - 4- autofill join and update forms
 
 $_POST
@@ -56,4 +56,4 @@ CRUD 1- Create
 - Create new user -> Complete
 
 CRUD 2 - Update
-- Remove self from queue
+- Remove self from queue -> Complete
