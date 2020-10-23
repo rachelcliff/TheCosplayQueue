@@ -11,20 +11,19 @@ The UX2 assessment has been completed and is functional. Some functions from Pro
 Functions:
 - changelog -> Complete
 - user sign up-> Complete
-- update user data-> WIP
+- update user data-> Complete
 - logout-> Complete
 - checkLogin-> Complete
 - database-connect-> Complete
 - rate limiting -> Complete
-- show data inputted into queue - WIP
+- show data inputted into queue - Complete
 - show current place in queue - WIP
 - refresh queue - WIP
 - autofill queue update form - WIP
-- autofill queue join form once logged in - WIP
 - join queue - Complete
 - Login - Complete
 - Register - Complete
-- Update user details - WIP
+- Update user details - Complete
 - Create user - Complete
 - Remove self from queue - WIP
 
@@ -42,7 +41,7 @@ Images:
 
 Planning:
 $_GET
-- 1- Echo data inputted to form
+- 1- Echo data inputted to form -> Complete
 - 2- echo current place in queue
 - 3- refresh queue
 - 4- autofill join and update forms
@@ -51,7 +50,7 @@ $_POST
 - 1- join queue -> Complete
 - 2- login -> Complete
 - 3- sign up -> Complete
-- 4- update user details in local storage and database
+- 4- update user details in local storage and database -> Complete
 
 CRUD 1- Create
 - Create new user -> Complete
