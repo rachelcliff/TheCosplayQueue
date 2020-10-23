@@ -101,7 +101,6 @@ class cosplayQueueModel
             $_SERVER["emai"] = $email;
 
             $this->dbconn->commit();
-
         } catch (PDOException $ex) {
             $this->dbconn->rollBack();
             throw $ex;
@@ -113,22 +112,17 @@ class cosplayQueueModel
     {
         try {
             $this->dbconn->beginTransaction();
-            $stmt = $this->dbconn->prepare("SELECT * FROM logins WHERE cosplay_name=:cosplay_name");
+            $stmt = $this->dbconn->prepare("SELECT logins.cosplay_name, logins.password, logins.login_id, users.user_id FROM logins inner join users on logins.login_id = users.login_id WHERE logins.cosplay_name = :cosplay_name");
             $stmt->bindParam(':cosplay_name', $cosplay_name);
             $stmt->execute();
             $row = $stmt->fetch();
-                     
+
             if (password_verify($password, $row['password'])) {
                 $_SESSION["cosplay_name"] = $cosplay_name;
                 $_SESSION["loginID"] = $row['login_id'];
                 $_SESSION["login"] = 'yes';
-            //    $login_id= $_SESSION['loginID'];
-               
-            $stmt->$this->dbconn->prepare("SELECT user_id from users where login_id= :login_id");
-            $stmt->bindParam(':login_id', $row['login_id']);
-            $stmt->execute();
-            $_SESSION['userID'] = $row['user_id'];
-return true;
+                $_SESSION['userID'] = $row['user_id'];
+                return true;
             } else {
                 echo "Cannot log in";
                 return false;
@@ -168,10 +162,11 @@ return true;
     }
 
     //update user function
-    function updater($user_id, $name, $cosplay_name, $facebook, $instagram, $phone, $email, $password, $date, $browserAgent, $actiontype)
+    function update($name, $cosplay_name, $facebook, $instagram, $phone, $email, $password, $date, $browserAgent, $actiontype)
     {
         try {
-            $this->dbconn->beginTransaction();
+            $user_id = $_SESSION['userID'];
+            // $this->dbconn->beginTransaction();
             $stmt = $this->dbconn->prepare("UPDATE users SET name=:name, cosplay_name=:cosplay_name, facebook=:facebook, instagram=:instagram, phone=:phone, email=:email, password=:password) WHERE user_id=:user_id");
             $stmt->bindValue(':name', $name);
             $stmt->bindValue(':cosplay_name', $cosplay_name);
@@ -182,6 +177,7 @@ return true;
             $stmt->bindValue(':password', $password);
             $stmt->bindValue(':user_id', $user_id);
             $stmt->execute();
+            return true;
 
             // $stmt = $this->dbconn->prepare("INSERT INTO changelog(date, browser, user_id) Values (:date, :browser, :user_id)");
             // $stmt->bindValue(':date', $date);
@@ -189,7 +185,7 @@ return true;
             // $stmt->bindValue(':user_id', $user_id);
             // $stmt->execute();
 
-            $this->dbconn->commit();
+            // $this->dbconn->commit();
         } catch (PDOException $ex) {
             $this->dbconn->rollBack();
             throw $ex;

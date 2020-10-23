@@ -13,7 +13,7 @@ $se = new cosplayQueueSession;
 session_start();
 // $_SESSION["login"] = "true";
 // $_SESSION["loginID"] = 1;
-print_r($_SESSION);
+// print_r($_SESSION);
 
 if (!isset($_SESSION['sessionOBJ']))
     $_SESSION['sessionOBJ'] = new cosplayQueueSession;
@@ -132,10 +132,7 @@ if (isset($_GET["action"])) {
             break;
 
         case "update":
-            $user_id = $_SESSION['userID'];
-            echo $_SESSION['userID'];
             echo "update";
-            // $user_id= 145;
             if (isset($_POST["action"])) {
                 $name = $_POST['namer'];
                 $cosplay_name = $_POST['usernamer'];
@@ -148,15 +145,22 @@ if (isset($_GET["action"])) {
                 $browserAgent = $_SERVER['HTTP_USER_AGENT'];
                 $actiontype = $_POST['updater'];
                 $user_id = $_POST['user_id'];
-                // if ($_SESSION["login"] == "true") {
+                if ($_SESSION["login"] == "true") {
                 if (isset($cosplay_name)) {
-                    $db->updater($user_id, $name, $cosplay_name, $facebook, $instagram, $phone, $email, $password, $date, $browserAgent, $actiontype);
+                   $success = $db->update($name, $cosplay_name, $facebook, $instagram, $phone, $email, $password, $date, $browserAgent, $actiontype);
+                   if ($success) {
                     http_response_code(201);
+                    echo "success";
                 } else {
                     http_response_code(501);
+                    echo "fail";
                 }
+            } else {
+                http_response_code(502);
+                echo "fail 502";
             }
-            break;
+        }
+        break;
 
             // case "dequeue":
             //     // echo "dequeue";
@@ -164,4 +168,5 @@ if (isset($_GET["action"])) {
             //     }
             break;
     }
+}
 }
