@@ -92,13 +92,13 @@ class cosplayQueueModel
             $stmt->bindValue(':user_id', $lastuserID);
             $stmt->execute();
 
-            // $_SESSION["cosplay_name"] = $cosplay_name;
-            // $_SESSION["name"] = $name;
-            // $_SESSION["facebook"] = $facebook;
-            // $_SESSION["instagram"] = $instagram;
-            // $_SESSION["userID"] = $lastuserID;
-            // $_SERVER["phone"] = $phone;
-            // $_SERVER["emai"] = $email;
+            $_SESSION["cosplay_name"] = $cosplay_name;
+            $_SESSION["name"] = $name;
+            $_SESSION["facebook"] = $facebook;
+            $_SESSION["instagram"] = $instagram;
+            $_SESSION["userID"] = $lastuserID;
+            $_SERVER["phone"] = $phone;
+            $_SERVER["emai"] = $email;
 
             $this->dbconn->commit();
 
@@ -112,22 +112,29 @@ class cosplayQueueModel
     function login($cosplay_name, $password)
     {
         try {
-            // $this->dbconn->beginTransaction();
+            $this->dbconn->beginTransaction();
             $stmt = $this->dbconn->prepare("SELECT * FROM logins WHERE cosplay_name=:cosplay_name");
             $stmt->bindParam(':cosplay_name', $cosplay_name);
             $stmt->execute();
             $row = $stmt->fetch();
+                     
             if (password_verify($password, $row['password'])) {
                 $_SESSION["cosplay_name"] = $cosplay_name;
-                $_SESSION["loginID"] = $row['loginID'];
+                $_SESSION["loginID"] = $row['login_id'];
                 $_SESSION["login"] = 'yes';
-                $_SESSION["userID"] = $row['userID'];
-                echo 'Success';
-                return true;
+            //    $login_id= $_SESSION['loginID'];
+               
+            $stmt->$this->dbconn->prepare("SELECT user_id from users where login_id= :login_id");
+            $stmt->bindParam(':login_id', $row['login_id']);
+            $stmt->execute();
+            $_SESSION['userID'] = $row['user_id'];
+return true;
             } else {
                 echo "Cannot log in";
                 return false;
             }
+
+            $this->dbconn->commit();
 
             // $lastuserID = $this->dbconn->$_SESSION["userID"];
             // $stmt = $this->dbconn->prepare("INSERT INTO changelog(date, browser, actiontype user_ID) Values (:date, :browser, :actiontype :user_id)");
@@ -135,7 +142,8 @@ class cosplayQueueModel
             // $stmt->bindValue(':browser', $browserAgent);
             // $stmt->bindValue(':actiontype', $actiontype);
             // $stmt->bindValue(':user_id', $lastuserID);
-            $stmt->execute();
+            // $stmt->execute();
+
         } catch (PDOException $ex) {
             $this->dbconn->rollback();
             throw $ex;
