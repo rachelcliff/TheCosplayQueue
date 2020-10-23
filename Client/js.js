@@ -321,12 +321,12 @@ function dequeue() {
   formdata = new FormData();
   formdata.set("action", "dequeue");
   formdata.set("usernamei", usernamei.value);
-  formdata.set("photo_taken", 'void');
+  formdata.set("photo_taken", "void");
 
   fetch("../Api/api.php?action=dequeue", {
     method: "POST",
     body: formdata,
-    credentials: 'include'
+    credentials: "include",
   });
 }
 
@@ -489,7 +489,6 @@ function formcheckregister() {
     method: "POST",
     body: formdata,
     credentials: "same-origin",
-    
   });
 }
 

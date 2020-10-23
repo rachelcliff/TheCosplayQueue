@@ -1,358 +1,774 @@
 <!DOCTYPE html>
 <html lang="en" class="light-theme || dark-theme">
-   <head>
-      <title>The Cosplay Queue</title>
-      <!--Let browser know website is optimized for mobile-->
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <!-- Compiled and minified CSS -->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-      <!-- Materialize jQuery -->
-      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-      <!-- Compiled and minified JavaScript -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-      <!-- Google Font API -->
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <link rel="stylesheet" href="style.css">
-      <script src="js.js"></script>
-      <link rel="manifest" href="manifest.json">
-      <meta name="mobile-web-app-capable" content="yes">
-      <meta name="apple-mobile-web-app-capable" content="yes">
-      <meta name="application-name" content="CQ">
-      <meta name="msapplication-starturl" content="/">
-      <link rel="icon" href="../Images/CQ-icon.png">
-      <link rel="apple-touch-icon" href="../Images/CQ-icon.png">
-   </head>
-   <body>
-      <div class="container">
-         <header>
-            <nav>
-               <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large" id="hamburger">
-               <i class="material-icons">menu</i>
-               </a>
-               <img id="logo" src="../Images/the-cosplay-queue-logo-transparent.png" alt="The cosplay queue logo">
-            </nav>
-            <ul id="slide-out" class="sidenav">
-               <li>
-                  <img id="logo-menu" src="../Images/the-cosplay-queue-logo-transparent.png" alt="the cosplay queue logo">
-               </li>
-               <li>
-                  <a onclick="join()">
-                  <i class="material-icons">photo_camera</i>Join the Queue
-                  </a>
-               </li>
-               <li>
-                  <a onclick="sign()">
-                  <i class="material-icons">login</i>Log in
-                  </a>
-               </li>
-               <li>
-                  <a onclick="register()">
-                  <i class="material-icons">create</i>Sign Up
-                  </a>
-               </li>
-               <li>
-                  <p>
-                     <label>
-                     <input type="checkbox" class="filled-in" id="checkBG" onchange="switchBG(this)">
-                     <span id="mode-switch">Dark Mode/Light Mode</span>
-                     </label>
-                  </p>
-               </li>
-            </ul>
-         </header>
-         <div id="main_content">
-            <div class="message" 
-         id="alertMsg"
-         onclick="this.style.display = 'none'">
-    </div>
-            <ul class="collapsible">
-               <li>
-                  <div class="collapsible-header">
-                     <img id="join" src="../Images/Join-queue-transparent.png" alt="join the queue">
+  <head>
+    <title>The Cosplay Queue</title>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <!-- Materialize jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- Google Font API -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="js.js"></script>
+    <link rel="manifest" href="manifest.json" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="CQ" />
+    <meta name="msapplication-starturl" content="/" />
+    <link rel="icon" href="../Images/CQ-icon.png" />
+    <link rel="apple-touch-icon" href="../Images/CQ-icon.png" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <nav>
+          <a
+            href="#"
+            data-target="slide-out"
+            class="sidenav-trigger show-on-large"
+            id="hamburger"
+          >
+            <i class="material-icons">menu</i>
+          </a>
+          <img
+            id="logo"
+            src="../Images/the-cosplay-queue-logo-transparent.png"
+            alt="The cosplay queue logo"
+          />
+        </nav>
+        <ul id="slide-out" class="sidenav">
+          <li>
+            <img
+              id="logo-menu"
+              src="../Images/the-cosplay-queue-logo-transparent.png"
+              alt="the cosplay queue logo"
+            />
+          </li>
+          <li>
+            <a onclick="join()">
+              <i class="material-icons">photo_camera</i>Join the Queue
+            </a>
+          </li>
+          <li>
+            <a onclick="sign()"> <i class="material-icons">login</i>Log in </a>
+          </li>
+          <li>
+            <a onclick="register()">
+              <i class="material-icons">create</i>Sign Up
+            </a>
+          </li>
+          <li>
+            <p>
+              <label>
+                <input
+                  type="checkbox"
+                  class="filled-in"
+                  id="checkBG"
+                  onchange="switchBG(this)"
+                />
+                <span id="mode-switch">Dark Mode/Light Mode</span>
+              </label>
+            </p>
+          </li>
+        </ul>
+      </header>
+      <div id="main_content">
+        <div
+          class="message"
+          id="alertMsg"
+          onclick="this.style.display = 'none'"
+        ></div>
+        <ul class="collapsible">
+          <li>
+            <div class="collapsible-header">
+              <img
+                id="join"
+                src="../Images/Join-queue-transparent.png"
+                alt="join the queue"
+              />
+            </div>
+            <div class="collapsible-body">
+              <div class="page-title">Join the Queue</div>
+              <form
+                id="join-form"
+                action="../Api/api.php"
+                method="POST"
+                class="col s12 m12"
+                novalidate
+              >
+                <div class="row">
+                  <div class="input-field col offset-s1 s10" id="name">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input
+                      class="validate"
+                      type="text"
+                      id="namei"
+                      placeholder="Full Name"
+                      name="name"
+                      value=""
+                      pattern="[a-zA-Z']{2,}"
+                      title="name must have 2 or more uppercase letters"
+                      required
+                    />
+                    <!-- <label for="icon_prefix">Name</label> -->
                   </div>
-                  <div class="collapsible-body">
-                     <div class="page-title">
-                        Join the Queue
-                     </div>
-                     <form id="join-form" action="../Api/api.php" method="POST" class="col s12 m12" novalidate>
-                        <div class="row">
-                           <div class="input-field col offset-s1 s10" id="name">
-                              <i class="material-icons prefix">account_circle</i>
-                              <input class="validate" type="text" id="namei" placeholder="Full Name" name="name" value="" pattern="[a-zA-Z']{2,}" title="name must have 2 or more uppercase letters" required>
-                              <!-- <label for="icon_prefix">Name</label> -->
-                           </div>
-                           <div class="input-field col offset-s1 s10" id="username">
-                              <i class="material-icons prefix">account_circle</i>
-                              <input class="validate" type="text" id="usernamei" placeholder="Username" name="username" value="" pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}" title="name must have 2 or more lowercase letters" required>
-                              <!-- <label for="icon_prefix">Cosplay Name/Username</label> -->
-                           </div>
-                           <div class="input-field col offset-s1 s10" id="facebook">
-                              <i class="material-icons prefix">facebook</i>
-                              <input class="icon_prefix" type="text" id="facebooki" placeholder="Facebook Page (if applicable)" name="facebook" value="" pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}" title="name must have 2 or more lowercase letters">
-                              <!-- <label for="icon_prefix">Facebook Page (if applicable)</label>  -->
-                           </div>
-                           <div class="input-field col offset-s1 s10" id="instagram">
-                              <i class="material-icons prefix">photo_camera</i>
-                              <input class="icon_prefix" type="text" id="instagrami" placeholder="Instagram Account (if applicable)" name="instagram" value="" pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}" title="name must have 2 or more lowercase letters" >
-                              <!-- <label for="icon_prefix">Instagram Account (if applicable)</label> -->
-                           </div>
-                           <div class="input-field col offset-s1 s10" id="phone">
-                              <i class="material-icons prefix">phone</i>
-                              <input class="validate" type="tel" id="phonei" placeholder="Mobile Number" name="phone" value="" pattern="[0-9]{2,}" title="number must have 12 or more numbers" required>
-                              <!-- <label for="icon_prefix">Mobile Number</label> -->
-                           </div>
-                           <div class="input-field col offset-s1 s10" id="email">
-                              <i class="material-icons prefix">email</i>
-                              <input class="validate" type="text" id="emaili" placeholder="Email Address" name="email" value="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="name must have 2 or more lowercase letters" required>
-                              <!-- <label for="icon_prefix">Email Address</label> -->
-                           </div>
-                           <div class="input-field col offset-s1 s10" id="character">
-                              <i class="material-icons prefix">palette</i>
-                              <input class="validate" type="text" id="characteri" placeholder="Character" name="character" value="" pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}" title="name must have 2 or more lowercase letters"  required>
-                              <!-- <label for="icon_prefix">Character</label> -->
-                           </div>
-                           <div class="input-field col offset-s1 s10" id="series">
-                              <i class="material-icons prefix">book</i>
-                              <input class="validate" type="text" id="seriesi" placeholder="Series" name="series" value="" pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}" title="name must have 2 or more lowercase letters" required>
-                              <!-- <label for="icon_prefix">Series</label> -->
-                           </div>
-                           <div class="input-field col offset-s1 s10" id="genre">
-                              <i class="material-icons prefix">brush</i>
-                              <input class="validate" type="text" id="genrei" placeholder="Genre" name="genre" value="" pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}" title="name must have 2 or more lowercase letters" required>
-                              <!-- <label for="icon_prefix">Genre</label> -->
-                           </div>
-                           <div class="input-field col offset-s1 s10" id="group">
-                              <i class="material-icons prefix">group</i>
-                              <input class="validate" type="text" id="groupi" placeholder="Are you part of a group?" name="group" value="" pattern="[a-zA-Z']{2,3}" title="name must have 2 or more lowercase letters" required>
-                              <!-- <label for="icon_prefix">Are you part of a group</label> -->
-                           </div>
-                           <div class="file-field input-field col offset-m1 m10">
-                              <div class="btn">
-                                 <span>Upload</span>
-                                 <input type="file">
-                              </div>
-                              <div class="file-path-wrapper" id="file-path-wrapper">
-                                 <input class="file-path validate" type="text" placeholder="Photo of your costume" id="photo">
-                                 <label for="file-path-wrapper">(This can be a selfie or an image of your character)</label>
-                              </div>
-                              <input type="hidden" id="photo_taken" name="photo_taken" value="no">
-                              <input type="hidden" name="actiontype" id="joini" value="join queue"/>
-                           </div>
-                           <div class="col s12"></div>
-                           <button class="btn waves-effect waves-light col offset-s1 s4 modal-trigger" type="submit" name="action" id="submit-btn" href="#modal1" onClick="formcheckjoin()">Submit
-                              <i class="material-icons right">send</i>
-                           </button>
-                        </div>
-                     </form>
+                  <div class="input-field col offset-s1 s10" id="username">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input
+                      class="validate"
+                      type="text"
+                      id="usernamei"
+                      placeholder="Username"
+                      name="username"
+                      value=""
+                      pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}"
+                      title="name must have 2 or more lowercase letters"
+                      required
+                    />
+                    <!-- <label for="icon_prefix">Cosplay Name/Username</label> -->
                   </div>
-               </li>
-               <li>
-                  <div class="collapsible-header">
-                     <img id="sign-in" src="../Images/sign-in-transparent.png" alt="sign in">
-                     </div>
-                     <div class="collapsible-body">
-                        <div class="page-title">
-                           Login
-                        </div>
-                        <form id="login-form" action="../Api/api.php" method="POST" class="col s12 m12">
-                           <div class="row">
-                        <div class="input-field col offset-s1 s10" id="name_login">
-                        <i class="material-icons prefix">account_circle</i>
-                        <input class="validate" type="text" id="namel" placeholder="Username" name="username" pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}" title="name must have 2 or more lowercase letters" required>
-                        </div>
-                        <div class="input-field col offset-s1 s10" id="password_login">
-                        <i class="material-icons prefix">lock</i>
-                        <input class="validate" type="text" id="passwordl" placeholder="Password"  pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}" required>
-                        <input type="hidden" id="loginl" name="actiontype" value="login"/>
-                        <!-- <label for="icon_prefix">Password</label> -->
-                        </div>
-                        <button class="btn waves-effect waves-light col offset-s1 s4 modal-trigger" type="submit" name="action" id="login-btn" href="#modal2" onClick="formchecklogin()">Log In
-                        <i class="material-icons right">send</i>
-                        </button>
-                     </div>
-                        </form>
+                  <div class="input-field col offset-s1 s10" id="facebook">
+                    <i class="material-icons prefix">facebook</i>
+                    <input
+                      class="icon_prefix"
+                      type="text"
+                      id="facebooki"
+                      placeholder="Facebook Page (if applicable)"
+                      name="facebook"
+                      value=""
+                      pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}"
+                      title="name must have 2 or more lowercase letters"
+                    />
+                    <!-- <label for="icon_prefix">Facebook Page (if applicable)</label>  -->
                   </div>
-               </li>
-               <li>
-                  <div class="collapsible-header">
-                     <img id="register" src="../Images/register-transparent.png" alt ="register">
-                     </div>
-                     <div class="collapsible-body">
-                     <div class="page-title">
-                        Sign Up
-                     </div>
-                     <form id="register-form" action="../Api/api.php" method="post" class="col s12 m12">
-                        <div class="row">
-                           <div class="input-field col offset-s1 s10" id="name_register">
-                              <i class="material-icons prefix">account_circle</i>
-                              <input class="validate" type="text" id="names" placeholder="Full Name" name="names" pattern="[a-zA-Z0-9']{2,}" title="name must have 2 or more uppercase letters" required>
-                              <!-- <label for="icon_prefix">Name</label> -->
-                           </div>
-                           <div class="input-field col offset-s1 s10" id="username_register">
-                              <i class="material-icons prefix">account_circle</i>
-                              <input class="validate" type="text" id="usernames" placeholder="Username" name="usernames" pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}" title="name must have 2 or more lowercase letters" required>
-                              <!-- <label for="icon_prefix">Cosplay Name/Username</label> -->
-                           </div>
-                           <div class="input-field col offset-s1 s10" id="facebook_register">
-                              <i class="material-icons prefix">facebook</i>
-                              <input class="icon_prefix" type="text" id="facebooks" placeholder="Facebook Page (if applicable)" name="facebooks" pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}" title="name must have 2 or more lowercase letters">
-                              <!-- <label for="icon_prefix">Facebook Page (if applicable)</label>  -->
-                           </div>
-                           <div class="input-field col offset-s1 s10" id="instagram_register">
-                              <i class="material-icons prefix">photo_camera</i>
-                              <input class="icon_prefix" type="text" id="instagrams" placeholder="Instagram Account (if applicable)" name="instagrams" pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}" title="name must have 2 or more lowercase letters" >
-                              <!-- <label for="icon_prefix">Instagram Account (if applicable)</label> -->
-                           </div>
-                           <div class="input-field col offset-s1 s10" id="phone_register">
-                              <i class="material-icons prefix">phone</i>
-                              <input class="validate" type="tel" id="phones" placeholder="Mobile Number" name="phones" pattern="[0-9]{2,}" title="number must have 12 or more numbers" required>
-                              <!-- <label for="icon_prefix">Mobile Number</label> -->
-                           </div>
-                           <div class="input-field col offset-s1 s10" id="email_register">
-                              <i class="material-icons prefix">email</i>
-                              <input class="validate" type="text" id="emails" placeholder="Email Address" name="emails" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="name must have 2 or more lowercase letters" required>
-                              <!-- <label for="icon_prefix">Email Address</label> -->
-                           </div>
-                           <div class="input-field col offset-s1 s10" id="password_register">
-                              <i class="material-icons prefix">lock</i>
-                              <input class="validate" name="passwords" type="text" id="passwords" placeholder="Password"  pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}" required>
-                              </div>
-                           <div class="input-field col offset-s1 s10" id="password2_register">
-                              <i class="material-icons prefix">lock</i>
-                              <input class="validate" type="text" id="password2s" placeholder="Password-Re"  name="password2s" pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}" required>
-                              <input type="hidden" id="registers" name="actiontype" value="register"/>
-                              <!-- <label for="icon_prefix">Password</label> -->
-                              </div>
-                           <div class="col s12"></div>
-                           <button class="btn waves-effect waves-light col offset-s1 s4 modal-trigger" type="submit" name="register" id="register-btn" href="#modal2" onClick="formcheckregister()">Submit
-                              <i class="material-icons right">send</i>
-                           </button>
-                        </div>
-                     </form>
+                  <div class="input-field col offset-s1 s10" id="instagram">
+                    <i class="material-icons prefix">photo_camera</i>
+                    <input
+                      class="icon_prefix"
+                      type="text"
+                      id="instagrami"
+                      placeholder="Instagram Account (if applicable)"
+                      name="instagram"
+                      value=""
+                      pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}"
+                      title="name must have 2 or more lowercase letters"
+                    />
+                    <!-- <label for="icon_prefix">Instagram Account (if applicable)</label> -->
                   </div>
-               </li>
-            </ul>
-   </div>
-      <div class="divider" ></div>
+                  <div class="input-field col offset-s1 s10" id="phone">
+                    <i class="material-icons prefix">phone</i>
+                    <input
+                      class="validate"
+                      type="tel"
+                      id="phonei"
+                      placeholder="Mobile Number"
+                      name="phone"
+                      value=""
+                      pattern="[0-9]{2,}"
+                      title="number must have 12 or more numbers"
+                      required
+                    />
+                    <!-- <label for="icon_prefix">Mobile Number</label> -->
+                  </div>
+                  <div class="input-field col offset-s1 s10" id="email">
+                    <i class="material-icons prefix">email</i>
+                    <input
+                      class="validate"
+                      type="text"
+                      id="emaili"
+                      placeholder="Email Address"
+                      name="email"
+                      value=""
+                      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                      title="name must have 2 or more lowercase letters"
+                      required
+                    />
+                    <!-- <label for="icon_prefix">Email Address</label> -->
+                  </div>
+                  <div class="input-field col offset-s1 s10" id="character">
+                    <i class="material-icons prefix">palette</i>
+                    <input
+                      class="validate"
+                      type="text"
+                      id="characteri"
+                      placeholder="Character"
+                      name="character"
+                      value=""
+                      pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}"
+                      title="name must have 2 or more lowercase letters"
+                      required
+                    />
+                    <!-- <label for="icon_prefix">Character</label> -->
+                  </div>
+                  <div class="input-field col offset-s1 s10" id="series">
+                    <i class="material-icons prefix">book</i>
+                    <input
+                      class="validate"
+                      type="text"
+                      id="seriesi"
+                      placeholder="Series"
+                      name="series"
+                      value=""
+                      pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}"
+                      title="name must have 2 or more lowercase letters"
+                      required
+                    />
+                    <!-- <label for="icon_prefix">Series</label> -->
+                  </div>
+                  <div class="input-field col offset-s1 s10" id="genre">
+                    <i class="material-icons prefix">brush</i>
+                    <input
+                      class="validate"
+                      type="text"
+                      id="genrei"
+                      placeholder="Genre"
+                      name="genre"
+                      value=""
+                      pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}"
+                      title="name must have 2 or more lowercase letters"
+                      required
+                    />
+                    <!-- <label for="icon_prefix">Genre</label> -->
+                  </div>
+                  <div class="input-field col offset-s1 s10" id="group">
+                    <i class="material-icons prefix">group</i>
+                    <input
+                      class="validate"
+                      type="text"
+                      id="groupi"
+                      placeholder="Are you part of a group?"
+                      name="group"
+                      value=""
+                      pattern="[a-zA-Z']{2,3}"
+                      title="name must have 2 or more lowercase letters"
+                      required
+                    />
+                    <!-- <label for="icon_prefix">Are you part of a group</label> -->
+                  </div>
+                  <div class="file-field input-field col offset-m1 m10">
+                    <div class="btn">
+                      <span>Upload</span>
+                      <input type="file" />
+                    </div>
+                    <div class="file-path-wrapper" id="file-path-wrapper">
+                      <input
+                        class="file-path validate"
+                        type="text"
+                        placeholder="Photo of your costume"
+                        id="photo"
+                      />
+                      <label for="file-path-wrapper"
+                        >(This can be a selfie or an image of your
+                        character)</label
+                      >
+                    </div>
+                    <input
+                      type="hidden"
+                      id="photo_taken"
+                      name="photo_taken"
+                      value="no"
+                    />
+                    <input
+                      type="hidden"
+                      name="actiontype"
+                      id="joini"
+                      value="join queue"
+                    />
+                  </div>
+                  <div class="col s12"></div>
+                  <button
+                    class="btn waves-effect waves-light col offset-s1 s4 modal-trigger"
+                    type="submit"
+                    name="action"
+                    id="submit-btn"
+                    href="#modal1"
+                    onClick="formcheckjoin()"
+                  >
+                    Submit
+                    <i class="material-icons right">send</i>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </li>
+          <li>
+            <div class="collapsible-header">
+              <img
+                id="sign-in"
+                src="../Images/sign-in-transparent.png"
+                alt="sign in"
+              />
+            </div>
+            <div class="collapsible-body">
+              <div class="page-title">Login</div>
+              <form
+                id="login-form"
+                action="../Api/api.php"
+                method="POST"
+                class="col s12 m12"
+              >
+                <div class="row">
+                  <div class="input-field col offset-s1 s10" id="name_login">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input
+                      class="validate"
+                      type="text"
+                      id="namel"
+                      placeholder="Username"
+                      name="username"
+                      pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}"
+                      title="name must have 2 or more lowercase letters"
+                      required
+                    />
+                  </div>
+                  <div
+                    class="input-field col offset-s1 s10"
+                    id="password_login"
+                  >
+                    <i class="material-icons prefix">lock</i>
+                    <input
+                      class="validate"
+                      type="text"
+                      id="passwordl"
+                      placeholder="Password"
+                      pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}"
+                      required
+                    />
+                    <input
+                      type="hidden"
+                      id="loginl"
+                      name="actiontype"
+                      value="login"
+                    />
+                    <!-- <label for="icon_prefix">Password</label> -->
+                  </div>
+                  <button
+                    class="btn waves-effect waves-light col offset-s1 s4 modal-trigger"
+                    type="submit"
+                    name="action"
+                    id="login-btn"
+                    href="#modal2"
+                    onClick="formchecklogin()"
+                  >
+                    Log In
+                    <i class="material-icons right">send</i>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </li>
+          <li>
+            <div class="collapsible-header">
+              <img
+                id="register"
+                src="../Images/register-transparent.png"
+                alt="register"
+              />
+            </div>
+            <div class="collapsible-body">
+              <div class="page-title">Sign Up</div>
+              <form
+                id="register-form"
+                action="../Api/api.php"
+                method="post"
+                class="col s12 m12"
+              >
+                <div class="row">
+                  <div class="input-field col offset-s1 s10" id="name_register">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input
+                      class="validate"
+                      type="text"
+                      id="names"
+                      placeholder="Full Name"
+                      name="names"
+                      pattern="[a-zA-Z0-9']{2,}"
+                      title="name must have 2 or more uppercase letters"
+                      required
+                    />
+                    <!-- <label for="icon_prefix">Name</label> -->
+                  </div>
+                  <div
+                    class="input-field col offset-s1 s10"
+                    id="username_register"
+                  >
+                    <i class="material-icons prefix">account_circle</i>
+                    <input
+                      class="validate"
+                      type="text"
+                      id="usernames"
+                      placeholder="Username"
+                      name="usernames"
+                      pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}"
+                      title="name must have 2 or more lowercase letters"
+                      required
+                    />
+                    <!-- <label for="icon_prefix">Cosplay Name/Username</label> -->
+                  </div>
+                  <div
+                    class="input-field col offset-s1 s10"
+                    id="facebook_register"
+                  >
+                    <i class="material-icons prefix">facebook</i>
+                    <input
+                      class="icon_prefix"
+                      type="text"
+                      id="facebooks"
+                      placeholder="Facebook Page (if applicable)"
+                      name="facebooks"
+                      pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}"
+                      title="name must have 2 or more lowercase letters"
+                    />
+                    <!-- <label for="icon_prefix">Facebook Page (if applicable)</label>  -->
+                  </div>
+                  <div
+                    class="input-field col offset-s1 s10"
+                    id="instagram_register"
+                  >
+                    <i class="material-icons prefix">photo_camera</i>
+                    <input
+                      class="icon_prefix"
+                      type="text"
+                      id="instagrams"
+                      placeholder="Instagram Account (if applicable)"
+                      name="instagrams"
+                      pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}"
+                      title="name must have 2 or more lowercase letters"
+                    />
+                    <!-- <label for="icon_prefix">Instagram Account (if applicable)</label> -->
+                  </div>
+                  <div
+                    class="input-field col offset-s1 s10"
+                    id="phone_register"
+                  >
+                    <i class="material-icons prefix">phone</i>
+                    <input
+                      class="validate"
+                      type="tel"
+                      id="phones"
+                      placeholder="Mobile Number"
+                      name="phones"
+                      pattern="[0-9]{2,}"
+                      title="number must have 12 or more numbers"
+                      required
+                    />
+                    <!-- <label for="icon_prefix">Mobile Number</label> -->
+                  </div>
+                  <div
+                    class="input-field col offset-s1 s10"
+                    id="email_register"
+                  >
+                    <i class="material-icons prefix">email</i>
+                    <input
+                      class="validate"
+                      type="text"
+                      id="emails"
+                      placeholder="Email Address"
+                      name="emails"
+                      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                      title="name must have 2 or more lowercase letters"
+                      required
+                    />
+                    <!-- <label for="icon_prefix">Email Address</label> -->
+                  </div>
+                  <div
+                    class="input-field col offset-s1 s10"
+                    id="password_register"
+                  >
+                    <i class="material-icons prefix">lock</i>
+                    <input
+                      class="validate"
+                      name="passwords"
+                      type="text"
+                      id="passwords"
+                      placeholder="Password"
+                      pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}"
+                      required
+                    />
+                  </div>
+                  <div
+                    class="input-field col offset-s1 s10"
+                    id="password2_register"
+                  >
+                    <i class="material-icons prefix">lock</i>
+                    <input
+                      class="validate"
+                      type="text"
+                      id="password2s"
+                      placeholder="Password-Re"
+                      name="password2s"
+                      pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}"
+                      required
+                    />
+                    <input
+                      type="hidden"
+                      id="registers"
+                      name="actiontype"
+                      value="register"
+                    />
+                    <!-- <label for="icon_prefix">Password</label> -->
+                  </div>
+                  <div class="col s12"></div>
+                  <button
+                    class="btn waves-effect waves-light col offset-s1 s4 modal-trigger"
+                    type="submit"
+                    name="register"
+                    id="register-btn"
+                    href="#modal2"
+                    onClick="formcheckregister()"
+                  >
+                    Submit
+                    <i class="material-icons right">send</i>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="divider"></div>
       <div id="bottom-buttons" class="col m12">
-         <a class="waves-effect waves-light btn col m12" id="signup-btn" href="viewQueue.html">
-         <i class="material-icons left">create</i>Admin Sign In
-         </a>
+        <a
+          class="waves-effect waves-light btn col m12"
+          id="signup-btn"
+          href="viewQueue.html"
+        >
+          <i class="material-icons left">create</i>Admin Sign In
+        </a>
       </div>
-      </div>
-      <!-- Modal join queue/queue placement form-->
-      <div id="modal1" class="modal bottom-sheet">
-         <section id="section1">
-            <div class="modal-content">
-               <div>               
-               <h4>You have successfully joined the queue</h4>
-               <button onClick="showDetails()">Show Details</button>
-              <table id="queue">
-                  <th>Character Name</th>
-                  <th>Series</th>
-                  <th>Genre</th>
-                  <th>Are you in a Group</th>
-              </table>
-              <p>You are now number:</p>
-              </div>
-               <button onClick="loadJSONPartial()">Refresh Queue</button>
-               <button onClick="dequeue()">Leave Queue</button>
-            </div>
-            <div class="modal-footer">
-               <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
-            </div>
-         </section>
-      </div>
-
-      <!-- Modal Update Details form-->
-      <div id="modal3" class="modal bottom-sheet">
-      <section id="section3">
-         <div class="modal-content">
-         <h4>Update your details</h4>
-         <form id="details-form" action="../Api/api.php" method="POST" class="col s12 m12">
-            <div class="row">
-                  <div class="input-field col offset-s1 s10" id="name_update">
-                     <i class="material-icons prefix">account_circle</i>
-                     <input class="validate" type="text" id="namer" placeholder="Full Name" name="namer" pattern="[a-zA-Z0-9']{2,}" title="name must have 2 or more uppercase letters" onblur="save()">
-                     <!-- <label for="icon_prefix">Name</label> -->
-                  </div>
-                  <div class="input-field col offset-s1 s10" id="username_update">
-                     <i class="material-icons prefix">account_circle</i>
-                     <input class="validate" type="text" id="usernamer" placeholder="Username" name="usernamer" pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}" title="name must have 2 or more loawercase letters">
-                     <!-- <label for="icon_prefix">Cosplay Name/Username</label> -->
-                  </div>
-                  <div class="input-field col offset-s1 s10" id="facebook_update">
-                     <i class="material-icons prefix">facebook</i>
-                     <input class="validate" type="text" id="facebookr" name="facebookr" pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}" title="name must have 2 or more lowercase letters" onblur="savefacebookr()" placeholder="Facebook Page (if applicable)">
-                     <!-- <label for="icon_prefix">Facebook Page (if applicable)</label>  -->
-                  </div>
-                  <div class="input-field col offset-s1 s10" id="instagram_update">
-                     <i class="material-icons prefix">photo_camera</i>
-                     <input class="validate" type="text" id="instagramr" placeholder="Instagram Account (if applicable)" name="instagramr" pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}" title="name must have 2 or more lowercase letters" onblur= "saveinstagramr()">
-                     <!-- <label for="icon_prefix">Instagram Account (if applicable)</label> -->
-                  </div>
-                  <div class="input-field col offset-s1 s10" id="phone_update">
-                     <i class="material-icons prefix">phone</i>
-                     <input class="validate" type="tel" id="phoner" placeholder="Mobile Number" name="phoner" pattern="[0-9]{2,}" title="number must have 12 or more numbers" onblur="savephoner()">
-                     <!-- <label for="icon_prefix">Mobile Number</label> -->
-                  </div>
-                  <div class="input-field col offset-s1 s10" id="email_update">
-                     <i class="material-icons prefix">email</i>
-                     <input class="validate" type="text" id="emailr" name="emailr" pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}" title="name must have 2 or more lowercase letters" onblur="saveemailr()" placeholder="Email Address">
-                     <!-- <label for="icon_prefix">Email Address</label> -->
-                  </div>
-                  <div class="input-field col offset-s1 s10" id="password_update">
-                     <i class="material-icons prefix">lock</i>
-                     <input class="validate" type="text" name="passwordr" id="passwordr" placeholder="Password"  pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}" onblur="savepasswordr()">
-                     <!-- <label for="icon_prefix">Password</label> -->
-                  </div>
-                  <div class="input-field col offset-s1 s10" id="password-re_update">
-                     <i class="material-icons prefix">lock</i>
-                     <input class="icon_prefix" type="text" name="password2r" id="password2r" placeholder="Re-enter Password" value="" pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}" onblur="savepassword2r()">
-                     <!-- <label for="icon_prefix">Re-enter Password</label> -->
-                     <input type="hidden" id= "updater" name="actiontype" value="update"/>
-                     <input type="hidden" value="<?php echo $userId ?>" name="id" />
-                  </div>
-                  <div action="#" id="checkbox">
-                     <p>
-                        <label>
-                        <input type="checkbox" id="checkboxr" onchange="storage()"/>
-                        <span>Save</span>
-                        </label>
-                     </p>
-                  </div>
-                  <button class="btn waves-effect waves-light col offset-s1 s4 modal-trigger" type="submit" name="action" id="update-btn" href="#modal2" onClick="formcheckupdate()">Submit
-                     <i class="material-icons right">send</i>
-                     </button>
-                  </div>
-               </form>
-            <div class="modal-footer">
-               <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
-            </div>
-         </div>
+    </div>
+    <!-- Modal join queue/queue placement form-->
+    <div id="modal1" class="modal bottom-sheet">
+      <section id="section1">
+        <div class="modal-content">
+          <div>
+            <h4>You have successfully joined the queue</h4>
+            <button onClick="showDetails()">Show Details</button>
+            <table id="queue">
+              <th>Character Name</th>
+              <th>Series</th>
+              <th>Genre</th>
+              <th>Are you in a Group</th>
+            </table>
+            <p>You are now number:</p>
+          </div>
+          <button onClick="loadJSONPartial()">Refresh Queue</button>
+          <button onClick="dequeue()">Leave Queue</button>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-close waves-effect waves-green btn-flat"
+            >Close</a
+          >
+        </div>
       </section>
-      </div>
+    </div>
 
-      <!--Modal Welcome after sign-in/sign-up -->
-      <div id="modal2" class="modal bottom-sheet">
-         <section id="section2">
-         <div class="modal-content" id="login-modal">
-            <h4>Welcome "username"</h4>
-            <div>
-               <a class="waves-effect waves-light btn col offset-s2 s4" id="index-btn" onclick="open1()">
-               <i class="material-icons left">create</i>Join the Queue
-               </a>
+    <!-- Modal Update Details form-->
+    <div id="modal3" class="modal bottom-sheet">
+      <section id="section3">
+        <div class="modal-content">
+          <h4>Update your details</h4>
+          <form
+            id="details-form"
+            action="../Api/api.php"
+            method="POST"
+            class="col s12 m12"
+          >
+            <div class="row">
+              <div class="input-field col offset-s1 s10" id="name_update">
+                <i class="material-icons prefix">account_circle</i>
+                <input
+                  class="validate"
+                  type="text"
+                  id="namer"
+                  placeholder="Full Name"
+                  name="namer"
+                  pattern="[a-zA-Z0-9']{2,}"
+                  title="name must have 2 or more uppercase letters"
+                  onblur="save()"
+                />
+                <!-- <label for="icon_prefix">Name</label> -->
+              </div>
+              <div class="input-field col offset-s1 s10" id="username_update">
+                <i class="material-icons prefix">account_circle</i>
+                <input
+                  class="validate"
+                  type="text"
+                  id="usernamer"
+                  placeholder="Username"
+                  name="usernamer"
+                  pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}"
+                  title="name must have 2 or more loawercase letters"
+                />
+                <!-- <label for="icon_prefix">Cosplay Name/Username</label> -->
+              </div>
+              <div class="input-field col offset-s1 s10" id="facebook_update">
+                <i class="material-icons prefix">facebook</i>
+                <input
+                  class="validate"
+                  type="text"
+                  id="facebookr"
+                  name="facebookr"
+                  pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}"
+                  title="name must have 2 or more lowercase letters"
+                  onblur="savefacebookr()"
+                  placeholder="Facebook Page (if applicable)"
+                />
+                <!-- <label for="icon_prefix">Facebook Page (if applicable)</label>  -->
+              </div>
+              <div class="input-field col offset-s1 s10" id="instagram_update">
+                <i class="material-icons prefix">photo_camera</i>
+                <input
+                  class="validate"
+                  type="text"
+                  id="instagramr"
+                  placeholder="Instagram Account (if applicable)"
+                  name="instagramr"
+                  pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}"
+                  title="name must have 2 or more lowercase letters"
+                  onblur="saveinstagramr()"
+                />
+                <!-- <label for="icon_prefix">Instagram Account (if applicable)</label> -->
+              </div>
+              <div class="input-field col offset-s1 s10" id="phone_update">
+                <i class="material-icons prefix">phone</i>
+                <input
+                  class="validate"
+                  type="tel"
+                  id="phoner"
+                  placeholder="Mobile Number"
+                  name="phoner"
+                  pattern="[0-9]{2,}"
+                  title="number must have 12 or more numbers"
+                  onblur="savephoner()"
+                />
+                <!-- <label for="icon_prefix">Mobile Number</label> -->
+              </div>
+              <div class="input-field col offset-s1 s10" id="email_update">
+                <i class="material-icons prefix">email</i>
+                <input
+                  class="validate"
+                  type="text"
+                  id="emailr"
+                  name="emailr"
+                  pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}"
+                  title="name must have 2 or more lowercase letters"
+                  onblur="saveemailr()"
+                  placeholder="Email Address"
+                />
+                <!-- <label for="icon_prefix">Email Address</label> -->
+              </div>
+              <div class="input-field col offset-s1 s10" id="password_update">
+                <i class="material-icons prefix">lock</i>
+                <input
+                  class="validate"
+                  type="text"
+                  name="passwordr"
+                  id="passwordr"
+                  placeholder="Password"
+                  pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}"
+                  onblur="savepasswordr()"
+                />
+                <!-- <label for="icon_prefix">Password</label> -->
+              </div>
+              <div
+                class="input-field col offset-s1 s10"
+                id="password-re_update"
+              >
+                <i class="material-icons prefix">lock</i>
+                <input
+                  class="icon_prefix"
+                  type="text"
+                  name="password2r"
+                  id="password2r"
+                  placeholder="Re-enter Password"
+                  value=""
+                  pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}"
+                  onblur="savepassword2r()"
+                />
+                <!-- <label for="icon_prefix">Re-enter Password</label> -->
+                <input
+                  type="hidden"
+                  id="updater"
+                  name="actiontype"
+                  value="update"
+                />
+                <input type="hidden" value="<?php echo $userId ?>" name="id" />
+              </div>
+              <div action="#" id="checkbox">
+                <p>
+                  <label>
+                    <input
+                      type="checkbox"
+                      id="checkboxr"
+                      onchange="storage()"
+                    />
+                    <span>Save</span>
+                  </label>
+                </p>
+              </div>
+              <button
+                class="btn waves-effect waves-light col offset-s1 s4 modal-trigger"
+                type="submit"
+                name="action"
+                id="update-btn"
+                href="#modal2"
+                onClick="formcheckupdate()"
+              >
+                Submit
+                <i class="material-icons right">send</i>
+              </button>
             </div>
-            <div>
-               <a class="waves-effect waves-light btn col offset-s2 s4 modal-trigger" id="details-btn" href="#modal3">
-               <i class="material-icons left">create</i>Edit Your Details
-               </a>
-            </div>
-            <div class="modal-footer">
-               <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
-            </div>
-         </div>
-            </section>
-      </div>
-   </body>
+          </form>
+          <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat"
+              >Close</a
+            >
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!--Modal Welcome after sign-in/sign-up -->
+    <div id="modal2" class="modal bottom-sheet">
+      <section id="section2">
+        <div class="modal-content" id="login-modal">
+          <h4>Welcome "username"</h4>
+          <div>
+            <a
+              class="waves-effect waves-light btn col offset-s2 s4"
+              id="index-btn"
+              onclick="open1()"
+            >
+              <i class="material-icons left">create</i>Join the Queue
+            </a>
+          </div>
+          <div>
+            <a
+              class="waves-effect waves-light btn col offset-s2 s4 modal-trigger"
+              id="details-btn"
+              href="#modal3"
+            >
+              <i class="material-icons left">create</i>Edit Your Details
+            </a>
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat"
+              >Close</a
+            >
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
 </html>

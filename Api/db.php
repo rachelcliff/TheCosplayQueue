@@ -168,7 +168,7 @@ class cosplayQueueModel
             // $this->dbconn->beginTransaction();
             $user_id = $_SESSION['userID'];
             $stmt = $this->dbconn->prepare("UPDATE users SET name=:name, cosplay_name=:cosplay_name, facebook=:facebook, instagram=:instagram, phone=:phone, email=:email WHERE user_id=:user_id");
-            
+
             $stmt->bindValue(':user_id', $user_id);
             $stmt->bindValue(':name', $name);
             $stmt->bindValue(':cosplay_name', $cosplay_name);
@@ -187,26 +187,24 @@ class cosplayQueueModel
 
             // $this->dbconn->commit();
             return;
-
         } catch (PDOException $ex) {
             $this->dbconn->rollBack();
             throw $ex;
         }
     }
 
-function dequeue($user_id, $photo_taken) 
-{   
-     try {
-    $user_id = $_SESSION['userID'];
-    $stmt = $this->dbconn->prepare("UPDATE queue SET photo_taken=:photo_taken WHERE user_id=:user_id");
-    $stmt->bindValue(':user_id', $user_id);
-        $stmt->bindValue(':photo_taken', $photo_taken);
-        $stmt->execute();
-        return;
-
-    } catch (PDOException $ex) {
-        $this->dbconn->rollBack();
-        throw $ex;
+    function dequeue($user_id, $photo_taken)
+    {
+        try {
+            $user_id = $_SESSION['userID'];
+            $stmt = $this->dbconn->prepare("UPDATE queue SET photo_taken=:photo_taken WHERE user_id=:user_id");
+            $stmt->bindValue(':user_id', $user_id);
+            $stmt->bindValue(':photo_taken', $photo_taken);
+            $stmt->execute();
+            return;
+        } catch (PDOException $ex) {
+            $this->dbconn->rollBack();
+            throw $ex;
+        }
     }
-}
 }
