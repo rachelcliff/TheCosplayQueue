@@ -47,7 +47,7 @@ class cosplayQueueModel
             $_SESSION["userID"] = $lastuserID;
 
 
-            $stmt = $this->dbconn->prepare("INSERT INTO changelog(date, browser, user_ID, actiontype) Values (:date, :browser, :user_id, :actiontype)");
+            $stmt = $this->dbconn->prepare("INSERT INTO changelog(date, browser, user_id, actiontype) Values (:date, :browser, :user_id, :actiontype)");
             $stmt->bindValue(':date', $date);
             $stmt->bindValue(':browser', $browserAgent);
             $stmt->bindValue(':user_id', $lastuserID);
@@ -177,30 +177,36 @@ class cosplayQueueModel
             $stmt->bindValue(':phone', $phone);
             $stmt->bindValue(':email', $email);
             $stmt->execute();
-            return;
 
-            // $stmt = $this->dbconn->prepare("INSERT INTO changelog(date, browser, user_id, actiontype) Values (:date, :browser, :user_id, $actiontype)");
+            // $stmt = $this->dbconn->prepare("INSERT INTO changelog(date, browser, actiontype, user_id) Values (:date, :browser, :actiontype, :user_id)");
             // $stmt->bindValue(':date', $date);
             // $stmt->bindValue(':browser', $browserAgent);
-            // $stmt->bindValue(':user_id', $user_id);
             // $stmt->bindValue(':actiontype', $actiontype);
+            // $stmt->bindValue(':user_id', $user_id);
             // $stmt->execute();
 
             // $this->dbconn->commit();
+            return;
 
         } catch (PDOException $ex) {
             $this->dbconn->rollBack();
             throw $ex;
         }
     }
+
+function dequeue($user_id, $photo_taken) 
+{   
+     try {
+    $user_id = $_SESSION['userID'];
+    $stmt = $this->dbconn->prepare("UPDATE queue SET photo_taken=:photo_taken WHERE user_id=:user_id");
+    $stmt->bindValue(':user_id', $user_id);
+        $stmt->bindValue(':photo_taken', $photo_taken);
+        $stmt->execute();
+        return;
+
+    } catch (PDOException $ex) {
+        $this->dbconn->rollBack();
+        throw $ex;
+    }
 }
-
-// function dequeue($photo_taken) {
-//     Try {
-//         $this->dbconn->beginTransaction();
-//         $stmt= $this->dbconn->prepare("UPDATE queue SET photo_taken=:photo_taken") values (:photo_taken);
-//         value='void';
-
-
-//     }
-// }
+}

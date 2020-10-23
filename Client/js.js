@@ -318,11 +318,15 @@ function dequeue() {
   populateAlert("Loading...", "notice");
   var out = "";
   var disabled = "";
+  formdata = new FormData();
+  formdata.set("action", "dequeue");
+  formdata.set("usernamei", usernamei.value);
+  formdata.set("photo_taken", 'void');
 
   fetch("../Api/api.php?action=dequeue", {
-    method: "update",
+    method: "POST",
     body: formdata,
-    // credentials: 'include'
+    credentials: 'include'
   });
 }
 

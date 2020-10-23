@@ -132,9 +132,8 @@ if (isset($_GET["action"])) {
             break;
 
         case "update":
-            echo "update";
+            // echo "update";
             $user_id = $_SESSION['userID'];
-            echo $_SESSION['userID'];
 
             if (isset($_POST["action"])) {
                 $user_id = $_POST['user_id'];
@@ -156,13 +155,22 @@ if (isset($_GET["action"])) {
                     http_response_code(501);
                 }
         }
-        break;
-
-            // case "dequeue":
-            //     // echo "dequeue";
-            //     if (isset($_POST["action"])) {
-            //     }
-            break;
     }
-}
+        break;
+            case "dequeue":
+                $user_id = $_SESSION['userID'];
+                echo $_SESSION['userID'];
+                echo "dequeue";
+                if (isset($_POST["action"])) {
+                    $user_id = $_POST['user_id'];
+                    $photo_taken= $_POST['photo_taken'];
+                    if (isset($photo_taken)) {
+                        $db->dequeue($user_id, $photo_taken);
+                         http_response_code(201);
+                     } else {
+                         http_response_code(501);
+                     }
+             }
+            break;
+        }
 }

@@ -307,18 +307,18 @@ function showDetails() {
 
 // }
 
-// Dequeue
-function dequeue() {
-  populateAlert("Loading...", "notice");
-  var out = "";
-  var disabled = "";
+// // Dequeue
+// function dequeue() {
+//   populateAlert("Loading...", "notice");
+//   var out = "";
+//   var disabled = "";
 
-  fetch("../Api/api.php?action=dequeue", {
-    method: "update",
-    body: formdata,
-    // credentials: 'include'
-  });
-}
+//   fetch("../Api/api.php?action=dequeue", {
+//     method: "update",
+//     body: formdata,
+//     credentials: 'include'
+//   });
+// }
 
 // dark mode
 window.addEventListener("load", function () {
