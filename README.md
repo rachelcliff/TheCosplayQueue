@@ -44,7 +44,7 @@ $_GET
 - 1- Echo data inputted to form -> Complete
 - 2- echo current place in queue (count sql query where photo taken = no) -> WIP
 - 3- refresh queue (PUT statement need help with this one) -> WIP
-- 4- autofill join and update forms
+- 4- Echo full queue data (located in the admin panel) -> Function complete and awaiting testing
 
 $_POST
 - 1- join queue -> Complete
