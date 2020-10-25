@@ -119,7 +119,7 @@ if (isset($_GET["action"])) {
                 $browserAgent = $_SERVER['HTTP_USER_AGENT'];
                 $actiontype = $_POST['registers'];
                 if (isset($cosplay_name)) {
-                    $success = $db->login($cosplay_name, $password,);
+                    $success = $db->login($cosplay_name, $password);
                     if ($success) {
                         http_response_code(201);
                     } else {
