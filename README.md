@@ -32,6 +32,9 @@ Front-end pages:
 
 Back-end/admin pages:
 - admin page (contains a functional display of the queue using JSON)
+- Photo taken function complete and functioning
+- Remove from queue function complete and functioning
+- Show full queue function complete and functioning
 
 Database:
 - created and tables built out and filled with dummy data and images.
