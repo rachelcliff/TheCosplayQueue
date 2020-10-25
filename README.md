@@ -25,13 +25,16 @@ Functions:
 - Register - Complete
 - Update user details - Complete
 - Create user - Complete
-- Remove self from queue - WIP
+- Remove self from queue - Complete
 
 Front-end pages:
 - index (contains all of bases for the app)
 
 Back-end/admin pages:
 - admin page (contains a functional display of the queue using JSON)
+- Photo taken function complete and functioning
+- Remove from queue function complete and functioning
+- Show full queue function complete and functioning
 
 Database:
 - created and tables built out and filled with dummy data and images.
@@ -42,9 +45,9 @@ Images:
 Planning:
 $_GET
 - 1- Echo data inputted to form -> Complete
-- 2- echo current place in queue
-- 3- refresh queue
-- 4- autofill join and update forms
+- 2- echo current place in queue (count sql query where photo taken = no) -> WIP
+- 3- refresh queue (PUT statement need help with this one) -> WIP
+- 4- Echo full queue data (located in the admin panel) -> Function complete and awaiting testing
 
 $_POST
 - 1- join queue -> Complete
@@ -56,4 +59,4 @@ CRUD 1- Create
 - Create new user -> Complete
 
 CRUD 2 - Update
-- Remove self from queue
+- Remove self from queue -> Complete
