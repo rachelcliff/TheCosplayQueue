@@ -45,6 +45,7 @@ class cosplayQueueModel
             $_SESSION["genre"] = $genre;
             $_SESSION["r_group"] = $r_group;
             $_SESSION["userID"] = $lastuserID;
+            $_SESSION["queueID"] = $lastqueueID;
 
 
             $stmt = $this->dbconn->prepare("INSERT INTO changelog(date, browser, user_id, actiontype) Values (:date, :browser, :user_id, :actiontype)");
@@ -202,6 +203,38 @@ class cosplayQueueModel
             $stmt->bindValue(':photo_taken', $photo_taken);
             $stmt->execute();
             return;
+        } catch (PDOException $ex) {
+            $this->dbconn->rollBack();
+            throw $ex;
+        }
+    }
+
+    function photo_taken($user_id, $photo_taken)
+    {
+        try {
+            $user_id = $_SESSION['userID'];
+            $stmt = $this->dbconn->prepare("UPDATE queue SET photo_taken=:photo_taken WHERE user_id=:user_id");
+            $stmt->bindValue(':user_id', $user_id);
+            $stmt->bindValue(':photo_taken', $photo_taken);
+            $stmt->execute();
+            return;
+        } catch (PDOException $ex) {
+            $this->dbconn->rollBack();
+            throw $ex;
+        }
+    }
+    function placequeue()
+    {
+        try {
+            $user_id = $_SESSION['userID'];
+            $stmt = $this->dbconn->prepare("SELECT COUNT(user_id) FROM queue WHERE photo_taken = 'no' AND queue_id < 79");
+            // $stmt->bindValue(':user_id', $user_id);
+            // $stmt->bindValue(':photo_taken', $photo_taken);
+            // $stmt->bindValue(':queue_id', $queue_id);
+            $stmt->execute();
+            $result = $stmt->fetchAll();
+            return $result;
+
         } catch (PDOException $ex) {
             $this->dbconn->rollBack();
             throw $ex;

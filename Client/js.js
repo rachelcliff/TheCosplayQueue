@@ -313,23 +313,6 @@ function showDetailsAll() {
   });
 }
 
-// Dequeue
-function dequeue() {
-  populateAlert("Loading...", "notice");
-  var out = "";
-  var disabled = "";
-  formdata = new FormData();
-  formdata.set("action", "dequeue");
-  formdata.set("usernamei", usernamei.value);
-  formdata.set("photo_taken", "void");
-
-  fetch("../Api/api.php?action=dequeue", {
-    method: "POST",
-    body: formdata,
-    credentials: "include",
-  });
-}
-
 // dark mode
 window.addEventListener("load", function () {
   console.log(localStorage.getItem("darktheme"));
@@ -617,4 +600,53 @@ function formchecklogin() {
     body: formdata,
     credentials: "include",
   });
+}
+
+// Dequeue
+function dequeue() {
+  populateAlert("Loading...", "notice");
+  var out = "";
+  var disabled = "";
+  formdata = new FormData();
+  formdata.set("action", "dequeue");
+  formdata.set("usernamei", usernamei.value);
+  formdata.set("photo_taken", "void");
+
+  fetch("../Api/api.php?action=dequeue", {
+    method: "POST",
+    body: formdata,
+    credentials: "include",
+  });
+}
+
+// photo taken
+function photo_taken() {
+  populateAlert("Loading...", "notice");
+  var out = "";
+  var disabled = "";
+  formdata = new FormData();
+  formdata.set("action", "dequeue");
+  formdata.set("usernamei", usernamei.value);
+  formdata.set("photo_taken", "yes");
+
+  fetch("../Api/api.php?action=photo_taken", {
+    method: "POST",
+    body: formdata,
+    credentials: "include",
+  });
+}
+
+// place queue
+function place_queue() {
+   fetch("../Api/api.php?action=placequeue", {
+  method: "GET",
+  credentials: "include",
+}).then(function (response) {
+  response.json().then(function (results) {
+    console.log(results);
+    results.forEach((row) => {
+    });
+    document.getElementById("queue").innerHTML = outStr;
+  });
+});
 }

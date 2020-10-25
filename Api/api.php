@@ -172,5 +172,38 @@ if (isset($_GET["action"])) {
                 }
             }
             break;
+
+        case "photo_taken":
+            $user_id = $_SESSION['userID'];
+            echo $_SESSION['userID'];
+            // echo "photo_taken";
+            if (isset($_POST["action"])) {
+                $user_id = $_POST['user_id'];
+                $photo_taken = $_POST['photo_taken'];
+                if (isset($photo_taken)) {
+                    $db->photo_taken($user_id, $photo_taken);
+                    http_response_code(201);
+                } else {
+                    http_response_code(501);
+                }
+            }
+            break;
+
+        case "placequeue":
+            $user_id = $_SESSION['userID'];
+            echo $_SESSION['userID'];
+            echo "placequeue";
+            if ($_SESSION['sessionOBJ']->is_logged_in()) {
+                $result = $db->placequeue();
+                if ($result == false) {
+                    http_response_code(501);
+                } else {
+                    http_response_code(201);
+                    echo json_encode($result);
+                }
+            } else {
+                http_response_code(401);
+            }
+            break;
     }
 }
