@@ -274,7 +274,6 @@ function showDetails() {
           row.genre +
           "</td><td>" +
           row.r_group +
-          // '<td><button ' + disabled + '>Delete</button>' +
           "</td></tr>";
       });
       document.getElementById("queue").innerHTML = outStr;
@@ -619,22 +618,22 @@ function dequeue() {
   });
 }
 
-// photo taken
-function photo_taken() {
-  populateAlert("Loading...", "notice");
-  var out = "";
-  var disabled = "";
-  formdata = new FormData();
-  formdata.set("action", "dequeue");
-  formdata.set("usernamei", usernamei.value);
-  formdata.set("photo_taken", "yes");
+// // photo taken
+// function photo_taken() {
+//   populateAlert("Loading...", "notice");
+//   var out = "";
+//   var disabled = "";
+//   formdata = new FormData();
+//   formdata.set("action", "dequeue");
+//   formdata.set("usernamei", usernamei.value);
+//   formdata.set("photo_taken", "yes");
 
-  fetch("../Api/api.php?action=photo_taken", {
-    method: "POST",
-    body: formdata,
-    credentials: "include",
-  });
-}
+//   fetch("../Api/api.php?action=photo_taken", {
+//     method: "POST",
+//     body: formdata,
+//     credentials: "include",
+//   });
+// }
 
 // place queue
 function place_queue() {
@@ -645,6 +644,9 @@ function place_queue() {
   response.json().then(function (results) {
     console.log(results);
     results.forEach((row) => {
+      "<tr><td>" +
+      row.COUNT(user_id)+
+      "</td></tr>";
     });
     document.getElementById("queue").innerHTML = outStr;
   });

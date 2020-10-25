@@ -1,7 +1,7 @@
 <?php
 header('Access-Control-Allow-Origin: https://localhost');
 header('Access-Control-Allow-Credentials: true');
-header('Content-Type: application/json'); // All echo statements are json_encode
+header('Content-Type: apsplication/json'); // All echo statements are json_encode
 
 // initiation of database and session
 require('db.php');
@@ -159,8 +159,8 @@ if (isset($_GET["action"])) {
             break;
         case "dequeue":
             $user_id = $_SESSION['userID'];
-            echo $_SESSION['userID'];
-            echo "dequeue";
+            // echo $_SESSION['userID'];
+            // echo "dequeue";
             if (isset($_POST["action"])) {
                 $user_id = $_POST['user_id'];
                 $photo_taken = $_POST['photo_taken'];
@@ -175,7 +175,7 @@ if (isset($_GET["action"])) {
 
         case "photo_taken":
             $user_id = $_SESSION['userID'];
-            echo $_SESSION['userID'];
+            // echo $_SESSION['userID'];
             // echo "photo_taken";
             if (isset($_POST["action"])) {
                 $user_id = $_POST['user_id'];
@@ -191,8 +191,8 @@ if (isset($_GET["action"])) {
 
         case "placequeue":
             $user_id = $_SESSION['userID'];
-            echo $_SESSION['userID'];
-            echo "placequeue";
+            // echo $_SESSION['userID'];
+            // echo "placequeue";
             if ($_SESSION['sessionOBJ']->is_logged_in()) {
                 $result = $db->placequeue();
                 if ($result == false) {

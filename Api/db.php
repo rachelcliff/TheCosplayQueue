@@ -40,6 +40,7 @@ class cosplayQueueModel
             $stmt->bindValue(':user_id', $lastuserID);
             $stmt->execute();
 
+            $lastqueueID= $this->dbconn->lastInsertId();
             $_SESSION["character_name"] = $character_name;
             $_SESSION["series"] = $series;
             $_SESSION["genre"] = $genre;
@@ -86,12 +87,12 @@ class cosplayQueueModel
             $stmt->execute();
 
             $lastuserID = $this->dbconn->lastInsertID();
-            $stmt = $this->dbconn->prepare("INSERT INTO changelog(date, browser, actiontype, user_ID) Values (:date, :browser, :actiontype, :user_id)");
-            $stmt->bindValue(':date', $date);
-            $stmt->bindValue(':browser', $browserAgent);
-            $stmt->bindValue(':actiontype', $actiontype);
-            $stmt->bindValue(':user_id', $lastuserID);
-            $stmt->execute();
+            // $stmt = $this->dbconn->prepare("INSERT INTO changelog(date, browser, actiontype, user_ID) Values (:date, :browser, :actiontype, :user_id)");
+            // $stmt->bindValue(':date', $date);
+            // $stmt->bindValue(':browser', $browserAgent);
+            // $stmt->bindValue(':actiontype', $actiontype);
+            // $stmt->bindValue(':user_id', $lastuserID);
+            // $stmt->execute();
 
             $_SESSION["cosplay_name"] = $cosplay_name;
             $_SESSION["name"] = $name;
@@ -99,7 +100,7 @@ class cosplayQueueModel
             $_SESSION["instagram"] = $instagram;
             $_SESSION["userID"] = $lastuserID;
             $_SERVER["phone"] = $phone;
-            $_SERVER["emai"] = $email;
+            $_SERVER["email"] = $email;
 
             $this->dbconn->commit();
         } catch (PDOException $ex) {
@@ -226,11 +227,9 @@ class cosplayQueueModel
     function placequeue()
     {
         try {
-            $user_id = $_SESSION['userID'];
-            $stmt = $this->dbconn->prepare("SELECT COUNT(user_id) FROM queue WHERE photo_taken = 'no' AND queue_id < 79");
-            // $stmt->bindValue(':user_id', $user_id);
-            // $stmt->bindValue(':photo_taken', $photo_taken);
-            // $stmt->bindValue(':queue_id', $queue_id);
+            $lastqueueID = $_SESSION['queueID'];
+            // $user_id = $_SESSION['userID'];
+            $stmt = $this->dbconn->prepare("SELECT COUNT(user_id) FROM queue WHERE photo_taken = 'no' AND queue_id <= $lastqueueID");
             $stmt->execute();
             $result = $stmt->fetchAll();
             return $result;
