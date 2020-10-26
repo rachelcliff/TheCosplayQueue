@@ -113,7 +113,7 @@ class cosplayQueueModel
     function login($cosplay_name, $password, $date, $browserAgent, $actiontype)
     {
         try {
-            $this->dbconn->beginTransaction();
+            // $this->dbconn->beginTransaction();
             $stmt = $this->dbconn->prepare("SELECT logins.cosplay_name, logins.password, logins.login_id, users.user_id FROM logins inner join users on logins.login_id = users.login_id WHERE logins.cosplay_name = :cosplay_name");
             $stmt->bindParam(':cosplay_name', $cosplay_name);
             $stmt->execute();
@@ -124,13 +124,6 @@ class cosplayQueueModel
                 $_SESSION["loginID"] = $row['login_id'];
                 $_SESSION["login"] = 'true';
                 $_SESSION['userID'] = $row['user_id'];
-                return true;
-            } else {
-                echo "Cannot log in";
-                return false;
-            }
-
-            $this->dbconn->commit();
 
             // $lastuserID = $this->dbconn->$_SESSION["userID"];
             // $stmt = $this->dbconn->prepare("INSERT INTO changelog(date, browser, actiontype user_ID) Values (:date, :browser, :actiontype :user_id)");
@@ -139,6 +132,13 @@ class cosplayQueueModel
             // $stmt->bindValue(':actiontype', $actiontype);
             // $stmt->bindValue(':user_id', $lastuserID);
             // $stmt->execute();
+            // $this->dbconn->commit();
+            
+                return true;
+        } else {
+                echo "Cannot log in";
+                return false;
+            }
 
         } catch (PDOException $ex) {
             $this->dbconn->rollback();
