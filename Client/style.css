@@ -345,6 +345,25 @@ nav i.material-icons {
 
 #queue {
 	width: 80%;
-	background-color: aquamarine;
+	background-color: white;
 	padding: 2em;
+	text-align: center;
+	align-content: center;
+	margin-left: auto;
+  margin-right: auto;
+}
+
+#place_queue {
+	width: 80%;
+	background-color: white;
+	font-size: xx-large;
+	padding:2em;
+	text-align: center;
+	align-content: center;
+	margin-left: auto;
+  margin-right: auto;
+}
+
+td {
+	text-align: center;
 }
