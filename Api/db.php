@@ -114,7 +114,7 @@ class cosplayQueueModel
     {
         try {
             // $this->dbconn->beginTransaction();
-            $stmt = $this->dbconn->prepare("SELECT logins.cosplay_name, logins.password, logins.login_id, users.user_id FROM logins inner join users on logins.login_id = users.login_id WHERE logins.cosplay_name = :cosplay_name");
+            $stmt = $this->dbconn->prepare("SELECT logins.cosplay_name, logins.password, logins.login_id, users.user_id, users.name, users.facebook, users.instagram, users.phone, users.email FROM logins inner join users on logins.login_id = users.login_id WHERE logins.cosplay_name = :cosplay_name");
             $stmt->bindParam(':cosplay_name', $cosplay_name);
             $stmt->execute();
             $row = $stmt->fetch();
@@ -124,9 +124,14 @@ class cosplayQueueModel
                 $_SESSION["loginID"] = $row['login_id'];
                 $_SESSION["login"] = 'true';
                 $_SESSION['userID'] = $row['user_id'];
+                $_SESSION['name'] = $row['name'];
+                $_SESSION['facebook'] = $row['facebook'];
+                $_SESSION['instagram'] = $row['instagram'];
+                $_SESSION['phone'] = $row['phone'];
+                $_SESSION['email'] = $row['email'];
 
             // $lastuserID = $this->dbconn->$_SESSION["userID"];
-            // $stmt = $this->dbconn->prepare("INSERT INTO changelog(date, browser, actiontype user_ID) Values (:date, :browser, :actiontype :user_id)");
+            // $stmt = $this->dbconn->prepare("INSERT INTO changelog(date, browser, actiontype, user_ID) Values (:date, :browser, :actiontype, :user_id)");
             // $stmt->bindValue(':date', $date);
             // $stmt->bindValue(':browser', $browserAgent);
             // $stmt->bindValue(':actiontype', $actiontype);

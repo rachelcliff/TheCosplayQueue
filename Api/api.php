@@ -13,7 +13,7 @@ $se = new cosplayQueueSession;
 session_start();
 // $_SESSION["login"] = "true";
 // $_SESSION["loginID"] = 1;
-// print_r($_SESSION);
+print_r($_SESSION);
 
 if (!isset($_SESSION['sessionOBJ']))
     $_SESSION['sessionOBJ'] = new cosplayQueueSession;
@@ -43,7 +43,18 @@ if (isset($_GET["action"])) {
                 http_response_code(401);
             }
             break;
-
+        
+        case "fillupdate";
+        if ($_SESSION['sessionOBJ'] -> is_logged_in()) {
+            $result = $db->showDetails();
+            if ($result ==false) {
+                http_response_code(501);
+            } else {
+                http_response_code(201);
+                echo json_encode($result);
+            }
+        }
+// admin panel - show details all
         case "showDetailsAll":
             // echo "showAll";
             if ($_SESSION['sessionOBJ']->is_logged_in()) {
@@ -172,7 +183,7 @@ if (isset($_GET["action"])) {
                 }
             }
             break;
-
+// photo_taken admin panel
         case "photo_taken":
             $user_id = $_SESSION['userID'];
             // echo $_SESSION['userID'];
