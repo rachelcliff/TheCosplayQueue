@@ -117,7 +117,7 @@ function savefacebookr() {
 function saveinstagramr() {
   if (checkboxr.checked == true) {
     var save = document.getElementById("instagramr");
-    localStorage.setItem("instagramr", instragramr.value);
+    localStorage.setItem("instagramr", instagramr.value);
   }
 }
 
@@ -618,7 +618,7 @@ function dequeue() {
   });
 }
 
-// // photo taken
+// // photo taken - admin panel
 // function photo_taken() {
 //   populateAlert("Loading...", "notice");
 //   var out = "";
