@@ -604,11 +604,24 @@ function place_queue() {
 }
 
 function fillupdate() {
-  populateAlert("Loading...", "notice");
-  var outStr = "";
-  // var disabled = "";
-   fetch("../Api/api.php?action=fillupdate", {
-  method: "GET",
-  credentials: "include",
-   });
+  // var paint = '<span style="color: #' + color + '"><i class="ra ' + icon + '">&nbsp;</i>' +
+  //                 '<b>' + nick + '</b>';
+  // statuslogin.innerHTML = paint;
+  fetch('../Api/api.php?action=fillupdate', 
+  {
+      method: 'GET',
+      credentials: 'include'
+  }
+) 
+.then(function (response) {
+  response.json().then(function (details) {
+    console.log(details);
+  namer.value = details.name; 
+  usernamer.value = details.cosplay_name; 
+  facebookr.value = details.facebook;
+  instagramr.value = details.instagram;
+  phoner.value = details.phone;
+  emailr.value = details.email; 
+});
+});
 }

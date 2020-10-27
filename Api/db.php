@@ -40,7 +40,7 @@ class cosplayQueueModel
             $stmt->bindValue(':user_id', $lastuserID);
             $stmt->execute();
 
-            $lastqueueID= $this->dbconn->lastInsertId();
+            $lastqueueID = $this->dbconn->lastInsertId();
             $_SESSION["character_name"] = $character_name;
             $_SESSION["series"] = $series;
             $_SESSION["genre"] = $genre;
@@ -130,21 +130,20 @@ class cosplayQueueModel
                 $_SESSION['phone'] = $row['phone'];
                 $_SESSION['email'] = $row['email'];
 
-            // $lastuserID = $this->dbconn->$_SESSION["userID"];
-            // $stmt = $this->dbconn->prepare("INSERT INTO changelog(date, browser, actiontype, user_ID) Values (:date, :browser, :actiontype, :user_id)");
-            // $stmt->bindValue(':date', $date);
-            // $stmt->bindValue(':browser', $browserAgent);
-            // $stmt->bindValue(':actiontype', $actiontype);
-            // $stmt->bindValue(':user_id', $lastuserID);
-            // $stmt->execute();
-            // $this->dbconn->commit();
-            
+                // $lastuserID = $this->dbconn->$_SESSION["userID"];
+                // $stmt = $this->dbconn->prepare("INSERT INTO changelog(date, browser, actiontype, user_ID) Values (:date, :browser, :actiontype, :user_id)");
+                // $stmt->bindValue(':date', $date);
+                // $stmt->bindValue(':browser', $browserAgent);
+                // $stmt->bindValue(':actiontype', $actiontype);
+                // $stmt->bindValue(':user_id', $lastuserID);
+                // $stmt->execute();
+                // $this->dbconn->commit();
+
                 return true;
-        } else {
+            } else {
                 echo "Cannot log in";
                 return false;
             }
-
         } catch (PDOException $ex) {
             $this->dbconn->rollback();
             throw $ex;
@@ -202,13 +201,13 @@ class cosplayQueueModel
             $stmt->execute();
             $this->dbconn->commit();
             return;
-
         } catch (PDOException $ex) {
             $this->dbconn->rollBack();
             throw $ex;
         }
     }
 
+    // Function dequeue
     function dequeue($user_id, $photo_taken)
     {
         try {
@@ -224,6 +223,7 @@ class cosplayQueueModel
         }
     }
 
+    // Photo Taken - adnim panel
     function photo_taken($user_id, $photo_taken)
     {
         try {
@@ -238,6 +238,8 @@ class cosplayQueueModel
             throw $ex;
         }
     }
+
+    // function place in queue
     function placequeue()
     {
         try {
@@ -247,7 +249,6 @@ class cosplayQueueModel
             $stmt->execute();
             $result = $stmt->fetchAll();
             return $result;
-
         } catch (PDOException $ex) {
             $this->dbconn->rollBack();
             throw $ex;
