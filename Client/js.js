@@ -337,7 +337,7 @@ function formcheckjoin() {
   formdata.set("groupi", groupi.value);
   formdata.set("photo", photo.value);
   formdata.set("joini", joini.value);
-  formdata.set("photo_taken", photo_taken.value);
+  formdata.set("photo_taken", 'no');
 
   fetch("../Api/api.php?action=join", {
     method: "POST",
@@ -345,7 +345,7 @@ function formcheckjoin() {
     credentials: "same-origin",
   });
 }
-
+  
 // Form Validation - Register
 function formcheckregister() {
   populateAlert("Loading...", "notice");
@@ -603,3 +603,17 @@ function fillupdate() {
 });
 });
 }
+
+function autorefresh() {
+  populateAlert("Loading...", "notice");
+  var outStr = "";
+  // var disabled = "";
+  //  fetch("../Api/api.php?action=placequeue", {
+  // method: "GET",
+  // credentials: "include",
+  $(document).ready(function(){
+    setInterval(function(){
+          $("#place_queue").load(window.location.href + " ../Api/api.php?action=placequeue" );
+    }, 1000);
+    });
+  }

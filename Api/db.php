@@ -223,7 +223,7 @@ class cosplayQueueModel
         }
     }
 
-    // Photo Taken - adnim panel
+    // Photo Taken - admin panel
     function photo_taken($user_id, $photo_taken)
     {
         try {
