@@ -670,7 +670,6 @@
                   id="passwordr"
                   placeholder="Password"
                   pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}"
-                  onblur="savepasswordr()"
                 />
                 <!-- <label for="icon_prefix">Password</label> -->
               </div>
@@ -687,7 +686,6 @@
                   placeholder="Re-enter Password"
                   value=""
                   pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}"
-                  onblur="savepassword2r()"
                 />
                 <!-- <label for="icon_prefix">Re-enter Password</label> -->
                 <input
@@ -696,7 +694,6 @@
                   name="actiontype"
                   value="update"
                 />
-                <input type="hidden" value="<?php echo $userId ?>" name="id" />
               </div>
               <div action="#" id="checkbox">
                 <p>

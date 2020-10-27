@@ -45,8 +45,6 @@ function storage() {
     localStorage.setItem("facebookr", facebookr.value);
     localStorage.setItem("instagramr", instagramr.value);
     localStorage.setItem("phoner", phoner.value);
-    localStorage.setItem("passwordr", passwordr.value);
-    localStorage.setItem("password2r", password2r.value);
   } else {
     localStorage.removeItem("namer");
     localStorage.removeItem("emailr");
@@ -54,8 +52,6 @@ function storage() {
     localStorage.removeItem("facebookr");
     localStorage.removeItem("instagramr");
     localStorage.removeItem("phoner");
-    localStorage.removeItem("passwordr");
-    localStorage.removeItem("password2r");
   }
 }
 
@@ -66,8 +62,6 @@ window.onload = function () {
   facebookr.value = localStorage.getItem("facebookr");
   instagramr.value = localStorage.getItem("instagramr");
   phoner.value = localStorage.getItem("phoner");
-  passwordr.value = localStorage.getItem("passwordr");
-  password2r.value = localStorage.getItem("password2r");
   if (
     localStorage.getItem(
       "namer",
@@ -76,8 +70,6 @@ window.onload = function () {
       "facebookr",
       "instagramr",
       "phoner",
-      "passwordr",
-      "password2r"
     ) == null
   ) {
     checkboxr.checked = false;
@@ -125,20 +117,6 @@ function savephoner() {
   if (checkboxr.checked == true) {
     var save = document.getElementById("phoner");
     localStorage.setItem("phoner", phoner.value);
-  }
-}
-
-function savepasswordr() {
-  if (checkboxr.checked == true) {
-    var save = document.getElementById("passwordr");
-    localStorage.setItem("passwordr", passwordr.value);
-  }
-}
-
-function savepassword2r() {
-  if (checkboxr.checked == true) {
-    var save = document.getElementById("password2r");
-    localStorage.setItem("password2r", password2r.value);
   }
 }
 
@@ -564,22 +542,22 @@ function dequeue() {
   });
 }
 
-// // photo taken - admin panel
-// function photo_taken() {
-//   populateAlert("Loading...", "notice");
-//   var out = "";
-//   var disabled = "";
-//   formdata = new FormData();
-//   formdata.set("action", "dequeue");
-//   formdata.set("usernamei", usernamei.value);
-//   formdata.set("photo_taken", "yes");
+// photo taken - admin panel
+function photo_taken() {
+  populateAlert("Loading...", "notice");
+  var out = "";
+  var disabled = "";
+  formdata = new FormData();
+  formdata.set("action", "dequeue");
+  formdata.set("usernamei", usernamei.value);
+  formdata.set("photo_taken", "yes");
 
-//   fetch("../Api/api.php?action=photo_taken", {
-//     method: "POST",
-//     body: formdata,
-//     credentials: "include",
-//   });
-// }
+  fetch("../Api/api.php?action=photo_taken", {
+    method: "POST",
+    body: formdata,
+    credentials: "include",
+  });
+}
 
 // place queue
 function place_queue() {
