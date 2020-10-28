@@ -198,7 +198,9 @@ function showDetails() {
           row.genre +
           "</td><td>" +
           row.r_group +
-          "</td></tr>";
+          // "</td><td>" +
+          // row.reference_photo +
+         "</td></tr>";
       });
       document.getElementById("queue").innerHTML = outStr;
     });

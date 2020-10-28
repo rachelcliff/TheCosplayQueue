@@ -81,6 +81,7 @@ if (isset($_GET["action"])) {
                 http_response_code(401);
             }
             break;
+
         case "join":
             // echo "join";
             if (isset($_POST["action"])) {
@@ -179,6 +180,7 @@ if (isset($_GET["action"])) {
                 }
             }
             break;
+
         case "dequeue":
             $user_id = $_SESSION['userID'];
             // echo $_SESSION['userID'];
@@ -194,6 +196,7 @@ if (isset($_GET["action"])) {
                 }
             }
             break;
+            
             // photo_taken admin panel
         case "photo_taken":
             $user_id = $_SESSION['userID'];

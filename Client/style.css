@@ -80,6 +80,11 @@ align-content: center;
 	border-color: orange;
 }
 
+#reference_photo {
+	border-style: solid;
+	border-color: aqua;
+}
+
 #password {
 	border-style: solid;
 	border-color: aqua;
