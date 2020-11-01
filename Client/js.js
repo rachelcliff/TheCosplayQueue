@@ -176,7 +176,6 @@ function register() {
 function showDetails() {
   populateAlert("Loading...", "notice");
   var outStr = "";
-  var disabled = "";
   fetch("../Api/api.php?action=showDetails", {
     method: "GET",
     credentials: "include",
@@ -184,11 +183,6 @@ function showDetails() {
     response.json().then(function (results) {
       console.log(results);
       results.forEach((row) => {
-        // if (row.user_ID == $_SESSION['userID']) {
-        // 	disabled = '';
-        // } else {
-        // 	disabled = 'disabled';
-        // }
         outStr +=
           "<tr><td>" +
           row.character_name +
@@ -198,8 +192,6 @@ function showDetails() {
           row.genre +
           "</td><td>" +
           row.r_group +
-          // "</td><td>" +
-          // row.reference_photo +
           "</td></tr>";
       });
       document.getElementById("queue").innerHTML = outStr;
@@ -345,7 +337,21 @@ function formcheckjoin() {
     method: "POST",
     body: formdata,
     credentials: "same-origin",
-  });
+  })
+    .then(function (response) {
+      if (response.status === 501) {
+        console.log("Join Failed");
+        populateAlert("Attempt to join queue was unsuccessful", "notice");
+        return;
+      }
+      if (response.status === 201) {
+        console.log("Join Successful");
+        populateAlert("Join Successful", "notice");
+      }
+    })
+    .catch(function (err) {
+      populateAlert("Connection unavailable", "error");
+    });
 }
 
 // Form Validation - Register
@@ -397,7 +403,21 @@ function formcheckregister() {
     method: "POST",
     body: formdata,
     credentials: "same-origin",
-  });
+  })
+    .then(function (response) {
+      if (response.status === 501) {
+        console.log("Register Failed");
+        populateAlert("Register Unsuccessful", "notice");
+        return;
+      }
+      if (response.status === 201) {
+        console.log("Register Successful");
+        populateAlert("Register Successful", "notice");
+      }
+    })
+    .catch(function (err) {
+      populateAlert("Connection unavailable", "error");
+    });
 }
 
 // Form Validation - Update
@@ -460,7 +480,21 @@ function formcheckupdate() {
     method: "POST",
     body: formdata,
     credentials: "include",
-  });
+  })
+    .then(function (response) {
+      if (response.status === 501) {
+        console.log("Update Failed");
+        populateAlert("Update Unsuccessful", "notice");
+        return;
+      }
+      if (response.status === 201) {
+        console.log("Update Successful");
+        populateAlert("Update Successful", "notice");
+      }
+    })
+    .catch(function (err) {
+      populateAlert("Connection unavailable", "error");
+    });
 }
 
 // Alert Message
@@ -524,14 +558,27 @@ function formchecklogin() {
     method: "POST",
     body: formdata,
     credentials: "include",
-  });
+  })
+    .then(function (response) {
+      if (response.status === 501) {
+        console.log("Login Failed");
+        populateAlert("Login Unsuccessful", "notice");
+        return;
+      }
+      if (response.status === 201) {
+        console.log("Login Successful");
+        populateAlert("Login Successful", "notice");
+      }
+    })
+    .catch(function (err) {
+      populateAlert("Connection unavailable", "error");
+    });
 }
 
 // Dequeue
 function dequeue() {
   populateAlert("Loading...", "notice");
   var out = "";
-  var disabled = "";
   formdata = new FormData();
   formdata.set("action", "dequeue");
   formdata.set("usernamei", usernamei.value);
@@ -541,14 +588,27 @@ function dequeue() {
     method: "POST",
     body: formdata,
     credentials: "include",
-  });
+  })
+    .then(function (response) {
+      if (response.status === 501) {
+        console.log("Dequeue Failed");
+        populateAlert("Removal from Queue Unsuccessful", "notice");
+        return;
+      }
+      if (response.status === 201) {
+        console.log("Dequeue Successful");
+        populateAlert("Removal from Queue Successful", "notice");
+      }
+    })
+    .catch(function (err) {
+      populateAlert("Connection unavailable", "error");
+    });
 }
 
 // photo taken - admin panel
 function photo_taken() {
   populateAlert("Loading...", "notice");
   var out = "";
-  var disabled = "";
   formdata = new FormData();
   formdata.set("action", "dequeue");
   formdata.set("usernamei", usernamei.value);
@@ -558,14 +618,27 @@ function photo_taken() {
     method: "POST",
     body: formdata,
     credentials: "include",
-  });
+  })
+    .then(function (response) {
+      if (response.status === 501) {
+        console.log("Update Status Failed");
+        populateAlert("Update Status Unsuccessful", "notice");
+        return;
+      }
+      if (response.status === 201) {
+        console.log("Update Status Successful");
+        populateAlert("Update Status Successful", "notice");
+      }
+    })
+    .catch(function (err) {
+      populateAlert("Connection unavailable", "error");
+    });
 }
 
 // place queue
 function place_queue() {
   populateAlert("Loading...", "notice");
   var outStr = "";
-  // var disabled = "";
   fetch("../Api/api.php?action=placequeue", {
     method: "GET",
     credentials: "include",
