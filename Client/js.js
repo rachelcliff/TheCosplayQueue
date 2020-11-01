@@ -584,10 +584,7 @@ function place_queue() {
 }
 
 function fillupdate() {
-  // var paint = '<span style="color: #' + color + '"><i class="ra ' + icon + '">&nbsp;</i>' +
-  //                 '<b>' + nick + '</b>';
-  // statuslogin.innerHTML = paint;
-  fetch('../Api/api.php?action=fillupdate', 
+   fetch('../Api/api.php?action=fillupdate', 
   {
       method: 'GET',
       credentials: 'include'
@@ -609,13 +606,13 @@ function fillupdate() {
 function autorefresh() {
   populateAlert("Loading...", "notice");
   var outStr = "";
-  // var disabled = "";
-  //  fetch("../Api/api.php?action=placequeue", {
-  // method: "GET",
-  // credentials: "include",
+   fetch("../Api/api.php?action=placequeue", {
+  method: "GET",
+  credentials: "include",
+  
   $(document).ready(function(){
     setInterval(function(){
-          $("#place_queue").load(window.location.href + " ../Api/api.php?action=placequeue" );
-    }, 1000);
+          $("#place_queue").load(window.location.href + " #place_queue>*" );
+    }, 4000);
     });
   }

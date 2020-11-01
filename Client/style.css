@@ -350,7 +350,7 @@ nav i.material-icons {
 
 #queue {
 	width: 80%;
-	background-color: white;
+	background-color: transparent;
 	padding: 2em;
 	text-align: center;
 	align-content: center;
@@ -360,7 +360,7 @@ nav i.material-icons {
 
 #place_queue {
 	width: 80%;
-	background-color: white;
+	background-color: transparent;
 	font-size: xx-large;
 	padding:2em;
 	text-align: center;
