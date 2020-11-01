@@ -69,7 +69,7 @@ window.onload = function () {
       "usernamer",
       "facebookr",
       "instagramr",
-      "phoner",
+      "phoner"
     ) == null
   ) {
     checkboxr.checked = false;
@@ -200,7 +200,7 @@ function showDetails() {
           row.r_group +
           // "</td><td>" +
           // row.reference_photo +
-         "</td></tr>";
+          "</td></tr>";
       });
       document.getElementById("queue").innerHTML = outStr;
     });
@@ -339,7 +339,7 @@ function formcheckjoin() {
   formdata.set("groupi", groupi.value);
   formdata.set("photo", photo.value);
   formdata.set("joini", joini.value);
-  formdata.set("photo_taken", 'no');
+  formdata.set("photo_taken", "no");
 
   fetch("../Api/api.php?action=join", {
     method: "POST",
@@ -347,7 +347,7 @@ function formcheckjoin() {
     credentials: "same-origin",
   });
 }
-  
+
 // Form Validation - Register
 function formcheckregister() {
   populateAlert("Loading...", "notice");
@@ -566,53 +566,34 @@ function place_queue() {
   populateAlert("Loading...", "notice");
   var outStr = "";
   // var disabled = "";
-   fetch("../Api/api.php?action=placequeue", {
-  method: "GET",
-  credentials: "include",
-}).then(function (response) {
-  response.json().then(function (results) {
-    console.log(results);
-    results.forEach((row) => {
-      outStr +=      
-      "<tr><td>" +
-      row.place +
-      "</td></tr>";
+  fetch("../Api/api.php?action=placequeue", {
+    method: "GET",
+    credentials: "include",
+  }).then(function (response) {
+    response.json().then(function (results) {
+      console.log(results);
+      results.forEach((row) => {
+        outStr += "<tr><td>" + row.place + "</td></tr>";
+      });
+      document.getElementById("place_queue").innerHTML = outStr;
+      window.setTimeout("place_queue();", 100000);
     });
-    document.getElementById("place_queue").innerHTML = outStr;
   });
-});
 }
 
 function fillupdate() {
-   fetch('../Api/api.php?action=fillupdate', 
-  {
-      method: 'GET',
-      credentials: 'include'
-  }
-) 
-.then(function (response) {
-  response.json().then(function (details) {
-    console.log(details);
-  namer.value = details.name; 
-  usernamer.value = details.cosplay_name; 
-  facebookr.value = details.facebook;
-  instagramr.value = details.instagram;
-  phoner.value = details.phone;
-  emailr.value = details.email; 
-});
-});
-}
-
-function autorefresh() {
-  populateAlert("Loading...", "notice");
-  var outStr = "";
-   fetch("../Api/api.php?action=placequeue", {
-  method: "GET",
-  credentials: "include",
-  
-  $(document).ready(function(){
-    setInterval(function(){
-          $("#place_queue").load(window.location.href + " #place_queue>*" );
-    }, 4000);
+  fetch("../Api/api.php?action=fillupdate", {
+    method: "GET",
+    credentials: "include",
+  }).then(function (response) {
+    response.json().then(function (details) {
+      console.log(details);
+      namer.value = details.name;
+      usernamer.value = details.cosplay_name;
+      facebookr.value = details.facebook;
+      instagramr.value = details.instagram;
+      phoner.value = details.phone;
+      emailr.value = details.email;
     });
-  }
+  });
+}
