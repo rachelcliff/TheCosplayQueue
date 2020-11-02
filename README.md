@@ -17,24 +17,25 @@ Functions:
 - database-connect-> Complete
 - rate limiting -> Complete
 - show data inputted into queue - Complete
-- show current place in queue - WIP
-- refresh queue - WIP
-- autofill queue update form - WIP
+- show current place in queue - Complete
+- refresh queue - Complete
+- autofill queue update form - Complete
 - join queue - Complete
 - Login - Complete
 - Register - Complete
 - Update user details - Complete
 - Create user - Complete
 - Remove self from queue - Complete
+- Logout 
 
 Front-end pages:
 - index (contains all of bases for the app)
 
 Back-end/admin pages:
 - admin page (contains a functional display of the queue using JSON)
-- Photo taken function complete and functioning
-- Remove from queue function complete and functioning
-- Show full queue function complete and functioning
+- Photo taken function - complete and functioning
+- Remove from queue function - complete and functioning
+- Show full queue function - complete and functioning
 
 Database:
 - created and tables built out and filled with dummy data and images.
@@ -45,9 +46,9 @@ Images:
 Planning:
 $_GET
 - 1- Echo data inputted to form -> Complete
-- 2- echo current place in queue (count sql query where photo taken = no) -> WIP
-- 3- refresh queue (PUT statement need help with this one) -> WIP
-- 4- Echo full queue data (located in the admin panel) -> Function complete and awaiting testing
+- 2- Echo current place in queue (count sql query where photo taken = no) -> Complete
+- 3- Refresh queue -> Complete
+- 4- Fill the update form with data using $_SESSIONS -> Complete
 
 $_POST
 - 1- join queue -> Complete
