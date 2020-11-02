@@ -202,8 +202,32 @@ align-content: center;
 	font-weight: bold;
 }
 
+#register-btn {
+	background-color: purple;
+	border-style: solid;
+	border-color: aqua;
+	height: 40px;
+	color: white;
+	font-weight: bold;
+}
+
 #submit-btn {
 	background-color: purple;
+	border-style: solid;
+	border-color: aqua;
+	font-weight: bold;
+	height: 40px;
+}
+
+#admin-panel-btn {
+	background-color: purple;
+	border-style: solid;
+	border-color: aqua;
+	color: white;
+	height: 40px;
+	font-weight: bold;
+	margin-top:2em;
+	margin-bottom:2em;
 }
 
 nav {

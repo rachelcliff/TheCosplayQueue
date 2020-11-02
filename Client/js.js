@@ -670,3 +670,23 @@ function fillupdate() {
     });
   });
 }
+
+function logout() {
+  fetch("../Api/api.php?action=logout", {
+    method: "GET",
+    credentials: "include",
+  }).then(function (response) {
+    if (response.status === 501) {
+      console.log("Logout Failed");
+      populateAlert("Logout Unsuccessful", "notice");
+      return;
+    }
+    if (response.status === 201) {
+      console.log("Logout Successful");
+      populateAlert("Logout Successful", "notice");
+    }
+  })
+  .catch(function (err) {
+    populateAlert("Connection unavailable", "error");
+  });
+}

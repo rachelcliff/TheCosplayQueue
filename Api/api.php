@@ -61,8 +61,8 @@ if (isset($_GET["action"])) {
                 } else {
                     http_response_code(404);
                 }
-            // } else {
-            //     http_response_code(401);
+                // } else {
+                //     http_response_code(401);
             }
             break;
 
@@ -101,11 +101,13 @@ if (isset($_GET["action"])) {
                 $browserAgent = $_SERVER['HTTP_USER_AGENT'];
                 $actiontype = $_POST['joini'];
 
-                if (isset($cosplay_name)) {
-                    $db->join($name, $cosplay_name, $facebook, $instagram, $phone, $email, $character_name, $series, $genre, $r_group, $reference_photo, $photo_taken, $date, $browserAgent, $actiontype);
-                    http_response_code(201);
-                } else {
-                    http_response_code(501);
+                if ($_SESSION['sessionOBJ']->is_logged_in()) {
+                    if (isset($cosplay_name)) {
+                        $db->join($name, $cosplay_name, $facebook, $instagram, $phone, $email, $character_name, $series, $genre, $r_group, $reference_photo, $photo_taken, $date, $browserAgent, $actiontype);
+                        http_response_code(201);
+                    } else {
+                        http_response_code(501);
+                    }
                 }
             }
             break;
@@ -124,11 +126,13 @@ if (isset($_GET["action"])) {
                 $browserAgent = $_SERVER['HTTP_USER_AGENT'];
                 $actiontype = $_POST['registers'];
 
-                if (isset($email)) {
-                    $db->register($name, $cosplay_name, $facebook, $instagram, $phone, $email, $password, $date, $browserAgent, $actiontype);
-                    http_response_code(201);
-                } else {
-                    http_response_code(501);
+                if ($_SESSION['sessionOBJ']->is_logged_in()) {
+                    if (isset($email)) {
+                        $db->register($name, $cosplay_name, $facebook, $instagram, $phone, $email, $password, $date, $browserAgent, $actiontype);
+                        http_response_code(201);
+                    } else {
+                        http_response_code(501);
+                    }
                 }
             }
             break;
@@ -141,15 +145,17 @@ if (isset($_GET["action"])) {
                 $date = date('Y-m-d H:i:s');
                 $browserAgent = $_SERVER['HTTP_USER_AGENT'];
                 $actiontype = $_POST['registers'];
-                if (isset($cosplay_name)) {
-                    $success = $db->login($cosplay_name, $password, $date, $browserAgent, $actiontype);
-                    if ($success) {
-                        http_response_code(201);
+                if ($_SESSION['sessionOBJ']->is_logged_in()) {
+                    if (isset($cosplay_name)) {
+                        $success = $db->login($cosplay_name, $password, $date, $browserAgent, $actiontype);
+                        if ($success) {
+                            http_response_code(201);
+                        } else {
+                            http_response_code(501);
+                        }
                     } else {
                         http_response_code(501);
                     }
-                } else {
-                    http_response_code(501);
                 }
             }
             break;
@@ -196,7 +202,7 @@ if (isset($_GET["action"])) {
                 }
             }
             break;
-            
+
             // photo_taken admin panel
         case "photo_taken":
             $user_id = $_SESSION['userID'];
@@ -230,5 +236,18 @@ if (isset($_GET["action"])) {
                 http_response_code(401);
             }
             break;
+
+        case 'isloggedin':
+            $result = $_SESSION['session_object']->is_logged_in();
+            if ($result == true) {
+                $details = $_SESSION['session_object']->login_details();
+                if (is_array($details)) {
+                    echo json_encode($details);
+                    http_response_code(201);
+                } else {
+                    http_response_code(401);
+                    break;
+                }
+            }
     }
 }

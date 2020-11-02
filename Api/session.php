@@ -37,21 +37,33 @@ public function Rate24HourCheck() {
 
 
 function is_logged_in() {
-    return true;
+    if($this->login_id = $_SESSION['loginID']) {
+        if ($this->$_SESSION['loginID'] === 0) {
+            return false;
+        } elseif($this->$_SESSION['loginID'] === 1){
+            return true;
+        }
+    }
+    return false;
 }
 
 // logout function
-// function logout() {
+function logout() {
 //     $this->privilege = -1;
-//     unset($this->studentid);
-//     unset($this->nick);
-//     unset($this->icon);
-//     unset($this->color);
-//     unset($this->hash);
-//     unset($this->theme);
+//     unset($this->name);
+//     unset($this->cosplay_name);
+//     unset($this->facebook);
+//     unset($this->instagram);
+//     unset($this->phone);
+//     unset($this->email);
+//     unset($this->userID);
+//     unset($this->character_name);
+//     unset($this->series);
+//     unset($this->genre);
+//     unset($this->r_group);
+//     unset($this->queueID);
 // return true;
-// }
-// }
-
+session_destroy();
+}
 }
 ?>
