@@ -47,8 +47,8 @@ class cosplayQueueModel
             $_SESSION["r_group"] = $r_group;
             $_SESSION["userID"] = $lastuserID;
             $_SESSION["queueID"] = $lastqueueID;
-
-
+            $_SESSION["login"] = "true";
+         
             $stmt = $this->dbconn->prepare("INSERT INTO changelog(date, browser, user_id, actiontype) Values (:date, :browser, :user_id, :actiontype)");
             $stmt->bindValue(':date', $date);
             $stmt->bindValue(':browser', $browserAgent);
@@ -99,8 +99,10 @@ class cosplayQueueModel
             $_SESSION["facebook"] = $facebook;
             $_SESSION["instagram"] = $instagram;
             $_SESSION["userID"] = $lastuserID;
-            $_SERVER["phone"] = $phone;
-            $_SERVER["email"] = $email;
+            $_SESSION["phone"] = $phone;
+            $_SESSION["email"] = $email;
+            $_SESSION["login"] = 'true';
+            
 
             $this->dbconn->commit();
         } catch (PDOException $ex) {

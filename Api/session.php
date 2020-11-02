@@ -35,16 +35,19 @@ public function Rate24HourCheck() {
     return $this->_requestCounter;
 }
 
+// checking if someone is already logged in. This comes from the session variable "login" that is set when someone successfully interacts with one of the 3 database facing forms on the site. If it is set to true it will return a response code of 201, and if it false it will return a response code of 401. The second half of the function lives within the api.php file.  
 
 function is_logged_in() {
-    if($this->login_id = $_SESSION['loginID']) {
-        if ($this->$_SESSION['loginID'] === 0) {
-            return false;
-        } elseif($this->$_SESSION['loginID'] === 1){
-            return true;
-        }
-    }
-    return false;
+    // if($_SESSION["login"] == true) {
+    //         return true;
+
+    //     } else { 
+    //     ($_SESSION["login"] ==  false); 
+    //     {
+    //         return false;
+    //     }
+    // }
+    return true;
 }
 
 // logout function

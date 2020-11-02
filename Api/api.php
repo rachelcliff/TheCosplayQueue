@@ -101,15 +101,14 @@ if (isset($_GET["action"])) {
                 $browserAgent = $_SERVER['HTTP_USER_AGENT'];
                 $actiontype = $_POST['joini'];
 
-                if ($_SESSION['sessionOBJ']->is_logged_in()) {
-                    if (isset($cosplay_name)) {
+                if (isset($cosplay_name)) {
                         $db->join($name, $cosplay_name, $facebook, $instagram, $phone, $email, $character_name, $series, $genre, $r_group, $reference_photo, $photo_taken, $date, $browserAgent, $actiontype);
                         http_response_code(201);
                     } else {
                         http_response_code(501);
                     }
                 }
-            }
+            // }
             break;
 
         case "signup":
@@ -126,14 +125,12 @@ if (isset($_GET["action"])) {
                 $browserAgent = $_SERVER['HTTP_USER_AGENT'];
                 $actiontype = $_POST['registers'];
 
-                if ($_SESSION['sessionOBJ']->is_logged_in()) {
                     if (isset($email)) {
                         $db->register($name, $cosplay_name, $facebook, $instagram, $phone, $email, $password, $date, $browserAgent, $actiontype);
                         http_response_code(201);
                     } else {
                         http_response_code(501);
                     }
-                }
             }
             break;
 
@@ -145,7 +142,6 @@ if (isset($_GET["action"])) {
                 $date = date('Y-m-d H:i:s');
                 $browserAgent = $_SERVER['HTTP_USER_AGENT'];
                 $actiontype = $_POST['registers'];
-                if ($_SESSION['sessionOBJ']->is_logged_in()) {
                     if (isset($cosplay_name)) {
                         $success = $db->login($cosplay_name, $password, $date, $browserAgent, $actiontype);
                         if ($success) {
@@ -157,7 +153,6 @@ if (isset($_GET["action"])) {
                         http_response_code(501);
                     }
                 }
-            }
             break;
 
         case "update":
@@ -238,11 +233,10 @@ if (isset($_GET["action"])) {
             break;
 
         case 'isloggedin':
-            $result = $_SESSION['session_object']->is_logged_in();
+            $result = $_SESSION['sessionOBJ']->is_logged_in();
             if ($result == true) {
-                $details = $_SESSION['session_object']->login_details();
+                $details = $_SESSION['sessionOBJ']->login_details();
                 if (is_array($details)) {
-                    echo json_encode($details);
                     http_response_code(201);
                 } else {
                     http_response_code(401);
