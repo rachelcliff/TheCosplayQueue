@@ -26,7 +26,7 @@ Functions:
 - Update user details - Complete
 - Create user - Complete
 - Remove self from queue - Complete
-- Logout 
+- Logout - Complete
 
 Front-end pages:
 - index (contains all of bases for the app)
