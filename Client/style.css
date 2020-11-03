@@ -364,6 +364,14 @@ nav i.material-icons {
 	height: auto;
 }
 
+#logout-btn {
+	margin-top: 2em;
+	background-color: purple;
+	border-color: aqua;
+	border-style: solid;
+	height: auto;
+}
+
 .modal.bottom-sheet {
 	max-height: 100%;
 }

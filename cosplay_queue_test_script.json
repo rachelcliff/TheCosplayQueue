@@ -1,0 +1,766 @@
+{
+  "version": 6,
+  "entities": [
+    {
+      "entity": {
+        "type": "Project",
+        "description": "",
+        "id": "c5c12879-0386-4c96-88cc-8fa1db566122",
+        "name": "Cosplay Queue"
+      },
+      "children": [
+        {
+          "entity": {
+            "type": "Request",
+            "method": {
+              "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+              "name": "GET"
+            },
+            "body": {
+              "formBody": {
+                "overrideContentType": true,
+                "encoding": "application/x-www-form-urlencoded",
+                "items": []
+              },
+              "bodyType": "Text"
+            },
+            "retryConfiguration": {
+              "enabled": true,
+              "intervalInSeconds": 10,
+              "retryCount": 1
+            },
+            "uri": {
+              "query": {
+                "delimiter": "&",
+                "items": [
+                  {
+                    "enabled": true,
+                    "name": "action",
+                    "value": "fillupdate"
+                  }
+                ]
+              },
+              "scheme": {
+                "name": "http",
+                "version": "V11"
+              },
+              "host": "localhost",
+              "path": "/TheCosplayQueue/Api/api.php"
+            },
+            "id": "5dc22f53-4f27-4b69-9386-b6ef1555b4da",
+            "name": "Fill Update",
+            "headers": [
+              {
+                "name": "user_id",
+                "value": "37"
+              }
+            ],
+            "assertions": [
+              {
+                "comparison": "Equals",
+                "subject": "ResponseStatus",
+                "path": "code",
+                "value": "201"
+              }
+            ]
+          }
+        },
+        {
+          "entity": {
+            "type": "Request",
+            "method": {
+              "requestBody": true,
+              "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+              "name": "POST"
+            },
+            "body": {
+              "formBody": {
+                "encoding": "application/x-www-form-urlencoded",
+                "items": [
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "action",
+                    "value": "login"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "namel",
+                    "value": "test22"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "passwordl",
+                    "value": "1234"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "loginl",
+                    "value": "login"
+                  }
+                ]
+              },
+              "bodyType": "Form"
+            },
+            "uri": {
+              "query": {
+                "delimiter": "&",
+                "items": [
+                  {
+                    "enabled": true,
+                    "name": "action",
+                    "value": "login"
+                  }
+                ]
+              },
+              "scheme": {
+                "name": "http",
+                "version": "V11"
+              },
+              "host": "localhost",
+              "path": "/TheCosplayQueue/Api/api.php"
+            },
+            "id": "01a051e0-d9c8-4eb2-91d0-2f7554bfba4a",
+            "name": "Login",
+            "headers": [
+              {
+                "enabled": true,
+                "name": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "assertions": [
+              {
+                "comparison": "Equals",
+                "subject": "ResponseStatus",
+                "path": "code",
+                "value": "201"
+              }
+            ]
+          }
+        },
+        {
+          "entity": {
+            "type": "Request",
+            "method": {
+              "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+              "name": "GET"
+            },
+            "body": {
+              "formBody": {
+                "overrideContentType": true,
+                "encoding": "application/x-www-form-urlencoded",
+                "items": [
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "action",
+                    "value": "logout"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "",
+                    "value": ""
+                  }
+                ]
+              },
+              "bodyType": "Form"
+            },
+            "uri": {
+              "query": {
+                "delimiter": "&",
+                "items": [
+                  {
+                    "enabled": true,
+                    "name": "action",
+                    "value": "logout"
+                  }
+                ]
+              },
+              "scheme": {
+                "name": "http",
+                "version": "V11"
+              },
+              "host": "localhost",
+              "path": "/TheCosplayQueue/Api/api.php"
+            },
+            "id": "02bdb71f-0e54-4e13-9bf4-7def90bcf105",
+            "name": "Logout",
+            "headers": [],
+            "assertions": [
+              {
+                "comparison": "Equals",
+                "subject": "ResponseStatus",
+                "path": "code",
+                "value": "201"
+              }
+            ]
+          }
+        },
+        {
+          "entity": {
+            "type": "Request",
+            "method": {
+              "requestBody": true,
+              "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+              "name": "POST"
+            },
+            "body": {
+              "formBody": {
+                "overrideContentType": true,
+                "encoding": "application/x-www-form-urlencoded",
+                "items": [
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "action",
+                    "value": "update"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "namer",
+                    "value": "Eli Ayase"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "usernamer",
+                    "value": "Eli"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "facebookr",
+                    "value": "AyaseEli"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "instagramr",
+                    "value": "AyaseEli2"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "phoner",
+                    "value": "1234567890"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "passwordr",
+                    "value": "1234"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "updater",
+                    "value": "update"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "emailr",
+                    "value": "AyaseEli@hotmail.com"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "user_id",
+                    "value": "37"
+                  }
+                ]
+              },
+              "bodyType": "Form"
+            },
+            "uri": {
+              "query": {
+                "delimiter": "&",
+                "items": [
+                  {
+                    "enabled": true,
+                    "name": "action",
+                    "value": "update"
+                  }
+                ]
+              },
+              "scheme": {
+                "name": "http",
+                "version": "V11"
+              },
+              "host": "localhost",
+              "path": "/TheCosplayQueue/Api/api.php"
+            },
+            "id": "daf9fd01-6afc-41b5-a38d-e595f5f02424",
+            "name": "Update",
+            "headers": [
+              {
+                "enabled": true,
+                "name": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "assertions": [
+              {
+                "comparison": "Equals",
+                "subject": "ResponseStatus",
+                "path": "code",
+                "value": "201"
+              }
+            ]
+          }
+        },
+        {
+          "entity": {
+            "type": "Request",
+            "method": {
+              "requestBody": true,
+              "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+              "name": "POST"
+            },
+            "body": {
+              "formBody": {
+                "overrideContentType": true,
+                "encoding": "application/x-www-form-urlencoded",
+                "items": [
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "action",
+                    "value": "dequeue"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "photo_taken",
+                    "value": "void"
+                  }
+                ]
+              },
+              "bodyType": "Form"
+            },
+            "uri": {
+              "query": {
+                "delimiter": "&",
+                "items": [
+                  {
+                    "enabled": true,
+                    "name": "action",
+                    "value": "dequeue"
+                  }
+                ]
+              },
+              "scheme": {
+                "name": "http",
+                "version": "V11"
+              },
+              "host": "localhost",
+              "path": "/TheCosplayQueue/Api/api.php"
+            },
+            "id": "bee48f58-a157-4abb-9659-14140bac6824",
+            "name": "dequeue",
+            "headers": [
+              {
+                "enabled": true,
+                "name": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "assertions": [
+              {
+                "comparison": "Equals",
+                "subject": "ResponseStatus",
+                "path": "code",
+                "value": "201"
+              }
+            ]
+          }
+        },
+        {
+          "entity": {
+            "type": "Request",
+            "method": {
+              "requestBody": true,
+              "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+              "name": "POST"
+            },
+            "body": {
+              "formBody": {
+                "overrideContentType": true,
+                "encoding": "application/x-www-form-urlencoded",
+                "items": [
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "action",
+                    "value": "join"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "namei",
+                    "value": "Eli Ayase"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "usernamei",
+                    "value": "Eli"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "facebooki",
+                    "value": "AyaseEli"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "instagrami",
+                    "value": "AyaseEli"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "phonei",
+                    "value": "123456789"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "emaili",
+                    "value": "AyaseEli@test.com"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "characteri",
+                    "value": "Dia Kurosawa"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "seriesi",
+                    "value": "Love Live Sunshine"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "genrei",
+                    "value": "Anime"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "groupi",
+                    "value": "yes"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "photo",
+                    "value": "dfgdsfdsfsdfs"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "joini",
+                    "value": "join"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "photo_taken",
+                    "value": "no"
+                  }
+                ]
+              },
+              "bodyType": "Form"
+            },
+            "uri": {
+              "query": {
+                "delimiter": "&",
+                "items": [
+                  {
+                    "enabled": true,
+                    "name": "action",
+                    "value": "join"
+                  }
+                ]
+              },
+              "scheme": {
+                "name": "http",
+                "version": "V11"
+              },
+              "host": "localhost",
+              "path": "/TheCosplayQueue/Api/api.php"
+            },
+            "id": "b1bdf4bc-6d74-452e-ab24-469f0ab000f7",
+            "name": "join",
+            "headers": [
+              {
+                "enabled": true,
+                "name": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "assertions": [
+              {
+                "comparison": "Equals",
+                "subject": "ResponseStatus",
+                "path": "code",
+                "value": "201"
+              }
+            ]
+          }
+        },
+        {
+          "entity": {
+            "type": "Request",
+            "method": {
+              "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+              "name": "GET"
+            },
+            "body": {
+              "formBody": {
+                "overrideContentType": true,
+                "encoding": "application/x-www-form-urlencoded",
+                "items": []
+              },
+              "bodyType": "Text"
+            },
+            "uri": {
+              "query": {
+                "delimiter": "&",
+                "items": [
+                  {
+                    "enabled": true,
+                    "name": "action",
+                    "value": "placequeue"
+                  }
+                ]
+              },
+              "scheme": {
+                "name": "https:http"
+              },
+              "host": "localhost",
+              "path": "/TheCosplayQueue/Api/api.php"
+            },
+            "id": "55291748-ffb6-46f1-9da0-e4e778a5f762",
+            "name": "place queue",
+            "headers": [
+              {
+                "enabled": true,
+                "name": "user_id",
+                "value": "37"
+              },
+              {
+                "enabled": true,
+                "name": "queue_id",
+                "value": "31"
+              }
+            ],
+            "assertions": [
+              {
+                "comparison": "Equals",
+                "subject": "ResponseStatus",
+                "path": "code",
+                "value": "201"
+              }
+            ]
+          }
+        },
+        {
+          "entity": {
+            "type": "Request",
+            "method": {
+              "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+              "name": "GET"
+            },
+            "body": {
+              "formBody": {
+                "overrideContentType": true,
+                "encoding": "application/x-www-form-urlencoded",
+                "items": []
+              },
+              "bodyType": "Text"
+            },
+            "uri": {
+              "query": {
+                "delimiter": "&",
+                "items": [
+                  {
+                    "enabled": true,
+                    "name": "action",
+                    "value": "showDetails"
+                  }
+                ]
+              },
+              "scheme": {
+                "name": "http",
+                "version": "V11"
+              },
+              "host": "localhost",
+              "path": "/TheCosplayQueue/Api/api.php"
+            },
+            "id": "ff97f7a9-3c4e-4092-a9de-d3e87f8f5f3b",
+            "name": "show details",
+            "headers": [
+              {
+                "enabled": true,
+                "name": "user_id",
+                "value": "37"
+              },
+              {
+                "enabled": true,
+                "name": "character_name",
+                "value": "Test"
+              },
+              {
+                "enabled": true,
+                "name": "series",
+                "value": "Test"
+              },
+              {
+                "enabled": true,
+                "name": "genre",
+                "value": "Test"
+              },
+              {
+                "enabled": true,
+                "name": "r_group",
+                "value": "no"
+              },
+              {
+                "enabled": true,
+                "name": "queue_id",
+                "value": "31"
+              }
+            ],
+            "assertions": [
+              {
+                "comparison": "Equals",
+                "subject": "ResponseStatus",
+                "path": "code",
+                "value": "201"
+              }
+            ]
+          }
+        },
+        {
+          "entity": {
+            "type": "Request",
+            "method": {
+              "requestBody": true,
+              "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+              "name": "POST"
+            },
+            "body": {
+              "formBody": {
+                "overrideContentType": true,
+                "encoding": "application/x-www-form-urlencoded",
+                "items": [
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "names",
+                    "value": "Tester"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "usernames",
+                    "value": "Tester"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "facebooks",
+                    "value": "Tester"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "instagrams",
+                    "value": "Tester"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "phones",
+                    "value": "987654321"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "emails",
+                    "value": "tester@tester.com"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "passwords",
+                    "value": "9876"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "registers",
+                    "value": "register"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "action",
+                    "value": "signup"
+                  }
+                ]
+              },
+              "bodyType": "Form"
+            },
+            "uri": {
+              "query": {
+                "delimiter": "&",
+                "items": [
+                  {
+                    "enabled": true,
+                    "name": "action",
+                    "value": "signup"
+                  }
+                ]
+              },
+              "scheme": {
+                "name": "http",
+                "version": "V11"
+              },
+              "host": "localhost",
+              "path": "/TheCosplayQueue/Api/api.php"
+            },
+            "id": "ada6bbbd-458f-4064-b346-6b111585423e",
+            "name": "signup",
+            "headers": [
+              {
+                "enabled": true,
+                "name": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "assertions": [
+              {
+                "comparison": "Equals",
+                "subject": "ResponseStatus",
+                "path": "code",
+                "value": "201"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

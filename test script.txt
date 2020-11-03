@@ -1,8 +1,6 @@
-# fillupdate
 curl -i -X GET \
  'http://localhost/TheCosplayQueue/Api/api.php?action=fillupdate'
 
-#login
  curl -i -X POST \
    -H "Content-Type:application/x-www-form-urlencoded" \
    -d "action=login" \
@@ -11,11 +9,9 @@ curl -i -X GET \
    -d "loginl=login" \
  'http://localhost/TheCosplayQueue/Api/api.php?action=login'
 
-# logout
  curl -i -X GET \
  'http://localhost/TheCosplayQueue/Api/api.php?action=logout'
 
-#update
  curl -i -X POST \
    -H "Content-Type:application/x-www-form-urlencoded" \
    -d "action=update" \
@@ -30,14 +26,12 @@ curl -i -X GET \
    -d "user_id=37" \
  'http://localhost/TheCosplayQueue/Api/api.php?action=update'
 
-# dequeue
  curl -i -X POST \
    -H "Content-Type:application/x-www-form-urlencoded" \
    -d "action=dequeue" \
    -d "photo_taken=void" \
  'http://localhost/TheCosplayQueue/Api/api.php?action=dequeue'
 
-# join 
  curl -i -X POST \
    -H "Content-Type:application/x-www-form-urlencoded" \
    -d "action=join" \
@@ -56,13 +50,11 @@ curl -i -X GET \
    -d "photo_taken=no" \
  'http://localhost/TheCosplayQueue/Api/api.php?action=join'
 
-# place queue
  curl -i -X GET \
    -H "user_id:37" \
    -H "queue_id:31" \
  'http://localhost/TheCosplayQueue/Api/api.php?action=placequeue'
 
-# show details
  curl -i -X GET \
    -H "user_id:37" \
    -H "character_name:Test" \
@@ -72,7 +64,7 @@ curl -i -X GET \
    -H "queue_id:31" \
  'http://localhost/TheCosplayQueue/Api/api.php?action=showDetails'
 
-# signup test
+signup test
  curl -i -X POST \
    -H "Content-Type:application/x-www-form-urlencoded" \
    -d "names=Tester" \

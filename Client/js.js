@@ -176,7 +176,7 @@ function register() {
 function showDetails() {
   populateAlert("Loading...", "notice");
   var outStr = "";
-  fetch("http://localhost/TheCosplayQueue/Api/api.php?action=showDetails", {
+  fetch("../Api/api.php?action=showDetails", {
     method: "GET",
     credentials: "include",
   }).then(function (response) {
@@ -204,7 +204,7 @@ function showDetailsAll() {
   populateAlert("Loading...", "notice");
   var outStr = "";
   var disabled = "";
-  fetch("http://localhost/TheCosplayQueue/Api/api.php?action=showDetailsAll", {
+  fetch("../Api/api.php?action=showDetailsAll", {
     method: "GET",
     credentials: "include",
   }).then(function (response) {
@@ -333,7 +333,7 @@ function formcheckjoin() {
   formdata.set("joini", joini.value);
   formdata.set("photo_taken", "no");
 
-  fetch("http://localhost/TheCosplayQueue/Api/api.php?action=join", {
+  fetch("../Api/api.php?action=join", {
     method: "POST",
     body: formdata,
     credentials: "same-origin",
@@ -476,7 +476,7 @@ function formcheckupdate() {
   formdata.set("passwordr", passwordr.value);
   formdata.set("updater", updater.value);
 
-  fetch("http://localhost/TheCosplayQueue/Api/api.php?action=update", {
+  fetch("../Api/api.php?action=update", {
     method: "POST",
     body: formdata,
     credentials: "include",
@@ -555,7 +555,7 @@ function formchecklogin() {
   formdata.set("passwordl", passwordl.value);
   formdata.set("loginl", loginl.value);
 
-  fetch("../api/api.php?action=login", {
+  fetch("../Api/api.php?action=login", {
     method: "POST",
     body: formdata,
     credentials: "include"
@@ -585,7 +585,7 @@ function dequeue() {
   formdata.set("usernamei", usernamei.value);
   formdata.set("photo_taken", "void");
 
-  fetch("http://localhost/TheCosplayQueue/Api/api.php?action=dequeue", {
+  fetch("../Api/api.php?action=dequeue", {
     method: "POST",
     body: formdata,
     credentials: "include",
@@ -615,7 +615,7 @@ function photo_taken() {
   formdata.set("usernamei", usernamei.value);
   formdata.set("photo_taken", "yes");
 
-  fetch("http://localhost/TheCosplayQueue/Api/api.php?action=photo_taken", {
+  fetch("../Api/api.php?action=photo_taken", {
     method: "POST",
     body: formdata,
     credentials: "include",
@@ -640,7 +640,7 @@ function photo_taken() {
 function place_queue() {
   populateAlert("Loading...", "notice");
   var outStr = "";
-  fetch("http://localhost/TheCosplayQueue/Api/api.php?action=placequeue", {
+  fetch("../Api/api.php?action=placequeue", {
     method: "GET",
     credentials: "include",
   }).then(function (response) {
@@ -656,7 +656,7 @@ function place_queue() {
 }
 
 function fillupdate() {
-  fetch("http://localhost/TheCosplayQueue/Api/api.php?action=fillupdate", {
+  fetch("../Api/api.php?action=fillupdate", {
     method: "GET",
     credentials: "include",
   }).then(function (response) {
@@ -673,9 +673,9 @@ function fillupdate() {
 }
 
 function logout() {
-  fetch("http://localhost/TheCosplayQueue/Api/api.php?action=logout", {
+  fetch("../Api/api.php?action=logout", {
     method: "GET",
-    credentials: "include",
+    credentials: "include"
   }).then(function (response) {
     if (response.status === 501) {
       console.log("Logout Failed");

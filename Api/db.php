@@ -115,7 +115,7 @@ class cosplayQueueModel
     function login($cosplay_name, $password, $date, $browserAgent, $actiontype)
     {
         try {
-            // $this->dbconn->beginTransaction();
+            $this->dbconn->beginTransaction();
             $stmt = $this->dbconn->prepare("SELECT logins.cosplay_name, logins.password, logins.login_id, users.user_id, users.name, users.facebook, users.instagram, users.phone, users.email FROM logins inner join users on logins.login_id = users.login_id WHERE logins.cosplay_name = :cosplay_name");
             $stmt->bindParam(':cosplay_name', $cosplay_name);
             $stmt->execute();
@@ -132,14 +132,14 @@ class cosplayQueueModel
                 $_SESSION['phone'] = $row['phone'];
                 $_SESSION['email'] = $row['email'];
 
-                // $lastuserID = $this->dbconn->$_SESSION["userID"];
-                // $stmt = $this->dbconn->prepare("INSERT INTO changelog(date, browser, actiontype, user_ID) Values (:date, :browser, :actiontype, :user_id)");
-                // $stmt->bindValue(':date', $date);
-                // $stmt->bindValue(':browser', $browserAgent);
-                // $stmt->bindValue(':actiontype', $actiontype);
-                // $stmt->bindValue(':user_id', $lastuserID);
-                // $stmt->execute();
-                // $this->dbconn->commit();
+                $userID = $_SESSION["userID"];
+                $stmt = $this->dbconn->prepare("INSERT INTO changelog(date, browser, actiontype, user_ID) Values (:date, :browser, :actiontype, :user_id)");
+                $stmt->bindValue(':date', $date);
+                $stmt->bindValue(':browser', $browserAgent);
+                $stmt->bindValue(':actiontype', $actiontype);
+                $stmt->bindValue(':user_id', $userID);
+                $stmt->execute();
+                $this->dbconn->commit();
 
                 return true;
             } else {
@@ -185,6 +185,14 @@ class cosplayQueueModel
             $stmt->bindValue(':phone', $phone);
             $stmt->bindValue(':email', $email);
             $stmt->execute();
+
+            $_SESSION["name"] = $name;
+            $_SESSION['cosplay_name'] = $cosplay_name;
+            $_SESSION['facebook'] = $facebook;
+            $_SESSION['instagram'] = $instagram;
+            $_SESSION['phone'] = $phone;
+            $_SESSION['email'] = $email;
+
 
             $login_id = $_SESSION['loginID'];
             $stmt = $this->dbconn->prepare("UPDATE logins SET cosplay_name=:cosplay_name, password=:password WHERE login_id =:login_id");

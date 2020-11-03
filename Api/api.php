@@ -23,6 +23,11 @@ if ($_SESSION['sessionOBJ']->Rate24HourCheck() === false) {
     die();
 }
 
+if ($_SESSION['sessionOBJ']->RateCheck() === false) {
+    http_response_code(429); //Too Many Requests
+    die();
+}
+
 
 // Base Case
 
@@ -137,7 +142,6 @@ if (isset($_GET["action"])) {
         case "login":
             // echo "login";
             if (isset($_POST["action"])) {
-                echo "foo";
                 $cosplay_name = $_POST['namel'];
                 $password = $_POST['passwordl'];
                 $date = date('Y-m-d H:i:s');
@@ -233,16 +237,12 @@ if (isset($_GET["action"])) {
             }
             break;
 
-        case 'isloggedin':
-            $result = $_SESSION['sessionOBJ']->is_logged_in();
-            if ($result == true) {
-                $details = $_SESSION['sessionOBJ']->login_details();
-                if (is_array($details)) {
-                    http_response_code(201);
-                } else {
-                    http_response_code(401);
-                    break;
-                }
-            }
+        case "logout":
+        if($_SESSION[ 'sessionOBJ' ] -> is_logged_in()){
+             $_SESSION[ 'sessionOBJ'] -> logout();
+             http_response_code(201);
+		  }else{
+			  http_response_code(502);
+		  }
     }
 }
