@@ -1,5 +1,15 @@
 # TheCosplayQueue
 
+INSTALLATION INSTRUCTIONS:
+
+Create a new blank database and name it "cosplay_queue". Import the sql file contained in the API folder (alternatively there is a deployment script currently being created)
+
+Install the client and api folders into a web server such as Xampp or Wamp. The folders need to be installed into the htdocs folder if your using Xampp, or the www folder if you're using Wamp.
+
+Update the database connection settings found within the db.php file with the username and password needed to access the database.
+
+Installation is now complete, and the app should now be functional.
+
 Notes about UX1
 The queue is part of the admin user panel and as such it isn't displayed on the apps frontend and the general user, which is who I interpreted the target audience of this assessment to be. I will have a semi-functional user panel finished for Proj2 and UX3 so this part will be demonstrated then. 
 
