@@ -137,11 +137,12 @@ if (isset($_GET["action"])) {
         case "login":
             // echo "login";
             if (isset($_POST["action"])) {
+                echo "foo";
                 $cosplay_name = $_POST['namel'];
                 $password = $_POST['passwordl'];
                 $date = date('Y-m-d H:i:s');
                 $browserAgent = $_SERVER['HTTP_USER_AGENT'];
-                $actiontype = $_POST['registers'];
+                $actiontype = $_POST['loginl'];
                     if (isset($cosplay_name)) {
                         $success = $db->login($cosplay_name, $password, $date, $browserAgent, $actiontype);
                         if ($success) {

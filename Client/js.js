@@ -399,7 +399,7 @@ function formcheckregister() {
   formdata.set("passwords", passwords.value);
   formdata.set("registers", registers.value);
 
-  fetch("http://localhost/TheCosplayQueue/Api/api.php?action=signup", {
+  fetch("../Api/api.php?action=signup", {
     method: "POST",
     body: formdata,
     credentials: "same-origin",
@@ -554,10 +554,11 @@ function formchecklogin() {
   formdata.set("namel", namel.value);
   formdata.set("passwordl", passwordl.value);
   formdata.set("loginl", loginl.value);
-  fetch("http://localhost/TheCosplayQueue/Api/api.php?action=login", {
+
+  fetch("../api/api.php?action=login", {
     method: "POST",
     body: formdata,
-    credentials: "include",
+    credentials: "include"
   })
     .then(function (response) {
       if (response.status === 501) {
