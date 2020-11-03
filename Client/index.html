@@ -101,9 +101,8 @@
               <div class="page-title">Join the Queue</div>
               <form
                 id="join-form"
-                action="../Api/api.php"
-                method="POST"
                 class="col s12 m12"
+                onclick: "return preventDefault()";
                 novalidate
               >
                 <div class="row">
@@ -314,9 +313,8 @@
               <div class="page-title">Login</div>
               <form
                 id="login-form"
-                action="../Api/api.php"
-                method="POST"
                 class="col s12 m12"
+               onsubmit="return preventDefault()"
               >
                 <div class="row">
                   <div class="input-field col offset-s1 s10" id="name_login">
@@ -355,11 +353,11 @@
                     <!-- <label for="icon_prefix">Password</label> -->
                   </div>
                   <button
-                    class="btn waves-effect waves-light col offset-s1 s4 modal-trigger"
+                    class="btn waves-effect waves-light col offset-s1 s4"
                     type="submit"
                     name="action"
                     id="login-btn"
-                    href="#modal2"
+                    href="#"
                     onClick="formchecklogin()"
                   >
                     Log In
@@ -381,9 +379,8 @@
               <div class="page-title">Sign Up</div>
               <form
                 id="register-form"
-                action="../Api/api.php"
-                method="post"
                 class="col s12 m12"
+                onclick="return preventDefault()";
               >
                 <div class="row">
                   <div class="input-field col offset-s1 s10" id="name_register">
@@ -522,11 +519,11 @@
                   </div>
                   <div class="col s12"></div>
                   <button
-                    class="btn waves-effect waves-light col offset-s1 s4 modal-trigger"
+                    class="btn waves-effect waves-light col offset-s1 s4"
                     type="submit"
                     name="register"
                     id="register-btn"
-                    href="#modal2"
+                    href="#!"
                     onClick="formcheckregister()"
                   >
                     Submit
@@ -585,8 +582,6 @@
           <h4>Update your details</h4>
           <form
             id="details-form"
-            action="../Api/api.php"
-            method="POST"
             class="col s12 m12"
           >
             <div class="row">

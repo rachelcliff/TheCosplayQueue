@@ -43,7 +43,7 @@ public function RateCheck() {
     $this->requestCounter++;
     $seconds = (time() - $this->_startTime);
     $this->_startTime=time();
-    if ($seconds >1 && $this ->_requestCounter >1) {
+    if ($seconds <1 && $this ->_requestCounter >1) {
         return false;
     } else if ($seconds >1) {
     $this->_requestCounter=0;

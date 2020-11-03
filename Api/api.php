@@ -245,4 +245,7 @@ if (isset($_GET["action"])) {
 			  http_response_code(502);
 		  }
     }
+} else {
+    http_response_code(501);
 }
+?>

@@ -345,6 +345,7 @@ function formcheckjoin() {
         return;
       }
       if (response.status === 201) {
+        $("#modal1").modal('open');
         console.log("Join Successful");
         populateAlert("Join Successful", "notice");
       }
@@ -411,6 +412,7 @@ function formcheckregister() {
         return;
       }
       if (response.status === 201) {
+        $("#modal2").modal('open');
         console.log("Register Successful");
         populateAlert("Register Successful", "notice");
       }
@@ -418,6 +420,10 @@ function formcheckregister() {
     .catch(function (err) {
       populateAlert("Connection unavailable", "error");
     });
+}
+
+function preventDefault() {
+  return false;
 }
 
 // Form Validation - Update
@@ -567,6 +573,7 @@ function formchecklogin() {
         return;
       }
       if (response.status === 201) {
+        $("#modal2").modal('open');
         console.log("Login Successful");
         populateAlert("Login Successful", "notice");
       }
