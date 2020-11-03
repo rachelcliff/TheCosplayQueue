@@ -30,7 +30,7 @@ if ($_SESSION['sessionOBJ']->RateCheck() === false) {
 
 
 // Base Case
-
+// This section of the code acts as a central hub for the API utilising a switch statement to utilise multiple functions or cases within the program. It works by firstly defining the action type of each Fetch call created in the JS file. The action in this case is defined as GET by default, so if the case has an action type of GET it will run as GET automatically. For POST actions an additional line of code is needed to set the case to identify as POST. From there there is an an if statement that links to the correct function in the dp.php file where the needed variables are defined. Once the process is run it will hit another if else statement containing the http response codes for whether the result returns true and whether the response returns false. The case finishes with a break that tells the system that this is the end of this specific case and not to run any further. At the end of the overall base case there is a universal 501 error that will run in the event that the base case fails. 
 if (isset($_GET["action"])) {
 
     switch ($_GET["action"]) {
