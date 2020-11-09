@@ -690,8 +690,10 @@ function logout() {
       return;
     }
     if (response.status === 201) {
+      $("#modal2").modal('close');
       console.log("Logout Successful");
       populateAlert("Logout Successful", "notice");
+
     }
   })
   .catch(function (err) {
