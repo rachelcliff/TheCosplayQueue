@@ -604,6 +604,7 @@ function dequeue() {
         return;
       }
       if (response.status === 201) {
+        $("#modal1").modal('close');
         console.log("Dequeue Successful");
         populateAlert("Removal from Queue Successful", "notice");
       }
