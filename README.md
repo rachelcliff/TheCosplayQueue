@@ -10,6 +10,12 @@ Update the database connection settings found within the db.php file with the us
 
 Installation is now complete, and the app should now be functional.
 
+Technologies utilised in this build:
+Materalize - Version 1.0.0, implemented using CDN, used to create the display and functionality on the home page of the app.
+React - Version 17.0.1, implemented via local installation and node cmd, used to create the display and functionality on the app admin panel. 
+PHP - hardcode relating to Version 7.4.12, implemented in the API base case, sessions and functions file to create the database connection and functionality for the app. 
+HTML, CSS, and JS - regular use of these coding languages used throughout all pages of the app to create display, look, style and functionality. 
+
 Notes about UX1
 The queue is part of the admin user panel and as such it isn't displayed on the apps frontend and the general user, which is who I interpreted the target audience of this assessment to be. I will have a semi-functional user panel finished for Proj2 and UX3 so this part will be demonstrated then. 
 
