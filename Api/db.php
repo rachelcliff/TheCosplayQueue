@@ -253,6 +253,7 @@ class cosplayQueueModel
     function placequeue()
     {
         try {
+            $this->dbconn->beginTransaction();
             $lastqueueID = $_SESSION['queueID'];
             // $user_id = $_SESSION['userID'];
             $stmt = $this->dbconn->prepare("SELECT COUNT(user_id) as place FROM queue WHERE photo_taken = 'no' AND queue_id <= $lastqueueID");
