@@ -1,0 +1,39 @@
+one sql dump I'm confused about which one?
+
+<br />
+<b>Notice</b>:  Undefined index: queueID in <b>/home/jp/dipwebdev/rachel/Api/db.php</b> on line <b>256</b><br />
+<br />
+<b>Fatal error</b>:  Uncaught PDOException: There is no active transaction in /home/jp/dipwebdev/rachel/Api/db.php:263
+Stack trace:
+#0 /home/jp/dipwebdev/rachel/Api/db.php(263): PDO-&gt;rollBack()
+#1 /home/jp/dipwebdev/rachel/Api/api.php(228): cosplayQueueModel-&gt;placequeue()
+#2 {main}
+  thrown in <b>/home/jp/dipwebdev/rachel/Api/db.php</b> on line <b>263</b><br />
+
+
+[Mon Nov 16 08:58:54 2020] [::1]:44938 Accepted
+[Mon Nov 16 08:58:54 2020] [::1]:44938 [200]: GET /Api/api.php?action=placequeue - Uncaught PDOException: There is no active transaction in /home/jp/dipwebdev/rachel/Api/db.php:263
+Stack trace:
+#0 /home/jp/dipwebdev/rachel/Api/db.php(263): PDO->rollBack()
+#1 /home/jp/dipwebdev/rachel/Api/api.php(228): cosplayQueueModel->placequeue()
+#2 {main}
+  thrown in /home/jp/dipwebdev/rachel/Api/db.php on line 263
+[Mon Nov 16 08:58:54 2020] [::1]:44938 Closing
+[Mon Nov 16 08:59:36 2020] [::1]:45268 Accepted
+[Mon Nov 16 08:59:36 2020] [::1]:45268 [501]: GET /Api/api.php?action=showDetails
+[Mon Nov 16 08:59:36 2020] [::1]:45268 Closing
+[Mon Nov 16 08:59:55 2020] [::1]:45430 Accepted
+[Mon Nov 16 08:59:55 2020] [::1]:45430 [501]: GET /Api/api.php?action=showDetails
+[Mon Nov 16 08:59:55 2020] [::1]:45430 Closing
+[Mon Nov 16 09:00:09 2020] [::1]:45544 Accepted
+[Mon Nov 16 09:00:09 2020] [::1]:45544 [501]: GET /Api/api.php?action=showDetails
+[Mon Nov 16 09:00:09 2020] [::1]:45544 Closing
+[Mon Nov 16 09:00:11 2020] [::1]:45562 Accepted
+[Mon Nov 16 09:00:11 2020] [::1]:45562 [200]: GET /Api/api.php?action=placequeue - Uncaught PDOException: There is no active transaction in /home/jp/dipwebdev/rachel/Api/db.php:263
+Stack trace:
+#0 /home/jp/dipwebdev/rachel/Api/db.php(263): PDO->rollBack()
+#1 /home/jp/dipwebdev/rachel/Api/api.php(228): cosplayQueueModel->placequeue()
+#2 {main}
+  thrown in /home/jp/dipwebdev/rachel/Api/db.php on line 263
+[Mon Nov 16 09:00:11 2020] [::1]:45562 Closing
+
