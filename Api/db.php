@@ -86,7 +86,7 @@ class cosplayQueueModel
             $stmt->bindValue(':login_id', $lastloginID);
             $stmt->execute();
 
-            $lastuserID = $this->dbconn->lastInsertID();
+           $lastuserID = $this->dbconn->lastInsertID();
             $stmt = $this->dbconn->prepare("INSERT INTO changelog(date, browser, actiontype, user_ID) Values (:date, :browser, :actiontype, :user_id)");
             $stmt->bindValue(':date', $date);
             $stmt->bindValue(':browser', $browserAgent);

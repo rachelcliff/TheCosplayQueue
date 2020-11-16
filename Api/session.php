@@ -56,7 +56,6 @@ return $this->_requestCounter;
 function is_logged_in() {
     if($_SESSION["login"] = true) {
             return true;
-
         } else {  
             return false;
     }

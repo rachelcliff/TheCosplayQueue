@@ -1,7 +1,7 @@
 <?php
 header('Access-Control-Allow-Origin: https://localhost');
 header('Access-Control-Allow-Credentials: true');
-header('Content-Type: apsplication/json'); // All echo statements are json_encode
+header('Content-Type: application/json'); // All echo statements are json_encode
 
 // initiation of database and session
 require('db.php');
@@ -35,7 +35,6 @@ if (isset($_GET["action"])) {
 
     switch ($_GET["action"]) {
         case "showDetails":
-            // echo "show";
             if ($_SESSION['sessionOBJ']->is_joined()) {
                 $result = $db->showDetails();
                 if ($result == false) {
@@ -73,7 +72,6 @@ if (isset($_GET["action"])) {
 
             // admin panel - show details all
         case "showDetailsAll":
-            // echo "showAll";
             if ($_SESSION['sessionOBJ']->is_logged_in()) {
                 $result = $db->showDetails();
                 if ($result == false) {
@@ -88,7 +86,6 @@ if (isset($_GET["action"])) {
             break;
 
         case "join":
-            // echo "join";
             if (isset($_POST["action"])) {
                 $name = $_POST['namei'];
                 $cosplay_name = $_POST['usernamei'];
@@ -106,18 +103,79 @@ if (isset($_GET["action"])) {
                 $browserAgent = $_SERVER['HTTP_USER_AGENT'];
                 $actiontype = $_POST['joini'];
 
-                if (isset($cosplay_name)) {
-                        $db->join($name, $cosplay_name, $facebook, $instagram, $phone, $email, $character_name, $series, $genre, $r_group, $reference_photo, $photo_taken, $date, $browserAgent, $actiontype);
-                        http_response_code(201);
-                    } else {
-                        http_response_code(501);
-                    }
+                //check if field is empty
+                if ($name == "") {
+                    $errorMsg =  "error : You did not enter a name.";
+                    die;
                 }
-            // }
+
+                //check if field is empty
+                elseif ($cosplay_name == "") {
+                    $errorMsg =  "error : Please enter a cosplay name.";
+                    die;
+                }
+
+                //check if field is empty
+                elseif ($phone == "") {
+                    $errorMsg = "error: No phone number";
+                    die;
+                }
+
+                //check if the number field is numeric
+                elseif (is_numeric(trim($phone)) == false) {
+                    $errorMsg =  "error : Please enter numeric value.";
+                    die;
+                }
+
+                //check if email field is empty
+                elseif ($email == "") {
+                    $errorMsg =  "error : You did not enter a email.";
+                    die;
+                } 
+                
+                //check for valid email 
+                elseif (!preg_match("/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,6}$/i", $email)) {
+                    $errorMsg = 'error : You did not enter a valid email.';
+                    die;
+                }
+
+                //check if field is empty
+                elseif ($character_name == "") {
+                    $errorMsg = "error: no character name";
+                    die;
+                }
+
+                //check if field is empty
+                elseif ($series == "") {
+                    $errorMsg = "error: no series";
+                    die;
+                }
+
+                //check if field is empty
+                elseif ($r_group == "") {
+                    $errorMsg = "error: No group response";
+                    die;
+                
+                // check if field is empty
+                } elseif ($photo_taken == "") {
+                    $errorMsg = "error: Photo taken empty";
+                    die;
+
+                // check if field is empty
+                } elseif ($actiontype == "") {
+                    $errorMsg = "error: action type empty";
+                    die;
+
+                } if (isset($cosplay_name)) {
+                    $db->join($name, $cosplay_name, $facebook, $instagram, $phone, $email, $character_name, $series, $genre, $r_group, $reference_photo, $photo_taken, $date, $browserAgent, $actiontype);
+                    http_response_code(201);
+                } else {
+                    http_response_code(501);
+                };
+            }
             break;
 
         case "signup":
-            // echo "signup";
             if (isset($_POST["action"])) {
                 $name = $_POST['names'];
                 $cosplay_name = $_POST['usernames'];
@@ -130,38 +188,106 @@ if (isset($_GET["action"])) {
                 $browserAgent = $_SERVER['HTTP_USER_AGENT'];
                 $actiontype = $_POST['registers'];
 
-                    if (isset($email)) {
-                        $db->register($name, $cosplay_name, $facebook, $instagram, $phone, $email, $password, $date, $browserAgent, $actiontype);
-                        http_response_code(201);
-                    } else {
-                        http_response_code(501);
-                    }
+                //check if field is empty
+                if ($name == "") {
+                    $errorMsg =  "error : You did not enter a name.";
+                    die;
+                }
+                //check if field is empty
+                elseif ($cosplay_name == "") {
+                    $errorMsg =  "error : Please enter a cosplay name.";
+                    die;
+                }
+                //   check if field is empty
+                elseif ($facebook == "") {
+                    $errorMsg = "error:no facebook name";
+                    die;
+                }
+                
+                // check if field is empty
+                elseif ($instagram == "") {
+                    $errorMsg = "error: No instagram name";
+                    die;
+                }
+                
+                //check if field is empty
+                elseif ($phone == "") {
+                    $errorMsg = "error: No phone number";
+                    die;
+                }
+                //check if the number field is numeric
+                elseif (is_numeric(trim($phone)) == false) {
+                    $errorMsg =  "error : Please enter numeric value.";
+                    die;
+                }
+                //check if email field is empty
+                elseif ($email == "") {
+                    $errorMsg =  "error : You did not enter a email.";
+                    die;
+                }
+
+                //check for valid email 
+                elseif (!preg_match("/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,6}$/i", $email)) {
+                    $errorMsg = 'error : You did not enter a valid email.';
+                    die;
+                
+                // check if field is empty
+                } elseif ($actiontype == "") {
+                    $errorMsg = "error: action type empty";
+                    die;
+                
+                // check if field is empty
+                } elseif ($password == "") {
+                    $errorMsg = "error password empty";
+                    die;
+                }
+                if (isset($email)) {
+                    $db->register($name, $cosplay_name, $facebook, $instagram, $phone, $email, $password, $date, $browserAgent, $actiontype);
+                    http_response_code(201);
+                } else {
+                    http_response_code(501);
+                }
             }
             break;
 
         case "login":
-            // echo "login";
             if (isset($_POST["action"])) {
                 $cosplay_name = $_POST['namel'];
                 $password = $_POST['passwordl'];
                 $date = date('Y-m-d H:i:s');
                 $browserAgent = $_SERVER['HTTP_USER_AGENT'];
                 $actiontype = $_POST['loginl'];
-                    if (isset($cosplay_name)) {
-                        $success = $db->login($cosplay_name, $password, $date, $browserAgent, $actiontype);
-                        if ($success) {
-                            http_response_code(201);
-                        } else {
-                            http_response_code(501);
-                        }
+
+                // check if field is empty
+                if($cosplay_name == "") {
+                    $errorMsg="error: username empty";
+                    die;
+                }
+                // check if field is empty
+                elseif ($password == "") {
+                    $errorMsg="error: password empty";
+                    die;
+                }
+                // check if field is empty
+                elseif ($actiontype == "") {
+                    $errorMsg="error: action type empty";
+                    die;
+                }
+
+                if (isset($cosplay_name)) {
+                    $success = $db->login($cosplay_name, $password, $date, $browserAgent, $actiontype);
+                    if ($success) {
+                        http_response_code(201);
                     } else {
                         http_response_code(501);
                     }
+                } else {
+                    http_response_code(501);
                 }
+            }
             break;
 
         case "update":
-            // echo "update";
             $user_id = $_SESSION['userID'];
 
             if (isset($_POST["action"])) {
@@ -176,6 +302,60 @@ if (isset($_GET["action"])) {
                 $date = date('Y-m-d H:i:s');
                 $browserAgent = $_SERVER['HTTP_USER_AGENT'];
                 $actiontype = $_POST['updater'];
+
+                //check if field is empty
+                if ($name == "") {
+                    $errorMsg =  "error : You did not enter a name.";
+                    die;
+                }
+                //check if field is empty
+                elseif ($cosplay_name == "") {
+                    $errorMsg =  "error : Please enter a cosplay name.";
+                    die;
+                }
+                //   check if field is empty
+                elseif ($facebook == "") {
+                    $errorMsg = "error:no facebook name";
+                    die;
+                }
+                
+                // check if field is empty
+                elseif ($instagram == "") {
+                    $errorMsg = "error: No instagram name";
+                    die;
+                }
+                
+                //check if field is empty
+                elseif ($phone == "") {
+                    $errorMsg = "error: No phone number";
+                    die;
+                }
+                //check if the number field is numeric
+                elseif (is_numeric(trim($phone)) == false) {
+                    $errorMsg =  "error : Please enter numeric value.";
+                    die;
+                }
+                //check if email field is empty
+                elseif ($email == "") {
+                    $errorMsg =  "error : You did not enter a email.";
+                    die;
+                }
+
+                //check for valid email 
+                elseif (!preg_match("/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,6}$/i", $email)) {
+                    $errorMsg = 'error : You did not enter a valid email.';
+                    die;
+
+                // check if field is empty
+                } elseif ($actiontype == "") {
+                    $errorMsg = "error: action type empty";
+                    die;
+                
+                // check if field is empty
+                } elseif ($password == "") {
+                    $errorMsg = "error password empty";
+                    die;
+                }
                 if ($_SESSION["login"] == "true") {
                     if (isset($cosplay_name)) {
                         $db->update($user_id, $name, $cosplay_name, $facebook, $instagram, $phone, $email, $password, $date, $browserAgent, $actiontype);
@@ -189,12 +369,17 @@ if (isset($_GET["action"])) {
 
         case "dequeue":
             $user_id = $_SESSION['userID'];
-            // echo $_SESSION['userID'];
-            // echo "dequeue";
             if (isset($_POST["action"])) {
                 $user_id = $_POST['user_id'];
                 $photo_taken = $_POST['photo_taken'];
-                if (isset($photo_taken)) {
+
+                // check if field is empty
+                if ($photo_taken == "") {
+                    $errorMsg = "Error: photo taken empty";
+                    die;
+                
+                // check if field is empty
+                } elseif (isset($photo_taken)) {
                     $db->dequeue($user_id, $photo_taken);
                     http_response_code(201);
                 } else {
@@ -206,12 +391,16 @@ if (isset($_GET["action"])) {
             // photo_taken admin panel
         case "photo_taken":
             $user_id = $_SESSION['userID'];
-            // echo $_SESSION['userID'];
-            // echo "photo_taken";
             if (isset($_POST["action"])) {
                 $user_id = $_POST['user_id'];
                 $photo_taken = $_POST['photo_taken'];
-                if (isset($photo_taken)) {
+
+                // check if field is empty
+                if ($photo_taken == "") {
+                    $errorMsg = "Error: photo taken empty";
+                    die;
+
+                } elseif (isset($photo_taken)) {
                     $db->photo_taken($user_id, $photo_taken);
                     http_response_code(201);
                 } else {
@@ -222,8 +411,6 @@ if (isset($_GET["action"])) {
 
         case "placequeue":
             $user_id = $_SESSION['userID'];
-            // echo $_SESSION['userID'];
-            // echo "placequeue";
             if ($_SESSION['sessionOBJ']->is_joined()) {
                 $result = $db->placequeue();
                 if ($result == false) {
@@ -238,14 +425,13 @@ if (isset($_GET["action"])) {
             break;
 
         case "logout":
-        if($_SESSION[ 'sessionOBJ' ] -> is_logged_in()){
-             $_SESSION[ 'sessionOBJ'] -> logout();
-             http_response_code(201);
-		  }else{
-			  http_response_code(502);
-		  }
+            if ($_SESSION['sessionOBJ']->is_logged_in()) {
+                $_SESSION['sessionOBJ']->logout();
+                http_response_code(201);
+            } else {
+                http_response_code(502);
+            }
     }
 } else {
     http_response_code(501);
 }
-?>
