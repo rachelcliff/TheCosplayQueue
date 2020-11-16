@@ -6,14 +6,10 @@ class cosplayQueueModel
 
     public function __construct()
     {
-        // $servername = "localhost";
-        // $dbusername = "root";
-        // $dbpassword = "";
         $this->dbconn = new PDO("mysql:host=localhost;dbname=cosplay_queue", "root", "");
         // set the PDO error mode to exception 
         // (debug - comment out in production)
         $this->dbconn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        // echo "Connected successfully!!";
     }
     //join function
     function join($name, $cosplay_name, $facebook, $instagram, $phone, $email, $character_name, $series, $genre, $r_group, $reference_photo, $photo_taken, $date, $browserAgent, $actiontype)
@@ -143,7 +139,6 @@ class cosplayQueueModel
 
                 return true;
             } else {
-                echo "Cannot log in";
                 return false;
             }
         } catch (PDOException $ex) {

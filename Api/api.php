@@ -131,8 +131,8 @@ if (isset($_GET["action"])) {
                 elseif ($email == "") {
                     $errorMsg =  "error : You did not enter a email.";
                     die;
-                } 
-                
+                }
+
                 //check for valid email 
                 elseif (!preg_match("/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,6}$/i", $email)) {
                     $errorMsg = 'error : You did not enter a valid email.';
@@ -155,18 +155,18 @@ if (isset($_GET["action"])) {
                 elseif ($r_group == "") {
                     $errorMsg = "error: No group response";
                     die;
-                
-                // check if field is empty
+
+                    // check if field is empty
                 } elseif ($photo_taken == "") {
                     $errorMsg = "error: Photo taken empty";
                     die;
 
-                // check if field is empty
+                    // check if field is empty
                 } elseif ($actiontype == "") {
                     $errorMsg = "error: action type empty";
                     die;
-
-                } if (isset($cosplay_name)) {
+                }
+                if (isset($cosplay_name)) {
                     $db->join($name, $cosplay_name, $facebook, $instagram, $phone, $email, $character_name, $series, $genre, $r_group, $reference_photo, $photo_taken, $date, $browserAgent, $actiontype);
                     http_response_code(201);
                 } else {
@@ -203,13 +203,13 @@ if (isset($_GET["action"])) {
                     $errorMsg = "error:no facebook name";
                     die;
                 }
-                
+
                 // check if field is empty
                 elseif ($instagram == "") {
                     $errorMsg = "error: No instagram name";
                     die;
                 }
-                
+
                 //check if field is empty
                 elseif ($phone == "") {
                     $errorMsg = "error: No phone number";
@@ -230,13 +230,13 @@ if (isset($_GET["action"])) {
                 elseif (!preg_match("/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,6}$/i", $email)) {
                     $errorMsg = 'error : You did not enter a valid email.';
                     die;
-                
-                // check if field is empty
+
+                    // check if field is empty
                 } elseif ($actiontype == "") {
                     $errorMsg = "error: action type empty";
                     die;
-                
-                // check if field is empty
+
+                    // check if field is empty
                 } elseif ($password == "") {
                     $errorMsg = "error password empty";
                     die;
@@ -259,18 +259,18 @@ if (isset($_GET["action"])) {
                 $actiontype = $_POST['loginl'];
 
                 // check if field is empty
-                if($cosplay_name == "") {
-                    $errorMsg="error: username empty";
+                if ($cosplay_name == "") {
+                    $errorMsg = "error: username empty";
                     die;
                 }
                 // check if field is empty
                 elseif ($password == "") {
-                    $errorMsg="error: password empty";
+                    $errorMsg = "error: password empty";
                     die;
                 }
                 // check if field is empty
                 elseif ($actiontype == "") {
-                    $errorMsg="error: action type empty";
+                    $errorMsg = "error: action type empty";
                     die;
                 }
 
@@ -318,13 +318,13 @@ if (isset($_GET["action"])) {
                     $errorMsg = "error:no facebook name";
                     die;
                 }
-                
+
                 // check if field is empty
                 elseif ($instagram == "") {
                     $errorMsg = "error: No instagram name";
                     die;
                 }
-                
+
                 //check if field is empty
                 elseif ($phone == "") {
                     $errorMsg = "error: No phone number";
@@ -346,12 +346,12 @@ if (isset($_GET["action"])) {
                     $errorMsg = 'error : You did not enter a valid email.';
                     die;
 
-                // check if field is empty
+                    // check if field is empty
                 } elseif ($actiontype == "") {
                     $errorMsg = "error: action type empty";
                     die;
-                
-                // check if field is empty
+
+                    // check if field is empty
                 } elseif ($password == "") {
                     $errorMsg = "error password empty";
                     die;
@@ -377,8 +377,8 @@ if (isset($_GET["action"])) {
                 if ($photo_taken == "") {
                     $errorMsg = "Error: photo taken empty";
                     die;
-                
-                // check if field is empty
+
+                    // check if field is empty
                 } elseif (isset($photo_taken)) {
                     $db->dequeue($user_id, $photo_taken);
                     http_response_code(201);
@@ -399,7 +399,6 @@ if (isset($_GET["action"])) {
                 if ($photo_taken == "") {
                     $errorMsg = "Error: photo taken empty";
                     die;
-
                 } elseif (isset($photo_taken)) {
                     $db->photo_taken($user_id, $photo_taken);
                     http_response_code(201);
@@ -431,6 +430,11 @@ if (isset($_GET["action"])) {
             } else {
                 http_response_code(502);
             }
+            break;
+
+        default:
+            http_response_code(501);
+            break;
     }
 } else {
     http_response_code(501);

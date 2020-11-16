@@ -404,3 +404,15 @@ nav i.material-icons {
 td {
 	text-align: center;
 }
+
+#side-view {
+	display:none;
+}
+
+#side-logout {
+	display: none;
+}
+
+#side-edit {
+	display: none;
+}

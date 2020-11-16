@@ -54,29 +54,32 @@
               alt="the cosplay queue logo"
             />
           </li>
-          <li>
+          <li id="side-join">
             <a onclick="join()">
               <i class="material-icons">photo_camera</i>Join the Queue
             </a>
           </li>
-          <li>
+          <li id="side-sign">
             <a onclick="sign()"> <i class="material-icons">login</i>Log in </a>
           </li>
-          <li>
+          <li id="side-register">
             <a onclick="register()">
               <i class="material-icons">create</i>Sign Up
             </a>
           </li>
-          <li>
-            <a onclick="edit()"><i class="material-icons">update</i>Update Details
+          <li id="side-edit">
+            <a onclick="edit()">
+              <i class="material-icons">update</i>Update Details
             </a>
         </li>
-        <li>
-          <a onclick="view()"><i class="material-icons">visibility</i>View place in queue
+        <li id="side-view">
+          <a onclick="view()">
+            <i class="material-icons">visibility</i>View place in queue
           </a>
       </li>
-          <li>
-              <a onclick="logout()"><i class="material-icons">lock</i>Logout
+          <li id="side-logout">
+              <a onclick="logout()">
+                <i class="material-icons">lock</i>Logout
               </a>
           </li>
           <li>
@@ -101,7 +104,7 @@
           onclick="this.style.display = 'none'"
         ></div>
         <ul class="collapsible">
-          <li>
+          <li id="join-container">
             <div class="collapsible-header">
               <img
                 id="join"
@@ -300,11 +303,10 @@
                   </div>
                   <div class="col s12"></div>
                   <button
-                    class="btn waves-effect waves-light col offset-s1 s4 modal-trigger"
+                    class="btn waves-effect waves-light col offset-s1 s4"
                     type="submit"
                     name="action"
                     id="submit-btn"
-                    href="#modal1"
                     onClick="formcheckjoin(); return false"
                   >
                     Submit
@@ -314,7 +316,7 @@
               </form>
             </div>
           </li>
-          <li>
+          <li id="login-container">
             <div class="collapsible-header">
               <img
                 id="sign-in"
@@ -380,7 +382,7 @@
               </form>
             </div>
           </li>
-          <li>
+          <li id="register-container">
             <div class="collapsible-header">
               <img
                 id="register"
@@ -728,11 +730,10 @@
                 </p>
               </div>
               <button
-                class="btn waves-effect waves-light col offset-s1 s4 modal-trigger"
+                class="btn waves-effect waves-light col offset-s1 s4"
                 type="submit"
                 name="action"
                 id="update-btn"
-                href="#modal2"
                 onClick="formcheckupdate(); return false"
               >
                 Submit
@@ -768,7 +769,7 @@
               class="waves-effect waves-light btn col offset-s2 s4 modal-trigger"
               id="details-btn"
               href="#modal3"
-              onclick="fillupdate(); return false"
+              onclick="fillupdate()"
             >
               <i class="material-icons left">create</i>Edit Your Details
             </a>

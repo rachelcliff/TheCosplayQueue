@@ -386,6 +386,7 @@ function formcheckjoin() {
       }
            if (response.status === 201) {
         $("#modal1").modal('open');
+        document.getElementById("side-view").style.display = "block";
         console.log("Join Successful");
         populateAlert("Join Successful", "notice");
       }
@@ -453,6 +454,13 @@ function formcheckregister() {
       }
       if (response.status === 201) {
         $("#modal2").modal('open');
+        document.getElementById("login-container").style.display = "none";
+        document.getElementById("register-container").style.display = "none";
+        document.getElementById("side-sign").style.display = "none";
+        document.getElementById("side-register").style.display = "none";
+        document.getElementById("side-view").style.display = "none";
+        document.getElementById("side-edit").style.display = "block";
+        document.getElementById("side-logout").style.display = "block";
         console.log("Register Successful");
         populateAlert("Register Successful", "notice");
       }
@@ -613,6 +621,13 @@ function formchecklogin() {
         return;
       }
       if (response.status === 201) {
+        document.getElementById("login-container").style.display = "none";
+        document.getElementById("register-container").style.display = "none";
+        document.getElementById("side-sign").style.display = "none";
+        document.getElementById("side-register").style.display = "none";
+        document.getElementById("side-view").style.display = "none";
+        document.getElementById("side-edit").style.display = "block";
+        document.getElementById("side-logout").style.display = "block";
         $("#modal2").modal('open');
         console.log("Login Successful");
         populateAlert("Login Successful", "notice");
@@ -732,6 +747,13 @@ function logout() {
     }
     if (response.status === 201) {
       $("#modal2").modal('close');
+      document.getElementById("login-container").style.display = "block";
+        document.getElementById("register-container").style.display = "block";
+        document.getElementById("side-sign").style.display = "block";
+        document.getElementById("side-register").style.display = "block";
+        document.getElementById("side-view").style.display = "none";
+        document.getElementById("side-edit").style.display = "none";
+        document.getElementById("side-logout").style.display = "none";
       console.log("Logout Successful");
       populateAlert("Logout Successful", "notice");
 
