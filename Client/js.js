@@ -173,7 +173,7 @@ function register() {
 }
 
 function edit() {
-  $("#modal3").modal('open');
+  $("#modal3").modal("open");
   $("body").css({
     overflow: "visible",
   });
@@ -198,7 +198,7 @@ function edit() {
 }
 
 function view() {
-  $("#modal1").modal('open');
+  $("#modal1").modal("open");
   $("body").css({
     overflow: "visible",
   });
@@ -384,8 +384,8 @@ function formcheckjoin() {
         populateAlert("Attempt to join queue was unsuccessful", "notice");
         return;
       }
-           if (response.status === 201) {
-        $("#modal1").modal('open');
+      if (response.status === 201) {
+        $("#modal1").modal("open");
         document.getElementById("side-view").style.display = "block";
         console.log("Join Successful");
         populateAlert("Join Successful", "notice");
@@ -453,7 +453,7 @@ function formcheckregister() {
         return;
       }
       if (response.status === 201) {
-        $("#modal2").modal('open');
+        $("#modal2").modal("open");
         document.getElementById("login-container").style.display = "none";
         document.getElementById("register-container").style.display = "none";
         document.getElementById("side-sign").style.display = "none";
@@ -612,7 +612,7 @@ function formchecklogin() {
   fetch("../Api/api.php?action=login", {
     method: "POST",
     body: formdata,
-    credentials: "include"
+    credentials: "include",
   })
     .then(function (response) {
       if (response.status === 501) {
@@ -628,7 +628,7 @@ function formchecklogin() {
         document.getElementById("side-view").style.display = "none";
         document.getElementById("side-edit").style.display = "block";
         document.getElementById("side-logout").style.display = "block";
-        $("#modal2").modal('open');
+        $("#modal2").modal("open");
         console.log("Login Successful");
         populateAlert("Login Successful", "notice");
       }
@@ -659,7 +659,7 @@ function dequeue() {
         return;
       }
       if (response.status === 201) {
-        $("#modal1").modal('close');
+        $("#modal1").modal("close");
         console.log("Dequeue Successful");
         populateAlert("Removal from Queue Successful", "notice");
       }
@@ -738,28 +738,35 @@ function fillupdate() {
 function logout() {
   fetch("../Api/api.php?action=logout", {
     method: "GET",
-    credentials: "include"
-  }).then(function (response) {
-    if (response.status === 501) {
-      console.log("Logout Failed");
-      populateAlert("Logout Unsuccessful", "notice");
-      return;
-    }
-    if (response.status === 201) {
-      $("#modal2").modal('close');
-      document.getElementById("login-container").style.display = "block";
+    credentials: "include",
+  })
+    .then(function (response) {
+      if (response.status === 501) {
+        console.log("Logout Failed");
+        populateAlert("Logout Unsuccessful", "notice");
+        return;
+      }
+      if (response.status === 201) {
+        $("#modal2").modal("close");
+        document.getElementById("login-container").style.display = "block";
         document.getElementById("register-container").style.display = "block";
         document.getElementById("side-sign").style.display = "block";
         document.getElementById("side-register").style.display = "block";
         document.getElementById("side-view").style.display = "none";
         document.getElementById("side-edit").style.display = "none";
         document.getElementById("side-logout").style.display = "none";
-      console.log("Logout Successful");
-      populateAlert("Logout Successful", "notice");
-
-    }
-  })
-  .catch(function (err) {
-    populateAlert("Connection unavailable", "error");
-  });
+        $(".collapsible").collapsible("close", 1);
+        $(".collapsible").collapsible("close", 2);
+        $(".collapsible").collapsible("open", 3);
+        $(".sidenav").sidenav({
+          menuWidth: 300, // Default is 240
+          closeOnClick: true,
+        });
+        console.log("Logout Successful");
+        populateAlert("Logout Successful", "notice");
+      }
+    })
+    .catch(function (err) {
+      populateAlert("Connection unavailable", "error");
+    });
 }
