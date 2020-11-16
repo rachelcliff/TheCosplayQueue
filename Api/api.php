@@ -36,7 +36,7 @@ if (isset($_GET["action"])) {
     switch ($_GET["action"]) {
         case "showDetails":
             // echo "show";
-            if ($_SESSION['sessionOBJ']->is_logged_in()) {
+            if ($_SESSION['sessionOBJ']->is_joined()) {
                 $result = $db->showDetails();
                 if ($result == false) {
                     http_response_code(501);
@@ -224,7 +224,7 @@ if (isset($_GET["action"])) {
             $user_id = $_SESSION['userID'];
             // echo $_SESSION['userID'];
             // echo "placequeue";
-            if ($_SESSION['sessionOBJ']->is_logged_in()) {
+            if ($_SESSION['sessionOBJ']->is_joined()) {
                 $result = $db->placequeue();
                 if ($result == false) {
                     http_response_code(501);

@@ -47,7 +47,7 @@ class cosplayQueueModel
             $_SESSION["r_group"] = $r_group;
             $_SESSION["userID"] = $lastuserID;
             $_SESSION["queueID"] = $lastqueueID;
-            $_SESSION["login"] = "true";
+            $_SESSION["join"] = "true";
          
             $stmt = $this->dbconn->prepare("INSERT INTO changelog(date, browser, user_id, actiontype) Values (:date, :browser, :user_id, :actiontype)");
             $stmt->bindValue(':date', $date);

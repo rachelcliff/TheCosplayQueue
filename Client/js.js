@@ -172,6 +172,42 @@ function register() {
   });
 }
 
+function edit() {
+  $("#modal3").modal('open');
+  $("body").css({
+    overflow: "visible",
+  });
+  $(".sidenav").sidenav({
+    menuWidth: 300, // Default is 240
+    closeOnClick: true,
+  });
+  fetch("../Api/api.php?action=fillupdate", {
+    method: "GET",
+    credentials: "include",
+  }).then(function (response) {
+    response.json().then(function (details) {
+      console.log(details);
+      namer.value = details.name;
+      usernamer.value = details.cosplay_name;
+      facebookr.value = details.facebook;
+      instagramr.value = details.instagram;
+      phoner.value = details.phone;
+      emailr.value = details.email;
+    });
+  });
+}
+
+function view() {
+  $("#modal1").modal('open');
+  $("body").css({
+    overflow: "visible",
+  });
+  $(".sidenav").sidenav({
+    menuWidth: 300, // Default is 240
+    closeOnClick: true,
+  });
+}
+
 //Show Queue
 function showDetails() {
   populateAlert("Loading...", "notice");
@@ -299,21 +335,25 @@ function formcheckjoin() {
 
   if (characteri.checkValidity() === false) {
     errorStr += "Please insert your character name ";
+    console.log("character error");
     return;
   }
 
   if (seriesi.checkValidity() === false) {
     errorStr += "Please insert your series name ";
+    console.log("series error");
     return;
   }
 
   if (genrei.checkValidity() === false) {
     errorStr += "Please answer if you are part of a group ";
+    console.log("genre error");
     return;
   }
 
   if (groupi.checkValidity() === false) {
     errorStr += "Please insert a Valid response ";
+    console.log("group error");
     return;
   }
 
@@ -344,7 +384,7 @@ function formcheckjoin() {
         populateAlert("Attempt to join queue was unsuccessful", "notice");
         return;
       }
-      if (response.status === 201) {
+           if (response.status === 201) {
         $("#modal1").modal('open');
         console.log("Join Successful");
         populateAlert("Join Successful", "notice");

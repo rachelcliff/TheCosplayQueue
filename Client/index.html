@@ -68,6 +68,18 @@
             </a>
           </li>
           <li>
+            <a onclick="edit()"><i class="material-icons">update</i>Update Details
+            </a>
+        </li>
+        <li>
+          <a onclick="view()"><i class="material-icons">visibility</i>View place in queue
+          </a>
+      </li>
+          <li>
+              <a onclick="logout()"><i class="material-icons">lock</i>Logout
+              </a>
+          </li>
+          <li>
             <p>
               <label>
                 <input
@@ -255,6 +267,7 @@
                       name="photo"
                       pattern="[a-zA-Z0-9_.!@#$%^&*() ]{2,}"
                       title="name must have 2 or more lowercase letters"
+                      required
                     />
                   <!-- <div class="file-field input-field col offset-m1 m10">
                     <div class="btn">
@@ -292,7 +305,7 @@
                     name="action"
                     id="submit-btn"
                     href="#modal1"
-                    onClick="formcheckjoin()"
+                    onClick="formcheckjoin(); return false"
                   >
                     Submit
                     <i class="material-icons right">send</i>
@@ -357,8 +370,8 @@
                     type="submit"
                     name="action"
                     id="login-btn"
-                    href="#"
-                    onClick="formchecklogin()"
+                    href="#modal2"
+                    onClick="formchecklogin(); return false"
                   >
                     Log In
                     <i class="material-icons right">send</i>
@@ -523,8 +536,8 @@
                     type="submit"
                     name="register"
                     id="register-btn"
-                    href="#!"
-                    onClick="formcheckregister()"
+                    href="#modal2"
+                    onClick="formcheckregister(); return false"
                   >
                     Submit
                     <i class="material-icons right">send</i>
@@ -720,7 +733,7 @@
                 name="action"
                 id="update-btn"
                 href="#modal2"
-                onClick="formcheckupdate()"
+                onClick="formcheckupdate(); return false"
               >
                 Submit
                 <i class="material-icons right">send</i>
@@ -755,7 +768,7 @@
               class="waves-effect waves-light btn col offset-s2 s4 modal-trigger"
               id="details-btn"
               href="#modal3"
-              onclick="fillupdate()"
+              onclick="fillupdate(); return false"
             >
               <i class="material-icons left">create</i>Edit Your Details
             </a>
@@ -765,7 +778,7 @@
               class="waves-effect waves-light btn col offset-s2 s4"
               id="logout-btn"
               onclick="logout()"
-              href="#modal2"
+              href="#modal2; return false"
             >
               <i class="material-icons left">create</i>Logout
             </a>

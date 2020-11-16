@@ -62,6 +62,14 @@ function is_logged_in() {
     }
 }
 
+function is_joined() {
+    if($_SESSION["join"] = true) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 // logout function
 function logout() {
     unset($_SESSION['name']);
