@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" class="light-theme || dark-theme">
+  <head>
+    <title>The Cosplay Queue</title>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <!-- Materialize jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- Google Font API -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <link rel="stylesheet" href="/src/index.css">
+
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="CQ" />
+    <meta name="msapplication-starturl" content="/" />
+    <link rel="icon" href="CQ-icon.png" />
+    <link rel="apple-touch-icon" href="CQ-icon.png" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <nav>
+          <a
+            href="#"
+            data-target="slide-out"
+            class="sidenav-trigger show-on-large"
+            id="hamburger"
+          >
+            <i class="material-icons">menu</i>
+          </a>
+          <img
+            id="logo"
+            src="/the-cosplay-queue-logo-transparent.png"
+            alt="The cosplay queue logo"
+          />
+        </nav>
+        <ul id="slide-out" class="sidenav">
+          <li>
+            <img
+              id="logo-menu"
+              src="the-cosplay-queue-logo-transparent.png"
+              alt="the cosplay queue logo"
+            />
+          </li>
+          <li>
+            <a>
+              <i href= "index.html" class="material-icons">house</i>Home
+            </a>
+          </li>
+        </ul>
+      </header>
+      <div id="main_content">
+        <div
+          class="message"
+          id="alertMsg"
+          onclick="this.style.display = 'none'"
+        ></div>
+        
+    <div id="app"></div>
+  
+  </container>
+  </body>
+</html>
