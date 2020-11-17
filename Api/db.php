@@ -12,17 +12,18 @@ class cosplayQueueModel
         $this->dbconn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
     //join function
-    function join($name, $cosplay_name, $facebook, $instagram, $phone, $email, $character_name, $series, $genre, $r_group, $reference_photo, $photo_taken, $date, $browserAgent, $actiontype)
+    function join($name, $cosplay_name, $facebook, $instagram, $phone, $email, $character_name, $series, $genre, $r_group, $reference_photo, $photo_taken, $date, $browserAgent, $actiontype, $permissions)
     {
         try {
             $this->dbconn->beginTransaction();
-            $stmt = $this->dbconn->prepare("INSERT INTO users(name, cosplay_name, facebook, instagram, phone, email) values (:name, :cosplay_name, :facebook, :instagram, :phone, :email)");
+            $stmt = $this->dbconn->prepare("INSERT INTO users(name, cosplay_name, facebook, instagram, phone, email, permissions) values (:name, :cosplay_name, :facebook, :instagram, :phone, :email, :permissions)");
             $stmt->bindValue(':name', $name);
             $stmt->bindValue(':cosplay_name', $cosplay_name);
             $stmt->bindValue(':facebook', $facebook);
             $stmt->bindValue(':instagram', $instagram);
             $stmt->bindValue(':phone', $phone);
             $stmt->bindValue(':email', $email);
+            $stmt->bindValue(':permissions', $permissions);
             $stmt->execute();
 
             $lastuserID = $this->dbconn->lastInsertId();
@@ -44,6 +45,7 @@ class cosplayQueueModel
             $_SESSION["userID"] = $lastuserID;
             $_SESSION["queueID"] = $lastqueueID;
             $_SESSION["join"] = "true";
+            $_SESSION["permissions"] = $permissions;
          
             $stmt = $this->dbconn->prepare("INSERT INTO changelog(date, browser, user_id, actiontype) Values (:date, :browser, :user_id, :actiontype)");
             $stmt->bindValue(':date', $date);
@@ -60,7 +62,7 @@ class cosplayQueueModel
     }
 
     //new user function
-    function register($name, $cosplay_name, $facebook, $instagram, $phone, $email, $password, $date, $browserAgent, $actiontype)
+    function register($name, $cosplay_name, $facebook, $instagram, $phone, $email, $password, $date, $browserAgent, $actiontype, $permissions)
     {
 
         try {
@@ -72,7 +74,7 @@ class cosplayQueueModel
             $stmt->execute();
 
             $lastloginID = $this->dbconn->lastInsertId();
-            $stmt = $this->dbconn->prepare("INSERT INTO users(name, cosplay_name, facebook, instagram, phone, email, login_id) values (:name, :cosplay_name, :facebook, :instagram, :phone, :email, :login_id)");
+            $stmt = $this->dbconn->prepare("INSERT INTO users(name, cosplay_name, facebook, instagram, phone, email, login_id, permissions) values (:name, :cosplay_name, :facebook, :instagram, :phone, :email, :login_id, :permissions)");
             $stmt->bindValue(':name', $name);
             $stmt->bindValue(':cosplay_name', $cosplay_name);
             $stmt->bindValue(':facebook', $facebook);
@@ -80,6 +82,7 @@ class cosplayQueueModel
             $stmt->bindValue(':phone', $phone);
             $stmt->bindValue(':email', $email);
             $stmt->bindValue(':login_id', $lastloginID);
+            $stmt->bindValue(':permissions', $permissions);
             $stmt->execute();
 
            $lastuserID = $this->dbconn->lastInsertID();
@@ -98,6 +101,7 @@ class cosplayQueueModel
             $_SESSION["phone"] = $phone;
             $_SESSION["email"] = $email;
             $_SESSION["login"] = 'true';
+            $_SESSION["permissions"] = $permissions;
             
 
             $this->dbconn->commit();
@@ -127,6 +131,7 @@ class cosplayQueueModel
                 $_SESSION['instagram'] = $row['instagram'];
                 $_SESSION['phone'] = $row['phone'];
                 $_SESSION['email'] = $row['email'];
+                $_SESSION['permissions'] = $row['permissions'];
 
                 $userID = $_SESSION["userID"];
                 $stmt = $this->dbconn->prepare("INSERT INTO changelog(date, browser, actiontype, user_ID) Values (:date, :browser, :actiontype, :user_id)");

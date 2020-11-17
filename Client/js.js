@@ -372,6 +372,7 @@ function formcheckjoin() {
   formdata.set("photo", photo.value);
   formdata.set("joini", joini.value);
   formdata.set("photo_taken", "no");
+  formdata.set("permissionsi", "user");
 
   fetch("../Api/api.php?action=join", {
     method: "POST",
@@ -440,6 +441,7 @@ function formcheckregister() {
   formdata.set("emails", emails.value);
   formdata.set("passwords", passwords.value);
   formdata.set("registers", registers.value);
+  formdata.set("permissions", permissions.value);
 
   fetch("../Api/api.php?action=signup", {
     method: "POST",

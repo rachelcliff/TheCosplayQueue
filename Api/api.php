@@ -102,6 +102,7 @@ if (isset($_GET["action"])) {
                 $date = date('Y-m-d H:i:s');
                 $browserAgent = $_SERVER['HTTP_USER_AGENT'];
                 $actiontype = $_POST['joini'];
+                $permissions =$_POST['permissionsi'];
 
                 //check if field is empty
                 if ($name == "") {
@@ -134,7 +135,7 @@ if (isset($_GET["action"])) {
                 }
 
                 //check for valid email 
-                elseif (!preg_match("/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,6}$/i", $email)) {
+                elseif (!preg_match("/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,50}/i", $email)) {
                     $errorMsg = 'error : You did not enter a valid email.';
                     die;
                 }
@@ -167,7 +168,7 @@ if (isset($_GET["action"])) {
                     die;
                 }
                 if (isset($cosplay_name)) {
-                    $db->join($name, $cosplay_name, $facebook, $instagram, $phone, $email, $character_name, $series, $genre, $r_group, $reference_photo, $photo_taken, $date, $browserAgent, $actiontype);
+                    $db->join($name, $cosplay_name, $facebook, $instagram, $phone, $email, $character_name, $series, $genre, $r_group, $reference_photo, $photo_taken, $date, $browserAgent, $actiontype, $permissions);
                     http_response_code(201);
                 } else {
                     http_response_code(501);
@@ -187,6 +188,7 @@ if (isset($_GET["action"])) {
                 $date = date('Y-m-d H:i:s');
                 $browserAgent = $_SERVER['HTTP_USER_AGENT'];
                 $actiontype = $_POST['registers'];
+                $permissions = $_POST['permissions'];
 
                 //check if field is empty
                 if ($name == "") {
@@ -227,7 +229,7 @@ if (isset($_GET["action"])) {
                 }
 
                 //check for valid email 
-                elseif (!preg_match("/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,6}$/i", $email)) {
+                elseif (!preg_match("/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,50}/i", $email)) {
                     $errorMsg = 'error : You did not enter a valid email.';
                     die;
 
@@ -242,7 +244,7 @@ if (isset($_GET["action"])) {
                     die;
                 }
                 if (isset($email)) {
-                    $db->register($name, $cosplay_name, $facebook, $instagram, $phone, $email, $password, $date, $browserAgent, $actiontype);
+                    $db->register($name, $cosplay_name, $facebook, $instagram, $phone, $email, $password, $date, $browserAgent, $actiontype, $permissions);
                     http_response_code(201);
                 } else {
                     http_response_code(501);
@@ -290,6 +292,7 @@ if (isset($_GET["action"])) {
         case "update":
             $user_id = $_SESSION['userID'];
 
+
             if (isset($_POST["action"])) {
                 $user_id = $_POST['user_id'];
                 $name = $_POST['namer'];
@@ -302,6 +305,7 @@ if (isset($_GET["action"])) {
                 $date = date('Y-m-d H:i:s');
                 $browserAgent = $_SERVER['HTTP_USER_AGENT'];
                 $actiontype = $_POST['updater'];
+
 
                 //check if field is empty
                 if ($name == "") {
@@ -342,12 +346,13 @@ if (isset($_GET["action"])) {
                 }
 
                 //check for valid email 
-                elseif (!preg_match("/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,6}$/i", $email)) {
+                elseif (!preg_match("/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,50}/i", $email)) {
                     $errorMsg = 'error : You did not enter a valid email.';
                     die;
-
-                    // check if field is empty
-                } elseif ($actiontype == "") {
+                }
+                
+                    // check if field is empty 
+                elseif ($actiontype == "") {
                     $errorMsg = "error: action type empty";
                     die;
 
@@ -356,6 +361,8 @@ if (isset($_GET["action"])) {
                     $errorMsg = "error password empty";
                     die;
                 }
+            
+
                 if ($_SESSION["login"] == "true") {
                     if (isset($cosplay_name)) {
                         $db->update($user_id, $name, $cosplay_name, $facebook, $instagram, $phone, $email, $password, $date, $browserAgent, $actiontype);

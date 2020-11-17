@@ -85,6 +85,7 @@ function logout() {
     unset($_SESSION["r_group"]);
     unset($_SESSION["queueID"]);
     unset($_SESSION["loginID"]);
+    unset($_SESSION["permissions"]);
     return true;
 
 }
