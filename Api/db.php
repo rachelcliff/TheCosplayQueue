@@ -163,7 +163,7 @@ class cosplayQueueModel
 
     public function showDetailsAll()
     {
-        $query = $this->dbconn->prepare("SELECT character_name, series, genre, r_group FROM queue");
+        $query = $this->dbconn->prepare("SELECT users.name, users.cosplay_name, users.user_id, queue.user_id, queue.character_name, queue.series, queue.genre, queue.r_group FROM users inner join queue on users.user_id=queue.user_id");
         $query->execute();
         $result = $query->fetchAll();
         return $result;

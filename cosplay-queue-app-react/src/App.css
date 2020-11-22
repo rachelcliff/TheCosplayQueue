@@ -1,38 +1,257 @@
-.App {
-  text-align: center;
+body {
+	color: black;
+	width: 100%;
+	background-color: white;
+	height: auto;
+	text-align: center;
+	align-content: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#login-btn {
+	background-color: aqua;
+	border-style: solid;
+	border-color: purple;
+	height: 40px;
+	color: black;
+	font-weight: bold;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+.submit-btn {
+	background-color: purple;
+	border-style: solid;
+	border-color: aqua;
+	font-weight: bold;
+	color:white;
+	width:10em;
+	height: 40px;
+	margin-top: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.Login {
+  margin:3em;
 }
 
-.App-link {
-  color: #61dafb;
+.aqua {
+	height:40px;
+	width: 10em;
+	margin-left: 2em;
+	margin-top: 20px;
+	background-color: aqua;
+	border-style: solid;
+	border-color: purple;
+	font-weight: bold;
+	color:white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.username {
+  border-color: hotpink;
+  border-style:solid;
+}
+
+.password {
+  border-style: solid;
+  border-color:aqua;
+}
+
+label {
+  font-size: 15px;
+}
+
+#admin-panel-btn {
+	background-color: purple;
+	border-style: solid;
+	border-color: aqua;
+	color: white;
+	height: 40px;
+	font-weight: bold;
+	margin-top:2em;
+	margin-bottom:2em;
+}
+
+.nav {
+	background-color: aqua;
+	text-align: right;
+	height: 5em;
+	width: auto;
+	padding-left: 2em;
+	padding-right: 2em;
+}
+
+.sidenav {
+	background-color: grey;
+	color: white;
+}
+
+input {
+	color: hotpink;
+}
+
+.sidenav li>a {
+	color: white;
+}
+
+#logo {
+	height: 6em;
+	margin-top: -.5em;
+	align-content: center;
+}
+
+#hamburger {
+	text-align: left;
+}
+
+nav i.material-icons {
+	font-size: 50px;
+}
+
+.sidenav li>a>i,
+.sidenav li>a>[class^="mdi-"],
+.sidenav li>a li>a>[class*="mdi-"],
+.sidenav li>a>i.material-icons {
+	color: white;
+}
+
+.modal .modal-footer {
+	background-color: hotpink;
+	margin-top: 3em;
+}
+
+#preloader-overlay {
+	content: '';
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.6);
+	z-index: 20000;
+}
+
+#preloader {
+	display: none;
+	position: fixed;
+	z-index: 20001;
+	overflow: show;
+	margin: auto;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+}
+
+.page-title {
+	font-size: 30px;
+	color: hotpink;
+	font-weight: bold;
+	text-align: center;
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+
+#logo-home {
+	height: 20em;
+	width: 20em;
+	text-align: center;
+}
+
+#join {
+	height: 20em;
+	width: 20em;
+}
+
+#sign-in {
+	height: 20em;
+	width: 20em;
+}
+
+#register {
+	height: 20em;
+	width: 20em;
+}
+
+#logo-menu {
+	height: 10em;
+	margin-left: 5em;
+}
+
+.divider {
+	height: 3px;
+	background-color: aqua;
+}
+
+#login-modal {
+	padding: 2em;
+	text-align: center;
+}
+
+#details-btn {
+	margin-top: 2em;
+	background-color: aqua;
+	color: black;
+	border-color: purple;
+	border-style: solid;
+	height: auto;
+}
+
+#index-btn {
+	margin-top: 2em;
+	background-color: purple;
+	border-color: aqua;
+	border-style: solid;
+	height: auto;
+}
+
+#logout-btn {
+	margin-top: 2em;
+	background-color: purple;
+	border-color: aqua;
+	border-style: solid;
+	height: auto;
+}
+
+.modal.bottom-sheet {
+	max-height: 100%;
+}
+
+#checkbox {
+	text-align: center;
+}
+
+#queue {
+	width: 80%;
+	background-color: transparent;
+	padding: 2em;
+	text-align: center;
+	align-content: center;
+	margin-left: auto;
+  margin-right: auto;
+}
+
+#place_queue {
+	width: 80%;
+	background-color: transparent;
+	font-size: xx-large;
+	padding:2em;
+	text-align: center;
+	align-content: center;
+	margin-left: auto;
+  margin-right: auto;
+}
+
+td {
+	text-align: center;
+}
+
+#side-view {
+	display:none;
+}
+
+#side-logout {
+	display: none;
+}
+
+#side-edit {
+	display: none;
 }
