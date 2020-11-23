@@ -102,7 +102,7 @@ if (isset($_GET["action"])) {
                 $date = date('Y-m-d H:i:s');
                 $browserAgent = $_SERVER['HTTP_USER_AGENT'];
                 $actiontype = $_POST['joini'];
-                $permissions =$_POST['permissionsi'];
+                $permissions = $_POST['permissionsi'];
 
                 //check if field is empty
                 if ($name == "") {
@@ -350,8 +350,8 @@ if (isset($_GET["action"])) {
                     $errorMsg = 'error : You did not enter a valid email.';
                     die;
                 }
-                
-                    // check if field is empty 
+
+                // check if field is empty 
                 elseif ($actiontype == "") {
                     $errorMsg = "error: action type empty";
                     die;
@@ -361,7 +361,7 @@ if (isset($_GET["action"])) {
                     $errorMsg = "error password empty";
                     die;
                 }
-            
+
 
                 if ($_SESSION["login"] == "true") {
                     if (isset($cosplay_name)) {
