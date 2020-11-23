@@ -1,6 +1,8 @@
 <?php
-header('Access-Control-Allow-Origin: https://localhost');
+header('Access-Control-Allow-Origin: *');
+// header('Access-Control-Allow-Origin: https://localhost:3000');
 header('Access-Control-Allow-Credentials: true');
+header("Access-Control-Allow-Headers", "content-type");
 header('Content-Type: application/json'); // All echo statements are json_encode
 
 // initiation of database and session
@@ -288,6 +290,40 @@ if (isset($_GET["action"])) {
                 }
             }
             break;
+
+            case "login2":
+                if (isset($_POST["namel"])) {
+                    $cosplay_name = $_POST['namel'];
+                    $password = $_POST['passwordl'];
+    
+                    // check if field is empty
+                    if ($cosplay_name == "") {
+                        $errorMsg = "error: username empty";
+                        die;
+                    }
+                    // check if field is empty
+                    elseif ($password == "") {
+                        $errorMsg = "error: password empty";
+                        die;
+                    }
+                    // check if field is empty
+                    elseif ($actiontype == "") {
+                        $errorMsg = "error: action type empty";
+                        die;
+                    }
+    
+                    if (isset($cosplay_name)) {
+                        $success = $db->login2($cosplay_name, $password);
+                        if ($success) {
+                            http_response_code(201);
+                        } else {
+                            http_response_code(501);
+                        }
+                    } else {
+                        http_response_code(501);
+                    }
+                }
+                break;
 
         case "update":
             $user_id = $_SESSION['userID'];

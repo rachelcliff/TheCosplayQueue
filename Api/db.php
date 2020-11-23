@@ -152,6 +152,40 @@ class cosplayQueueModel
         }
     }
 
+    // login function
+    function login2($cosplay_name, $password)
+    {
+        try {
+            // $this->dbconn->beginTransaction();
+            $stmt = $this->dbconn->prepare("SELECT logins.cosplay_name, logins.password, logins.login_id, users.user_id, users.name, users.facebook, users.instagram, users.phone, users.email, users.permissions FROM logins inner join users on logins.login_id = users.login_id WHERE logins.cosplay_name = :cosplay_name");
+            $stmt->bindParam(':cosplay_name', $cosplay_name);
+            $stmt->execute();
+            $row = $stmt->fetch();
+
+            if (password_verify($password, $row['password'])) {
+                $_SESSION["cosplay_name"] = $cosplay_name;
+                $_SESSION["loginID"] = $row['login_id'];
+                $_SESSION["login"] = 'true';
+                $_SESSION['userID'] = $row['user_id'];
+                $_SESSION['name'] = $row['name'];
+                $_SESSION['facebook'] = $row['facebook'];
+                $_SESSION['instagram'] = $row['instagram'];
+                $_SESSION['phone'] = $row['phone'];
+                $_SESSION['email'] = $row['email'];
+                $_SESSION['permissions'] = $row['permissions'];
+                $stmt->execute();
+                $this->dbconn->commit();
+
+                return true;
+            } else {
+                return false;
+            }
+        } catch (PDOException $ex) {
+            $this->dbconn->rollback();
+            throw $ex;
+        }
+    }
+
     public function showDetails()
     {
         $user_id = $_SESSION['userID'];
