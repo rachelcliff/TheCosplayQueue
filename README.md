@@ -1,6 +1,6 @@
 # TheCosplayQueue
 
-#INSTALLATION INSTRUCTIONS:
+# INSTALLATION INSTRUCTIONS:
 
 Create a new blank database and name it "cosplay_queue". Import the sql file contained in the API folder (alternatively there is a deployment script currently being created)
 
