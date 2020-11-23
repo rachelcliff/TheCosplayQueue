@@ -44,12 +44,12 @@ body {
 	color:white;
 }
 
-.username {
+.namel {
   border-color: hotpink;
   border-style:solid;
 }
 
-.password {
+.passwordl {
   border-style: solid;
   border-color:aqua;
 }
