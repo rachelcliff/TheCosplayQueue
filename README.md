@@ -1,6 +1,6 @@
 # TheCosplayQueue
 
-INSTALLATION INSTRUCTIONS:
+#INSTALLATION INSTRUCTIONS:
 
 Create a new blank database and name it "cosplay_queue". Import the sql file contained in the API folder (alternatively there is a deployment script currently being created)
 
@@ -10,21 +10,21 @@ Update the database connection settings found within the db.php file with the us
 
 Installation is now complete, and the app should now be functional.
 
-Technologies utilised in this build:
+## Technologies utilised in this build:
 Materalize - Version 1.0.0, implemented using CDN, used to create the display and functionality on the home page of the app.
 React - Version 17.0.1, implemented via local installation and node cmd, used to create the display and functionality on the app admin panel. 
 PHP - hardcode relating to Version 7.4.12, implemented in the API base case, sessions and functions file to create the database connection and functionality for the app. 
 HTML, CSS, and JS - regular use of these coding languages used throughout all pages of the app to create display, look, style and functionality. 
 
-Notes about UX1
+# Notes about UX1
 The queue is part of the admin user panel and as such it isn't displayed on the apps frontend and the general user, which is who I interpreted the target audience of this assessment to be. I will have a semi-functional user panel finished for Proj2 and UX3 so this part will be demonstrated then. 
 
 Folders have been completely restructured to accommodate a more streamlined app processs. 
 
-Notes about UX2
-The UX2 assessment has been completed and is functional. Some functions from Proj2 are still WIP.
+# Notes about UX2
+The UX2 assessment and Proj2 assessment has been completed and is functional.
 
-Functions:
+## Functions:
 - changelog -> Complete
 - user sign up-> Complete
 - update user data-> Complete
@@ -44,44 +44,42 @@ Functions:
 - Remove self from queue - Complete
 - Logout - Complete
 
-Front-end pages:
+## Front-end pages:
 - index (contains all of bases for the app)
 
-Back-end/admin pages:
+## Back-end/admin pages:
 - admin page (contains a functional display of the queue using JSON)
 - Photo taken function - complete and functioning
 - Remove from queue function - complete and functioning
 - Show full queue function - complete and functioning
 
-Database:
+## Database:
 - created and tables built out and filled with dummy data and images.
 
-Images:
+## Images:
 - Redesigned and updated on 6/10/2020.
 
-Planning:
-$_GET
+# Planning:
+## $_GET
 - 1- Echo data inputted to form -> Complete
 - 2- Echo current place in queue (count sql query where photo taken = no) -> Complete
 - 3- Refresh queue -> Complete
 - 4- Fill the update form with data using $_SESSIONS -> Complete
 
-$_POST
+## $_POST
 - 1- join queue -> Complete
 - 2- login -> Complete
 - 3- sign up -> Complete
 - 4- update user details in local storage and database -> Complete
 
-CRUD 1- Create
+## CRUD 1- Create
 - Create new user -> Complete
 
-CRUD 2 - Update
+## CRUD 2 - Update
 - Remove self from queue -> Complete
 
 
 # Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
@@ -113,39 +111,3 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 ### `npm run eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
