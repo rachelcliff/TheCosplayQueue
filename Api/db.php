@@ -156,27 +156,30 @@ class cosplayQueueModel
     function login2($cosplay_name, $password)
     {
         try {
-            // $this->dbconn->beginTransaction();
-            $stmt = $this->dbconn->prepare("SELECT logins.cosplay_name, logins.password, logins.login_id, users.user_id, users.name, users.facebook, users.instagram, users.phone, users.email, users.permissions FROM logins inner join users on logins.login_id = users.login_id WHERE logins.cosplay_name = :cosplay_name");
+            $this->dbconn->beginTransaction();
+            $stmt = $this->dbconn->prepare("SELECT logins.cosplay_name, logins.password, logins.login_id, users.user_id, users.name, users.permissions FROM logins inner join users on logins.login_id = users.login_id WHERE logins.cosplay_name = :cosplay_name");
             $stmt->bindParam(':cosplay_name', $cosplay_name);
             $stmt->execute();
             $row = $stmt->fetch();
 
             if (password_verify($password, $row['password'])) {
+                if ($row['permissions'] == ("admin")) {
                 $_SESSION["cosplay_name"] = $cosplay_name;
                 $_SESSION["loginID"] = $row['login_id'];
                 $_SESSION["login"] = 'true';
                 $_SESSION['userID'] = $row['user_id'];
-                $_SESSION['name'] = $row['name'];
-                $_SESSION['facebook'] = $row['facebook'];
-                $_SESSION['instagram'] = $row['instagram'];
-                $_SESSION['phone'] = $row['phone'];
-                $_SESSION['email'] = $row['email'];
+                // $_SESSION['name'] = $row['name'];
+                // $_SESSION['facebook'] = $row['facebook'];
+                // $_SESSION['instagram'] = $row['instagram'];
+                // $_SESSION['phone'] = $row['phone'];
+                // $_SESSION['email'] = $row['email'];
                 $_SESSION['permissions'] = $row['permissions'];
                 $stmt->execute();
                 $this->dbconn->commit();
-
-                return true;
+                  return true; 
+                }else{
+                    return false;
+                }
             } else {
                 return false;
             }
@@ -197,7 +200,7 @@ class cosplayQueueModel
 
     public function showDetailsAll()
     {
-        $query = $this->dbconn->prepare("SELECT users.name, users.cosplay_name, users.user_id, queue.user_id, queue.character_name, queue.series, queue.genre, queue.r_group FROM users inner join queue on users.user_id=queue.user_id");
+        $query = $this->dbconn->prepare("SELECT users.name, users.cosplay_name, users.user_id, queue.user_id, queue.photo_taken, queue.queue_id, queue.character_name, queue.series, queue.genre, queue.r_group FROM users inner join queue on users.user_id=queue.user_id where queue.photo_taken='no'");
         $query->execute();
         $result = $query->fetchAll();
         return $result;

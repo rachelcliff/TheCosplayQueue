@@ -75,7 +75,7 @@ if (isset($_GET["action"])) {
             // admin panel - show details all
         case "showDetailsAll":
             if ($_SESSION['sessionOBJ']->is_logged_in()) {
-                $result = $db->showDetails();
+                $result = $db->showDetailsAll();
                 if ($result == false) {
                     http_response_code(501);
                 } else {
@@ -280,7 +280,7 @@ if (isset($_GET["action"])) {
 
                 if (isset($cosplay_name)) {
                     $success = $db->login($cosplay_name, $password, $date, $browserAgent, $actiontype);
-                    if ($success) {
+                    if ($success == true) {
                         http_response_code(201);
                     } else {
                         http_response_code(501);
@@ -292,29 +292,24 @@ if (isset($_GET["action"])) {
             break;
 
             case "login2":
-                if (isset($_POST["namel"])) {
+                if (isset($_POST["action"])) {
                     $cosplay_name = $_POST['namel'];
                     $password = $_POST['passwordl'];
-    
+                    
                     // check if field is empty
                     if ($cosplay_name == "") {
                         $errorMsg = "error: username empty";
-                        die;
+                        // die;
                     }
                     // check if field is empty
                     elseif ($password == "") {
                         $errorMsg = "error: password empty";
-                        die;
+                        // die;
                     }
-                    // check if field is empty
-                    elseif ($actiontype == "") {
-                        $errorMsg = "error: action type empty";
-                        die;
-                    }
-    
+
                     if (isset($cosplay_name)) {
                         $success = $db->login2($cosplay_name, $password);
-                        if ($success) {
+                        if ($success == true) {
                             http_response_code(201);
                         } else {
                             http_response_code(501);

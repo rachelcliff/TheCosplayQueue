@@ -1,7 +1,7 @@
 import "./App.css";
 import "materialize-css/dist/css/materialize.min.css";
 import M from "materialize-css/dist/js/materialize.min.js";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 // import { Button, Card, Row, Col } from 'react-materialize';
 import 'materialize-css';
@@ -91,61 +91,52 @@ ReactDOM.render(<App />, document.getElementById("App"));
 class NameForm extends React.Component {
    constructor(props) {
      super(props);
-     this.state = {value: ''};
+     this.state = {namel: ''};
+     this.state = {passwordl: ''};
+     //this.state = {action: "login2"};
  
      this.login = this.login.bind(this);
    }
 
-   handleChange(event) {
-    this.state = {namel: ''};
-    this.state = {passwordl: ''};
-    
-    this.setState({value: event.target.value});
-    this.setState({namel:namel.target.value});
-    this.setState({passwordl:passwordl.target.value});
+   set = (event) => {
+     let nam = event.target.name;
+     let val = event.target.value;
+    this.setState({[nam]:val});
     }
 
    login(e) {
       e.preventDefault();
       var errorStr = "";
-      this.state = {namel: ''};
-      this.state = {passwordl: ''};
      
-      // if (namel.checkValidity() === false) {
+      // if (this.state.namel.checkValidity() === false) {
       //   errorStr += "Please insert a valid name ";
       //   console.log("username error");
       //   return;
       // }
     
-      // if (passwordl.checkValidity() === false) {
+      // if (this.state.passwordl.checkValidity() === false) {
       //   errorStr += "Please insert a valid username ";
       //   console.log("password error");
       //   return;
       // }
     
-      // formdata = new FormData();
-      // formdata.set("namel", namel.value);
-      // formdata.set("passwordl", passwordl.value);
-      // const namel =  target.namel;
-      // const passwordl = target.passwordl;
-      
-     
-      fetch('http://localhost:80/TheCosplayQueue/Api/api.php?action=login2', {
+      var formdata = new FormData();
+      formdata.append("action", "login2");
+      formdata.set("namel", this.state.namel);
+      formdata.set("passwordl", this.state.passwordl);
+      fetch('http://localhost/TheCosplayQueue/Api/api.php?action=login2', {
         method: "POST",
-        // mode:"cors",
-        "headers": {
-          "content-type":"application/json",
-          "accept":"application/json"
+        headers: {
+          // 'Content-Type': "application/json",
+          // "Content-Type":'application/x-www-form-urlencoded',
+          "accept":"application/json",
+          redirect:"error",
+          credentials:"include"
           },
-          "body":JSON.stringify({
-            namel:this.state.namel,
-            passwordl:this.state.passwordl
-          }),
+          body: formdata,
       })
-  //     .then(response=> response.json())
-  //   .then(response => {console.log(response)
-  //  })
-        .then(function (response) {
+
+        .then((response) => {
           if (response.status === 501) {
             console.log("Login Failed");
             return;
@@ -166,23 +157,23 @@ class NameForm extends React.Component {
            <label>Username</label>
            <input type="text"
              autoFocus
-             value={this.state.namel}
-             onChange={e => setnamel(e.target.value)}
-
+             name='namel'
+             id={this.state.namel}
+             onChange={this.set}
              />
            </div>
            <div className="passwordl">
            <label>Password</label>
            <input type="password"
+           name='passwordl'
              value={this.state.passwordl}
              type="password"
-             onChange={e => setpasswordl(e.target.value)}
-
+             onChange={this.set}
              />
            </div>
          <button className="submit-btn"
          // disabled={!validateForm()} 
-         type="submit" onClick={this.login}>
+         type="submit" name="action" onClick={this.login}>
            Login
          </button>
        </form>
@@ -200,142 +191,76 @@ class NameForm extends React.Component {
    constructor(props) {
      super(props);
      this.DisplayAll = this.DisplayAll.bind(this);
+    this.state = {results: []};
    }
    DisplayAll() {
     var outStr = "";
     var disabled = "";
-    fetch("localhost/cosplay-queue/Api/api.php?action=showDetailsAll", {
+    fetch("http://localhost/TheCosplayQueue/Api/api.php?action=showDetailsAll", {
       method: "GET",
+      redirect:"error",
       "headers": {
       "content-type":"application/json",
       "accept":"application/json"
       },
-      "body":JSON.stringify({
-        name:this.state.namel,
-password:this.state.passwordl
-      }),
-    }).then(function (response) {
-      response.json().then(function (results) {
+    })
+    
+    .then((response) => {
+      response.json().then((results) => {
+        this.setState({results: results});
         console.log(results);
-        results.forEach((row) => {
-          outStr +=
-            "<tr><td>" +
-            row.character_name +
-            "</td><td>" +
-            row.series +
-            "</td><td>" +
-            row.genre +
-            "</td><td>" +
-            row.r_group +
-            "</td><td><button " +
-            disabled +
-            ">Delete</button>" +
-            "</td></tr>";
-        });
-        document.getElementById("queue").innerHTML = outStr;
       });
     });
   }
    render() {
+     const rows = this.state.results.map((row) => {
+     return (<tr>
+     <td key="name">{row.name}</td>
+     <td key="cosplay_name">{row.cosplay_name}</td>
+     <td key="character_name">{row.character_name}</td>
+     <td key="series">{row.series}</td>
+     <td key="genre">{row.genre}</td>
+     <td key="r_group">{row.r_group}</td>
+     <td key="remove"><button>Dequeue</button></td>
+     <td key="taken"><button>Photo Taken</button></td>
+     </tr>)
+     })
+
      return (
+       <div>
      <div className="showQueue">
          <button className='aqua' waves='light' icon='add' onClick={this.DisplayAll}> Show Queue</button>
      </div>
+     <div>
+     <table className="results">
+       <thead>
+         <tr>
+           <th>Name</th>
+           <th>Cosplay Name</th>
+           <th>Character Name</th>
+           <th>Series</th>
+           <th>Genre</th>
+           <th>Are you in a Group?</th>
+           <th>Remove from Queue</th>
+           <th>Photo Taken</th>
+           </tr>
+           </thead>
+           <tbody>
+            {rows}
+           </tbody>
+           </table>
+     </div>
+     </div>
      );
-   }
- }
+    }
+  }
+// }
  
  ReactDOM.render(
    <ShowQueue />,
    document.getElementById('showQueue')
  );
 
- 
-
-//  class DisplayAll extends React.Component {
-//     constructor(props) {
-//     super(props);
-//     this.state = {
-//        user_id: [],
-//        name:'',
-//        cosplay_name:'',
-//        character_name:'',
-//        series:'',
-//        genre:'',
-//        r_group:'',
-//     };
-//     this.dequeue=this.dequeue.bind(this);
-//     this.taken=this.taken.bind(this);
-//     this.handleChange = this.handleChange.bind(this);
-//    }
-
-//     dequeue(e) {
-//        e.preventDefault();
-
-//        fetch("../Api/api.php?action=dequeue", {
-//          method: "POST",
-//          "headers": {
-//          "content-type":"application/json",
-//          "accept":"application/json"
-//          },
-//          "body":JSON.stringify({
-//            user_id: this.state.user_id,
-//            name: this.state.name,
-//            cosplay_name: this.state.cosplay_name,
-//            series: this.state.series,
-//            genre: this.genre.series,
-//            r_group: this.state.r_group
-//          })
-//     })
-//     .then(response=> response.json())
-//     .then(response => {console.log(response)
-//    })
-//    .catch(err => {console.log(err);
-//    });
-// }
-// taken(e) {
-//    e.preventDefault();
-
-//    fetch("../Api/api.php?action=photo_taken", {
-//      method: "POST",
-//      "headers": {
-//      "content-type":"application/json",
-//      "accept":"application/json"
-//      },
-//      "body":JSON.stringify({
-//        user_id: this.state.user_id,
-//        name: this.state.name,
-//        cosplay_name: this.state.cosplay_name,
-//        series: this.state.series,
-//        genre: this.genre.series,
-//        r_group: this.state.r_group
-//      })
-// })
-// .then(response=> response.json())
-// .then(response => {console.log(response)
-// })
-// .catch(err => {console.log(err);
-// });
-// }
-//     render() {
-//        return (
-//           <table>
-//              <thead>
-//                 <tr>
-//                    <th>Name</th>
-//                    <th>Cosplay Name</th>
-//                    <th>Character Name</th>
-//                    <th>Series</th>
-//                    <th>Genre</th>
-//                    <th>Are you in a Group?</th>
-//                 </tr>
-//              </thead>
-//              <tbody>
-//              </tbody>
-//           </table>
-//        )
-//     }
-//    }
 
 class Dequeue extends React.Component {
    constructor(props) {

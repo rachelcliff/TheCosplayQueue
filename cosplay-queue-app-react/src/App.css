@@ -54,6 +54,12 @@ body {
   border-color:aqua;
 }
 
+.results {
+	max-width: 95%;
+	margin: auto;
+	white-space: nowrap;
+}
+
 label {
   font-size: 15px;
 }
@@ -76,6 +82,10 @@ label {
 	width: auto;
 	padding-left: 2em;
 	padding-right: 2em;
+}
+
+td {
+	word-wrap: break-word;
 }
 
 .sidenav {
