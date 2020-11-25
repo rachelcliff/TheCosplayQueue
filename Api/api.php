@@ -426,6 +426,26 @@ if (isset($_GET["action"])) {
             }
             break;
 
+            case "dequeue2":
+                if (isset($_POST["action"])) {
+                    $user_id = $_POST['user_id'];
+                    $photo_taken = $_POST['photo_taken'];
+    
+                    // check if field is empty
+                    if ($photo_taken == "") {
+                        $errorMsg = "Error: photo taken empty";
+                        die;
+    
+                        // check if field is empty
+                    } elseif (isset($photo_taken)) {
+                        $db->dequeue2($user_id, $photo_taken);
+                        http_response_code(201);
+                    } else {
+                        http_response_code(501);
+                    }
+                }
+                break;
+
             // photo_taken admin panel
         case "photo_taken":
             $user_id = $_SESSION['userID'];

@@ -270,6 +270,21 @@ class cosplayQueueModel
         }
     }
 
+     // Function dequeue
+     function dequeue2($user_id, $photo_taken)
+     {
+         try {
+             $stmt = $this->dbconn->prepare("UPDATE queue SET photo_taken=:photo_taken WHERE user_id=:user_id");
+             $stmt->bindValue(':user_id', $user_id);
+             $stmt->bindValue(':photo_taken', $photo_taken);
+             $stmt->execute();
+             return;
+         } catch (PDOException $ex) {
+             $this->dbconn->rollBack();
+             throw $ex;
+         }
+     }
+
     // Photo Taken - admin panel
     function photo_taken($user_id, $photo_taken)
     {
