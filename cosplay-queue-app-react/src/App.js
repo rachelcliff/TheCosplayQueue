@@ -5,6 +5,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 // import { Button, Card, Row, Col } from 'react-materialize';
 import 'materialize-css';
+// import {user_id} from 
 
 class App extends React.Component {
   componentDidMount() {
@@ -54,46 +55,11 @@ class App extends React.Component {
 }
 ReactDOM.render(<App />, document.getElementById("App"));
 
-// function DisplayAll() {
-//   const [data, setData] = useState(null);
-//   useEffect(() => {
-//     fetch('../Api/api.php?action=showDetailsAll')
-//     .then(result => result.json())
-//     .then(setData)
-//     .catch(console.error);
-//   }, []);
-//   if(data) {
-//     console.log(data);
-//     return (
-//       <>
-//       <div id="showAll" className="container">
-//         {data.map((queue) => (
-//           <div key={queue.user_id} className="queuepost">
-//             <div className="card teal darken-3">
-//               <div className="card-content-white-text">
-//               <span className="card-title">{queue.Name}</span>
-//               <p>{queue.cosplay_name}</p>
-//               <p>{queue.character.name}</p>
-//         <p>{queue.series}</p>
-//         <p>{queue.genre}</p>
-//         <p>{queue.r_group}</p>
-//               </div>
-//             </div>
-//             </div>
-//         ))
-// }    
-//       </div>
-//       </>
-//     )
-//   }
-//   }
-
 class NameForm extends React.Component {
    constructor(props) {
      super(props);
      this.state = {namel: ''};
      this.state = {passwordl: ''};
-     //this.state = {action: "login2"};
  
      this.login = this.login.bind(this);
    }
@@ -106,7 +72,6 @@ class NameForm extends React.Component {
 
    login(e) {
       e.preventDefault();
-      var errorStr = "";
      
       // if (this.state.namel.checkValidity() === false) {
       //   errorStr += "Please insert a valid name ";
@@ -124,7 +89,7 @@ class NameForm extends React.Component {
       formdata.append("action", "login2");
       formdata.set("namel", this.state.namel);
       formdata.set("passwordl", this.state.passwordl);
-      fetch('http://localhost/TheCosplayQueue/Api/api.php?action=login2', {
+      fetch('http://localhost/GitHub/TheCosplayQueue/Api/api.php?action=login2', {
         method: "POST",
         headers: {
           // 'Content-Type': "application/json",
@@ -191,12 +156,11 @@ class NameForm extends React.Component {
    constructor(props) {
      super(props);
      this.DisplayAll = this.DisplayAll.bind(this);
+     this.Dequeue = this.Dequeue.bind(this);
     this.state = {results: []};
    }
    DisplayAll() {
-    var outStr = "";
-    var disabled = "";
-    fetch("http://localhost/TheCosplayQueue/Api/api.php?action=showDetailsAll", {
+    fetch("http://localhost:80/GitHub/TheCosplayQueue/Api/api.php?action=showDetailsAll", {
       method: "GET",
       redirect:"error",
       "headers": {
@@ -204,7 +168,7 @@ class NameForm extends React.Component {
       "accept":"application/json"
       },
     })
-    
+
     .then((response) => {
       response.json().then((results) => {
         this.setState({results: results});
@@ -212,16 +176,47 @@ class NameForm extends React.Component {
       });
     });
   }
+
+  Dequeue() {
+    var formdata = new FormData();
+    var user_id = user_id;
+    formdata.append("action", "Dequeue");
+    formdata.set("photo_taken", "Void");
+    formdata.set("user_id", key={row.user_id});
+    fetch('http://localhost/GitHub/TheCosplayQueue/Api/api.php?action=dequeue2', {
+      method: "POST",
+      headers: {
+        // 'Content-Type': "application/json",
+        // "Content-Type":'application/x-www-form-urlencoded',
+        "accept":"application/json",
+        redirect:"error",
+        credentials:"include"
+        },
+        body: formdata,
+    }) 
+    .then(function (response) {
+      if (response.status === 501) {
+        console.log("Dequeue Failed");
+        return;
+      }
+      if (response.status === 201) {
+        console.log("Dequeue Successful");
+      }
+    })
+    .catch(function (err) {
+    });
+}
    render() {
      const rows = this.state.results.map((row) => {
      return (<tr>
+       <td key="user_id">{row.user_id}</td>
      <td key="name">{row.name}</td>
      <td key="cosplay_name">{row.cosplay_name}</td>
      <td key="character_name">{row.character_name}</td>
      <td key="series">{row.series}</td>
      <td key="genre">{row.genre}</td>
      <td key="r_group">{row.r_group}</td>
-     <td key="remove"><button>Dequeue</button></td>
+     <td key="remove"><button onClick={this.Dequeue}>Dequeue</button></td>
      <td key="taken"><button>Photo Taken</button></td>
      </tr>)
      })
@@ -262,40 +257,71 @@ class NameForm extends React.Component {
  );
 
 
-class Dequeue extends React.Component {
-   constructor(props) {
-     super(props);
-   }
-   render() {
-     return (
-     <div className="Dequeue">
-         <button className='aqua' waves='light' icon='add'>Remove from Queue</button>
-     </div>
-     );
-   }
- }
- 
- ReactDOM.render(
-   <Dequeue />,
-   document.getElementById('dequeue')
- );
+// class Dequeue extends React.Component {
+//    constructor(props) {
+//      super(props);
+//      this.Dequeue = this.Dequeue.bind(this);
+//    }
 
- class Photo extends React.Component {
-   constructor(props) {
-     super(props);
-   }
-   render() {
-     return (
-     <div className="photoTaken">
-         <button className='aqua' waves='light' icon='add'>Photo Taken</button>
-     </div>
-     );
-   }
- }
+//    Dequeue() {
+//     var formdata = new FormData();
+//     var user_id = user_id;
+//     formdata.append("action", "Dequeue");
+//     formdata.set("photo_taken", "Void");
+//     // formdata.set("user_id", {key="user_id"});
+//     fetch('http://localhost/GitHub/TheCosplayQueue/Api/api.php?action=dequeue2', {
+//       method: "POST",
+//       headers: {
+//         // 'Content-Type': "application/json",
+//         // "Content-Type":'application/x-www-form-urlencoded',
+//         "accept":"application/json",
+//         redirect:"error",
+//         credentials:"include"
+//         },
+//         body: formdata,
+//     }) 
+//     .then(function (response) {
+//       if (response.status === 501) {
+//         console.log("Dequeue Failed");
+//         return;
+//       }
+//       if (response.status === 201) {
+//         console.log("Dequeue Successful");
+//       }
+//     })
+//     .catch(function (err) {
+//     });
+// }
+//    render() {
+//      return (
+//      <div className="Dequeue">
+//          <button className='aqua' waves='light' icon='add' onClick={this.Dequeue}>Remove from Queue</button>
+//      </div>
+//      );
+//    }
+//  }
  
- ReactDOM.render(
-   <Photo />,
-   document.getElementById('photoTaken')
- );
+//  ReactDOM.render(
+//    <Dequeue />,
+//    document.getElementById('dequeue')
+//  );
+
+//  class Photo extends React.Component {
+//    constructor(props) {
+//      super(props);
+//    }
+//    render() {
+//      return (
+//      <div className="photoTaken">
+//          <button className='aqua' waves='light' icon='add'>Photo Taken</button>
+//      </div>
+//      );
+//    }
+//  }
+ 
+//  ReactDOM.render(
+//    <Photo />,
+//    document.getElementById('photoTaken')
+//  );
 
 export default App;
