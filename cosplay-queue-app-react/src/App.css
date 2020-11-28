@@ -265,3 +265,15 @@ td {
 #side-edit {
 	display: none;
 }
+
+#showQueueBlock {
+	display: none;
+}
+
+#logout-button {
+	display: none;
+}
+
+#fail {
+	display: none;
+}
