@@ -64,6 +64,14 @@ ul {
 	text-align: left;
 }
 
+.sidenav li {
+	text-align: center;
+}
+
+.sidenav p {
+	text-align: center;
+}
+
 #form {
 	align-items: center;
 }
