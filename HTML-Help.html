@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" class="light-theme || dark-theme">
+  <head>
+    <title>The Cosplay Queue</title>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <!-- Materialize jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- Google Font API -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    
+    <link rel="stylesheet" href="Client/style.css" />
+    <script src="Client/js.js"></script>
+    <link rel="manifest" href="Client/manifest.json" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="CQ" />
+    <meta name="msapplication-starturl" content="/" />
+    <link rel="icon" href="Images/CQ-icon.png" />
+    <link rel="apple-touch-icon" href="Images/CQ-icon.png" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <nav>
+          <a
+            href="#"
+            data-target="slide-out"
+            class="sidenav-trigger show-on-large"
+            id="hamburger"
+          >
+            <i class="material-icons">menu</i>
+          </a>
+          <img
+            id="logo"
+            src="Images/the-cosplay-queue-logo-transparent.png"
+            alt="The cosplay queue logo"
+          />
+        </nav>
+        <ul id="slide-out" class="sidenav">
+          <li>
+            <img
+              id="logo-menu"
+              src="Images/the-cosplay-queue-logo-transparent.png"
+              alt="the cosplay queue logo"
+            />
+          </li>
+          <li>
+            <a href= "Client/index.html">
+              <i class="material-icons">house</i>Home
+            </a>
+          </li>
+        </ul>
+      </header>
+      <div id="main_content">
+        <div
+          class="message"
+          id="alertMsg"
+          onclick="this.style.display = 'none'"
+        ></div>        
+        <div id="help">
+            <h2>Manual Installation</h2>
+<p>Download the repository onto your local computer and start up your virtual web server supplier of choice. 
+Create a new blank database within your chose PHP myAdmin program and name it "cosplay_queue". Import the sql file contained in the API folder (alternatively there is a deployment script currently being created)
+Install the client and api folders into a web server such as Xampp or Wamp. The folders need to be installed into the htdocs folder if your using Xampp, or the www folder if you're using Wamp.
+Update the database connection settings found within the db.php file with the username and password needed to access the database.
+Installation is now complete, and the app should now be functional. </p>          
+<h2>Run API Tests</h2>
+<p>Located in the main hub of the repository there is a file called the cosplay_queue_test_script. This file contains the curl information needed to test the functions of the systems API. Use this file and Powershell/your console of choice to run this file and test API functions. </p>
+<h3>Start the Back End Webserver</h3>
+<p>In the terminal, run npm start to start the build server. To start the production server user npm run-script build. Follow the node instructions to set up the system and server. In order to stop the CORS policy from preventing fetch requests (key parts of the API) start your browser without security restrictions using the run console. </p>
+<h3>Start the Front End Webserver</h3> 
+<p>The webserver is now running at http://localhost:3000 or http://localhost:5000 depending on whether the app was started in development or production. 
+The front end is now running at http://localhost:80
+Navigate to http://localhost:80. The app may be used either logged in or logged out. The admin user for this account is tester5 and has the credentials of username:tester5 and the password of 1234. This login can be used to access both the front end and back end of the site. </p>
+        
+<h2>Backend Information</h2>
+<h3>Security</h3>
+<p>All users on the system that are registered users use php encryption to hash the passwords in the database and ensure their security. 
+The admin panel is protected using a form of IP whitelisting that hides all accessible fields from display and sends the user attempting access back to the front end of the app if their IP doesn't match the IP coded into the system. 
+Should a user get through to the backend by using the same IP, they will still be blocked from accessing the backend if they do not have the permission of “admin” assigned to their account in the database.</p>
+<h3>Api</h3>
+<p>For this application I have used the base case system to create the main API of the system This file is the API.php file and is located in the SRC folder of the application data. This file contains the main functions for the operations of the app and is utilised by both the backend and the frontend of the interface to create functionality. There are two supplementary filed to the API.php file which are the db.php and the sessions.php files both of which are crucial for functionality. The db file contains all the sql requests that actually interact with and modify the database for the app, and the sessions file holds all the data related to rate limiting, is logged in verification and the logout functions. 
+The API works on a series of Get, Post and Update requests which allow users to interact with the database without the security risk of them being fully connected to them directly. </p>
+<h2>Form Validation</h2>
+<h3>React Form Validation</h3>
+<p>Form validation on the user facing section of the admin panel is supplied by the inbuilt React Form Validation feature. It used the set state function to test whether inputs meet the set regex criteria and if it doesn't the code won't run, and an error will appear. </p>
+<h3>PHP Form Validation</h3>
+<p>PHP validation is the server side validation method for this app. It's a basic form of validation that checks whether a field is empty and if it is, it gives a die command. </p>
+<h2>API tests</h2>
+<h3>Talend custom test script</h3>
+<p>The Talend API tester was used to create the testing script for the app. The test functions and the expected response codes are as follows:
+    <ul>
+<li>showDetailss(GET) - 201 CREATED</li>
+<li>fillupdate (GET) - 201 CREATED</li>
+<li>Join(POST) - 201 CREATED</li>
+<li>Signup(POST) - 201 CREATED</li>
+<li>Login(POST) - 201 CREATED</li>
+<li>Update(POST) - 201 CREATED</li>
+<li>Dequeue(POST) - 201 CREATED</li>
+<li>Placequeue(GET) - 201 Created</li>
+<li>Logout(GET) - 201 CREATED </li>
+    </ul>
+<h2>Frontend Information</h2>
+<h3>Materialize</h3>
+<p>Materialize is the front end framework for the app. It creates all the styling elements and functionality with assistance from js triggers. </p>
+<h3>Local Storage</h3>
+<p>Local storage is implemented in the app in 2 locations. The first being the dark mode trigger, and the second to save update information in the update details form. </p>
+
+<h2>Form Validation</h2>
+<h3>HTML Form Validation</h3>
+<p>Form validation on the user facing section of the front end is done by hard coding a regex into the form pattern field. It tests whether inputs meet the set regex criteria and if it doesn't the code won't run, and an error will appear. </p>
+<h3>JS Form Validation</h3>
+<p>JS form validation checks whether fields are empty, and if the field is classed as required. If it is and the field is empty it will trigger a return command and console log an error of what went wrong. </p>
+<h3>PHP Form Validation</h3>
+<p>PHP validation is the server side validation method for this app. It's a basic form of validation that checks whether a field is empty and if it is, it gives a die command. </p>
+<h2>Navigating the App</h2>
+<p> There are 8 key functions within the app:</p>
+<ul>
+<li>Join</li>
+<li>Register</li>
+<li>Login</li>
+<li>Show place in queue - located in modal that triggers after join</li>
+<li>Show user details inputted on join - located in modal that triggers after join</li>
+<li>Dequeue - located in modal that triggers after join</li>
+<li>Update Details - located in modal that triggers from buttons in both the side nav and welcome modal post login</li>
+<li>Logout - located in modal that triggers from buttons in both the side nav and welcome modal post login</li>
+</ul>
+<h2>Users</h2>
+Due to the nature of how this app is intended to be used the app can be used by both logged in and non-logged in users, some functions are restricted to logged in users only (update details and logged in). The join and register functions are available to everyone and as such do not require log in credentials to be used. 
+</div>
+</div>
+</body>
