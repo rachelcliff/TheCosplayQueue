@@ -128,8 +128,13 @@ ReactDOM.render(<App />, document.getElementById("App"));
 class NameForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { namel: "" };
-    this.state = { passwordl: "" };
+    this.state = { 
+      namel: "",
+       passwordl: "", 
+      errors: {
+        namel:"",
+        passwordl:"",
+      }};
     this.errorMessage = { errorMessage: "" };
     this.login = this.login.bind(this);
   }
@@ -137,6 +142,16 @@ class NameForm extends React.Component {
   set = (event) => {
     let nam = event.target.name;
     let val = event.target.value;
+    if(nam === "namel") {
+      if (val === "[a-zA-Z0-9_.!@#$%^&*()]{2,}" && !Text(val)) {
+        alert("Username is incorrect")
+      }
+    }
+    if(nam === "password1") {
+      if (val === "[a-zA-Z0-9_.!@#$%^&*()]{2,}" && !Text(val)) {
+        alert("Password is incorrect")
+      }
+    }
     this.setState({ [nam]: val });
   };
 
@@ -151,8 +166,6 @@ class NameForm extends React.Component {
     fetch("http://localhost/GitHub/TheCosplayQueue/Api/api.php?action=login2", {
       method: "POST",
       headers: {
-        // 'Content-Type': "application/json",
-        // "Content-Type":'application/x-www-form-urlencoded',
         accept: "application/json",
         redirect: "error",
         credentials: "include",
@@ -226,6 +239,7 @@ class ShowQueue extends React.Component {
     super(props);
     this.DisplayAll = this.DisplayAll.bind(this);
      this.Dequeue = this.Dequeue.bind(this);
+     this.photo_taken = this.photo_taken.bind(this);
     this.state = { results: [] };
     this.errorMessage = {errorMessage: ''};
   }
@@ -259,11 +273,11 @@ class ShowQueue extends React.Component {
     var formdata = new FormData();
     formdata.append("action", "Dequeue");
     formdata.set("photo_taken", "Void");
-    formdata.set("user_id", "")
+  //   formdata.set("user_id", "")
 
-  user_id() {
+  // user_id() {
 
-  }
+  // }
     fetch(
       "http://localhost/GitHub/TheCosplayQueue/Api/api.php?action=dequeue2",
       {
@@ -292,6 +306,44 @@ class ShowQueue extends React.Component {
     //     this.setState({ errorMessage: err.message });
     // });
   }
+
+  photo_taken() {
+    var formdata = new FormData();
+    formdata.append("action", "Dequeue");
+    formdata.set("photo_taken", "Yes");
+  //   formdata.set("user_id", "")
+
+  // user_id() {
+
+  // }
+    fetch(
+      "http://localhost/GitHub/TheCosplayQueue/Api/api.php?action=photo_taken",
+      {
+        method: "POST",
+        headers: {
+          // 'Content-Type': "application/json",
+          // "Content-Type":'application/x-www-form-urlencoded',
+          accept: "application/json",
+          redirect: "error",
+          credentials: "include",
+        },
+        body: formdata,
+      }
+      ).then((response) => {
+        if (response.status === 501) {
+          console.log("Photo Taken Failed");
+          this.setState({ errorMessage: "Photo Taken Failed" });
+          return;
+        }
+        if (response.status === 201) {
+          console.log("Photo Taken Successful");
+          this.setState({ errorMessage: "Photo Taken Successful" });
+        }
+      })
+    //   .catch(err => {
+    //     this.setState({ errorMessage: err.message });
+    // });
+  }
   render() {
     const rows = this.state.results.map((row) => {
       return (
@@ -307,7 +359,7 @@ class ShowQueue extends React.Component {
             <button onClick={this.Dequeue}>Dequeue</button>
           </td>
           <td key="row.taken">
-            <button>Photo Taken</button>
+            <button onClick={this.photo_taken}>Photo Taken</button>
           </td>
         </tr>
       );
@@ -353,72 +405,5 @@ class ShowQueue extends React.Component {
 // }
 
 ReactDOM.render(<ShowQueue />, document.getElementById("showQueueBlock"));
-
-// class Dequeue extends React.Component {
-//    constructor(props) {
-//      super(props);
-//      this.Dequeue = this.Dequeue.bind(this);
-//    }
-
-//    Dequeue() {
-//     var formdata = new FormData();
-//     var user_id = user_id;
-//     formdata.append("action", "Dequeue");
-//     formdata.set("photo_taken", "Void");
-//     // formdata.set("user_id", {key="user_id"});
-//     fetch('http://localhost/GitHub/TheCosplayQueue/Api/api.php?action=dequeue2', {
-//       method: "POST",
-//       headers: {
-//         // 'Content-Type': "application/json",
-//         // "Content-Type":'application/x-www-form-urlencoded',
-//         "accept":"application/json",
-//         redirect:"error",
-//         credentials:"include"
-//         },
-//         body: formdata,
-//     })
-//     .then(function (response) {
-//       if (response.status === 501) {
-//         console.log("Dequeue Failed");
-//         return;
-//       }
-//       if (response.status === 201) {
-//         console.log("Dequeue Successful");
-//       }
-//     })
-//     .catch(function (err) {
-//     });
-// }
-//    render() {
-//      return (
-//      <div className="Dequeue">
-//          <button className='aqua' waves='light' icon='add' onClick={this.Dequeue}>Remove from Queue</button>
-//      </div>
-//      );
-//    }
-//  }
-
-//  ReactDOM.render(
-//    <Dequeue />,
-//    document.getElementById('dequeue')
-//  );
-
-//  class Photo extends React.Component {
-//    constructor(props) {
-//      super(props);
-//    }
-//    render() {
-//      return (
-//      <div className="photoTaken">
-//          <button className='aqua' waves='light' icon='add'>Photo Taken</button>
-//      </div>
-//      );
-//    }
-//  }
-
-//  ReactDOM.render(
-//    <Photo />,
-//    document.getElementById('photoTaken')
-//  );
 
 export default App;
