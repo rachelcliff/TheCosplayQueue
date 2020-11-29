@@ -321,6 +321,18 @@ function formcheckjoin() {
     return;
   }
 
+  if (facebooki.checkValidity() === false) {
+    errorStr += "Please insert a valid Facebook account ";
+    console.log("facebook error");
+    return;
+  }
+
+  if (instagrami.checkValidity() === false) {
+    errorStr += "Please insert a valid Instagram account ";
+    console.log("instagram error");
+    return;
+  }
+
   if (phonei.checkValidity() === false) {
     errorStr += "Please insert a valid phone number ";
     console.log("phone error");
@@ -412,10 +424,22 @@ function formcheckregister() {
     console.log("name error");
     return;
   }
-
+  
   if (usernames.checkValidity() === false) {
     errorStr += "Please insert a valid username ";
     console.log("username error");
+    return;
+  }
+
+  if (facebooks.checkValidity() === false) {
+    errorStr += "Please insert a Facebook name ";
+    console.log("facebook error");
+    return;
+  }
+
+  if (instagrams.checkValidity() === false) {
+    errorStr += "Please insert a Instagram username ";
+    console.log("instagram error");
     return;
   }
 

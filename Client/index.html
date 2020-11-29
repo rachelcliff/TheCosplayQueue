@@ -143,7 +143,7 @@
                       id="usernamei"
                       placeholder="Username"
                       name="username"
-                      pattern="[a-zA-Z0-9_.!@#$%^&*() ]{2,}"
+                      pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,20}"
                       title="name must have 2 or more lowercase letters"
                       required
                     />
@@ -152,26 +152,28 @@
                   <div class="input-field col offset-s1 s10" id="facebook">
                     <i class="material-icons prefix">facebook</i>
                     <input
-                      class="icon_prefix"
-                      type="text"
-                      id="facebooki"
-                      placeholder="Facebook Page (if applicable)"
-                      name="facebook"
-                      pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}"
-                      title="name must have 2 or more lowercase letters"
+                    class="validate"
+                    type="text"
+                    id="facebooki"
+                    placeholder="Facebook Account"
+                    name="facebook"
+                    pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,20}"
+                    title="name must have 2 or more lowercase letters"
+                    required
                     />
                     <!-- <label for="icon_prefix">Facebook Page (if applicable)</label>  -->
                   </div>
                   <div class="input-field col offset-s1 s10" id="instagram">
                     <i class="material-icons prefix">photo_camera</i>
                     <input
-                      class="icon_prefix"
+                      class="validate"
                       type="text"
                       id="instagrami"
-                      placeholder="Instagram Account (if applicable)"
+                      placeholder="Instagram Account"
                       name="instagram"
-                      pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}"
+                      pattern="[a-zA-Z0-9_.!@#$%^&()]{2,20}"
                       title="name must have 2 or more lowercase letters"
+                      required
                     />
                     <!-- <label for="icon_prefix">Instagram Account (if applicable)</label> -->
                   </div>
@@ -448,6 +450,7 @@
                       name="facebooks"
                       pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}"
                       title="name must have 2 or more lowercase letters"
+                      required
                     />
                     <!-- <label for="icon_prefix">Facebook Page (if applicable)</label>  -->
                   </div>
@@ -464,6 +467,7 @@
                       name="instagrams"
                       pattern="[a-zA-Z0-9_.!@#$%^&*()]{2,}"
                       title="name must have 2 or more lowercase letters"
+                      required
                     />
                     <!-- <label for="icon_prefix">Instagram Account (if applicable)</label> -->
                   </div>

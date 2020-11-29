@@ -1,0 +1,269 @@
+                Automatic Installation
+                Open the cloned project and in the root of the directory, in your terminal run
+                When the file begins to execute it will prompt you for the username and password for you MySQL database.
+                The name for the database has already been set to TMPLNR20, if you need for it to be changed you can alter after the install script runs.
+                This will require some of the manual configuration listed below.
+                During the installation, all of the needed composer and node packages are installed, the web server for the front end and the back end are installed.
+                Also, the test bundle is installed and 16 tests are performed on the API endpoints. These tests are visible in the terminal during the installation.
+               
+            
+                Manual Installation
+                Install packages
+                In the PROJ folder, in your terminal, run: composer install
+                In the UX2 folder, in your terminal, run: npm install
+                All the needed packages should now be install and ready to use Database Configuration
+                Navigate to the PROJ directory.
+                In the .env file, add the following line: DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name?serverVersion=8.0 <--change to your version
+                In the .env.test file add the following: DATABASE_URL=mysql://db_name:db_password@127.0.0.1:3306/test_db?serverVersion=8.0
+            
+            Create the Database
+            In the PROJ directory, in your terminal, run: symfony console doctrine:database:create
+            To generate the schema, in your terminal, run: symfony console doctrine:schema:update --force
+            To create the test database, in your terminal, run: symfony console doctrine:database:create --env=test
+            To generate the test schema, in your terminal, run: symfony console doctrine:schema:create --env=test
+            
+            Run API Tests
+            In the PROJ directory, in your terminal, run: php bin/phpunit
+            You should then see the 16 tests being performed in the terminal window. The file responsible for running the tests is located in the PROJ/tests/ApiTest.php file.
+            I have included comments in the Doc Blocks above each function explaining how each test is intended to work.
+            
+            Start Symfony Web Server
+            To install the SSL certificate which is needed as the frontend is pointed to https://localhost:8000
+            In the PROJ directory, in your terminal, run: symfony server:ca:install
+            Type yes if prompted.
+            
+            To start the Symfony Webserver: In the PROJ directory, in your terminal, run: symfony serve
+                            
+            Load the dummy data
+            In the PROJ directory, in your terminal, run: symfony console doctrine:fixtures:load
+            You will be prompted if you accept purging the database, select yes. This does not remove the database, it will only remove any data held in the database.
+
+            Start the Front End Webserver
+            In the UX2 folder, in the terminal, run: npm start
+            
+            Login
+            The webserver is now running at https://localhost:8000
+            The front end is now running at http://localhost:4200
+            Navigate to http://localhost:4200
+            ou may skip the welcome page by clicking skip in the top right.
+            Thanks to the loaded dummy data you may log in with email: admin@example.com password: password
+        
+        Backend Information
+        Symfony 5
+        Security
+        
+        JWT
+        For the authentication of users I have utilized JSON Web Tokens with the aid of the Lexik JWT Authentication bundle. 
+        By utilizing JWT I am able to send my front end with a RS256 encoded token which includes the necessary information needed to
+        authenticate the user with each request. The JWT includes the user UUID as well as the users roles (ROLE_USER or ROLE_ADMIN).
+        To utilize this package to its full potential I have created 3 event listener classes:
+        
+        AuthenticationFailureResponse.php
+        This will send the front end a customized error upon the attempted use of an invalid JWT.
+        
+        AuthenticationSuccessListener.php
+        This was added to customize which content was to ne included in the JWT payload.
+        
+        JWTCreatedListener.php
+        This was implemented to include the IP address of the client in the payload which is then checked upon each time it is used.
+        
+        Argon2i Password Encryption
+        
+        For this application I have implemented Argon2i as the encoding method for all users.
+        To ensure that the users password is encrypted each time a new user is created and when a user changes their password, I have created a Data Persister class: UserDataPersister.php is similar to an event listener class except that it alters the data before it is stored in the database.
+        In this case, it listens for any event where the user has created or edited a password and changes the string value to the encoded value before saving it in to the database. This prevents any string values for passwords being stored in the database.
+        
+        API Endpoints
+        
+        Api Platform
+        For this application I have utilized API-Platform core bundle.
+        It works by using the schema mapped by doctrine ORM and the annotations in the DOC Blocks
+        Simply by adding @ApiResource to the DOC Block above the entity class it then exposed all the CRUD endpoints needed.
+        Including POST, GET (one), GET (all), PUT, PATCH and DELETE
+        Api platform was able to offer so much more functionality then just this.
+        By using the @Groups annotation, I could group together what data from other entities that shared relation to show in my JSON requests.
+        Such as, for a scheduled shift, I can see the onDuty.firstName onDuty.lastName onDuty.id and so on.
+        This became extremely useful for expanding on how I could implement Angular's Routing through the front end of my app.
+        
+        Another API Platform feature that was extremely useful was the @ApiFilter. With this I could add boolean types and filter by true or false. Which
+        was extremely useful for only shifts that have been approved by the manager or if a new message had been read or not.<
+        
+        Form Validation
+        Doctrine ORM
+        One of the great things using and ORM is that the back end knows exactly what type of data to expect before it interacts with the database.
+        With every attribute of every entity assigned the appropriate data type including whether it is nullable or not. In the annotations in the DOC Blocks I can also set
+        maximum or minimum length for each attribute.
+        
+        Api Platform
+        Api Platform also utilizes these annotation in the DOC Blocks and is the first point of validation against these data types.
+        Before any data is handled by Doctrine ORM and Doctrine DBAL, API-Platform checks the received JSON data against the configured data types.
+        
+        API tests
+        Symfony Test Bundle
+        For the test scripts I have utilized the Symfony Test Bundle.
+        In it, I am able to write a public function that tests the endpoints with the given data.
+        At the bottom of each function the is a assertions method which is used to assign the expected response code and is checked against 
+        that expected code during the test. If the incorrect status code is received the assertion will fail.
+        This file is located in PROJ/tests/ApiTest.php
+        In it are the instantiation of the User Class and with each of the functions, this user is created, then the login function is used to authenticated and the desired HTTP request is then made.
+        The test functions are as follows
+        create user (POST) - 201 CREATED
+        edit user (PUT) - 200 OK
+        delete user (DELETE) - 204 NO CONTENT
+        get user (GET) - 200 OK
+        get users (GET) - 200 OK
+        user login (POST) - 200 OK
+        create shift (POST) - 201 CREATED
+        edit shift (PUT) - 200 OK
+        get shift (GET) - 200 OK
+        get shifts (GET) - 200 OK
+        delete shift (DELETE) - 204 NO CONTENT
+        create comment (POST) - 201 CREATED
+        edit comment (PUT) - 200 OK
+        delete comment (DELETE) - 204 NO CONTENT
+        get comment (GET) - 200 OK
+        get comments (GET) - 200 OK
+        
+        After running the tests, a log of the results should be generated at PROJ/src/var/test.log
+        
+        Routes
+        Below are a list of the available routes that can be used with the WebService.
+        /Login
+        /logout
+        /shifts.JSON
+        /shifts/{uuid}.JSON
+        /shifts/{uuid/comments.json
+        /comments.JSON
+        /comments/{uuid}.JSON
+        /users.JSON
+        /users/{uuid}.JSON
+        /users/{uuid}/shifts.JSON
+        /users/{uuid}/shifts/{uuid}/comments.json
+        /users/{uuid}/comments.JSON
+        /users/{uuid}/received_comments.json
+        
+        UUID
+        Ramsey's UUID Bundle
+        Rather then using auto incrementing primary keys which hold a security risk, I have utilized UUID by use of two packages.
+        ramsey/uuid
+        ramsey/uuid-doctrine
+        
+        Frontend Information
+        Angular 10 + Ionic 5
+        Local Storage
+        Ionic Storage Module
+        To save the JWT in the user's browser I have utilized the Ionic Storage module.
+        By default it will save the JWT which I have coded to be split in to 3 separate values of data in the IndexedDB, if for some reason the default location does not work it will be saved using WebSQL.
+        One field is the token value, which is sent with each request using a http.interceptor.ts file that I have created.
+        The other two are the user's uuid and the user's roles.
+        If a token is present, the app.component.ts which holds the main navigation will display the links that are only visible to a user once they have a JWT in their browser.
+        After login and the JWT is received, the user is redirected to the user profile where the payload value containing the user's UUID is used with the get request for the user's information. 
+        I decided to store this in local storage due to the convenience of having it ready for is the user is to navigate back to the profile at any stage.
+        The app.component.ts also has a function that checks whether the user is granted ROLE_ADMIN or only ROLE_USER
+        This will dictate what links are shown in the navigation sidebar.
+        
+        Security
+        Guards
+        To ensure that it is not possible to simply point to a secured page in the URL, I have utilized 2 guard services.
+        auth.guard.ts
+        admin.guard.ts
+        The Auth guard has been registered with the applicable routes that I wish to be seen to users that have been authenticated.
+        And the Admin guard is for when the user has been authenticated as ROLE_ADMIN.
+        
+        Authentication
+        Authentication is handled in the authentication.service.ts file.
+        This file is declared as a service in the login module and the form values are used in a HTTP POST to the login endpoint.
+        In this login function on the authentication.service.ts, an if statement will save the JWT payload and split it in to 3 separate values instead of one object,
+        for convenience purposes with other functions though-out the app.
+        In the same function it routes the user to the profile page.
+        
+        Form Validation
+        Angular Reactive Forms
+        One of the best tools for form validation is the Forms Module that comes with Angular.
+        By default, Angular does not trust and user input and this also includes any javascript that can be executed.
+        Part of the strength of its security is its ability to link with the strictly typed nature of TypeScript.
+        Because all of my entities that the front end interacts with have been mapped using and interface class, Angular knows exactly what data to expect in its forms with the necessary form fields.
+        In the services that utilized for HTTP requests, each form field is named against the already dictated data types in the interface classes.
+        
+        Calendars
+        Angular Calendar 6+
+        Being a rostering app, the inclusion of an interactive calendar felt very important. After trialling a few, this one felt very customizable and perfect for what I wanted.
+        The events on the calendar are clicked and navigate you to the Shift Details page to view and from there you can click edit and begin making changes to the shift.
+        As a means to provide a great visual tool for planning and approving shifts, I implemented this calendar twice.
+        One Calendar displays all shifts pending approval from the manager and the other is the official calendar showing approved shifts.
+        The calendar shows, Month, Week and Day views.
+        
+        Timezones
+        DATE-FNS
+        As the recommended module for Angular Calendar I have utilized this work along side it to ensure that the shifts are rendered to local time according the browser.
+        
+        MomentJS
+        As this is my personal preference I also utilized MomentJS for altering saved shifts in to UTC format, prior to saving in the database.
+        All shifts are saved in UTC format and then rendered to local time using the date pipe which is included with Angular.
+        
+        Angular Features
+        Observables
+        One of the things I have found challenging to learn, but am so glad to have learned is Observables.
+        After mapping out the expected JSON structure and the data types of the entities that will be used in the HTTP requests, you
+        care able to make a HTTP request and Observable of that Entity Class. This meant that in any component, to have access to the http call, I only needed to subscribe
+        to it. It would then know if it should be one instance of the entity or an array of the entity.
+        This made the use of interpolation extremely easy.
+        
+        ngIF + ngFor
+        The ngIf and ngFor functions that are built in to Angular are very useful and I have used them all through out my application.
+        With the ngFor, it is used to iterate through an array of json data.
+        The ngIf allowed for simple if statements directly in the html elements.
+        This was great for implementing the spinner for loading. As if the content was not there, else #loading for the ngTemplate that included the html for the spinner.
+                   
+        Navigating the App
+        Shifts
+        There are 3 main sections where interacting with shifts takes place.
+        When you first login you are given I quick view of your upcoming approved shifts.
+        From your profile you can view all your personal shifts.
+        On this page I implemented some filters which are found at the top of the page.
+        There are 3 different filter buttons, one is for past shifts, all shifts, and upcoming shifts.
+        fter pressing any of those buttons you get an action card appear from the bottom of the screen giving you a more details set of options for filtering the shifts.
+        The Shifts dashboard displays all shifts. On this page you can also use a filter which is again located at the top of the page.
+        To create a shift, you can go to the create shift link located in the shifts dashboard.
+        In this area the onDuty field is filled in using your UUID which is stored in local storage.
+        Only the admin user is able to create shifts and assign it to an employee.
+        To edit a shift, you can either do this by clicking on a shift in the list containing your personal shift or if you are admin you can edit any ones shift.
+        
+        Note that, if your shift is already approved and you are not admin, an admin user will have to be notified to have it changed.
+        To delete a shift, it is done the same by clicking on a shift in your personal shift list.
+        his is again, the same where only and admin user can delete a shift after its approval. And a user can only delete a shift that is belonging to them.
+        In the Admin section there are also some shift, this is very muuch similiar to the shifts dashboard except with some more visible information which is
+        suited for admin use.
+        All shifts are displayed on two separate calendars, Approved and Draft.
+        You can click the links on the calendar to navigate and vies the shift details, and from this screen you may edit if the shift belongs to you or if you are admin. 
+        As well as delete with the same rules applying.
+        
+        Messaging
+        To provide a tool to assist with how the team members can collaborate with each other and organize and better organize there scheduling.
+        I felt that adding personal messaging would be something to help this process.
+        In the navigation sidebar you will see a link for messaging.
+        When navigating to this page you view your unread messages.
+        When you open a message to read, I have created a put request the automatically updates the message to boolean "isRead" = true
+        From this page you can view all messages that you have sent and all read messages.
+        When sending a message, it performs a GET request for all users which populate the selection modal for choosing a recipient for the message.
+        The sender field is pre-populated by using the UUID from localstorage and the isPrivate value is set to true in a a hidden form field.
+        To prevent personal messages that have been linked to a shift appearing on the shift comments screen I added the boolean isPrivate as a way to mitigate that from occurring.
+        To ensure that no inappropriate messaging is occurring, I have made a messaging page for admin, this includes all messages and shift comments.
+        This can also be used as a way to ensure that any information is accessible that may be sitting in a personal message box.
+        
+        Shift Comments
+        This shares the same database table as the messaging content, but due to the once boolean field mentioned above, I was able to make it work easily with both scenarios.
+        The objective that I had envisaged for shift comments, was to allow a note to be left on a specific shift. Because of the nature of the client scenario, which 
+        is a on call support that operates world wide it would be extremely useful for a note to be left on the next persons shift to pick up where they left of for a customer issue for example.
+        This can be created by clicking on the shift and clicking on the add comment button, you can choose to make someone the recipient or leave it blank.
+        Shift comments can only be edited by the author or by an admin user, this is also the same for deleting a shift comment.
+        These comments are set as cascade on update and delete, so if the shift is deleted then the comment is too.
+        
+        Users
+        Due to the nature of how this app is intended to be used, I completely removed the registration page that I had originally created.
+        This is because no external user's should be able to register, rather if an employee will be anticipated to use the rostering app, then the manager will create there login account for them.
+        After logging in the user can then change their password and update their user details.
+        In the profile page, there is a link that directs you to the change password form, and one for the changing your details.
+        Because the email and password is used to authenticate with backend with every request, I have made it so it automatically logs the user out and redirects to the login
+        page. This will then give the user the JWT with correct payload.
+        In the admin section you will find a users list page, from this you can edit or delete a user, view their upcoming shifts or send the user a message.
