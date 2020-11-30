@@ -62,6 +62,9 @@ ul {
 	text-align: left;
 }
 
+td img {
+max-width: 200px;
+}
 .sidenav li {
 	text-align: center;
 }
