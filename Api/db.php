@@ -289,7 +289,6 @@ class cosplayQueueModel
     function photo_taken($user_id, $photo_taken)
     {
         try {
-            $user_id = $_SESSION['userID'];
             $stmt = $this->dbconn->prepare("UPDATE queue SET photo_taken=:photo_taken WHERE user_id=:user_id");
             $stmt->bindValue(':user_id', $user_id);
             $stmt->bindValue(':photo_taken', $photo_taken);

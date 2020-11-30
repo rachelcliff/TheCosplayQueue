@@ -12,7 +12,7 @@ require('session.php');
 $se = new cosplayQueueSession;
 
 
-// session_start();
+session_start();
 // $_SESSION["login"] = "true";
 // $_SESSION["loginID"] = 1;
 // print_r($_SESSION);
@@ -20,15 +20,15 @@ $se = new cosplayQueueSession;
 if (!isset($_SESSION['sessionOBJ']))
     $_SESSION['sessionOBJ'] = new cosplayQueueSession;
 
-// if ($_SESSION['sessionOBJ']->Rate24HourCheck() === false) {
-//     http_response_code(429); //Too Many Requests
-//     die();
-// }
+if ($_SESSION['sessionOBJ']->Rate24HourCheck() === false) {
+    http_response_code(429); //Too Many Requests
+    die();
+}
 
-// if ($_SESSION['sessionOBJ']->RateCheck() === false) {
-//     http_response_code(429); //Too Many Requests
-//     die();
-// }
+if ($_SESSION['sessionOBJ']->RateCheck() === false) {
+    http_response_code(429); //Too Many Requests
+    die();
+}
 
 
 // Base Case
@@ -448,7 +448,6 @@ if (isset($_GET["action"])) {
 
             // photo_taken admin panel
         case "photo_taken":
-            $user_id = $_SESSION['userID'];
             if (isset($_POST["action"])) {
                 $user_id = $_POST['user_id'];
                 $photo_taken = $_POST['photo_taken'];

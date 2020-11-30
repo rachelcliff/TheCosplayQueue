@@ -269,15 +269,12 @@ class ShowQueue extends React.Component {
   });
   }
 
-  Dequeue() {
+  Dequeue(user_id) {
     var formdata = new FormData();
     formdata.append("action", "Dequeue");
     formdata.set("photo_taken", "Void");
-  //   formdata.set("user_id", "")
+    formdata.set("user_id", user_id)
 
-  // user_id() {
-
-  // }
     fetch(
       "http://localhost/TheCosplayQueue/Api/api.php?action=dequeue2",
       {
@@ -307,15 +304,12 @@ class ShowQueue extends React.Component {
     // });
   }
 
-  photo_taken() {
+  photo_taken(user_id) {
     var formdata = new FormData();
-    formdata.append("action", "Dequeue");
-    formdata.set("photo_taken", "Yes");
-  //   formdata.set("user_id", "")
+    formdata.append("action", "Photo_Taken");
+    formdata.set("photo_taken", "yes");
+    formdata.set("user_id", user_id)
 
-  // user_id() {
-
-  // }
     fetch(
       "http://localhost/TheCosplayQueue/Api/api.php?action=photo_taken",
       {
@@ -359,10 +353,10 @@ class ShowQueue extends React.Component {
             <img src={row.reference_photo}></img>
           </td>
           <td key="row.remove">
-            <button onClick={this.Dequeue}>Dequeue</button>
+            <button value={row.user_id} onClick={this.Dequeue.bind(this, row.user_id)}>Dequeue</button>
           </td>
           <td key="row.taken">
-            <button onClick={this.photo_taken}>Photo Taken</button>
+            <button value={row.user_id} onClick={this.photo_taken.bind(this, row.user_id)}>Photo Taken</button>
           </td>
         </tr>
       );
