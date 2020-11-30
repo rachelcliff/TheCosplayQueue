@@ -28,7 +28,7 @@ public function Rate24HourCheck() {
     $hours = (time() - $this->_startTime /3600);
 
     $this->_startTime=time();
-    if ($hours <24 && $this ->_requestCounter >100000){
+    if ($hours <24 && $this ->_requestCounter >50000){
         return false;
     } else if ($hours >=24){
         $this->_requestCounter=0;
@@ -45,7 +45,7 @@ public function RateCheck() {
     $this->_startTime=time();
     if ($seconds <1 && $this ->_requestCounter >1) {
         return false;
-    } else if ($seconds >1) {
+    } else if ($seconds >30) {
     $this->_requestCounter=0;
     }
 return $this->_requestCounter;

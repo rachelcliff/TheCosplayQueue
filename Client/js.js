@@ -386,6 +386,7 @@ function formcheckjoin() {
   formdata.set("photo_taken", "no");
   formdata.set("permissionsi", "user");
 
+
   fetch("../Api/api.php?action=join", {
     method: "POST",
     body: formdata,

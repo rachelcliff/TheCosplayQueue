@@ -45,7 +45,7 @@ class App extends React.Component {
 
 
   logout() {
-    fetch("http://localhost/TheCosplayQueue/Api/api.php?action=logout",  {
+    fetch("../../Api/api.php?action=logout",  {
       method: "GET",
       redirect: "error",
       headers: {
@@ -100,7 +100,7 @@ class App extends React.Component {
               />
             </li>
             <li>
-              <a href="http://localhost/TheCosplayQueue/Client/index.html">
+              <a href="../../../Client/index.html">
                 <i className="material-icons">
                   house
                 </i>
@@ -163,7 +163,7 @@ class NameForm extends React.Component {
     formdata.append("action", "login2");
     formdata.set("namel", this.state.namel);
     formdata.set("passwordl", this.state.passwordl);
-    fetch("http://localhost/TheCosplayQueue/Api/api.php?action=login2", {
+    fetch("../../Api/api.php?action=login2", {
       method: "POST",
       headers: {
         accept: "application/json",
@@ -245,7 +245,7 @@ class ShowQueue extends React.Component {
   }
   DisplayAll() {
     fetch(
-      "http://localhost:/TheCosplayQueue/Api/api.php?action=showDetailsAll",
+      "../../Api/api.php?action=showDetailsAll",
       {
         method: "GET",
         redirect: "error",
@@ -276,7 +276,7 @@ class ShowQueue extends React.Component {
     formdata.set("user_id", user_id)
 
     fetch(
-      "http://localhost/TheCosplayQueue/Api/api.php?action=dequeue2",
+      "../..//Api/api.php?action=dequeue2",
       {
         method: "POST",
         headers: {
@@ -311,7 +311,7 @@ class ShowQueue extends React.Component {
     formdata.set("user_id", user_id)
 
     fetch(
-      "http://localhost/TheCosplayQueue/Api/api.php?action=photo_taken",
+      "../../Api/api.php?action=photo_taken",
       {
         method: "POST",
         headers: {
