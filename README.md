@@ -10,6 +10,8 @@ Update the database connection settings found within the db.php file with the us
 
 Installation is now complete, and the app should now be functional.
 
+The admin username for the production app is test5 and the password is 1234.
+
 ## Technologies utilised in this build:
 Materalize - Version 1.0.0, implemented using CDN, used to create the display and functionality on the home page of the app.
 React - Version 17.0.1, implemented via local installation and node cmd, used to create the display and functionality on the app admin panel. 
