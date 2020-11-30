@@ -27,10 +27,10 @@ class App extends React.Component {
      }, "jsonp")
     .then(res => {
       console.log(res.ip)
-      if (res.ip === "117.20.64.153") {
+      if (res.ip === "203.25.141.6") {
         console.log("Welcome");
       }
-      if (res.ip !== "117.20.64.153") {
+      if (res.ip !== "203.25.141.6") {
         console.log("Goodbye");
         this.setState({ errorMessage: "You do not have the permissions to access this page" });
         document.getElementById("nameform").style.display = "none";
@@ -45,7 +45,7 @@ class App extends React.Component {
 
 
   logout() {
-    fetch("http://localhost:80/GitHub/TheCosplayQueue/Api/api.php?action=logout",  {
+    fetch("http://localhost/TheCosplayQueue/Api/api.php?action=logout",  {
       method: "GET",
       redirect: "error",
       headers: {
@@ -100,7 +100,7 @@ class App extends React.Component {
               />
             </li>
             <li>
-              <a href="http://localhost/GitHub/TheCosplayQueue/Client/index.html">
+              <a href="http://localhost/TheCosplayQueue/Client/index.html">
                 <i className="material-icons">
                   house
                 </i>
@@ -163,7 +163,7 @@ class NameForm extends React.Component {
     formdata.append("action", "login2");
     formdata.set("namel", this.state.namel);
     formdata.set("passwordl", this.state.passwordl);
-    fetch("http://localhost/GitHub/TheCosplayQueue/Api/api.php?action=login2", {
+    fetch("http://localhost/TheCosplayQueue/Api/api.php?action=login2", {
       method: "POST",
       headers: {
         accept: "application/json",
@@ -245,7 +245,7 @@ class ShowQueue extends React.Component {
   }
   DisplayAll() {
     fetch(
-      "http://localhost:80/GitHub/TheCosplayQueue/Api/api.php?action=showDetailsAll",
+      "http://localhost:/TheCosplayQueue/Api/api.php?action=showDetailsAll",
       {
         method: "GET",
         redirect: "error",
@@ -279,7 +279,7 @@ class ShowQueue extends React.Component {
 
   // }
     fetch(
-      "http://localhost/GitHub/TheCosplayQueue/Api/api.php?action=dequeue2",
+      "http://localhost/TheCosplayQueue/Api/api.php?action=dequeue2",
       {
         method: "POST",
         headers: {
@@ -317,7 +317,7 @@ class ShowQueue extends React.Component {
 
   // }
     fetch(
-      "http://localhost/GitHub/TheCosplayQueue/Api/api.php?action=photo_taken",
+      "http://localhost/TheCosplayQueue/Api/api.php?action=photo_taken",
       {
         method: "POST",
         headers: {
@@ -355,6 +355,9 @@ class ShowQueue extends React.Component {
           <td key="row.series">{row.series}</td>
           <td key="row.genre">{row.genre}</td>
           <td key="row.r_group">{row.r_group}</td>
+          <td key="reference_photo" className="ImageContainer">
+            <img src={row.reference_photo}></img>
+          </td>
           <td key="row.remove">
             <button onClick={this.Dequeue}>Dequeue</button>
           </td>
@@ -377,7 +380,6 @@ class ShowQueue extends React.Component {
             icon="add"
             onClick={this.DisplayAll}
           >
-            {" "}
             Show Queue
           </button>
         </div>
@@ -385,12 +387,14 @@ class ShowQueue extends React.Component {
           <table className="results">
             <thead>
               <tr>
+              <th>User Id</th>
                 <th>Name</th>
                 <th>Cosplay Name</th>
                 <th>Character Name</th>
                 <th>Series</th>
                 <th>Genre</th>
                 <th>Are you in a Group?</th>
+                <th>Reference Photo</th>
                 <th>Remove from Queue</th>
                 <th>Photo Taken</th>
               </tr>

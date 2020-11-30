@@ -88,11 +88,19 @@ td {
 	word-wrap: break-word;
 }
 
+td img {
+	max-width: 200px;
+	max-height: 200px;
+}
+
 .sidenav {
 	background-color: grey;
 	color: white;
 }
 
+td, th {
+	text-align: center !important;
+}
 input {
 	color: hotpink;
 }
