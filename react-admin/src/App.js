@@ -19,7 +19,7 @@ class App extends React.Component {
     M.Sidenav.init(sidenav, {});
     // this.ipwhitelist()
   }
-// For IP whitelisting I have set a rule in place that states that if a user isn’t accessing the page from the IP address of 117.20.64.153 which is the IP of my home localhost it will hide all elements on the page and display a message saying that the user doesn’t have the permission to be on the page and direct them back to the homepage. 
+// For IP whitelisting I have set a rule in place that states that if a user isn’t accessing the page from the IP address of 117.20.64.153 which is the IP of my home localhost it will hide all elements on the page and display a message saying that the user doesn’t have the permission to be on the page and direct them back to the homepage. This works in correspondance with the backend IP whitelisting located in the Login2 query which compares the users IP to a predetermined array and returns true or false depending on the results.
   // ipwhitelist() {
   //   fetch("https://api.ipdata.co/?api-key=5c08729b24fa39782714ed7488ba2cdefd4dcf3af38725ddc9cc25ca")
   //   .then(response => {
@@ -45,7 +45,7 @@ class App extends React.Component {
 
 
   logout() {
-    fetch("/Api/api.php?action=logout",  {
+    fetch("http://localhost/GitHub/TheCosplayQueue/Api/api.php?action=logout",  {
       method: "GET",
       redirect: "error",
       headers: {
@@ -100,7 +100,7 @@ class App extends React.Component {
               />
             </li>
             <li>
-              <a href="/Client/index.html">
+              <a href="http://localhost/GitHub/TheCosplayQueue/Client/index.html">
                 <i className="material-icons">
                   house
                 </i>
@@ -163,7 +163,7 @@ class NameForm extends React.Component {
     formdata.append("action", "login2");
     formdata.set("namel", this.state.namel);
     formdata.set("passwordl", this.state.passwordl);
-    fetch("/Api/api.php?action=login2", {
+    fetch("http://localhost/GitHub/TheCosplayQueue/Api/api.php?action=login2", {
       method: "POST",
       headers: {
         accept: "application/json",
@@ -245,7 +245,7 @@ class ShowQueue extends React.Component {
   }
   DisplayAll() {
     fetch(
-      "/Api/api.php?action=showDetailsAll",
+      "http://localhost/GitHub/TheCosplayQueue/Api/api.php?action=showDetailsAll",
       {
         method: "GET",
         redirect: "error",
@@ -276,7 +276,7 @@ class ShowQueue extends React.Component {
     formdata.set("user_id", user_id)
 
     fetch(
-      "/Api/api.php?action=dequeue2",
+      "http://localhost/GitHub/TheCosplayQueue/Api/api.php?action=dequeue2",
       {
         method: "POST",
         headers: {
@@ -311,7 +311,7 @@ class ShowQueue extends React.Component {
     formdata.set("user_id", user_id)
 
     fetch(
-      "/Api/api.php?action=photo_taken",
+      "http://localhost/GitHub/TheCosplayQueue/Api/api.php?action=photo_taken",
       {
         method: "POST",
         headers: {
