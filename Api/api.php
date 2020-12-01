@@ -1,5 +1,5 @@
 <?php
-header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Origin: https://thecosplayqueue.com.au');
 header('Access-Control-Allow-Origin: https://localhost:3000');
 header('Access-Control-Allow-Credentials: true');
 header("Access-Control-Allow-Headers", "content-type");
