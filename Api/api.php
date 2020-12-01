@@ -1,5 +1,5 @@
 <?php
-header('Access-Control-Allow-Origin: https://thecosplayqueue.com.au');
+header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Origin: https://localhost:3000');
 header('Access-Control-Allow-Credentials: true');
 header("Access-Control-Allow-Headers", "content-type");
@@ -295,17 +295,20 @@ if (isset($_GET["action"])) {
                 if (isset($_POST["action"])) {
                     $cosplay_name = $_POST['namel'];
                     $password = $_POST['passwordl'];
+
+                    // // check if field is empty
+                    // if ($cosplay_name == "") {
+                    //     $errorMsg = "error: username empty";
+                    //     // die;
+                    // }
                     
-                    // check if field is empty
-                    if ($cosplay_name == "") {
-                        $errorMsg = "error: username empty";
-                        // die;
-                    }
-                    // check if field is empty
-                    elseif ($password == "") {
-                        $errorMsg = "error: password empty";
-                        // die;
-                    }
+                    // // check if field is empty
+                    // elseif ($password == "") {
+                    //     $errorMsg = "error: password empty";
+                    //     // die;
+                    // }
+
+                    echo ("test");
 
                     if (isset($cosplay_name)) {
                         $success = $db->login2($cosplay_name, $password);

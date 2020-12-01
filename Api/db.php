@@ -162,8 +162,16 @@ class cosplayQueueModel
             $stmt->execute();
             $row = $stmt->fetch();
 
+            $allowlist = array(
+                '117.20.64.153',
+                '203.25.141.6'
+            );
+
             if (password_verify($password, $row['password'])) {
                 if ($row['permissions'] == ("admin")) {
+                    if(!in_array($_SERVER['REMOTE_ADDR'],$allowlist)){
+                        die('This website cannot be accessed from your location.');
+                    }
                 $_SESSION["cosplay_name"] = $cosplay_name;
                 $_SESSION["loginID"] = $row['login_id'];
                 $_SESSION["login"] = 'true';
