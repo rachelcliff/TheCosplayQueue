@@ -1,6 +1,7 @@
 <?php
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Origin: https://localhost:3000');
+header('Accecess-Control-Allow-Origin: *');
+// header('Access-Control-Allow-Origin: https://xavrom.com/');
+// header('Access-Control-Allow-Origin: https://localhost:3000');
 header('Access-Control-Allow-Credentials: true');
 header("Access-Control-Allow-Headers", "content-type");
 header('Content-Type: application/json'); // All echo statements are json_encode
