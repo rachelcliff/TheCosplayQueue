@@ -11,41 +11,41 @@ class App extends React.Component {
     super(props);
     this.errorMessage = { errorMessage: "" };
     this.logout = this.logout.bind(this);
-    this.ipwhitelist = this.ipwhitelist.bind(this);
+    // this.ipwhitelist = this.ipwhitelist.bind(this);
   }
   
   componentDidMount() {
     let sidenav = document.querySelector("#slide-out");
     M.Sidenav.init(sidenav, {});
-    this.ipwhitelist()
+    // this.ipwhitelist()
   }
 // For IP whitelisting I have set a rule in place that states that if a user isn’t accessing the page from the IP address of 117.20.64.153 which is the IP of my home localhost it will hide all elements on the page and display a message saying that the user doesn’t have the permission to be on the page and direct them back to the homepage. 
-  ipwhitelist() {
-    fetch("https://api.ipdata.co/?api-key=5c08729b24fa39782714ed7488ba2cdefd4dcf3af38725ddc9cc25ca")
-    .then(response => {
-      return response.json();
-     }, "jsonp")
-    .then(res => {
-      console.log(res.ip)
-      if (res.ip === "203.25.141.6") {
-        console.log("Welcome");
-      }
-      if (res.ip !== "203.25.141.6") {
-        console.log("Goodbye");
-        this.setState({ errorMessage: "You do not have the permissions to access this page" });
-        document.getElementById("nameform").style.display = "none";
-        document.getElementById("fail").style.display = "block";
-        return;
-      }
-    })
-    .catch((err) => {
-      this.setState({ errorMessage: err.message });
-    });
-  }
+  // ipwhitelist() {
+  //   fetch("https://api.ipdata.co/?api-key=5c08729b24fa39782714ed7488ba2cdefd4dcf3af38725ddc9cc25ca")
+  //   .then(response => {
+  //     return response.json();
+  //    }, "jsonp")
+  //   .then(res => {
+  //     console.log(res.ip)
+  //     if (res.ip === "203.25.141.6") {
+  //       console.log("Welcome");
+  //     }
+  //     if (res.ip !== "203.25.141.6") {
+  //       console.log("Goodbye");
+  //       this.setState({ errorMessage: "You do not have the permissions to access this page" });
+  //       document.getElementById("nameform").style.display = "none";
+  //       document.getElementById("fail").style.display = "block";
+  //       return;
+  //     }
+  //   })
+  //   .catch((err) => {
+  //     this.setState({ errorMessage: err.message });
+  //   });
+  // }
 
 
   logout() {
-    fetch("../../Api/api.php?action=logout",  {
+    fetch("/Api/api.php?action=logout",  {
       method: "GET",
       redirect: "error",
       headers: {
@@ -100,7 +100,7 @@ class App extends React.Component {
               />
             </li>
             <li>
-              <a href="../../../Client/index.html">
+              <a href="/Client/index.html">
                 <i className="material-icons">
                   house
                 </i>
@@ -163,7 +163,7 @@ class NameForm extends React.Component {
     formdata.append("action", "login2");
     formdata.set("namel", this.state.namel);
     formdata.set("passwordl", this.state.passwordl);
-    fetch("../../Api/api.php?action=login2", {
+    fetch("/Api/api.php?action=login2", {
       method: "POST",
       headers: {
         accept: "application/json",
@@ -245,7 +245,7 @@ class ShowQueue extends React.Component {
   }
   DisplayAll() {
     fetch(
-      "../../Api/api.php?action=showDetailsAll",
+      "/Api/api.php?action=showDetailsAll",
       {
         method: "GET",
         redirect: "error",
@@ -276,7 +276,7 @@ class ShowQueue extends React.Component {
     formdata.set("user_id", user_id)
 
     fetch(
-      "../..//Api/api.php?action=dequeue2",
+      "/Api/api.php?action=dequeue2",
       {
         method: "POST",
         headers: {
@@ -311,7 +311,7 @@ class ShowQueue extends React.Component {
     formdata.set("user_id", user_id)
 
     fetch(
-      "../../Api/api.php?action=photo_taken",
+      "/Api/api.php?action=photo_taken",
       {
         method: "POST",
         headers: {
