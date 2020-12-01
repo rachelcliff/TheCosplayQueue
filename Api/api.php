@@ -20,15 +20,15 @@ session_start();
 if (!isset($_SESSION['sessionOBJ']))
     $_SESSION['sessionOBJ'] = new cosplayQueueSession;
 
-if ($_SESSION['sessionOBJ']->Rate24HourCheck() === false) {
-    http_response_code(429); //Too Many Requests
-    die();
-}
+// if ($_SESSION['sessionOBJ']->Rate24HourCheck() === false) {
+//     http_response_code(429); //Too Many Requests
+//     die();
+// }
 
-if ($_SESSION['sessionOBJ']->RateCheck() === false) {
-    http_response_code(429); //Too Many Requests
-    die();
-}
+// if ($_SESSION['sessionOBJ']->RateCheck() === false) {
+//     http_response_code(429); //Too Many Requests
+//     die();
+// }
 
 
 // Base Case
