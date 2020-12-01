@@ -20,15 +20,15 @@ session_start();
 if (!isset($_SESSION['sessionOBJ']))
     $_SESSION['sessionOBJ'] = new cosplayQueueSession;
 
-// if ($_SESSION['sessionOBJ']->Rate24HourCheck() === false) {
-//     http_response_code(429); //Too Many Requests
-//     die();
-// }
+if ($_SESSION['sessionOBJ']->Rate24HourCheck() === false) {
+    http_response_code(429); //Too Many Requests
+    die();
+}
 
-// if ($_SESSION['sessionOBJ']->RateCheck() === false) {
-//     http_response_code(429); //Too Many Requests
-//     die();
-// }
+if ($_SESSION['sessionOBJ']->RateCheck() === false) {
+    http_response_code(429); //Too Many Requests
+    die();
+}
 
 
 // Base Case
@@ -296,19 +296,17 @@ if (isset($_GET["action"])) {
                     $cosplay_name = $_POST['namel'];
                     $password = $_POST['passwordl'];
 
-                    // // check if field is empty
-                    // if ($cosplay_name == "") {
-                    //     $errorMsg = "error: username empty";
-                    //     // die;
-                    // }
+                    // check if field is empty
+                    if ($cosplay_name == "") {
+                        $errorMsg = "error: username empty";
+                        // die;
+                    }
                     
-                    // // check if field is empty
-                    // elseif ($password == "") {
-                    //     $errorMsg = "error: password empty";
-                    //     // die;
-                    // }
-
-                    echo ("test");
+                    // check if field is empty
+                    elseif ($password == "") {
+                        $errorMsg = "error: password empty";
+                        // die;
+                    }
 
                     if (isset($cosplay_name)) {
                         $success = $db->login2($cosplay_name, $password);

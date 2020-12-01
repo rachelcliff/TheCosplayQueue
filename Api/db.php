@@ -46,7 +46,7 @@ class cosplayQueueModel
             $_SESSION["queueID"] = $lastqueueID;
             $_SESSION["join"] = "true";
             $_SESSION["permissions"] = $permissions;
-         
+
             $stmt = $this->dbconn->prepare("INSERT INTO changelog(date, browser, user_id, actiontype) Values (:date, :browser, :user_id, :actiontype)");
             $stmt->bindValue(':date', $date);
             $stmt->bindValue(':browser', $browserAgent);
@@ -85,7 +85,7 @@ class cosplayQueueModel
             $stmt->bindValue(':permissions', $permissions);
             $stmt->execute();
 
-           $lastuserID = $this->dbconn->lastInsertID();
+            $lastuserID = $this->dbconn->lastInsertID();
             $stmt = $this->dbconn->prepare("INSERT INTO changelog(date, browser, actiontype, user_ID) Values (:date, :browser, :actiontype, :user_id)");
             $stmt->bindValue(':date', $date);
             $stmt->bindValue(':browser', $browserAgent);
@@ -102,7 +102,7 @@ class cosplayQueueModel
             $_SESSION["email"] = $email;
             $_SESSION["login"] = 'true';
             $_SESSION["permissions"] = $permissions;
-            
+
 
             $this->dbconn->commit();
         } catch (PDOException $ex) {
@@ -152,7 +152,7 @@ class cosplayQueueModel
         }
     }
 
-    // login function
+    // login Admin function
     function login2($cosplay_name, $password)
     {
         try {
@@ -162,35 +162,34 @@ class cosplayQueueModel
             $stmt->execute();
             $row = $stmt->fetch();
 
-            $allowlist = array(
-                '117.20.64.153',
-                '203.25.141.6'
-            );
-
             if (password_verify($password, $row['password'])) {
                 if ($row['permissions'] == ("admin")) {
-                    if(!in_array($_SERVER['REMOTE_ADDR'],$allowlist)){
-                        die('This website cannot be accessed from your location.');
-                    }
-                $_SESSION["cosplay_name"] = $cosplay_name;
-                $_SESSION["loginID"] = $row['login_id'];
-                $_SESSION["login"] = 'true';
-                $_SESSION['userID'] = $row['user_id'];
-                // $_SESSION['name'] = $row['name'];
-                // $_SESSION['facebook'] = $row['facebook'];
-                // $_SESSION['instagram'] = $row['instagram'];
-                // $_SESSION['phone'] = $row['phone'];
-                // $_SESSION['email'] = $row['email'];
-                $_SESSION['permissions'] = $row['permissions'];
-                $stmt->execute();
-                $this->dbconn->commit();
-                  return true; 
-                }else{
+                    $_SESSION["cosplay_name"] = $cosplay_name;
+                    $_SESSION["loginID"] = $row['login_id'];
+                    $_SESSION["login"] = 'true';
+                    $_SESSION['userID'] = $row['user_id'];
+                    // $_SESSION['name'] = $row['name'];
+                    // $_SESSION['facebook'] = $row['facebook'];
+                    // $_SESSION['instagram'] = $row['instagram'];
+                    // $_SESSION['phone'] = $row['phone'];
+                    // $_SESSION['email'] = $row['email'];
+                    $_SESSION['permissions'] = $row['permissions'];
+                    $stmt->execute();
+                    $this->dbconn->commit();
+                    return true;
+                } else {
                     return false;
                 }
             } else {
                 return false;
             }
+            // IP whitelist server side
+            // $whitelist = array('117.20.64.153', '112.112.112.112');
+            // if ((!in_array($_SERVER['REMOTE_ADDR'], $whitelist))) {
+            //     return false;
+            // } else {
+            //     return true;
+            // }
         } catch (PDOException $ex) {
             $this->dbconn->rollback();
             throw $ex;
@@ -278,20 +277,20 @@ class cosplayQueueModel
         }
     }
 
-     // Function dequeue
-     function dequeue2($user_id, $photo_taken)
-     {
-         try {
-             $stmt = $this->dbconn->prepare("UPDATE queue SET photo_taken=:photo_taken WHERE user_id=:user_id");
-             $stmt->bindValue(':user_id', $user_id);
-             $stmt->bindValue(':photo_taken', $photo_taken);
-             $stmt->execute();
-             return;
-         } catch (PDOException $ex) {
-             $this->dbconn->rollBack();
-             throw $ex;
-         }
-     }
+    // Function dequeue
+    function dequeue2($user_id, $photo_taken)
+    {
+        try {
+            $stmt = $this->dbconn->prepare("UPDATE queue SET photo_taken=:photo_taken WHERE user_id=:user_id");
+            $stmt->bindValue(':user_id', $user_id);
+            $stmt->bindValue(':photo_taken', $photo_taken);
+            $stmt->execute();
+            return;
+        } catch (PDOException $ex) {
+            $this->dbconn->rollBack();
+            throw $ex;
+        }
+    }
 
     // Photo Taken - admin panel
     function photo_taken($user_id, $photo_taken)
