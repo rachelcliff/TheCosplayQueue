@@ -1,5 +1,0 @@
----
-deployment:
-tasks:
--export DEPLOYPATH=/home/rcliffweb/public_html/TheCosplayQueue
-    - /bin/cp -R * $DEPLOYPATH
