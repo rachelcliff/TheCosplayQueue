@@ -12,6 +12,9 @@ Installation is now complete, and the app should now be functional.
 
 The admin username for the production app is test5 and the password is 1234.
 
+# Notes about Proj 3
+Admin users in the system are created using the regular submission form on the and then their permissions changed in the database itself. This means that all admin passwords are hashed using the PHP password_hash function (one way encryption) automatically. 
+
 ## Technologies utilised in this build:
 Materalize - Version 1.0.0, implemented using CDN, used to create the display and functionality on the home page of the app.
 React - Version 17.0.1, implemented via local installation and node cmd, used to create the display and functionality on the app admin panel. 
@@ -25,9 +28,6 @@ Folders have been completely restructured to accommodate a more streamlined app 
 
 # Notes about UX2
 The UX2 assessment and Proj2 assessment has been completed and is functional.
-
-# Notes about Proj 3
-Admin users in the system are created using the regular submission form on the and then their permissions changed in the database itself. This means that all admin passwords are hashed using the PHP password_hash function (one way encryption) automatically. 
 
 ## Functions:
 - changelog -> Complete
