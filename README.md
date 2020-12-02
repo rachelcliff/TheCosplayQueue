@@ -26,6 +26,9 @@ Folders have been completely restructured to accommodate a more streamlined app 
 # Notes about UX2
 The UX2 assessment and Proj2 assessment has been completed and is functional.
 
+# Notes about Proj 3
+Admin users in the system are created using the regular submission form on the and then their permissions changed in the database itself. This means that all admin passwords are hashed using the PHP password_hash function (one way encryption) automatically. 
+
 ## Functions:
 - changelog -> Complete
 - user sign up-> Complete
