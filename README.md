@@ -11,6 +11,10 @@ Update the database connection settings found within the db.php file with the us
 Installation is now complete, and the app should now be functional.
 
 The admin username for the production app is test5 and the password is 1234.
+Regular username for the production app is rctest_1 and the password is 1234.
+
+# Notes about Proj 3
+Admin users in the system are created using the regular submission form on the and then their permissions changed in the database itself. This means that all admin passwords are hashed using the PHP password_hash function (one way encryption) automatically. 
 
 ## Technologies utilised in this build:
 Materalize - Version 1.0.0, implemented using CDN, used to create the display and functionality on the home page of the app.
