@@ -18,6 +18,8 @@ Admin users in the system are created using the regular submission form on the a
 
 IP whitelisting is located in both the App.js file and the db.php files. The App.JS file has a frontend whitelist function on line 22 and the db.php file has it located on line 186 as part of the login2 function. 
 
+Within the database all users are assigned permissions of either user or admin, there is an extra if statement present in the db.php function login2 (line 166) which is called from the admin panel that states that is permissions is equal to admin allow login id not return false and a 501 error.
+
 ## Technologies utilised in this build:
 Materalize - Version 1.0.0, implemented using CDN, used to create the display and functionality on the home page of the app.
 React - Version 17.0.1, implemented via local installation and node cmd, used to create the display and functionality on the app admin panel. 
