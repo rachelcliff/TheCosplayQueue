@@ -16,6 +16,8 @@ Regular username for the production app is rctest_1 and the password is 1234.
 # Notes about Proj 3
 Admin users in the system are created using the regular submission form on the and then their permissions changed in the database itself. This means that all admin passwords are hashed using the PHP password_hash function (one way encryption) automatically. 
 
+IP whitelisting is locted in both the App.js file and the db.php files. The App.JS file has a frontend whitelist function on line 22m and the db.php file has it located on line 186 as part of the login2 function. 
+
 ## Technologies utilised in this build:
 Materalize - Version 1.0.0, implemented using CDN, used to create the display and functionality on the home page of the app.
 React - Version 17.0.1, implemented via local installation and node cmd, used to create the display and functionality on the app admin panel. 
